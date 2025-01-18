@@ -3,17 +3,17 @@
   "theme": "ds",
   "homework": [
     {
-      "title": "Programming Task 3: Linked Lists",
-      "url": "task3.html",
-      "released": true
+      "title": "Programming Task 2: Linked Lists",
+      "url": "task2.html",
+      "released": false
     }
   ],
-  "lab": "1st Chance - Interview 1 (Classes)",
+  "lab": "Activity and Coding Quiz 0 - Java Basics",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "September 23",
+      "date": "February 17",
       "title": "Linked List Structure",
       "slides": "Week4_1_Linked_List.pdf",
       "reading_list": [
@@ -26,7 +26,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "September 25",
+      "date": "February 19",
       "title": "Linked List Algorithms",
       "slides": "Week4_2_Linked_List.pdf",
       "reading_list": []
@@ -34,7 +34,7 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "September 27",
+      "date": "February 21",
       "title": "Stack and Queue",
       "slides": "Week4_3_Stack_Queue.pdf",
       "reading_list": [
@@ -51,18 +51,10 @@
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "September 27",
-      "time": "11:59pm",
-      "assignment": "Task 2",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "September 27",
+      "date": "February 21",
       "time": "11:59pm",
       "assignment": "Task 1",
-      "deadline_type": "late"
+      "deadline_type": "expected"
     }
   ]
 }

@@ -3,17 +3,17 @@
   "theme": "oop",
   "homework": [
     {
-      "title": "Programming Task 7: Polymorphism",
-      "url": "task7.html",
-      "released": true
+      "title": "Programming Task 5: Polymorphism",
+      "url": "task5.html",
+      "released": false
     }
   ],
-  "lab": "1st Chance - Quiz 1 (Data Structures) && OOP Quiz Review",
+  "lab": "Activity and Coding Quiz 2 - Data Structures (LL and Trees)",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "November 4",
+      "date": "March 31",
       "title": "Polymorphism",
       "slides": "Week9_1_Polymorphism.pdf",
       "reading_list": []
@@ -21,7 +21,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "November 6",
+      "date": "April 2",
       "title": "Polymorphism",
       "slides": "Week9_2_Polymorphism_2.pdf",
       "reading_list": []
@@ -29,32 +29,16 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "November 8",
+      "date": "April 4",
       "title": "Polymorphism Example",
       "reading_list": []
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "November 8",
+      "date": "April 4",
       "time": "11:59pm",
-      "assignment": "Task 6",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "November 8",
-      "time": "11:59pm",
-      "assignment": "Task 5",
-      "deadline_type": "late"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "November 8",
-      "time": "11:59pm",
-      "assignment": "Task 4",
+      "assignment": "Task 3",
       "deadline_type": "final"
     }
   ]

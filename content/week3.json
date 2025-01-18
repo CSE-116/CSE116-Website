@@ -1,19 +1,13 @@
 {
   "title": "Week 3: Testing 1 - Unit Testing",
   "theme": "testing",
-  "homework": [
-    {
-      "title": "Programming Task 1: Unit Testing",
-      "url": "task1.html",
-      "released": true
-    }
-  ],
-  "lab": "Practice Quiz + IntelliJ Setup",
+  "homework": [],
+  "lab": "Activity - Java",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "September 9",
+      "date": "February 3",
       "title": "Unit Testing",
       "slides": "week2_1_Unit_Testing.pdf",
       "reading_list": [
@@ -26,7 +20,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "September 11",
+      "date": "February 5",
       "title": "Testing Strings/doubles",
       "slides": "week2_2_Unit_Testing.pdf",
       "reading_list": []
@@ -34,7 +28,7 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "September 13",
+      "date": "February 7",
       "title": "Testing and Recursion",
       "slides": "week2_3_Recursion.pdf",
       "reading_list": [
@@ -47,6 +41,14 @@
           "text": "Unit Testing Tips"
         }
       ]
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "February 7",
+      "time": "11:59pm",
+      "assignment": "Task 0",
+      "deadline_type": "expected"
     }
   ]
 }

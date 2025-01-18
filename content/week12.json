@@ -1,19 +1,13 @@
 {
   "title": "Week 13: AO1 - The State Pattern",
   "theme": "oop",
-  "homework": [
-    {
-      "title": "Application Objective Task",
-      "url": "ao1.html",
-      "released": true
-    }
-  ],
-  "lab": "2nd Chance - Interview 3 & Quiz 1",
+  "homework": [],
+  "lab": "Interview 3 and Tracing Quiz 3 - OOP (Inheritance and Polymorphism)",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "November 18",
+      "date": "April 14",
       "title": "The State Pattern",
       "slides": "Week12_1_State_Pattern.pdf",
       "reading_list": []
@@ -21,7 +15,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "November 20",
+      "date": "April 16",
       "title": "The State Pattern",
       "slides": "Week12_2_State_Pattern.pdf",
       "reading_list": []
@@ -29,7 +23,7 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "November 22",
+      "date": "April 18",
       "title": "The State Pattern",
       "slides": "Week12_3_State_Pattern.pdf",
       "reading_list": []
@@ -37,26 +31,10 @@
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "November 22",
-      "time": "11:59pm",
-      "assignment": "Task 8",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "November 22",
-      "time": "11:59pm",
-      "assignment": "Task 7",
-      "deadline_type": "late"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "November 22",
+      "date": "April 18",
       "time": "11:59pm",
       "assignment": "Task 6",
-      "deadline_type": "final"
+      "deadline_type": "expected"
     }
   ]
 }

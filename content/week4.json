@@ -3,17 +3,17 @@
   "theme": "oop",
   "homework": [
     {
-      "title": "Programming Task 2: Classes",
-      "url": "task2.html",
-      "released": true
+      "title": "Programming Task 1: Classes",
+      "url": "task1.html",
+      "released": false
     }
   ],
-  "lab": "Practice Interview",
+  "lab": "Interview 0 and Tracing Quiz 0 - Java Basics",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "September 16",
+      "date": "February 10",
       "title": "Classes and Objects",
       "slides": "week3_1_Classes.pdf",
       "reading_list": [
@@ -30,7 +30,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "September 18",
+      "date": "February 12",
       "title": "Classes and Objects",
       "slides": "week3_2_Classes.pdf",
       "reading_list": []
@@ -38,18 +38,10 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "September 20",
+      "date": "February 14",
       "title": "Testing Classes and Examples",
       "slides": "week3_3_Execution_Heap.pdf",
       "reading_list": []
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "September 20",
-      "time": "11:59pm",
-      "assignment": "Task 1",
-      "deadline_type": "expected"
     }
   ]
 }

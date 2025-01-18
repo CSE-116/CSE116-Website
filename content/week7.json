@@ -3,17 +3,17 @@
   "theme": "oop",
   "homework": [
     {
-      "title": "Programming Task 4: Inheritance",
-      "url": "task4.html",
-      "released": true
+      "title": "Programming Task 3: Inheritance",
+      "url": "task3.html",
+      "released": false
     }
   ],
-  "lab": "2nd Chance - Interview 1 && Debugger Activity",
+  "lab": "Activity and Coding Quiz 1 - Classes",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "October 7",
+      "date": "March 3",
       "title": "Inheritance",
       "slides": "Week6_1_Inheritance.pdf",
       "reading_list": [
@@ -26,7 +26,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "October 9",
+      "date": "March 5",
       "title": "Inheritance and Override",
       "slides": "Week6_2_Inheritance.pdf",
       "reading_list": []
@@ -34,7 +34,7 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "October 11",
+      "date": "March 7",
       "title": "Sorting with Comparators",
       "slides": "Week6_3_Comparators.pdf",
       "reading_list": []
@@ -42,17 +42,9 @@
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "October 11",
+      "date": "March 7",
       "time": "11:59pm",
-      "assignment": "Task 3",
-      "deadline_type": "late"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "October 11",
-      "time": "11:59pm",
-      "assignment": "Task 2",
+      "assignment": "Task 1",
       "deadline_type": "final"
     }
   ]

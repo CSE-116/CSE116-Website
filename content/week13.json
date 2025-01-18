@@ -1,53 +1,36 @@
 {
-  "title": "Week 15: Review",
+  "title": "Week 14: Review",
   "theme": "outro",
-  "homework": [
-  ],
-  "lab": "2nd Chance - Interview 4 & Quiz 2",
+  "homework": [],
+  "lab": "Activity and Coding Quiz 3 - OOP (Inheritance and Polymorphism)",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "December 2",
+      "date": "April 21",
       "title": "Review",
       "reading_list": []
     },
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "December 4",
+      "date": "April 23",
       "title": "Review",
       "reading_list": []
     },
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "December 6",
+      "date": "April 25",
       "title": "Review",
       "reading_list": []
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "December 6",
+      "date": "April 25",
       "time": "11:59pm",
-      "assignment": "Task 8",
-      "deadline_type": "late"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "December 6",
-      "time": "11:59pm",
-      "assignment": "Task 7",
-      "deadline_type": "final"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "December 6",
-      "time": "11:59pm",
-      "assignment": "Application Objective Task",
+      "assignment": "Task 5",
       "deadline_type": "final"
     }
   ]

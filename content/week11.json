@@ -3,17 +3,17 @@
   "theme": "ds",
   "homework": [
     {
-      "title": "Programming Task 8: Graphs",
-      "url": "task8.html",
-      "released": true
+      "title": "Programming Task 6: Graphs",
+      "url": "task6.html",
+      "released": false
     }
   ],
-  "lab": "1st Chance - Interview 4 (Inheritance & Polymorphism) & Quiz 2 (OOP)",
+  "lab": "2nd Attempt for Interview 2, Tracing Quiz 2, and Coding Quiz 2",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "November 11",
+      "date": "April 7",
       "title": "Graphs",
       "slides": "Week10_1_Graphs.pdf",
       "reading_list": [
@@ -22,7 +22,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "November 13",
+      "date": "April 9",
       "title": "Graph with BFS",
       "slides": "Week10_2_Pathfinding.pdf",
       "reading_list": []
@@ -30,7 +30,7 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "November 15",
+      "date": "April 11",
       "title": "Graph Examples",
       "slides": "Week10_3_Graphs.pdf",
       "reading_list": []
@@ -38,25 +38,17 @@
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "November 15",
+      "date": "April 11",
       "time": "11:59pm",
-      "assignment": "Task 7",
+      "assignment": "Task 5",
       "deadline_type": "expected"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "November 15",
+      "date": "April 11",
       "time": "11:59pm",
-      "assignment": "Task 6",
-      "deadline_type": "late"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "November 15",
-      "time": "11:59pm",
-      "assignment": "Task 5",
+      "assignment": "Task 4",
       "deadline_type": "final"
     }
   ]

@@ -3,17 +3,17 @@
   "theme": "ds",
   "homework": [
     {
-      "title": "Programming Task 5: Trees",
-      "url": "task5.html",
-      "released": true
+      "title": "Programming Task 4: Trees",
+      "url": "task4.html",
+      "released": false
     }
   ],
-  "lab": "2nd Chance - Interview 2 && Linked List Practice Quiz",
+  "lab": "2nd Attempt for Interview 1, Tracing Quiz 1, and Coding Quiz 1",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "October 21",
+      "date": "March 10",
       "title": "Binary Trees and Traversals",
       "slides": "Week7_1_Trees.pdf",
       "reading_list": [
@@ -30,7 +30,7 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "October 23",
+      "date": "March 12",
       "title": "Binary Search Trees (BSTs)",
       "slides": "Week7_2_BST.pdf",
       "reading_list": [
@@ -43,24 +43,24 @@
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "October 25",
+      "date": "March 14",
       "title": "Binary Tree Examples",
       "reading_list": []
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "October 25",
+      "date": "March 14",
       "time": "11:59pm",
-      "assignment": "Task 4",
+      "assignment": "Task 3",
       "deadline_type": "expected"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "October 25",
+      "date": "March 14",
       "time": "11:59pm",
-      "assignment": "Task 3",
+      "assignment": "Task 2",
       "deadline_type": "final"
     }
   ]

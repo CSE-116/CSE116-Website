@@ -1,19 +1,13 @@
 {
   "title": "Week 10: Testing 3 - Testing and Files ",
   "theme": "testing",
-  "homework": [
-    {
-      "title": "Programming Task 6: Files",
-      "url": "task6.html",
-      "released": true
-    }
-  ],
-  "lab": "1st Chance - Interview 3 (Trees) && Trees Practice Quiz",
+  "homework": [],
+  "lab": "Interview 2 and Tracing Quiz 2 - Data Structures (LL and Trees)",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "October 28",
+      "date": "March 24",
       "title": "Files and Exceptions",
       "slides": "Week8_Reading_Files.pdf",
       "reading_list": []
@@ -21,32 +15,24 @@
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "October 30",
+      "date": "March 26",
       "title": "Testing With Files",
       "reading_list": []
     },
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "November 1",
+      "date": "March 28",
       "title": "Debugger Tips",
       "reading_list": []
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "November 1",
-      "time": "11:59pm",
-      "assignment": "Task 5",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "November 1",
+      "date": "March 28",
       "time": "11:59pm",
       "assignment": "Task 4",
-      "deadline_type": "late"
+      "deadline_type": "expected"
     }
   ]
 }

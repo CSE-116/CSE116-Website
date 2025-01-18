@@ -1,22 +1,36 @@
 {
-  "title": "Week 16: Review",
+  "title": "Week 15: Review",
   "theme": "outro",
   "homework": [],
-  "lab": "No Lab",
+  "lab": "2nd Attempt for Interview 3, Tracing Quiz 3, and Coding Quiz 3",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "December 9",
-      "title": "Catch Up Day",
+      "date": "April 28",
+      "title": "Review",
+      "reading_list": []
+    },
+    {
+      "type": "lecture",
+      "day": "Wednesday",
+      "date": "April 30",
+      "title": "Review",
+      "reading_list": []
+    },
+    {
+      "type": "lecture",
+      "day": "Friday",
+      "date": "May 2",
+      "title": "Review",
       "reading_list": []
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "December 13",
+      "date": "May 2",
       "time": "11:59pm",
-      "assignment": "Task 8",
+      "assignment": "Task 6",
       "deadline_type": "final"
     }
   ]

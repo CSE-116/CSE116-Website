@@ -1,14 +1,22 @@
 {
-  "title": "Week 17: Final Exam",
+  "title": "Week 16: Final Exam",
   "theme": "intro",
   "homework": [],
   "lab": "No Lab",
   "content": [
+
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "December 16",
-      "title": "Final Exam @ 11:45 - 2:45 PM",
+      "date": "May 5",
+      "title": "Make up day",
+      "reading_list": []
+    },
+    {
+      "type": "lecture",
+      "day": "Monday",
+      "date": "May 12",
+      "title": "Final Exam @ 7:15 - 10:15 PM",
       "reading_list": [],
       "text_lists": [
       ]

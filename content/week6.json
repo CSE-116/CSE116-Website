@@ -2,26 +2,26 @@
   "title": "Week 6: Testing 2 - Testing Strategies",
   "theme": "testing",
   "homework": [],
-  "lab": "1st Chance - Interview 2 (Linked List) && Debugging Activity",
+  "lab": "Interview 1 and Tracing Quiz 1 - Classes",
   "content": [
     {
       "type": "lecture",
       "day": "Monday",
-      "date": "September 30",
+      "date": "February 24",
       "title": "Testing Tips",
       "reading_list": []
     },
     {
       "type": "lecture",
       "day": "Wednesday",
-      "date": "October 2",
+      "date": "February 26",
       "title": "Testing Data Structures",
       "reading_list": []
     },
     {
       "type": "lecture",
       "day": "Friday",
-      "date": "October 4",
+      "date": "February 28",
       "title": "Debugger and Testing",
       "reading_list": [
         {
@@ -33,26 +33,10 @@
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "October 4",
-      "time": "11:59pm",
-      "assignment": "Task 3",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "October 4",
+      "date": "February 28",
       "time": "11:59pm",
       "assignment": "Task 2",
-      "deadline_type": "late"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "October 4",
-      "time": "11:59pm",
-      "assignment": "Task 1",
-      "deadline_type": "final"
+      "deadline_type": "expected"
     }
   ]
 }
