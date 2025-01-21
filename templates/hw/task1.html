@@ -24,7 +24,7 @@
         <hr/>
 
         <p>
-            GitHub Repository link: <a href="https://github.com/jessehartloff/CSE116-Project">https://github.com/jessehartloff/CSE116-Project</a>
+            GitHub Repository link: <a href="">TBD</a>
         </p>
         <ol>
             <li>Clone the starter code from the repository into a new IntelliJ project</li>
@@ -33,10 +33,22 @@
             </li>
         </ol>
         <p>
-            Once you have the project opened in IntelliJ, you'll see a src folder containing 2
-            Java packages named ratings and tests. Your code for this Task will go in the
-            ratings.ProblemSet class, while your testing will go in tests.TestProblemSet. For
-            now, the rest of the classes can be ignored, though they will be used in future Tasks.
+            Once you have the project opened in IntelliJ, you'll see a src folder which contains another folder java.
+            Inside this folder is the Java package app which contains all the code for the project. The starter code contains
+            many Java classes needed for the engine to run, which can be ignored for the time being.
+        </p>
+        <p>
+            For this task, you will be writing code in the following classes:
+        </p>
+        <ul>
+            <li><code>DynamicGameObject</code>, located in the package <code>app.gameengine.model.gameobjects</code></li>
+            <li><code>Wall</code>, located in the package <code>app.games.topdown</code></li>
+            <li><code>PhysicsEngine</code>, located in the package <code>app.gameengine.model.physics</code></li>
+            <li><code>TestTask1</code>, located in the package <code>app.tests</code></li>
+        </ul>
+        <p>
+            You will also need to use the provided <code>Vector2D</code> and <code>Hitbox</code> classes from the <code>app.gameengine.model.physics</code>
+            package for this task. These classes will not be modified.
         </p>
         <p>
             To submit your project, create a zip file containing your entire project and
@@ -48,94 +60,133 @@
         <hr/>
 
         <h3>
+            Specification
+        </h3>
+
+        <hr/>
+
+        <p>In this task, you will test and implement the following specs:</p>
+
+        <p>
+            Note: All methods are public and non-static, unless otherwise noted, from this point forward in the
+            course.
+        </p>
+
+        <ul>
+            <li><code>DynamicGameObject</code>
+                <ul>
+                    <li>Modify the DynamicGameObject constructor to initialize instance variables for the following:
+                        <ul>
+                            <li>An int representing the Max HP of the object.</li>
+                            <li>An int representing the current HP of the object. Initially, this should be set to the object's Max HP.</li>
+                            <li>A Vector2D (from the physics package) representing the velocity of the object. This should be initialized to x = 0.0, y = 0.0.</li>
+                            <li>A Vector2D representing the orientation the object is facing. This should be initialized to x = 0.0, y = 1.0.</li>
+                            <li>Note: the given constructor initializes the location using inheritance. You are not expected to fully understand this (yet)</li>
+                        </ul>
+                    </li>
+                    <li>Implement the following getters and setters for the instance variables:
+                        <ul>
+                            <li><code>getHP</code></li>
+                            <li><code>setHP</code>
+                                <ul>
+                                    <li>HP cannot exceed Max HP. HP should be set to the maximum if the parameter exceeds it.</li>
+                                </ul>
+                            </li>
+                            <li><code>getMaxHP</code></li>
+                            <li><code>getVelocity</code></li>
+                            <li><code>getOrientation</code></li>
+                        </ul>
+                    </li>
+                    <li>Implement a method named <code>takeDamage()</code> that takes in an int. This method should
+                        subtract the current HP instance variable by the amount specified in the parameter.
+                        <ul>
+                            <li>If the parameter is negative, this method should do nothing.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><code>Wall</code>
+                <ul>
+                    <li>Write a method called <code>collideWithDynamicObject</code> that takes in a (reference to a)
+                        <code>DynamicGameObject</code> and returns void. This method should modify the state of the
+                        DynamicGameObject such that it cannot pass through the wall.
+                        <ul>
+                            <li>Note: along with the getter for velocity, you can also call <code>getLocation</code>
+                            to access the location vector (coordinates) of a DynamicGameObject. You do not need to write
+                                this method; you can access it through inheritance.
+                            </li>
+                            <li>
+                                While you don't have a setVelocity/setLocation method, you can modify the values of a
+                                Vector2D using the <code>setX</code> and <code>setY</code> methods in the Vector2D class.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><code>PhysicsEngine</code>
+                <ul>
+                    <li>Implement a method called <code>updateObject</code> that takes in a DynamicGameObject and a double representing the change in time. This method
+                    should update the position vector of the DynamicGameObject based on the value of its velocity vector.
+                        <ul>
+                            <li>Note: the change in distance (for both components of the vector) is equal to
+                                the velocity (of that direction) times the change in time.</li>
+                        </ul>
+                    </li>
+                    <li>Implement a method called <code>detectCollision</code> that takes in two Hitboxes and returns a boolean. The boolean
+                        should return true if the two Hitboxes are colliding and false otherwise.
+                        <ul>
+                            <li>In order to prevent clipping, these collisions should account for some imprecision.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Implement a method called <code>updateLevel</code> that takes in a Level and a double representing
+                        the change in time. This method should update all DynamicGameObjects contained within the level and
+                        process all collisions in the level.
+                        <ul>
+                            <li>You don't need to fully understand the Level class for this task. The methods
+                                <code>getDynamicObjects</code> and <code>getStaticObjects</code> in the level class return
+                            ArrayLists containing all the respective objects in the level which will be useful for this method</li>
+                            <li>Collisions can be between StaticGameObjects and DynamicGameObjects. If a collision is detected,
+                                it should call the respective <code>collideWithStaticObject</code> or <code>collideWithDynamicObject</code>
+                                methods on the two objects</li>
+                            <li>You should use the previous methods written in <code>PhysicsEngine</code> for this one.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br/>
+        <hr/>
+
+        <h3>
             Testing Requirements
         </h3>
 
         <hr/>
         <p>
-            This is primarily a testing task and your feedback in Autolab will begin by checking your tests.
-            You will write tests for 3 different methods. All of your testing will be in the
-            tests.TestProblemSet class. You are strongly encouraged to write many individual tests in this one
-            class.
+            You will write JUnit tests for the following methods in the specification:
         </p>
 
-        <ol>
-            <li><code>average</code>
+        <ul>
+            <li><code>DynamicGameObject</code>
                 <ul>
-                    <li>
-                        Add tests to the tests.TestProblemSet class that will test a static method named average
-                        in the ratings.ProblemSet class
-                    </li>
-                    <li> The average method will take an ArrayList of Doubles as
-                        a parameter and returns the average of the values in the ArrayList as a double
-                    </li>
-                    <li>
-                        If the ArrayList is empty, the method should return 0.0
-                    </li>
-                    <li>
-                        Examples:
-                        <ul>
-                            <li>average([1.0,2.0,3.0]) returns 2.0</li>
-                            <li>average([-5.0,5.0]) returns 0.0</li>
-                            <li>average([6.5,6.5,8.5,8.5]) returns 7.5</li>
-                            <li>average([]) returns 0.0</li>
-                        </ul>
-                    </li>
+                    <li><code>setHP</code></li>
+                    <li><code>takeDamage</code></li>
                 </ul>
             </li>
-
-            <li><code>sumOfDigits</code>
+            <li><code>Wall</code>
                 <ul>
-                    <li>
-                        Add tests to the tests.TestProblemSet class that will test a static method named
-                        sumOfDigits in the ratings.ProblemSet class
-                    </li>
-                    <li>
-                        The sumOfDigits method will take an int as
-                        a parameter and returns the sum of the digits of the input as an int
-                    </li>
-                    <li>
-                        Examples:
-                        <ul>
-                            <li>sumOfDigits(123) returns 6</li>
-                            <li>sumOfDigits(57) returns 12</li>
-                            <li>sumOfDigits(-36) returns 9</li>
-                        </ul>
-                    </li>
+                    <li><code>collideWithDynamicObject</code></li>
                 </ul>
             </li>
-
-            <li><code>bestKey</code>
+            <li><code>PhysicsEngine</code>
                 <ul>
-                    <li>
-                        Add tests to the tests.TestProblemSet class that will test a static method named
-                        bestKey in the ratings.ProblemSet class
-                    </li>
-                    <li>
-                        The bestKey method will take a HashMap of Strings to Integers as a parameter and
-                        returns a key mapping to the largest Integer
-
-                    </li>
-                    <li>
-                        If the HashMap is empty, the method should return the empty String
-                    </li>
-                    <li>
-                        The method may break ties arbitrarily. When you write a test case where there are
-                        multiple correct solutions, you must accept any of these as correct return values in
-                        your test
-                    </li>
-                    <li>
-                        Examples:
-                        <ul>
-                            <li>bestKey({"CSE": 100, "MTH": 90, "MGT": 10}) returns "CSE"</li>
-                            <li>bestKey({"cat": 5, "dog": 5, "fox": 4}) can return either "cat" or "dog"</li>
-                            <li>bestKey({}) returns ""</li>
-                        </ul>
-                    </li>
+                    <li><code>updateObject</code></li>
+                    <li><code>detectCollision</code></li>
                 </ul>
             </li>
-
-        </ol>
+        </ul>
 
 
         <br/>
@@ -147,8 +198,7 @@
 
         <hr/>
         <p>
-            Implement the three methods that you've tested. You can, and should, run your tests while
-            completing your code to check if it is correct.
+            Implement the methods from the specification.
         </p>
 
 
