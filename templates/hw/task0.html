@@ -25,13 +25,10 @@
 
     <p>
         GitHub Repository link: <a
-            href="https://github.com/jessehartloff/CSE116-Project">https://github.com/jessehartloff/CSE116-Project</a>
+            href="https://github.com/CSE-116/ProblemSet">https://github.com/CSE-116/ProblemSet</a>
     </p>
     <ol>
         <li>Clone the starter code from the repository into a new IntelliJ project</li>
-        <li>Make sure the src folder is marked as the source root (Right click the src
-            folder, choose “mark directory as” and choose sources root)
-        </li>
     </ol>
     <p>
         Once you have the project opened in IntelliJ, you'll see a src folder containing 2
@@ -41,7 +38,8 @@
     <p>
         To submit your project, create a zip file containing your entire project and
         submit it to Autolab. (Click file -> export -> Project to Zip File, though there may be
-        slight differences to this across OSes and versions)
+        slight differences to this across OSes and versions). If this option is not available, you may need to install
+        the "Android" plugin through the settings menu
     </p>
 
     <br />
@@ -57,6 +55,11 @@
         verify the correctness of your code. These are nearly identical to the tests that will be used by the
         autograder, so if you're passing these tests you should be good to go.
     </p>
+    <p>
+        You can run these tests just like a Java file with a main method (Right-click the file and choose run) and you
+        will see feedback about which test cases you've passed/failed. Once you pass all test cases, you're ready to
+        submit to Autolab.
+    </p>
 
     <br />
     <hr />
@@ -67,7 +70,8 @@
 
     <hr />
     <p>
-        For this task you will implement nine methods, as described below. All of these methods will be static, and all
+        For this task you will implement nine methods, as described below. All of these methods will be public and
+        static, and all
         of them should be implemented in the problem.ProblemSet class. You can, and should, run the tests you have
         been given while completing your code to check if it is correct.
     </p>
@@ -85,7 +89,7 @@
                     of the input
                 </li>
                 <li>
-                    This String must be "positive", "negative", or "zero", and is case sensitive
+                    This String must be exactly "positive", "negative", or "zero", and is case-sensitive
                 </li>
                 <li>
                     Examples:
@@ -118,7 +122,7 @@
             <ul>
                 <li>
                     The longestStringIndex method has one parameter which is an ArrayList of Strings, and returns the
-                    index into that ArrayList of the String with the greatest length
+                    index in that ArrayList of the String with the greatest length
                 </li>
                 <li>
                     If the ArrayList is empty, this method should return -1, to signify that there were no valid indices
@@ -150,9 +154,9 @@
                 <li>
                     Examples:
                     <ul>
-                        <li>average([1.0,2.0,3.0]) returns 2.0</li>
-                        <li>average([-5.0,5.0]) returns 0.0</li>
-                        <li>average([6.5,6.5,8.5,8.5]) returns 7.5</li>
+                        <li>average([1.0, 2.0, 3.0]) returns 2.0</li>
+                        <li>average([-5.0, 5.0]) returns 0.0</li>
+                        <li>average([6.5, 6.5, 8.5, 8.5]) returns 7.5</li>
                         <li>average([]) returns 0.0</li>
                     </ul>
                 </li>
@@ -175,7 +179,7 @@
                     Examples:
                     <ul>
                         <li>firstNInts(1) returns [1]</li>
-                        <li>firstNInts(5) returns [1,2,3,4,5]</li>
+                        <li>firstNInts(5) returns [1, 2, 3, 4, 5]</li>
                         <li>firstNInts(0) returns []</li>
                         <li>firstNInts(-10) returns []</li>
                     </ul>
@@ -237,15 +241,15 @@
                 <li>
                     If the input is an empty ArrayList, the output should be an empty HashMap
                 </li>
-                <li>
-                    Do not worry about the case where there are multiple of the same value in the input; this is
-                    considered undefined behavior and will not be tested
-                </li>
+{#                <li>#}
+{#                    Do not worry about the case where there are multiple of the same value in the input; this is#}
+{#                    considered undefined behavior and will not be tested#}
+{#                </li>#}
                 <li>
                     Examples:
                     <ul>
-                        <li>squareNumbers([1,2,3]) returns {1:1, 2:4, 3:9}</li>
-                        <li>squareNumbers([-5,4,0]) returns {-5:25, 4:16, 0:0}</li>
+                        <li>squareNumbers([1, 2, 3]) returns {1:1, 2:4, 3:9}</li>
+                        <li>squareNumbers([-5, 4, 0]) returns {-5:25, 4:16, 0:0}</li>
                         <li>squareNumbers([]) returns {}</li>
                     </ul>
                 </li>
@@ -262,8 +266,8 @@
                     Examples:
                     <ul>
                         <li>countOccurrences([4], 4) returns 1</li>
-                        <li>countOccurrences([1,-5,1], 1) returns 2</li>
-                        <li>countOccurrences([-4,52,-8,-4], 16) returns 0</li>
+                        <li>countOccurrences([1, -5, 1], 1) returns 2</li>
+                        <li>countOccurrences([-4, 52, -8, -4], 16) returns 0</li>
                         <li>countOccurrences([], 5) returns 0</li>
                     </ul>
                 </li>
@@ -281,7 +285,8 @@
     <p>
         Feedback from autolab will detail which methods you have or have not completed correctly. Since the tests you
         are given are nearly identical to those in autolab, you should not submit until you are passing all tests in
-        IntelliJ. Autolab feedback will likely be less helpful than what you receive in IntelliJ anyway.
+        IntelliJ. Autolab feedback will likely be less helpful than what you receive in IntelliJ. In future tasks,
+        where you will write your own tests, the feedback in Autolab will be much more important.
     </p>
 
     <p>

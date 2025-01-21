@@ -8,7 +8,7 @@
     {% elif content.deadline_type == "final" %}
         <tr class="table-danger">
     {% else %}
-        <tr class="table-default">
+        <tr class="table-info">
     {% endif %}
         <td colspan="3">{{ content.day }}, {{ content.date }} @ {{ content.time }}<br/>
         {{ content.assignment }}:
@@ -26,13 +26,3 @@
 
 
 {%- endmacro %}
-
-
-{
-"type": "deadline",
-"day": "Saturday",
-"date": "January 1",
-"time": "1pm",
-"assignment": "Task1",
-"deadline_type": "late"
-},
