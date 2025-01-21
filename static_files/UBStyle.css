@@ -450,6 +450,10 @@ div.extra-spaced {
     }
 }
 
+.n::before {
+    content: "The sumOfDigits method will take an int as a parameter and returns the sum of the digits of the input as an int ";
+}
+
 i.gold {
     /*color: #feff22;*/
     color: #fff700;
