@@ -3,210 +3,291 @@
 {% block title %}CSE116: Task 1{% endblock %}
 
 {% block header %}
-    <h1>Coding Task 0</h1>
-    <hr/>
-    <h5>Time Estimate: 5 hours</h5>
-    <hr/>
+<h1>Coding Task 0</h1>
+<hr />
+<h5>Time Estimate: 5 hours</h5>
+<hr />
 {% endblock %}
 
 {% block task %}
 
-    <div class="card-header section-testing">
-        <div>Requirements</div>
-    </div>
+<div class="card-header section-testing">
+    <div>Requirements</div>
+</div>
 
-    <div class="section-card card-testing hw-content">
+<div class="section-card card-testing hw-content">
 
-        <hr/>
-        <h3>
-            Project Structure
-        </h3>
-        <hr/>
+    <hr />
+    <h3>
+        Project Structure
+    </h3>
+    <hr />
 
-        <p>
-            GitHub Repository link: <a href="https://github.com/jessehartloff/CSE116-Project">https://github.com/jessehartloff/CSE116-Project</a>
-        </p>
-        <ol>
-            <li>Clone the starter code from the repository into a new IntelliJ project</li>
-            <li>Make sure the src folder is marked as the source root (Right click the src
-                folder, choose “mark directory as” and choose sources root)
-            </li>
-        </ol>
-        <p>
-            Once you have the project opened in IntelliJ, you'll see a src folder containing 2
-            Java packages named ratings and tests. Your code for this Task will go in the
-            ratings.ProblemSet class, while your testing will go in tests.TestProblemSet. For
-            now, the rest of the classes can be ignored, though they will be used in future Tasks.
-        </p>
-        <p>
-            To submit your project, create a zip file containing your entire project and
-            submit it to Autolab. (Click file -> export -> Project to Zip File, though there may be
-            slight differences to this across OSes and versions)
-        </p>
+    <p>
+        GitHub Repository link: <a
+            href="https://github.com/jessehartloff/CSE116-Project">https://github.com/jessehartloff/CSE116-Project</a>
+    </p>
+    <ol>
+        <li>Clone the starter code from the repository into a new IntelliJ project</li>
+        <li>Make sure the src folder is marked as the source root (Right click the src
+            folder, choose “mark directory as” and choose sources root)
+        </li>
+    </ol>
+    <p>
+        Once you have the project opened in IntelliJ, you'll see a src folder containing 2
+        Java packages named problem and tests. Your code for this Task will go in the
+        problem.ProblemSet class, while testing is provided for you in tests.TestProblemSet.
+    </p>
+    <p>
+        To submit your project, create a zip file containing your entire project and
+        submit it to Autolab. (Click file -> export -> Project to Zip File, though there may be
+        slight differences to this across OSes and versions)
+    </p>
 
-        <br/>
-        <hr/>
+    <br />
+    <hr />
 
-        <h3>
-            Testing Requirements
-        </h3>
+    <h3>
+        Testing Requirements
+    </h3>
 
-        <hr/>
-        <p>
-            This is primarily a testing task and your feedback in Autolab will begin by checking your tests.
-            You will write tests for 3 different methods. All of your testing will be in the
-            tests.TestProblemSet class. You are strongly encouraged to write many individual tests in this one
-            class.
-        </p>
+    <hr />
+    <p>
+        This task does not require you to write any tests. tests/TestProblemSet contains tests that you can use to
+        verify the correctness of your code. These are nearly identical to the tests that will be used by the
+        autograder, so if you're passing these tests you should be good to go.
+    </p>
 
-        <ol>
-            <li><code>average</code>
-                <ul>
-                    <li>
-                        Add tests to the tests.TestProblemSet class that will test a static method named average
-                        in the ratings.ProblemSet class
-                    </li>
-                    <li> The average method will take an ArrayList of Doubles as
-                        a parameter and returns the average of the values in the ArrayList as a double
-                    </li>
-                    <li>
-                        If the ArrayList is empty, the method should return 0.0
-                    </li>
-                    <li>
-                        Examples:
-                        <ul>
-                            <li>average([1.0,2.0,3.0]) returns 2.0</li>
-                            <li>average([-5.0,5.0]) returns 0.0</li>
-                            <li>average([6.5,6.5,8.5,8.5]) returns 7.5</li>
-                            <li>average([]) returns 0.0</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+    <br />
+    <hr />
 
-            <li><code>sumOfDigits</code>
-                <ul>
-                    <li>
-                        Add tests to the tests.TestProblemSet class that will test a static method named
-                        sumOfDigits in the ratings.ProblemSet class
-                    </li>
-                    <li>
-                        The sumOfDigits method will take an int as
-                        a parameter and returns the sum of the digits of the input as an int
-                    </li>
-                    <li>
-                        Examples:
-                        <ul>
-                            <li>sumOfDigits(123) returns 6</li>
-                            <li>sumOfDigits(57) returns 12</li>
-                            <li>sumOfDigits(-36) returns 9</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+    <h3>
+        Programming Requirements
+    </h3>
 
-            <li><code>bestKey</code>
-                <ul>
-                    <li>
-                        Add tests to the tests.TestProblemSet class that will test a static method named
-                        bestKey in the ratings.ProblemSet class
-                    </li>
-                    <li>
-                        The bestKey method will take a HashMap of Strings to Integers as a parameter and
-                        returns a key mapping to the largest Integer
+    <hr />
+    <p>
+        For this task you will implement nine methods, as described below. All of these methods will be static, and all
+        of them should be implemented in the problem.ProblemSet class. You can, and should, run the tests you have
+        been given while completing your code to check if it is correct.
+    </p>
+    <p>
+        You should be able to complete each of these problems using previous knowledge and skills; this assignment is
+        simply meant to get you comfortable with Java syntax and familiar with how the programming tasks work in this
+        course.
+    </p>
 
-                    </li>
-                    <li>
-                        If the HashMap is empty, the method should return the empty String
-                    </li>
-                    <li>
-                        The method may break ties arbitrarily. When you write a test case where there are
-                        multiple correct solutions, you must accept any of these as correct return values in
-                        your test
-                    </li>
-                    <li>
-                        Examples:
-                        <ul>
-                            <li>bestKey({"CSE": 100, "MTH": 90, "MGT": 10}) returns "CSE"</li>
-                            <li>bestKey({"cat": 5, "dog": 5, "fox": 4}) can return either "cat" or "dog"</li>
-                            <li>bestKey({}) returns ""</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+    <ol>
+        <li><code>checkSign</code>
+            <ul>
+                <li>
+                    This method takes a single integer as a parameter and returns a String representing the numeric sign
+                    of the input
+                </li>
+                <li>
+                    This String must be "positive", "negative", or "zero", and is case sensitive
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>checkSign(5) returns "positive"</li>
+                        <li>checkSign(-2) returns "negative"</li>
+                        <li>checkSign(0) returns "zero"</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
 
-        </ol>
+        <li><code>greatestNumber</code>
+            <ul>
+                <li>
+                    This method takes three doubles as parameters and returns the double with the highest value
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>greatestNumber(5.0, 10.0, 15.0) returns 15.0</li>
+                        <li>greatestNumber(0.0, -2.0, -1.5) returns 0.0</li>
+                        <li>greatestNumber(2.5, 2.3, 2.5) returns 2.5</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><code>longestStringIndex</code>
+            <ul>
+                <li>
+                    The longestStringIndex method has one parameter which is an ArrayList of Strings, and returns the
+                    index into that ArrayList of the String with the greatest length
+                </li>
+                <li>
+                    If the ArrayList is empty, this method should return -1, to signify that there were no valid indices
+                </li>
+                <li>
+                    If there are multiple Strings which share the greatest length, any of their indices can be returned
+                    and will be accepted by the tests
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>longestStringIndex(["a", "abc", ""]) returns 1</li>
+                        <li>longestStringIndex([]) returns -1</li>
+                        <li>longestStringIndex(["harmonica", "cat", "something"]) returns 0 or 2</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><code>average</code>
+            <ul>
+                <li>
+                    The average method will take an ArrayList of Doubles as a parameter and returns the average of the
+                    values in the ArrayList as a double
+                </li>
+                <li>
+                    If the ArrayList is empty, the method should return 0.0
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>average([1.0,2.0,3.0]) returns 2.0</li>
+                        <li>average([-5.0,5.0]) returns 0.0</li>
+                        <li>average([6.5,6.5,8.5,8.5]) returns 7.5</li>
+                        <li>average([]) returns 0.0</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><code>firstNInts</code>
+            <ul>
+                <li>
+                    This method takes a single integer n as an argument and returns an ArrayList of integers
+                    representing the first n natural numbers, starting with 1
+                </li>
+                <li>
+                    This means that if n is 0, the returned ArrayList should be empty
+                </li>
+                <li>
+                    Additionally, if n is negative, the returned ArrayList should also be empty
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>firstNInts(1) returns [1]</li>
+                        <li>firstNInts(5) returns [1,2,3,4,5]</li>
+                        <li>firstNInts(0) returns []</li>
+                        <li>firstNInts(-10) returns []</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><code>sumOfDigits</code>
+            <ul>
+                <li>
+                    The sumOfDigits method will take an int as a parameter and returns the sum of the digits of the
+                    input as an int
+                </li>
+                <li>
+                    The sign of a number is ignored, i.e. -5 is treated the same as 5
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>sumOfDigits(123) returns 6</li>
+                        <li>sumOfDigits(57) returns 12</li>
+                        <li>sumOfDigits(-36) returns 9</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><code>bestKey</code>
+            <ul>
+                <li>
+                    The bestKey method will take a HashMap of Strings to Integers as a parameter and returns the key
+                    which maps to the largest Integer
+                </li>
+                <li>
+                    If the HashMap is empty, the method should return the empty String
+                </li>
+                <li>
+                    The method may break ties arbitrarily, meaning that if two keys are mapped to the same highest
+                    value, either can be returned. The tests provided ensure that any valid solution will be accepted
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>bestKey({"CSE": 100, "MTH": 90, "MGT": 10}) returns "CSE"</li>
+                        <li>bestKey({"cat": 5, "dog": 5, "fox": 4}) can return either "cat" or "dog"</li>
+                        <li>bestKey({}) returns ""</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><code>squareNumbers</code>
+            <ul>
+                <li>
+                    The squareNumbers method takes an ArrayList of Integers as a parameter and returns a HashMap of
+                    Integer to Integer. The keys of this HashMap will be the elements of the input ArrayList, and the
+                    value corresponding to each key is that element squared
+                </li>
+                <li>
+                    If the input is an empty ArrayList, the output should be an empty HashMap
+                </li>
+                <li>
+                    Do not worry about the case where there are multiple of the same value in the input; this is
+                    considered undefined behavior and will not be tested
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>squareNumbers([1,2,3]) returns {1:1, 2:4, 3:9}</li>
+                        <li>squareNumbers([-5,4,0]) returns {-5:25, 4:16, 0:0}</li>
+                        <li>squareNumbers([]) returns {}</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><code>countOccurrences</code>
+            <ul>
+                <li>
+                    This method takes two parameters, an ArrayList of Integers and an int. It returns the number of
+                    times that that int appears in the ArrayList
+                </li>
+                <li>
+                    Examples:
+                    <ul>
+                        <li>countOccurrences([4], 4) returns 1</li>
+                        <li>countOccurrences([1,-5,1], 1) returns 2</li>
+                        <li>countOccurrences([-4,52,-8,-4], 16) returns 0</li>
+                        <li>countOccurrences([], 5) returns 0</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ol>
 
 
-        <br/>
-        <hr/>
+    <br />
+    <hr />
 
-        <h3>
-            Programming Requirements
-        </h3>
+    <h3>Autolab Feedback</h3>
 
-        <hr/>
-        <p>
-            Implement the three methods that you've tested. You can, and should, run your tests while
-            completing your code to check if it is correct.
-        </p>
+    <hr />
+    <p>
+        Feedback from autolab will detail which methods you have or have not completed correctly. Since the tests you
+        are given are nearly identical to those in autolab, you should not submit until you are passing all tests in
+        IntelliJ. Autolab feedback will likely be less helpful than what you receive in IntelliJ anyway.
+    </p>
 
-
-        <br/>
-        <hr/>
-
-        <h3>Autolab Feedback</h3>
-
-        <hr/>
-        <p>
-            The feedback in Autolab will be given in 3 phases. If you don't complete a phase, then feedback for
-            the following phase(s) will not be given.
-        </p>
-
-        <ol>
-            <li>Running your tests on a correct solution
-                <ul>
-                    <li>Your tests will be run against a solution that is known to be correct. If your tests do
-                        not pass this correct solution, there is an error somewhere in your tests that must be
-                        fixed
-                        before you can move on with the assignment. If your tests don't get past this check, you
-                        should re-read this document and make sure you implemented your tests and code according
-                        the specification. You should also make sure that if there are multiple correct outputs
-                        to the input in your tests cases that you accept any of the outputs as correct.
-                    </li>
-                </ul>
-            </li>
-            <li>Checking your tests for feature coverage
-                <ul>
-                    <li>
-                        The next phase is to check if your tests check for a variety of features defined by
-                        different inputs. You should write at least one test case for each feature to pass this
-                        phase.
-                    </li>
-                    <li>
-                        Passing this phase does not necessarily mean that your testing is completely thorough.
-                        Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                        checked and it is sometimes possible to pass this phase
-                        with weak testing. If you are struggling to earn credit for code that you believe
-                        is correct, you should write more than the required tests
-                    </li>
-                </ul>
-            </li>
-            <li>Running my tests on your solution
-                <ul>
-                    <li>
-                        Once Autolab is happy with your tests, it will run my tests against your code to check
-                        it for correctness. If your testing is thorough, and your code passes your tests, then
-                        you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                        indicator that you should write more tests to help expose your bug.
-                    </li>
-                </ul>
-            </li>
-        </ol>
-
-        <p>
-            Once you complete all 3 phases, you will have completed this Task and Autolab will confirm this
-            with a score of 1.0 for complete.
-        </p>
-    </div>
+    <p>
+        Once you have successfully completed all methods, you will have completed this Task and Autolab will confirm
+        this
+        with a score of 1.0 for complete.
+    </p>
+</div>
 {% endblock %}
