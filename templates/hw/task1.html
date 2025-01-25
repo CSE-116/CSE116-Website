@@ -3,9 +3,9 @@
 {% block title %}CSE116: Task 1{% endblock %}
 
 {% block header %}
-    <h1>Coding Task 1</h1>
+    <h1>Coding Task 1 - Physics Engine</h1>
     <hr/>
-    <h5>Time Estimate: 5 hours</h5>
+    <h5>Time Estimate: 8 hours</h5>
     <hr/>
 {% endblock %}
 
@@ -26,47 +26,116 @@
         <p>
             GitHub Repository link: <a href="">TBD</a>
         </p>
-        <ol>
+        <ul>
             <li>Clone the starter code from the repository into a new IntelliJ project</li>
-            <li>Make sure the src folder is marked as the source root (Right click the src
-                folder, choose “mark directory as” and choose sources root)
-            </li>
-        </ol>
+        </ul>
         <p>
-            Once you have the project opened in IntelliJ, you'll see a src folder which contains a folder another folder called main, which contains another folder called java.
-            Inside this folder is the Java package app which contains all the code for the project. The starter code contains
-            many Java classes needed for the engine to run, which can be ignored for the time being.
+            Once you have the project opened in IntelliJ, you'll see a src folder which contains a folder another
+            folder called main, which contains another folder called java.
+            Inside this folder is the Java package app which contains all the code for the project. The starter code
+            contains
+            many Java classes needed for the engine to run. Don't panic about the number of files. For now, you can
+            safely ignore most of them.
         </p>
         <p>
             For this task, you will be writing code in the following classes:
         </p>
         <ul>
-            <li><code>DynamicGameObject</code>, located in the package <code>app.gameengine.model.gameobjects</code></li>
+            <li><code>DynamicGameObject</code>, located in the package <code>app.gameengine.model.gameobjects</code>
+            </li>
             <li><code>Wall</code>, located in the package <code>app.games.topdown</code></li>
             <li><code>PhysicsEngine</code>, located in the package <code>app.gameengine.model.physics</code></li>
             <li><code>TestTask1</code>, located in the package <code>app.tests</code></li>
         </ul>
         <p>
             You will also need to use the provided <code>Vector2D</code> and <code>Hitbox</code> classes from the <code>app.gameengine.model.physics</code>
-            package for this task. These classes will not be modified.
+            package for this task. These classes will not be modified, though you should read them to understand how
+            they work.
         </p>
         <p>
             To submit your project, create a zip file containing your entire project and
             submit it to Autolab. (Click file -> export -> Project to Zip File, though there may be
-            slight differences to this across OSes and versions). If this option is not available, you may need to install
+            slight differences to this across OSes and versions). If this option is not available, you may need to
+            install
             the "Android" plugin through the settings menu
         </p>
 
         <br/>
+
+        <hr/>
+        <h3>
+            The Game Engine
+        </h3>
         <hr/>
 
+        <p>
+            Throughout this semester, you will be building a game engine along with a game that will utilize this
+            engine.
+            All 6 tasks (excluding task 0) will build on this project and add more features to the engine and game.
+            After
+            cloning the repo, you should run "StartGame". When you do, a new window should open showing a 2d pixel-art
+            top-down view game.
+        </p>
+
+        <img src="/static_files/images/game1.png" class="img-fluid" alt="Game image from starter code">
+
+        <p>
+            It's basically a marvel of modern graphics. You probably thought this was photograph of cosplayers at a
+            medievil festival, but it's actually in game graphics from this project.
+        </p>
+
+        <p>
+            When you run the game, you'll notice that you can't actually do anything. That's because major components of
+            the game engine are missing. Your job is to complete it. In this task, you will add player movement,
+            collision detection, a few smaller features to the game.
+        </p>
+
+        <hr/>
+        <h3>
+            The Coordinate System
+        </h3>
+        <hr/>
+
+        <p>
+            The coordinate system use for computer graphics might be different than you used to. We'll use the standard
+            coordinate system used for all screens, images, videos, and everything else related to rendering graphics
+            (For 2d graphics at least) and we promise we didn't use this system just to be confusing.
+        </p>
+
+        <p>
+            The origin of the system is at the top-left of the screen/window/level with positive x going right and
+            positive y going down. This image shows the same information as the one above, but with the coordinate
+            system labeling all the tiles in the game. You can see that "G" (The goal) is at location (6, 2).
+        </p>
+
+        <img src="/static_files/images/game1-2.png" class="img-fluid" alt="Coordinate system image from level 0">
+
+        <p>
+            Objects (and hit boxes) in our game with have two components, their location and their dimensions, both
+            represented as 2-dimensional vectors (x, y). All objects/hit boxes will be rectangles and their location
+            is the location of their upper-left corner. Their dimensions are the length and width of the rectangle.
+            For example, the goal has a location of (6, 2) since that's the location of its upper-left corner, and it
+            has dimensions (1, 1) since it's exactly 1 tile in size.
+        </p>
+
+        <p>
+            Locations and dimensions do not have ot be whole numbers. In the image below, the player character is at
+            [roughly] location (1.5, 1.0) with dimensions (1.0, 1.0).
+        </p>
+
+        <img src="/static_files/images/game1-3.png" class="img-fluid" alt="Floating point location">
+
+
+        <hr/>
         <h3>
             Specification
         </h3>
 
         <hr/>
 
-        <p>In this task, you will test and implement the following specs:</p>
+        <p>Now that we know what the project is about and how the coordinate system works, let add some functionality
+            so we can play the game. This section will explain the specifications of everything you'll code in this
+            task. The specs are written in the recommended order of completion</p>
 
         <p>
             Note: All methods are public and non-static, unless otherwise noted, from this point forward in the
@@ -74,135 +143,215 @@
         </p>
 
         <ul>
+            <li><code>PhysicsEngine</code>
+                <ul>
+                    <li>In the <code>PhysicsEngine</code> class, complete the method called <code>updateObject</code>
+                        that takes
+                        in a <code>DynamicGameObject</code> and a
+                        double representing the change in time. This method
+                        should update the location vector of the <code>DynamicGameObject</code> based on the value of
+                        its velocity vector.
+                        <ul>
+                            <li>Note: the change in distance (for both components of the vector) is equal to
+                                the velocity (of that direction) multiplied by the change in time.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Both location and velocity are represented as <code>Vector2D</code> objects and the <code>DynamicGameObject</code>
+                        contains getter methods for both of them. Note that never have to set these values since you can
+                        modify x and y of the <code>Vector2D</code> objects and that change will be made on the heap (If
+                        you don't
+                        see this, it may help to do a memory trace on your code).
+                    </li>
+                    <li>
+                        Once you complete this method, you should be able to move your player character in the game
+                        using either the arrows keys or WASD. You will notice quite a few other issues however.. We'll
+                        get there!
+                    </li>
+                </ul>
+            </li>
             <li><code>DynamicGameObject</code>
                 <ul>
                     <li>Modify the DynamicGameObject constructor to initialize instance variables for the following:
                         <ul>
-                            <li>An int representing the Max HP of the object.</li>
-                            <li>An int representing the current HP of the object. Initially, this should be set to the object's Max HP.</li>
-                            <li>A Vector2D (from the physics package) representing the velocity of the object. This should be initialized to x = 0.0, y = 0.0.</li>
-                            <li>A Vector2D representing the orientation the object is facing. This should be initialized to x = 0.0, y = 1.0.</li>
-                            <li>Note: the given constructor initializes the location using inheritance, with super(location). You are not expected to fully understand this (yet), and should not modify it</li>
+                            <li>An int representing the Max HP of the object which is set the value of the maxHP
+                                parameter of the constructor
+                            </li>
+                            <li>An int representing the current HP of the object. Initially (ie. in the constructor),
+                                this should be set to the object's Max HP
+                            </li>
+                            <li>A <code>Vector2D</code> representing the orientation the object is facing. This should
+                                be initialized to x = 0.0, y = 1.0.
+                            </li>
+                            <li>Note: the given constructor initializes the location using inheritance, with
+                                super(location). You are not expected to understand this (yet), and you should not
+                                modify it
+                            </li>
                         </ul>
                     </li>
-                    <li>Implement the following getters and setters for the instance variables:
+                    <li>Implement the following getters and setters for the instance variables following the standard
+                        setup for getters and setters covered in lecture:
                         <ul>
                             <li><code>getHP</code></li>
                             <li><code>setHP</code>
                                 <ul>
-                                    <li>HP cannot exceed Max HP. If the parameter exceeds MaxHP, HP should be set to the maximum</li>
+                                    <li>When setHP is called, add some logic that will prevent HP from exceeding Max HP.
+                                        If the parameter exceeds MaxHP, HP should be set to the maximum
+                                    </li>
                                 </ul>
                             </li>
                             <li><code>getMaxHP</code></li>
-                            <li><code>getVelocity</code></li>
                             <li><code>getOrientation</code></li>
                         </ul>
                     </li>
-                    <li>Implement a method named <code>takeDamage()</code> that takes in an int. This method should
+                    <li>Implement a method named <code>takeDamage()</code> that takes in an int and returns void. This
+                        method should
                         subtract the current HP instance variable by the amount specified in the parameter.
                         <ul>
                             <li>If the parameter is negative, this method should do nothing.</li>
+                            <li>The resulting HP is allowed to become negative</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><code>PhysicsEngine - revisited</code>
+                <ul>
+                    <li>Implement a method called <code>detectCollision</code> that takes in two Hitboxes and returns a
+                        boolean. The boolean
+                        should return true if the two Hitboxes are colliding (ie. overlapping) and false otherwise. Two
+                        hitboxes are overlapping if any portion of the boxes overlap
+                        <ul>
+                            <li>Since this method compares doubles, you should allow for a small amount of impression
+                                (ie. If the hitboxes are not strictly overlapping, but are within 0.0001 of overlapping
+                                it should still be considered a collision)
+                            </li>
+                            <li>
+                                Recall from the coordinate system section that hitboxes have both a location (the (x, y)
+                                of its upper-left corner) and dimensions (the width and height of the rectangle) both
+                                represented as <code>Vector2D</code> objects. To visualize when 2 hitboxes collide, it's
+                                recommended
+                                that you sketch out hitboxes and their location/dimension vectors and write test cases
+                                for a variety of situations before diving deep into the code
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        Complete the method called <code>updateLevel</code> that takes in a Level and a double
+                        representing
+                        the change in time. This method should update all <code>DynamicGameObjects</code> contained
+                        within the level and
+                        process all collisions in the level. The provided code updates all
+                        <code>DynamicGameObjects</code> by calling
+                        your <code>updateObject</code> method on all of them. You must now add calls to your <code>detectCollision</code>
+                        in a similar way.
+                        <ul>
+                            <li>The <code>Level</code> class contains the methods
+                                <code>getDynamicObjects</code> and <code>getStaticObjects</code> which return
+                                <code>ArrayLists</code> containing all the respective objects in the level which will be
+                                useful for this method. <code>StaticGameObjects</code> are similar to their dynamic
+                                counterparts, except they can't move and so are handled separately by the game engine
+                            </li>
+                            <li>Collisions can be between <code>StaticGameObjects</code> and
+                                <code>DynamicGameObjects</code>
+                                or between two <code>DynamicGameObjects</code>. If a collision is detected,
+                                it should call the respective <code>collideWithStaticObject</code> or <code>collideWithDynamicObject</code>
+                                methods on both objects involved in the collision (eg. If you detect a collision between
+                                a static object and a dynamic object, call <code>collideWithDynamicObject</code> on the
+                                static object with the dynamic object as an argument and
+                                <code>collideWithStaticObject</code>
+                                on the dynamic object with the static object as an argument. This lets both objects know
+                                that
+                                they have to handle the collision
+                            </li>
+                            <li>Be sure to call your <code>detectCollision</code> when completing this method. Don't
+                                redo your work
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </li>
             <li><code>Wall</code>
                 <ul>
-                    <li>Write a method called <code>collideWithDynamicObject</code> that takes in a (reference to a)
+                    <li>Write a method called <code>collideWithDynamicObject</code> that takes in a [reference to a]
                         <code>DynamicGameObject</code> and returns void. This method should modify the state of the
-                        DynamicGameObject such that it cannot pass through the wall.
+                        <code>DynamicGameObject</code> such that it cannot pass through the wall. This method will be
+                        called by your physics engine whenever the player collides with a wall and prevent them from
+                        clipping out of bounds
                         <ul>
                             <li>
-                                This method should not modify the velocity of the intersecting object, only its position
-                            </li>
-                            <li>Note: along with the getter for velocity, you can also call <code>getLocation</code>
-                            to access the location vector (coordinates) of a DynamicGameObject. You do not need to write
-                                this method; you can access it through inheritance.
+                                This method should not modify the velocity of the intersecting object, only its location
                             </li>
                             <li>
-                                While you don't have a setVelocity/setLocation method, you can modify the values of a
-                                Vector2D using the <code>setX</code> and <code>setY</code> methods in the Vector2D class.
+                                To implement this method, change either the x or y location (not both) of the dynamic
+                                object such you move the dynamic object the minimum distance that results in the two
+                                objects no longer colliding.
+                            </li>
+                            <li>
+                                You are given tests for this method in <code>TestTask1</code> which can use to be sure
+                                that you're implementing the method according this spec without having to submit to
+                                Autolab
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><code>PhysicsEngine</code>
-                <ul>
-                    <li>Implement a method called <code>updateObject</code> that takes in a DynamicGameObject and a double representing the change in time. This method
-                    should update the position vector of the DynamicGameObject based on the value of its velocity vector.
-                        <ul>
-                            <li>Note: the change in distance (for both components of the vector) is equal to
-                                the velocity (of that direction) multiplied by the change in time.</li>
-                        </ul>
-                    </li>
-                    <li>Implement a method called <code>detectCollision</code> that takes in two Hitboxes and returns a boolean. The boolean
-                        should return true if the two Hitboxes are colliding and false otherwise.
-                        <ul>
-                            <li>In order to prevent clipping, these collisions should account for some imprecision.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Implement a method called <code>updateLevel</code> that takes in a Level and a double representing
-                        the change in time. This method should update all DynamicGameObjects contained within the level and
-                        process all collisions in the level.
-                        <ul>
-                            <li>You don't need to fully understand the Level class for this task. The methods
-                                <code>getDynamicObjects</code> and <code>getStaticObjects</code> in the level class return
-                            ArrayLists containing all the respective objects in the level which will be useful for this method</li>
-                            <li>Collisions can be between StaticGameObjects and DynamicGameObjects. If a collision is detected,
-                                it should call the respective <code>collideWithStaticObject</code> or <code>collideWithDynamicObject</code>
-                                methods on the two objects</li>
-                            <li>You should use the previous methods written in <code>PhysicsEngine</code> for this one.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+
         </ul>
 
         <br/>
         <hr/>
 
         <h3>Testing Utilities</h3>
-      <hr/>
+        <hr/>
+
+        <p>
+            For this task, and all future tasks, you will be required to write test cases for some of the functionality.
+            You will also often be asked to write a testing utility method to assist you with writing thorough and
+            clean tests.
+            This utility should be written in the <code>TestTask1</code> class in the tests package. (Note: Do not add
+            the @Test annotation to any testing utility methods since they
+            are not tests)
+        </p>
 
 
-      <p>
-         Testing utilities are methods to assist you with writing thorough and clean tests, which you will write in many of the remaining tasks.
-         This utility should be written in the <code>TestTask1</code> class in the tests package.
-      </p>
+        <ul>
+            <li><code>comparePlayers</code> - Write a method named <code>comparePlayers</code>
+                in the tests.TestTask1 class that:
+                <ul>
+                    <li>
+                        Takes [references to] 2 Player objects as parameters
+                    </li>
+                    <li>
+                        Returns void
+                    </li>
+                    <li>
+                        Checks if the two Player objects contain all the same instance variable values, including
+                        location,
+                        velocity, orientation, HP, and maxHP. The method fails a JUnit
+                        assert if any of these variables do not have the same values. You can call assertTrue,
+                        assertEquals,
+                        etc. in your <code>comparePlayers</code> method even though it itself is not a test method
+                        (ie. This method can call compareEquals on each pair of values that are expected to be the
+                        same).
+                    </li>
+                    <li>
+                        Note: For any variables that are stored as Vector2D objects, you must check both their X and Y
+                        components
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <p>Note: You still have to create every class and method from the specification before getting feedback on your
+            submission in Autolab since the grader will not be able to compile if those classes/methods do not
+            exist. You don't have to implement them yet, and they can all return a default value</p>
 
 
-      <ul>
-         <li><code>comparePlayers</code> - Write a method named <code>comparePlayers</code>
-            in the tests.TestTask1 class that:
-            <ul>
-               <li>
-                  Takes [references to] 2 Player objects as parameters
-               </li>
-               <li>
-                    Returns void
-               </li>
-               <li>
-                  Checks if the two Player objects contain all the instance variable values, including location,
-                  velocity, orientation, HP, and maxHP. The method fails a JUnit
-                  assert if any of these variables do not have the same values
-               </li>
-               <li>
-                  Note: For any variables that are stored as Vector2D objects, you must check both their X and Y components
-               </li>
-            </ul>
-         </li>
-
-      </ul>
-
-      <p>Note: You still have to create every class and method from the specification before getting feedback on your
-        submission in Autolab since the grader will not be able to compile if those classes/methods do not
-         exist. You don't have to implement them yet, and they can all return a default value</p>
-
-
-      <br/>
-      <hr/>
+        <br/>
+        <hr/>
 
         <h3>
             Testing Requirements
@@ -210,42 +359,71 @@
 
         <hr/>
         <p>
-            You will write JUnit tests for the following methods in the specification:
+            Write JUnit tests for the following methods from the specification in the TestTask1 class. These tests
+            should be annotated with @Test:
         </p>
 
         <ul>
             <li><code>DynamicGameObject</code>
                 <ul>
                     <li><code>DynamicGameObject</code></li>
-                        <ul>
-                            <li>
-                                You should test that each of the instance variables is correctly set by the constructor
-                            </li>
-                            <li>
-                                This includes location, velocity, orientation, maxHP, and hp
-                            </li>
-                        </ul>
+                    <ul>
+                        <li>
+                            Test that each of the instance variables is correctly set by the constructor. You can
+                            do this by creating an object, then calling all the corresponding getter methods then
+                            assert that the getters returned the expected values
+                        </li>
+                        <li>
+                            The values that should be checked are location (x and y), velocity (x and y),
+                            orientation (x and y), maxHP, and hp
+                        </li>
+                    </ul>
                     <li><code>setHP</code></li>
+                    <ul>
+                        <li>
+                            Call this setter, then assert that <code>getHP</code> returns the expected value
+                        </li>
+                    </ul>
                     <li><code>takeDamage</code></li>
+                    <ul>
+                        <li>
+                            Call this method, then assert that <code>getHP</code> returns the expected value
+                        </li>
+                    </ul>
                     <li>
-                        Note: DynamicGameObjects cannot be instantiated directly. When testing these methods, you should
-                        use Player objects, which will have access to these methods due to inheritance. You do not need to
-                        understand this (yet)
+                        Note: DynamicGameObjects cannot be instantiated directly. When testing these methods you should
+                        create and use Player objects, which will have access to these methods due to inheritance. More
+                        details about this during inheritance week
                     </li>
                 </ul>
             </li>
             <li><code>Wall</code>
                 <ul>
                     <li>
-                        You DO NOT need to test the <code>collideWithDynamicObject</code> method. Tests are provided for you 
-                        in the TestTask1 class, which you may use to help you write the method itself
+                        You DO NOT need to test the <code>collideWithDynamicObject</code> method. Tests are provided for
+                        you
+                        in the <code>TestTask1</code> class, which you may use to help you write the method itself
                     </li>
                 </ul>
             </li>
             <li><code>PhysicsEngine</code>
                 <ul>
                     <li><code>updateObject</code></li>
+                    <ul>
+                        <li>
+                            To test this method: create a Player object, set the x, y of its location and velocity to
+                            known values, call updateObject with the player and a dt of your choice, do the math to
+                            compute the expected x and y for the player location after the update and assert that the
+                            actual x and y match this expectation
+                        </li>
+                    </ul>
                     <li><code>detectCollision</code></li>
+                    <ul>
+                        <li>
+                            To test this method, you can create multiple hitbox objects with different locations and
+                            dimensions and assert that the method properly detects if hte rectangle overlap or not
+                        </li>
+                    </ul>
                 </ul>
             </li>
         </ul>
@@ -260,7 +438,7 @@
 
         <hr/>
         <p>
-            Implement the methods from the specification.
+            Implement all the methods from the specification.
         </p>
 
 
@@ -271,11 +449,20 @@
 
         <hr/>
         <p>
-            The feedback in Autolab will be given in 3 phases. If you don't complete a phase, then feedback for
+            The feedback in Autolab will be given in 4 phases. If you don't complete a phase, then feedback for
             the following phase(s) will not be given.
         </p>
 
         <ol>
+            <li>Testing your testing utility methods
+                <ul>
+                    <li>
+                        Your testing utility method will be checked with a variety of test cases to ensure that
+                        it makes all the required checks. This phase will ensure that your utility methods are accurate
+                        before you start using them in your tests
+                    </li>
+                </ul>
+            </li>
             <li>Running your tests on a correct solution
                 <ul>
                     <li>Your tests will be run against a solution that is known to be correct. If your tests do
@@ -298,7 +485,7 @@
                     <li>
                         Passing this phase does not necessarily mean that your testing is completely thorough.
                         Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                        checked and it is sometimes possible to pass this phase
+                        checked, and it is sometimes possible to pass this phase
                         with weak testing. If you are struggling to earn credit for code that you believe
                         is correct, you should write more than the required tests
                     </li>
@@ -307,9 +494,9 @@
             <li>Running my tests on your solution
                 <ul>
                     <li>
-                        Once Autolab is happy with your tests, it will run my tests against your code to check
+                        Once Autolab is happy with your tests, it will run tests against your code to check
                         it for correctness. If your testing is thorough, and your code passes your tests, then
-                        you should pass this phase. If you pass your tests, but fail one of mine, it is an
+                        you should pass this phase. If you pass your tests, but fail here, it is an
                         indicator that you should write more tests to help expose your bug.
                     </li>
                 </ul>
@@ -317,7 +504,7 @@
         </ol>
 
         <p>
-            Once you complete all 3 phases, you will have completed this Task and Autolab will confirm this
+            Once you complete all 4 phases, you will have completed this Task and Autolab will confirm this
             with a score of 1.0 for complete.
         </p>
     </div>
