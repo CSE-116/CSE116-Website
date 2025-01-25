@@ -5,7 +5,7 @@
 {% block header %}
     <h1>Coding Task 1 - Physics Engine</h1>
     <hr/>
-    <h5>Time Estimate: 8 hours</h5>
+    <h5>Time Estimate: 10 hours</h5>
     <hr/>
 {% endblock %}
 
@@ -143,7 +143,7 @@
         </p>
 
         <ul>
-            <li><code>PhysicsEngine</code>
+            <li><code>PhysicsEngine</code> - <code>updateObject</code>
                 <ul>
                     <li>In the <code>PhysicsEngine</code> class, complete the method called <code>updateObject</code>
                         that takes
@@ -159,21 +159,21 @@
                     </li>
                     <li>
                         Both location and velocity are represented as <code>Vector2D</code> objects and the <code>DynamicGameObject</code>
-                        contains getter methods for both of them. Note that never have to set these values since you can
+                        contains getter methods for both of them. Note that you never have to set these vectors since you can
                         modify x and y of the <code>Vector2D</code> objects and that change will be made on the heap (If
-                        you don't
-                        see this, it may help to do a memory trace on your code).
+                        you don't see this, it may help to do a memory trace on your code for this method).
                     </li>
                     <li>
                         Once you complete this method, you should be able to move your player character in the game
-                        using either the arrows keys or WASD. You will notice quite a few other issues however.. We'll
+                        using either the arrows keys or WASD. You will notice quite a few other issues however (eg. try
+                        hitting the space bar to see some jenk).. We'll
                         get there!
                     </li>
                 </ul>
             </li>
-            <li><code>DynamicGameObject</code>
+            <li>The <code>DynamicGameObject</code> class
                 <ul>
-                    <li>Modify the DynamicGameObject constructor to initialize instance variables for the following:
+                    <li>Modify the <code>DynamicGameObject</code> constructor to initialize instance variables for the following:
                         <ul>
                             <li>An int representing the Max HP of the object which is set the value of the maxHP
                                 parameter of the constructor
@@ -185,8 +185,8 @@
                                 be initialized to x = 0.0, y = 1.0.
                             </li>
                             <li>Note: the given constructor initializes the location using inheritance, with
-                                super(location). You are not expected to understand this (yet), and you should not
-                                modify it
+                                <code>super(location)</code>. This must be the first line of the method and all code you
+                                add should go below it. More details on this when we cover inheritance in lecture.
                             </li>
                         </ul>
                     </li>
@@ -196,16 +196,18 @@
                             <li><code>getHP</code></li>
                             <li><code>setHP</code>
                                 <ul>
-                                    <li>When setHP is called, add some logic that will prevent HP from exceeding Max HP.
-                                        If the parameter exceeds MaxHP, HP should be set to the maximum
+                                    <li>When <code>setHP</code> is called, add some logic that will prevent HP from exceeding the Max HP.
+                                        If the parameter exceeds the Max HP, HP should be set to the Max HP.
                                     </li>
                                 </ul>
                             </li>
                             <li><code>getMaxHP</code></li>
                             <li><code>getOrientation</code></li>
+                            <li>Note: These methods exist in the handout code, but do not do what they are supposed to
+                                do. You're task is update their code to use your instance variables</li>
                         </ul>
                     </li>
-                    <li>Implement a method named <code>takeDamage()</code> that takes in an int and returns void. This
+                    <li>Implement a method named <code>takeDamage</code> that takes in an int and returns void. This
                         method should
                         subtract the current HP instance variable by the amount specified in the parameter.
                         <ul>
@@ -215,7 +217,7 @@
                     </li>
                 </ul>
             </li>
-            <li><code>PhysicsEngine - revisited</code>
+            <li><code>PhysicsEngine</code> revisited
                 <ul>
                     <li>Implement a method called <code>detectCollision</code> that takes in two Hitboxes and returns a
                         boolean. The boolean
@@ -223,6 +225,7 @@
                         hitboxes are overlapping if any portion of the boxes overlap
                         <ul>
                             <li>Since this method compares doubles, you should allow for a small amount of impression
+                                due to truncation errors
                                 (ie. If the hitboxes are not strictly overlapping, but are within 0.0001 of overlapping
                                 it should still be considered a collision)
                             </li>
@@ -253,6 +256,10 @@
                                 useful for this method. <code>StaticGameObjects</code> are similar to their dynamic
                                 counterparts, except they can't move and so are handled separately by the game engine
                             </li>
+                            <li>
+                                You can get the hitbox for either static or dynamic objects by calling their
+                                <code>getHitbox</code> method
+                            </li>
                             <li>Collisions can be between <code>StaticGameObjects</code> and
                                 <code>DynamicGameObjects</code>
                                 or between two <code>DynamicGameObjects</code>. If a collision is detected,
@@ -263,16 +270,23 @@
                                 <code>collideWithStaticObject</code>
                                 on the dynamic object with the static object as an argument. This lets both objects know
                                 that
-                                they have to handle the collision
+                                they have to handle the collision)
                             </li>
-                            <li>Be sure to call your <code>detectCollision</code> when completing this method. Don't
+                            <li>Be sure to call your <code>detectCollision</code> method when completing this method. Don't
                                 redo your work
+                            </li>
+                            <li>
+                                After implementing these methods, collisions will be registered when you play the game.
+                                When you walk into an enemy, you will be sent back to the starting location of the level
+                                and when you reach the goal you'll advance to the next level. You can even shoot the
+                                enemies using the space bar to fire.. however, you can still walk through walls. Let's
+                                fix that
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><code>Wall</code>
+            <li>The <code>Wall</code> class
                 <ul>
                     <li>Write a method called <code>collideWithDynamicObject</code> that takes in a [reference to a]
                         <code>DynamicGameObject</code> and returns void. This method should modify the state of the
@@ -289,9 +303,19 @@
                                 objects no longer colliding.
                             </li>
                             <li>
+                                Simplifying Assumptions: When writing this method, you can assume two objects are currently
+                                colliding, that they have the same dimensions, that their hitboxes exactly match
+                                their location and dimensions, and all dimensions are (1.0, 1.0). All these assumptions
+                                are true in the provided tests and the tests in Autolab
+                            </li>
+                            <li>
                                 You are given tests for this method in <code>TestTask1</code> which can use to be sure
                                 that you're implementing the method according this spec without having to submit to
                                 Autolab
+                            </li>
+                            <li>
+                                When this method is complete, you will no longer be able to walk through walls when you
+                                play the game
                             </li>
                         </ul>
                     </li>
