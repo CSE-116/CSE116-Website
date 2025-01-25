@@ -33,7 +33,7 @@
             </li>
         </ol>
         <p>
-            Once you have the project opened in IntelliJ, you'll see a src folder which contains another folder java.
+            Once you have the project opened in IntelliJ, you'll see a src folder which contains a folder another folder called main, which contains another folder called java.
             Inside this folder is the Java package app which contains all the code for the project. The starter code contains
             many Java classes needed for the engine to run, which can be ignored for the time being.
         </p>
@@ -53,7 +53,8 @@
         <p>
             To submit your project, create a zip file containing your entire project and
             submit it to Autolab. (Click file -> export -> Project to Zip File, though there may be
-            slight differences to this across OSes and versions)
+            slight differences to this across OSes and versions). If this option is not available, you may need to install
+            the "Android" plugin through the settings menu
         </p>
 
         <br/>
@@ -81,7 +82,7 @@
                             <li>An int representing the current HP of the object. Initially, this should be set to the object's Max HP.</li>
                             <li>A Vector2D (from the physics package) representing the velocity of the object. This should be initialized to x = 0.0, y = 0.0.</li>
                             <li>A Vector2D representing the orientation the object is facing. This should be initialized to x = 0.0, y = 1.0.</li>
-                            <li>Note: the given constructor initializes the location using inheritance. You are not expected to fully understand this (yet)</li>
+                            <li>Note: the given constructor initializes the location using inheritance, with super(location). You are not expected to fully understand this (yet), and should not modify it</li>
                         </ul>
                     </li>
                     <li>Implement the following getters and setters for the instance variables:
@@ -89,7 +90,7 @@
                             <li><code>getHP</code></li>
                             <li><code>setHP</code>
                                 <ul>
-                                    <li>HP cannot exceed Max HP. HP should be set to the maximum if the parameter exceeds it.</li>
+                                    <li>HP cannot exceed Max HP. If the parameter exceeds MaxHP, HP should be set to the maximum</li>
                                 </ul>
                             </li>
                             <li><code>getMaxHP</code></li>
@@ -111,6 +112,9 @@
                         <code>DynamicGameObject</code> and returns void. This method should modify the state of the
                         DynamicGameObject such that it cannot pass through the wall.
                         <ul>
+                            <li>
+                                This method should not modify the velocity of the intersecting object, only its position
+                            </li>
                             <li>Note: along with the getter for velocity, you can also call <code>getLocation</code>
                             to access the location vector (coordinates) of a DynamicGameObject. You do not need to write
                                 this method; you can access it through inheritance.
@@ -129,7 +133,7 @@
                     should update the position vector of the DynamicGameObject based on the value of its velocity vector.
                         <ul>
                             <li>Note: the change in distance (for both components of the vector) is equal to
-                                the velocity (of that direction) times the change in time.</li>
+                                the velocity (of that direction) multiplied by the change in time.</li>
                         </ul>
                     </li>
                     <li>Implement a method called <code>detectCollision</code> that takes in two Hitboxes and returns a boolean. The boolean
@@ -159,6 +163,44 @@
         <br/>
         <hr/>
 
+        <h3>Testing Utilities</h3>
+      <hr/>
+
+
+      <p>
+         Testing utilities are methods to assist you with writing thorough and clean tests, which you will write in many of the remaining tasks.
+         This utility should be written in the <code>TestTask1</code> class in the tests package.
+      </p>
+
+
+      <ul>
+         <li><code>comparePlayers</code> - Write a method named <code>comparePlayers</code>
+            in the tests.TestTask1 class that:
+            <ul>
+               <li>
+                  Takes [references to] 2 Player objects as parameters
+               </li>
+               <li>
+                  Checks if the two Player objects contain all the instance variable values, including location,
+                  velocity, orientation, HP, and maxHP. The method fails a JUnit
+                  assert if any of these variables do not have the same values
+               </li>
+               <li>
+                  Note: For any variables that are stored as Vector2D objects, you must check both their X and Y components
+               </li>
+            </ul>
+         </li>
+
+      </ul>
+
+      <p>Note: You still have to create every class and method from the specification before getting feedback on your
+        submission in Autolab since the grader will not be able to compile if those classes/methods do not
+         exist. You don't have to implement them yet, and they can all return a default value</p>
+
+
+      <br/>
+      <hr/>
+
         <h3>
             Testing Requirements
         </h3>
@@ -171,13 +213,30 @@
         <ul>
             <li><code>DynamicGameObject</code>
                 <ul>
+                    <li><code>DynamicGameObject</code></li>
+                        <ul>
+                            <li>
+                                You should test that each of the instance variables is correctly set by the constructor
+                            </li>
+                            <li>
+                                This includes location, velocity, orientation, maxHP, and hp
+                            </li>
+                        </ul>
                     <li><code>setHP</code></li>
                     <li><code>takeDamage</code></li>
+                    <li>
+                        Note: DynamicGameObjects cannot be instantiated directly. When testing these methods, you should
+                        use Player objects, which will have access to these methods due to inheritance. You do not need to
+                        understand this (yet)
+                    </li>
                 </ul>
             </li>
             <li><code>Wall</code>
                 <ul>
-                    <li><code>collideWithDynamicObject</code></li>
+                    <li>
+                        You DO NOT need to test the <code>collideWithDynamicObject</code> method. Tests are provided for you 
+                        in the TestTask1 class, which you may use to help you write the method itself
+                    </li>
                 </ul>
             </li>
             <li><code>PhysicsEngine</code>
