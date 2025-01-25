@@ -24,7 +24,7 @@
         <hr/>
 
         <p>
-            GitHub Repository link: <a href="">TBD</a>
+            GitHub Repository link: <a href="https://github.com/CSE-116/CSE116-GameEngine">https://github.com/CSE-116/CSE116-GameEngine</a>
         </p>
         <ul>
             <li>Clone the starter code from the repository into a new IntelliJ project</li>
@@ -244,6 +244,14 @@
                                 enemies using the space bar to fire.. however, you can still walk through walls. Let's
                                 fix that
                             </li>
+                            <li>
+                                Note: It is strongly recommended that you write the tests for this method before trying
+                                to write the code. Having tests will make it much easier to check if your code is
+                                correct, and debug it if it's not. Going through the process of writing tests will also
+                                ensure that you fully understand what is considered a collision. You can submit to
+                                Autolab to check if your tests are correct before finishing this method for assurance
+                                that you have good testing to help you write the code
+                            </li>
                         </ul>
 
                     </li>
@@ -384,17 +392,11 @@
                     </li>
                 </ul>
             </li>
-            <li><code>Wall</code>
-                <ul>
-                    <li>
-                        You DO NOT need to test the <code>collideWithDynamicObject</code> method. Tests are provided for
-                        you
-                        in the <code>TestTask1</code> class, which you may use to help you write the method itself
-                    </li>
-                </ul>
-            </li>
             <li><code>PhysicsEngine</code>
                 <ul>
+                    <li>
+                        To test these methods, you will have to create a PhysicsEngine object in order to call the methods
+                    </li>
                     <li><code>updateObject</code></li>
                     <ul>
                         <li>
@@ -408,9 +410,18 @@
                     <ul>
                         <li>
                             To test this method, you can create multiple hitbox objects with different locations and
-                            dimensions and assert that the method properly detects if hte rectangle overlap or not
+                            dimensions and assert that the method properly detects if the rectangle overlap or not
                         </li>
                     </ul>
+                </ul>
+            </li>
+            <li><code>Wall</code>
+                <ul>
+                    <li>
+                        You DO NOT need to test the <code>collideWithDynamicObject</code> method. Tests are provided for
+                        you
+                        in the <code>TestTask1</code> class, which you may use to help you write the method itself
+                    </li>
                 </ul>
             </li>
         </ul>
