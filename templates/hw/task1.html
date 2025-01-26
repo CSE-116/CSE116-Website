@@ -80,8 +80,7 @@
         <img src="/static_files/images/game1.png" class="img-fluid" alt="Game image from starter code">
 
         <p>
-            It's basically a marvel of modern graphics. You probably thought this was photograph of cosplayers at a
-            medievil festival, but it's actually in game graphics from this project.
+            As you can see, it's basically a marvel of modern graphics. 
         </p>
 
         <p>
@@ -98,8 +97,7 @@
 
         <p>
             The coordinate system use for computer graphics might be different than you used to. We'll use the standard
-            coordinate system used for all screens, images, videos, and everything else related to rendering graphics
-            (For 2d graphics at least) and we promise we didn't use this system just to be confusing.
+            coordinate system that is typically used in video games.
         </p>
 
         <p>
@@ -111,7 +109,7 @@
         <img src="/static_files/images/game1-2.png" class="img-fluid" alt="Coordinate system image from level 0">
 
         <p>
-            Objects (and hit boxes) in our game with have two components, their location and their dimensions, both
+            Objects (and hit boxes) in our game have two components: location and dimensions, both
             represented as 2-dimensional vectors (x, y). All objects/hit boxes will be rectangles and their location
             is the location of their upper-left corner. Their dimensions are the length and width of the rectangle.
             For example, the goal has a location of (6, 2) since that's the location of its upper-left corner, and it
@@ -119,7 +117,7 @@
         </p>
 
         <p>
-            Locations and dimensions do not have ot be whole numbers. In the image below, the player character is at
+            Locations and dimensions do not have to be whole numbers. In the image below, the player character is at
             [roughly] location (1.5, 1.0) with dimensions (1.0, 1.0).
         </p>
 
@@ -133,13 +131,9 @@
 
         <hr/>
 
-        <p>Now that we know what the project is about and how the coordinate system works, let add some functionality
-            so we can play the game. This section will explain the specifications of everything you'll code in this
-            task. The specs are written in the recommended order of completion</p>
-
         <p>
             Note: All methods are public and non-static, unless otherwise noted, from this point forward in the
-            course.
+            course. It is recommended you follow the spec in the order it is written in.
         </p>
 
         <ul>
@@ -161,13 +155,13 @@
                         Both location and velocity are represented as <code>Vector2D</code> objects and the <code>DynamicGameObject</code>
                         contains getter methods for both of them. Note that you never have to set these vectors since you can
                         modify x and y of the <code>Vector2D</code> objects and that change will be made on the heap (If
-                        you don't see this, it may help to do a memory trace on your code for this method).
+                        you don't understand what this means, it may help to do a memory trace on your code for this method to better
+                        understand what is happening in the stack and heap).
                     </li>
                     <li>
                         Once you complete this method, you should be able to move your player character in the game
                         using either the arrows keys or WASD. You will notice quite a few other issues however (eg. try
-                        hitting the space bar to see some jenk).. We'll
-                        get there!
+                        hitting the space bar).. We'll get there!
                     </li>
                 </ul>
             </li>
