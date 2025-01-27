@@ -156,7 +156,8 @@
                     </li>
                     <li>
                         Both location and velocity are represented as <code>Vector2D</code> objects and the <code>DynamicGameObject</code>
-                        contains getter methods for both of them. Note that you never have to set these vectors since you can
+                        contains getter methods for both of them. Note that you never have to set the vector objects themselves, and should 
+                        instead set the x and y components of the existing vectors using the provided setters. This will 
                         modify x and y of the <code>Vector2D</code> objects and that change will be made on the heap (If
                         you don't understand what this means, it may help to do a memory trace on your code for this method to better
                         understand what is happening in the stack and heap).
