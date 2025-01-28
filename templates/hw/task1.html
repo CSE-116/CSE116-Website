@@ -263,8 +263,15 @@
                             </li>
                             <li>
                                 To implement this method, change either the x or y location (not both) of the dynamic
-                                object such you move the dynamic object the minimum distance that results in the two
-                                objects no longer colliding.
+                                object so that they no longer collide. That is, the object must be moved in only one direction (up, down, left, or right);
+                                this direction must be whichever requires the shortest distance to completely remove the dynamic object
+                                from the hitbox of the Wall.
+                            </li>
+                            <li>
+                                Ex: If a wall has position (1,0) and dimensions (1,1), and a DynamicGameObject has position (0.5, 0) and
+                                dimensions (1,1), these two objects are colliding. If the object is moved up or down, it would need to be moved a distance of 1.0
+                                to no longer collide with the Wall. If it were moved right, it would need to be moved to (2,0), a distance of 1.5. If it were moved 
+                                left, it would need to be moved to (0,0), a distance of 0.5. Thus, it should be moved left, to the location (0,0)
                             </li>
                             <li>
                                 Simplifying Assumptions: When writing this method, you can assume two objects are currently
@@ -357,6 +364,11 @@
                     <li><code>DynamicGameObject</code></li>
                     <ul>
                         <li>
+                            Note: DynamicGameObjects cannot be instantiated directly. When testing these methods you should
+                            create and use Player objects, which will have access to these methods due to inheritance. More
+                            details about this during inheritance week
+                        </li>
+                        <li>
                             Test that each of the instance variables is correctly set by the constructor. You can
                             do this by creating an object, then calling all the corresponding getter methods then
                             assert that the getters returned the expected values
@@ -378,11 +390,6 @@
                             Call this method, then assert that <code>getHP</code> returns the expected value
                         </li>
                     </ul>
-                    <li>
-                        Note: DynamicGameObjects cannot be instantiated directly. When testing these methods you should
-                        create and use Player objects, which will have access to these methods due to inheritance. More
-                        details about this during inheritance week
-                    </li>
                 </ul>
             </li>
             <li><code>PhysicsEngine</code>
