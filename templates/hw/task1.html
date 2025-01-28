@@ -224,11 +224,6 @@
                         should return true if the two Hitboxes are colliding (ie. overlapping) and false otherwise. Two
                         hitboxes are overlapping if any portion of the boxes overlap
                         <ul>
-                            <li>Since this method compares doubles, you should allow for a small amount of impression
-                                due to truncation errors
-                                (ie. If the hitboxes are not strictly overlapping, but are within 0.0001 of overlapping
-                                it should still be considered a collision)
-                            </li>
                             <li>
                                 Recall from the coordinate system section that hitboxes have both a location (the (x, y)
                                 of its upper-left corner) and dimensions (the width and height of the rectangle) both
