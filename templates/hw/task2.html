@@ -38,10 +38,13 @@
             <li><code>Enemy</code>, located in the package <code>app.games.topdownobjects</code></li>
         </ul>
         <p>
-            You will also need to create new classes in these exact locations:
+            You will also need to create new classes in these exact locations with these exact names (case-sensitive):
         </p>
         <ul>
-            <li><code>Pathfinding</code>, in the package <code>app.gameengine.model.ai</code></li>
+            <li>
+                <code>Pathfinding</code>, in the package <code>app.gameengine.model.ai</code>
+                (You will also need to create the <code>ai</code> package in the specified location.)
+            </li>
             <li><code>TestTask2</code>, in the package <code>tests</code></li>
         </ul>
         <p>
@@ -159,7 +162,7 @@
                                 object in the list is aligned to a tile (i.e. no decimals).
                                 <ul>
                                     <li>[(3.0, 4.0), (3.0, 5.0), (4.0, 5.0)] is valid.</li>
-                                    <li>[(3.0, 4.0), (3.0, 5.0), (5.0, 6.0)] is not valid as the third Vector2D is two tiles right of the second.</li>
+                                    <li>[(3.0, 4.0), (3.0, 5.0), (5.0, 5.0)] is not valid as the third Vector2D is two tiles right of the second.</li>
                                     <li>[(3.0, 4.0), (4.0, 5.0), (4.0, 6.0)] is not valid as the second Vector2D is diagonal
                                     to the first one.</li>
                                     <li>[(3.1, 4.9), (3.1, 5.9), (4.1, 5.9)] is not valid as it is not aligned to a tile.</li>
