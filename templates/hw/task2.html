@@ -186,6 +186,10 @@
                         Finally, modify the given method <code>update</code> so that it has the following behavior:
                         <ul>
                             <li>
+                                Note: in each update call, only one of these three things can happen (e.g. an Enemy
+                                will not assign itself a path and start moving in the same call).
+                            </li>
+                            <li>
                                 If the Enemy's path LinkedListNode is <code>null</code>, it should use the <code>findPath</code> method
                                 from the <code>Pathfinding</code> class to generate a path from the Enemy's location to the Level's Player's
                                 location. This path should then be assigned to the enemy.
