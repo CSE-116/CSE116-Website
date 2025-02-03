@@ -5,7 +5,7 @@
 {% block header %}
     <h1>Coding Task 2</h1>
     <hr/>
-    <h5>Time Estimate: 5 hours</h5>
+    <h5>Time Estimate: </h5>
     <hr/>
 {% endblock %}
 
@@ -30,6 +30,25 @@
             no new repository to clone.
         </p>
 
+        <p>
+            For this task, you will be writing code in the following classes:
+        </p>
+        <ul>
+            <li><code>SampleTopDownGame</code>, located in the package <code>app.games</code></li>
+            <li><code>Enemy</code>, located in the package <code>app.games.topdownobjects</code></li>
+        </ul>
+        <p>
+            You will also need to create new classes in these exact locations:
+        </p>
+        <ul>
+            <li><code>Pathfinding</code>, in the package <code>app.gameengine.model.ai</code></li>
+            <li><code>TestTask2</code>, in the package <code>tests</code></li>
+        </ul>
+        <p>
+            You will also be using the provided <code>LinkedListNode</code> class from the <code>app.gameengine.model.datastructures</code>
+            package. You <i>may</i> find it helpful to add to this class, however you <b>cannot modify or remove any of the given code</b>.
+            You can use these additions in your implementation, but not in your tests (the TestTask2 class).
+        </p>
         <br/>
         <hr/>
         <h3>Specification</h3>
@@ -37,91 +56,159 @@
 
         <p>In this task, you will test and implement the following specs:</p>
 
-        <p>
-            Note: All methods are public and non-static, unless otherwise noted, from this point forward in the
-            course.
-        </p>
-
         <ul>
-            <li>ratings.Song - In the ratings package, a class named <code>Song</code>
+            <li><code>SampleTopDownGame</code> - Linked List Operations
                 <ul>
                     <li>
-                        This class will have a constructor that takes 3 parameters in this order:
-                        <ol>
-                            <li>A String representing the title of the Song</li>
-                            <li>A String representing the artist of the Song</li>
-                            <li>A String representing the Songs ID</li>
-                        </ol>
+                        Currently, the way the game handles loading levels is poorly implemented.
+                        The first part of this task will be to improve it using Linked Lists. The following
+                        methods that will be implemented should interact with a LinkedListNode of Level instance
+                        variable you will add to the <code>SampleTopDownGame</code> class.
                     </li>
                     <li>
-                        Song will have getter and setter methods for the three constructor parameters named:
-                        <ol>
-                            <li><code>getTitle</code></li>
-                            <li><code>setTitle</code></li>
-                            <li><code>getArtist</code></li>
-                            <li><code>setArtist</code></li>
-                            <li><code>getSongID</code> <-- Note that both characters in ID are capital</li>
-                            <li><code>setSongID</code></li>
-                        </ol>
+                        Add a getter called <code>getLevelList</code>. This method should return the LinkedListNode of
+                        type Level representing the head of the list of Levels.
+                        <ul>
+                            <li>If no Levels have been added, this method should return <code>null</code>.</li>
+                        </ul>
                     </li>
                     <li>
-                        For this task, you don't need to implement any additional methods in the Song class
-                        (We will add to this class in later tasks)
+                        Add a setter called <code>setLevelList</code> that takes in a LinkedListNode of Levels and
+                        returns void.
+                        <ul>
+                            <li>This method should replace the instance variable representing the head of the list with
+                            the LinkedListNode in the parameter.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Add a method called <code>addLevel</code> that takes in a Level
+                        as a parameter and returns void.
+                        <ul>
+                            <li>
+                                This method should append the Level specified in the parameter to the Linked List
+                                of levels.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Add a method called <code>removeLevelByName</code> that takes in a String and returns void.
+                        <ul>
+                            <li>This method should remove the level with the specified name String from the Linked List of levels.</li>
+                            <li>If multiple Levels exist with this name, it should only remove the first one.</li>
+                        </ul>
                     </li>
                 </ul>
             </li>
-
-            <li>ratings.Rating - In the ratings package, a class named <code>Rating</code>
+            <li><code>SampleTopDownGame</code> - Modifications
                 <ul>
                     <li>
-                        This class will have a constructor that takes 2 parameters in this order:
-                        <ol>
-                            <li>A String representing the ID of the reviewer who gave the rating</li>
-                            <li>An int representing the rating that the reviewer gave</li>
-                        </ol>
+                        Now that the Linked List operations have been implemented, you will now make the following
+                        modifications to the given methods:
+                        <ul>
+                            <li>
+                                Replace the body of the <code>advanceLevel</code> method to use the Linked List
+                                operations. When this method is called, it should advance the head of the Level
+                                list to the next node, then call <code>loadLevel</code> on the level contained
+                                at the (new) head of the Linked List.
+                                <ul><li>If the path is <code>null</code>, this method should do nothing.</li></ul>
+                            </li>
+                            <li>
+                                Modify the <code>init</code> method to add the three given levels to the Linked List
+                                before the given <code>loadLevel</code> call.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>With these changes, you should be able to play through the game as before.</li>
+                </ul>
+            </li>
+            <li><code>Enemy</code> - Path Operations
+                <ul>
+                    <li>
+                        You will now implement some path operations to the Enemy class.
+
+
+                        Once this is complete, Enemies will
+                        be able to create and follow paths in game, which will be represented by a LinkedListNode of
+                        Vector2D objects.
                     </li>
                     <li>
-                        Rating will have getter and setter methods for the two constructor parameters named:
-                        <ol>
-                            <li><code>getReviewerID</code></li>
-                            <li><code>setReviewerID</code></li>
-                            <li><code>getRating</code></li>
-                            <li><code>setRating</code></li>
-                        </ol>
+                        Add a method called <code>setPath</code> that takes in a LinkedListNode of Vector2D objects.
+                        This method should set an instance variable representing the Enemy's path being followed.
                     </li>
                     <li>
-                        Ratings must be in the range 1-5. If someone calls setRatings with an invalid rating,
-                        the rating should be set to -1 to indicate that an error has occurred.
-                        (eg. setRating(100) should result in the rating being set to -1). This check must also
-                        apply when the constructor is called with an invalid rating.
+                        Add a method called <code>getPath</code> that returns a LinkedListNode of Vector2D objects.
+                        This method should return the instance variable representing the Enemy's path.
                     </li>
                 </ul>
             </li>
-
-            <li>ratings.Reviewer - In the ratings package, a class named <code>Reviewer</code>
+            <li><code>Pathfinding</code> - <code>findPath</code> method
                 <ul>
                     <li>
-                        This class will have a constructor that takes 1 parameter:
-                        <ol>
-                            <li>A String representing the ID of the reviewer</li>
-                        </ol>
+                        In the <code>Pathfinding</code> class you created, write a <strong>static</strong> method
+                        called <code>findPath</code> that takes in two Vector2D objects as parameters and returns a
+                        LinkedListNode of Vector2Ds.
                     </li>
                     <li>
-                        Reviewer will have getter and setter methods for the constructor parameter named:
-                        <ol>
-                            <li><code>getReviewerID</code></li>
-                            <li><code>setReviewerID</code></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <code>rateSong</code> - Reviewer will have a method named rateSong that takes an int as a parameter
-                        and returns a reference to a new Rating object (Using the Rating class described
-                        above) with this reviewer's ID and the rating from the parameter of this method.
+                        This method should return the shortest valid path that takes it from the
+                        <strong>tile containing</strong> the first Vector2D object to the
+                        <strong>tile containing</strong> the location of the second Vector2D object.
+                        <ul>
+                            <li>
+                                A path is valid if each Vector2D object after the head of the list is one tile
+                                above, below, to the left, or to the right of the previous one AND if each Vector2D
+                                object in the list is aligned to a tile (i.e. no decimals).
+                                <ul>
+                                    <li>[(3.0, 4.0), (3.0, 5.0), (4.0, 5.0)] is valid.</li>
+                                    <li>[(3.0, 4.0), (3.0, 5.0), (5.0, 6.0)] is not valid as the third Vector2D is two tiles right of the second.</li>
+                                    <li>[(3.0, 4.0), (4.0, 5.0), (4.0, 6.0)] is not valid as the second Vector2D is diagonal
+                                    to the first one.</li>
+                                    <li>[(3.1, 4.9), (3.1, 5.9), (4.1, 5.9)] is not valid as it is not aligned to a tile.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                This is NOT the same as starting from the location of the first Vector2D and
+                                ending at the location of the second Vector2D.
+                            </li>
+                            <li>
+                                You may find it helpful to review the overview of the coordinate system
+                                in the task 1 handout.
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
-
-
+            <li><code>Enemy</code> - Path Functionality
+                <ul>
+                    <li>
+                        Finally, modify the given method <code>update</code> so that it has the following behavior:
+                        <ul>
+                            <li>
+                                If the Enemy's path LinkedListNode is <code>null</code>, it should use the <code>findPath</code> method
+                                from the <code>Pathfinding</code> class to generate a path from the Enemy's location to the Level's Player's
+                                location. This path should then be assigned to the enemy.
+                            </li>
+                            <li>
+                                If the Enemy is within a small amount of the location at the path's head, the Enemy's
+                                position should be set to exactly that location. The head of the list should then be moved
+                                one node further in the list.
+                                <ul>
+                                    <li>This is necessary to prevent enemies from getting caught at the edge of a hitbox.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Otherwise, the Enemy's velocity should be set to move towards the tile at the head of the
+                                Enemy's path.
+                                <ul>
+                                    <li>The Enemy's velocity should have a magnitude (speed) of <code>2.0</code>.</li>
+                                    <li>Since the Enemy can only move in four directions, only one component of
+                                        a moving Enemy's velocity will be non-zero at any point.</li>
+                                    <li>If the enemy is already at that tile, it should move the path's head node up one further in the list.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
         </ul>
 
         <p>
@@ -138,57 +225,42 @@
         <hr/>
 
         <p>
-            To help you write your tests, you will write several testing utility methods. These methods are
-            meant to help you write your unit tests. These methods will compare Song, Rating, and Reviewer
-            objects for equality. When writing test cases, you should create an object with the values that you
-            expect, call the method to be tested to create an object of the same type, then call your utility
-            method to check if the 2 objects contain all the same values.
-        </p>
-
-        <p>
-            Create a class named TestClasses1 in the tests package (tests.TestClasses1) and write the
+            Create a class named TestTask2 in the tests package and write the
             following methods in that class (Note: Do not add the @Test annotation to these methods since they
             are not tests):
         </p>
 
         <ul>
-            <li>compareSongs - Write a method named compareSongs in the tests.TestClasses1 class that:
+            <li><code>compareListsOfLevels</code> - Write a method named compareListsOfLevels in the tests.TestDataStructures1 class that:
                 <ul>
                     <li>
-                        Takes [references to] 2 Song objects as parameters
+                        Takes [references to] 2 LinkedListNode&lt;Level&gt; objects as parameters and  returns void
                     </li>
                     <li>
-                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Songs do
-                        not have all the same values. In this way, calling the method with two Songs that are different
-                        will result in a test failing, while calling the method with two Songs that are the same will
-                        not do anything and will move on to your next test case. You can call assertTrue, assertEquals,
-                        etc. in your compareSongs method even though it itself is not a test method.
+                        This method checks if the names of all Levels in both lists are the same and are in the same order.
+                        The method fails a JUnit assert if the lists do not contain all the same names of their Level
+                        objects in the same order
+                    </li>
+                    <li>
+                        Note that you cannot use == or .equals to compare 2 Levels. You must specifically check the
+                        name values.
                     </li>
                 </ul>
             </li>
-            <li>compareRatings - Write a method named compareRatings in the tests.TestClasses1 class that
+            <li>
+                <code>validatePath</code> - Write a method named <code>validatePath</code> that:
                 <ul>
                     <li>
-                        Takes [references to] 2 Rating objects
+                        takes in a LinkedListNode of Vector2D objects and returns void.
                     </li>
                     <li>
-                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Ratings do
-                        not have all the same values
+                        This method should fail a JUnit assert if the path from the parameter is invalid.
+                    </li>
+                    <li>
+                        This should use the same criteria as the <code>findPath</code> method uses.
                     </li>
                 </ul>
             </li>
-            <li>compareReviewers - Write a method named compareReviewers in the tests.TestClasses1 class that
-                <ul>
-                    <li>
-                        Takes [references to] 2 Reviewer objects
-                    </li>
-                    <li>
-                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Reviewers
-                        do not have the same id
-                    </li>
-                </ul>
-            </li>
-
         </ul>
 
         <br/>
@@ -199,8 +271,35 @@
         <hr/>
 
         <p>
-            Add test methods to the tests.TestClasses1 class, using the @Test annotation, that tests all the
-            methods in the Specification section. You should call your testing utility methods to save time while
+            Add test methods to the tests.TestTask2 class, using the @Test annotation, that tests the
+            following methods from the specification:
+        </p>
+
+        <ul>
+            <li>
+                <code>SampleTopDownGame</code> class:
+                <ul>
+                    <li><code>addLevel</code></li>
+                    <li><code>removeLevelByName</code></li>
+                    <li><code>advanceLevel</code></li>
+                    <li>
+                        For these tests, you should call the TopDownLevel constructor whenever a Level object
+                        needs to be initialized.
+                    </li>
+                    <li>
+                        Also, make sure your tests account for the behavior of the given SampleTopDownGame constructor.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>Pathfinding</code> class:
+                <ul>
+                    <li><code>findPath</code></li>
+                </ul>
+            </li>
+        </ul>
+        <p>
+            You should call your testing utility methods to save time while
             writing these tests.
         </p>
 
@@ -212,10 +311,7 @@
         <hr/>
 
         <p>
-            Implement the Song, Rating, and Reviewer classes with all the functionality from the specification.
-            As you're writing this code, you should run your tests to see how you are progressing. It's
-            recommended that you write your tests first, submit to Autolab to make sure your have good testing,
-            then use those verified tests to check your code.
+            Implement the functionality from the specification.
         </p>
 
 
