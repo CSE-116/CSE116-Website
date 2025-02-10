@@ -38,66 +38,86 @@
             <li><code>Enemy</code>, located in the package <code>app.games.topdownobjects</code></li>
         </ul>
         <p>
-            You will also need to create new classes in these exact locations with these exact names (case-sensitive):
+            You will also need to create new classes in these locations with these names (case-sensitive):
         </p>
         <ul>
             <li>
                 <code>Pathfinding</code>, in the package <code>app.gameengine.model.ai</code>
-                (You will also need to create the <code>ai</code> package in the specified location.)
+                (You will also need to create the <code>ai</code> package in the specified location. To do this,
+                right-click the model package and choose new -> package)
             </li>
             <li><code>TestTask2</code>, in the package <code>tests</code></li>
         </ul>
         <p>
             You will also be using the provided <code>LinkedListNode</code> class from the <code>app.gameengine.model.datastructures</code>
-            package. You <i>may</i> find it helpful to add to this class, however you <b>cannot modify or remove any of the given code</b>.
-            You can use these additions in your implementation, but not in your tests (the TestTask2 class).
+            package. You <i>may</i> find it helpful to add methods to this class, however you <b>cannot modify or remove
+            any of the given code</b>.
+            You can use these additions in your implementation, but not in your tests (the TestTask2 class). The
+            solutions in Autolab will use this class as given so using extra methods in your tests will cause errors
+            when your tests are ran against these solutions.
         </p>
         <br/>
         <hr/>
         <h3>Specification</h3>
         <hr/>
 
-        <p>In this task, you will test and implement the following specs:</p>
+        <p>In this task, you will test and implement the following specs. All methods are public and non-static, except
+            for the <code>findPath</code> method which is static.</p>
+
+
+        <p>First, we'll update the <code>SampleTopDownGame</code> to use a Linked List of levels to control the flow of
+        the game. Players will travel through each level in this list as they play through the game</p>
 
         <ul>
             <li><code>SampleTopDownGame</code> - Linked List Operations
                 <ul>
                     <li>
-                        Currently, the way the game handles loading levels is poorly implemented.
-                        The first part of this task will be to improve it using Linked Lists. The following
-                        methods that will be implemented should interact with a LinkedListNode of Level instance
-                        variable you will add to the <code>SampleTopDownGame</code> class.
+                        Currently, the way the game handles loading levels is poorly implemented by hard-coding level
+                        names using conditionals.
+                        The first part of this task will be to improve it using a Linked List to store a sequence of
+                        levels. Players will start at the first level in the list and each time they advance to the next
+                        level they will move to the next level in the list
                     </li>
                     <li>
-                        Add a getter called <code>getLevelList</code>. This method should return the LinkedListNode of
-                        type Level representing the head of the list of Levels.
+                        To implement the methods in this section, you will need to create an instance variable of type
+                        LinkedListNode of Level in the <code>SampleTopDownGame</code> class <span class="h">named llL
+                        for linked list level</span>. Then, add the following
+                        methods in this class that will interact with your instance variable. This list should initially
+                        be empty (Please use the provided
+                        <code>app.gameengine.model.datastructures.LinkedListNode</code> class for your linked list
+                    </li>
+                    <li>
+                        <code>getLevelList</code>: Take no parameters and returns the head of the
+                        LinkedListNode of Levels stored in your instance variable
                         <ul>
-                            <li>If no Levels have been added, this method should return <code>null</code>.</li>
+                            <li>If no Levels have been added, this method should return <code>null</code></li>
                         </ul>
                     </li>
                     <li>
-                        Add a setter called <code>setLevelList</code> that takes in a LinkedListNode of Levels and
-                        returns void.
+                        <code>setLevelList</code>: Takes a LinkedListNode of Levels and returns void
                         <ul>
-                            <li>This method should replace the instance variable representing the head of the list with
-                            the LinkedListNode in the parameter.</li>
+                            <li>This method replaces the instance variable representing the head of the list with
+                                the LinkedListNode in the parameter
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        Add a method called <code>addLevel</code> that takes in a Level
-                        as a parameter and returns void.
+                        <code>addLevel</code>: Takes a Level and returns void
                         <ul>
                             <li>
-                                This method should append the Level specified in the parameter to the Linked List
+                                This method appends the Level specified in the parameter to the end of the Linked List
                                 of levels.
                             </li>
                         </ul>
                     </li>
                     <li>
-                        Add a method called <code>removeLevelByName</code> that takes in a String and returns void.
+                        <code>removeLevelByName</code>: Takes a String and returns void
                         <ul>
-                            <li>This method should remove the level with the specified name String from the Linked List of levels.</li>
-                            <li>If multiple Levels exist with this name, it should only remove the first one.</li>
+                            <li>This method removes the level with the specified name String from the Linked List of
+                                levels
+                            </li>
+                            <li>If multiple Levels exist with this name, it only removes the first one that appears in
+                                the list</li>
                         </ul>
                     </li>
                 </ul>
@@ -105,113 +125,169 @@
             <li><code>SampleTopDownGame</code> - Modifications
                 <ul>
                     <li>
-                        Now that the Linked List operations have been implemented, you will now make the following
-                        modifications to the given methods:
+                        With the Linked List operations the following modifications will be made to utilize the linked
+                        list:
                         <ul>
                             <li>
-                                Replace the body of the <code>advanceLevel</code> method to use the Linked List
-                                operations. When this method is called, it should advance the head of the Level
-                                list to the next node, then call <code>loadLevel</code> on the level contained
-                                at the (new) head of the Linked List.
-                                <ul><li>If the path is <code>null</code>, this method should do nothing.</li></ul>
+                                The <code>init</code> method will be modified to add the three given levels to the Linked List
+                                before the given <code>loadLevel</code> call. The resulting list should contain the
+                                levels returned by the methods <code>levelZero</code>, <code>levelOne</code>, and
+                                <code>levelTwo</code> in this order and call <code>loadLevel</code> on the first level
+                                in the list ("level0")
                             </li>
                             <li>
-                                Modify the <code>init</code> method to add the three given levels to the Linked List
-                                before the given <code>loadLevel</code> call.
+                                Replace the body of the <code>advanceLevel</code> method to use the Linked List
+                                of levels. When this method is called, call <code>this.loadLevel</code> on the
+                                next level in the list. To do this, fist find the current level in the list then get the
+                                level at the next node
+                                <ul>
+                                    <li>If the game is already on the last level, this method has no effect (ie. Do not
+                                        call <code>loadLevel</code> with an argument of <code>null</code>)</li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
-                    <li>With these changes, you should be able to play through the game as before.</li>
+                    <li>With these changes, you should be able to play through the 3 levels of the game as before.
+                        However, it will now be much easier to add more levels to the game and create new games with any
+                        number of levels without maintaining a giant if/else block</li>
                 </ul>
             </li>
-            <li><code>Enemy</code> - Path Operations
-                <ul>
-                    <li>
-                        You will now implement some path operations to the Enemy class.
+        </ul>
 
+        <p>
+            Now, will see another application of Linked Lists by adding movement to the enemies of our game. Your
+            code will compute paths for enemies to follow and set their velocity to travel these paths. With these
+            updates, the enemies will hunt the player.
+        </p>
 
-                        Once this is complete, Enemies will
-                        be able to create and follow paths in game, which will be represented by a LinkedListNode of
-                        Vector2D objects.
-                    </li>
-                    <li>
-                        Add a method called <code>setPath</code> that takes in a LinkedListNode of Vector2D objects.
-                        This method should set an instance variable representing the Enemy's path being followed.
-                    </li>
-                    <li>
-                        Add a method called <code>getPath</code> that returns a LinkedListNode of Vector2D objects.
-                        This method should return the instance variable representing the Enemy's path.
-                    </li>
-                </ul>
-            </li>
+        <ul>
             <li><code>Pathfinding</code> - <code>findPath</code> method
                 <ul>
+                    <li>
+                        Create a class named <code>Pathfinding</code> in the <code>app.gameengine.model.ai</code>
+                        package (You'll also have to create this <code>ai</code> package)
+                    </li>
                     <li>
                         In the <code>Pathfinding</code> class you created, write a <strong>static</strong> method
                         called <code>findPath</code> that takes in two Vector2D objects as parameters and returns a
                         LinkedListNode of Vector2Ds.
                     </li>
                     <li>
-                        This method should return the shortest valid path that takes it from the
+                        This method returns a shortest valid path that travels from the
                         <strong>tile containing</strong> the first Vector2D object to the
                         <strong>tile containing</strong> the location of the second Vector2D object.
                         <ul>
                             <li>
-                                A path is valid if each Vector2D object after the head of the list is one tile
-                                above, below, to the left, or to the right of the previous one AND if each Vector2D
-                                object in the list is aligned to a tile (i.e. no decimals).
+                                To compute the tile containing a vector, you can take the floor of each coordinate in
+                                the vector. Recall that locations for rectangles are the location of their upper-left
+                                corner
                                 <ul>
-                                    <li>[(3.0, 4.0), (3.0, 5.0), (4.0, 5.0)] is valid.</li>
-                                    <li>[(3.0, 4.0), (3.0, 5.0), (5.0, 5.0)] is not valid as the third Vector2D is two tiles right of the second.</li>
-                                    <li>[(3.0, 4.0), (4.0, 5.0), (4.0, 6.0)] is not valid as the second Vector2D is diagonal
-                                    to the first one.</li>
-                                    <li>[(3.1, 4.9), (3.1, 5.9), (4.1, 5.9)] is not valid as it is not aligned to a tile.</li>
+                                    <li>The vector (3.9, 4.6) is contained on the tile at location (3.0, 4.0)</li>
                                 </ul>
                             </li>
                             <li>
-                                This is NOT the same as starting from the location of the first Vector2D and
-                                ending at the location of the second Vector2D.
+                                A path is valid if each Vector2D object after the head of the list is one tile
+                                above, below, to the left, or to the right of the previous one AND if each Vector2D
+                                object in the list is aligned to a tile (i.e. no decimals). Considered the following
+                                paths attempting to travel from eg. (3.9, 4.6) to (5.2, 5.999)
+                                <ul>
+                                    <li>[(3.0, 4.0), (3.0, 5.0), (4.0, 5.0), (5.0, 5.0)] is valid.</li>
+                                    <li>[(3.0, 4.0), (3.0, 5.0), (5.0, 5.0)] is not valid as the third Vector2D is two
+                                        tiles right of the second.
+                                    </li>
+                                    <li>[(3.0, 4.0), (4.0, 5.0), (5.0, 5.0)] is not valid as the second Vector2D is
+                                        diagonal to the first one.
+                                    </li>
+                                    <li>[(3.9, 4.6), (3.1, 5.9), (4.6, 5.5), (5.2, 5.999)] is not valid as it is not aligned to a
+                                        tile.
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 You may find it helpful to review the overview of the coordinate system
                                 in the task 1 handout.
                             </li>
+                            <li>
+                                Note that there are many correct solutions for this method since there are multiple
+                                valid paths that all minimal length (unless the start and end share a coordinate). For
+                                example, traveling from (0.2, 0.5) to (1.8, 1.3) both [(0.0, 0.0), (0.0, 1.0), (1.0, 1.0)] and
+                                [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0)] are both correct solutions. When writing test cases, all
+                                valid paths must be treated as correct
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><code>Enemy</code> - Path Functionality
+            <li><code>Enemy</code> Movement - Path Operations
                 <ul>
                     <li>
-                        Finally, modify the given method <code>update</code> so that it has the following behavior:
+                        Once this is complete, Enemies will
+                        be able to create and follow paths in game, which will be represented by a LinkedListNode of
+                        Vector2D objects. Add these methods to the <code>app.games.topdownobjects.Enemy</code> class
+                    </li>
+                    <li>
+                        <code>setPath</code>: Takes a LinkedListNode of Vector2D objects and returns void.
+                        This method sets an instance variable (That you'll create) representing the Enemy's path that
+                        they'll follow
+                    </li>
+                    <li>
+                        <code>getPath</code>: Takes no parameters and returns a LinkedListNode of Vector2D objects.
+                        This method returns the instance variable representing the Enemy's path
+                    </li>
+                    <li>
+                        The initial value of your path instance variable can be <code>null</code>
+                    </li>
+
+                    <li>
+                        <code>update</code>: Takes a double and a Level and returns void. This method is called
+                                every frame (60 times per second) and the double represents the
+                        number of seconds that have passed since the last update which won't be used in this task. You
+                        will add functionality to this method so enemies will "hunt" the player:
                         <ul>
                             <li>
-                                Note: in each update call, only one of these three things can happen (e.g. an Enemy
-                                will not assign itself a path and start moving in the same call).
+                                Note: in each update call, only one of these three things can happen (eg. an Enemy
+                                will not assign itself a path and start moving in the same call)
+                            <ul>
+                            <li>
+                                <b>Compute a path</b>: If the Enemy's path LinkedListNode is <code>null</code>, use the <code>findPath</code>
+                                method
+                                from the <code>Pathfinding</code> class to generate a path from the Enemy's location to
+                                the Level's Player's
+                                location. You have access to the player through the level object parameter. This path
+                                will then be stored in your instance variable (The same one
+                                controlled by <code>setPath</code> and <code>getPath</code>)
                             </li>
                             <li>
-                                If the Enemy's path LinkedListNode is <code>null</code>, it should use the <code>findPath</code> method
-                                from the <code>Pathfinding</code> class to generate a path from the Enemy's location to the Level's Player's
-                                location. This path should then be assigned to the enemy.
-                            </li>
-                            <li>
-                                If the Enemy is within a small amount of the location at the path's head, the Enemy's
-                                position should be set to exactly that location. The head of the list should then be moved
-                                one node further in the list.
+                                <b>Advance to the next node in the path</b>: If the Enemy is directly on the tile
+                                 at the path's head, the Enemy's
+                                position is manually set to the location of the tile. The head of the list is then removed from the
+                                list so the enemy will travel to the next node
                                 <ul>
-                                    <li>This is necessary to prevent enemies from getting caught at the edge of a hitbox.</li>
+                                    <li>
+                                        An enemy is considered to be "directly on" a tile if its distance from the tile
+                                        is less than 0.01. Use Euclidean distance for this calculation (Square root of
+                                        the sum of the squares of differences in each dimension)
+                                    </li>
+                                    <li>This is necessary to prevent enemies from getting caught at the edge of a
+                                        hitbox
+                                    </li>
+                                    <li>
+                                        When this happens, do not also set the velocity on the same call of update
+                                    </li>
                                 </ul>
                             </li>
                             <li>
-                                Otherwise, the Enemy's velocity should be set to move towards the tile at the head of the
-                                Enemy's path.
+                                <b>Travel along the path</b>: If neither of the 2 previous conditions apply, the Enemy's
+                                velocity is set to move towards the tile at the head of the Enemy's path
                                 <ul>
-                                    <li>The Enemy's velocity should have a magnitude (speed) of <code>2.0</code>.</li>
-                                    <li>Since the Enemy can only move in four directions, only one component of
-                                        a moving Enemy's velocity will be non-zero at any point.</li>
-                                    <li>If the enemy is already at that tile, it should move the path's head node up one further in the list.</li>
+                                    <li>The Enemy's velocity must have a magnitude (speed) of <code>1.0</code></li>
+                                    <li>Since the Enemy can only move in four directions, only one component (x or y) of
+                                        a moving Enemy's velocity will be non-zero at any point. This means there are
+                                        only 4 possible values for the enemies velocity (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0), (0.0, -1.0)
+                                    </li>
                                 </ul>
                             </li>
+                            </ul>
                         </ul>
                     </li>
                 </ul>
@@ -238,19 +314,21 @@
         </p>
 
         <ul>
-            <li><code>compareListsOfLevels</code> - Write a method named compareListsOfLevels in the tests.TestDataStructures1 class that:
+            <li><code>compareListsOfLevels</code> - Write a method named compareListsOfLevels in the
+                tests.TestDataStructures1 class that:
                 <ul>
                     <li>
-                        Takes [references to] 2 LinkedListNode&lt;Level&gt; objects as parameters and  returns void
+                        Takes [references to] 2 LinkedListNode of Level objects as parameters and returns void
                     </li>
                     <li>
-                        This method checks if the names of all Levels in both lists are the same and are in the same order.
+                        This method checks if the names (Using <code>getName()</code>) of all Levels in both lists are the same and are in the same
+                        order.
                         The method fails a JUnit assert if the lists do not contain all the same names of their Level
                         objects in the same order
                     </li>
                     <li>
                         Note that you cannot use == or .equals to compare 2 Levels. You must specifically check the
-                        name values.
+                        name values
                     </li>
                 </ul>
             </li>
@@ -258,13 +336,15 @@
                 <code>validatePath</code> - Write a method named <code>validatePath</code> that:
                 <ul>
                     <li>
-                        takes in a LinkedListNode of Vector2D objects and returns void.
+                        Takes a LinkedListNode of Vector2D objects and returns void
                     </li>
                     <li>
-                        This method should fail a JUnit assert if the path from the parameter is invalid.
+                        This method fails a JUnit assert if the path from the parameter is invalid
                     </li>
                     <li>
-                        This should use the same criteria as the <code>findPath</code> method uses.
+                        This uses the same criteria as the <code>findPath</code> method uses to determine validity
+                        of a path. Note that you are not checking if the path travels between 2 specific tiles, just
+                        that it is a valid path between any 2 tiles
                     </li>
                 </ul>
             </li>
@@ -287,14 +367,22 @@
                 <code>SampleTopDownGame</code> class:
                 <ul>
                     <li><code>addLevel</code></li>
+                    <li><code>getLevelList</code></li>
                     <li><code>removeLevelByName</code></li>
                     <li><code>advanceLevel</code></li>
                     <li>
                         For these tests, you should call the TopDownLevel constructor whenever a Level object
-                        needs to be initialized.
+                        needs to be initialized
                     </li>
                     <li>
-                        Also, make sure your tests account for the behavior of the given SampleTopDownGame constructor.
+                        Also, make sure your tests account for the behavior of the given SampleTopDownGame constructor
+                        (ie. <code>init()</code> is called by the constructor so the initial level list should contain
+                        "level0", "level1", and "level2"
+                    </li>
+                    <li>
+                        You are only checking the name of the level and no other values. To create your expected lists
+                        you can call the <code>Level</code> constructor with any values for game, physicsEngine, width,
+                        and height as long as set the correct name for the level
                     </li>
                 </ul>
             </li>
@@ -302,6 +390,10 @@
                 <code>Pathfinding</code> class:
                 <ul>
                     <li><code>findPath</code></li>
+                    <li>
+                        Calling the <code>validatePath</code> testing utility method can make this much simpler to test.
+                        Don't forget to also check that the length of the returned path matches the shortest length
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -318,7 +410,7 @@
         <hr/>
 
         <p>
-            Implement the functionality from the specification.
+            Implement all the functionality from the specification.
         </p>
 
 
