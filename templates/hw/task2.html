@@ -84,7 +84,7 @@
                         for linked list level</span>. Then, add the following
                         methods in this class that will interact with your instance variable. This list should initially
                         be empty (Please use the provided
-                        <code>app.gameengine.model.datastructures.LinkedListNode</code> class for your linked list
+                        <code>app.gameengine.model.datastructures.LinkedListNode</code> class for your linked list)
                     </li>
                     <li>
                         <code>getLevelList</code>: Take no parameters and returns the head of the
@@ -138,7 +138,7 @@
                             <li>
                                 Replace the body of the <code>advanceLevel</code> method to use the Linked List
                                 of levels. When this method is called, call <code>this.loadLevel</code> on the
-                                next level in the list. To do this, fist find the current level in the list then get the
+                                next level in the list. To do this, first find the current level in the list then get the
                                 level at the next node
                                 <ul>
                                     <li>If the game is already on the last level, this method has no effect (ie. Do not
@@ -314,24 +314,6 @@
         </p>
 
         <ul>
-            <li><code>compareListsOfLevels</code> - Write a method named compareListsOfLevels in the
-                tests.TestDataStructures1 class that:
-                <ul>
-                    <li>
-                        Takes [references to] 2 LinkedListNode of Level objects as parameters and returns void
-                    </li>
-                    <li>
-                        This method checks if the names (Using <code>getName()</code>) of all Levels in both lists are the same and are in the same
-                        order.
-                        The method fails a JUnit assert if the lists do not contain all the same names of their Level
-                        objects in the same order
-                    </li>
-                    <li>
-                        Note that you cannot use == or .equals to compare 2 Levels. You must specifically check the
-                        name values
-                    </li>
-                </ul>
-            </li>
             <li>
                 <code>validatePath</code> - Write a method named <code>validatePath</code> that:
                 <ul>
@@ -363,29 +345,6 @@
         </p>
 
         <ul>
-            <li>
-                <code>SampleTopDownGame</code> class:
-                <ul>
-                    <li><code>addLevel</code></li>
-                    <li><code>getLevelList</code></li>
-                    <li><code>removeLevelByName</code></li>
-                    <li><code>advanceLevel</code></li>
-                    <li>
-                        For these tests, you should call the TopDownLevel constructor whenever a Level object
-                        needs to be initialized
-                    </li>
-                    <li>
-                        Also, make sure your tests account for the behavior of the given SampleTopDownGame constructor
-                        (ie. <code>init()</code> is called by the constructor so the initial level list should contain
-                        "level0", "level1", and "level2"
-                    </li>
-                    <li>
-                        You are only checking the name of the level and no other values. To create your expected lists
-                        you can call the <code>Level</code> constructor with any values for game, physicsEngine, width,
-                        and height as long as set the correct name for the level
-                    </li>
-                </ul>
-            </li>
             <li>
                 <code>Pathfinding</code> class:
                 <ul>
