@@ -324,9 +324,18 @@
                         This method fails a JUnit assert if the path from the parameter is invalid
                     </li>
                     <li>
-                        This uses the same criteria as the <code>findPath</code> method uses to determine validity
-                        of a path. Note that you are not checking if the path travels between 2 specific tiles, just
-                        that it is a valid path between any 2 tiles
+                        This uses the same criteria as the <code>findPath</code> method to determine validity
+                        of a path. This means that every pair of vectors in the path must be horizontally or vertically
+                        adjacent (no diagonals), and each vector must have x and y components that are whole numbers.
+                        Additionally, you must verify that the length of the path is correct given the start and end
+                        vectors of the path.
+                    </li>
+                    <li>
+                        Note that you are not checking if the path travels between 2 specific tiles, just that it is a 
+                        valid path between any 2 tiles.
+                    </li>
+                    <li>
+                        Consider an input path of null or an input path with only one vector to be valid.
                     </li>
                 </ul>
             </li>
