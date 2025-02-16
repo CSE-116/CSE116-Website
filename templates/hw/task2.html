@@ -327,8 +327,6 @@
                         This uses the same criteria as the <code>findPath</code> method to determine validity
                         of a path. This means that every pair of vectors in the path must be horizontally or vertically
                         adjacent (no diagonals), and each vector must have x and y components that are whole numbers.
-                        Additionally, you must verify that the length of the path is correct given the start and end
-                        vectors of the path.
                     </li>
                     <li>
                         Note that you are not checking if the path travels between 2 specific tiles, just that it is a 
@@ -350,14 +348,13 @@
 
         <p>
             Add test methods to the tests.TestTask2 class, using the @Test annotation, that tests the
-            following methods from the specification:
+            following method from the specification:
         </p>
 
         <ul>
             <li>
-                <code>Pathfinding</code> class:
+                Test the <code>findPath</code> method from the <code>Pathfinding</code> class
                 <ul>
-                    <li><code>findPath</code></li>
                     <li>
                         Calling the <code>validatePath</code> testing utility method can make this much simpler to test.
                         Don't forget to also check that the length of the returned path matches the shortest length
@@ -365,10 +362,6 @@
                 </ul>
             </li>
         </ul>
-        <p>
-            You should call your testing utility methods to save time while
-            writing these tests.
-        </p>
 
         <br/>
         <hr/>
@@ -393,12 +386,12 @@
         </p>
 
         <ol>
-            <li>Testing your testing utility methods
+            <li>Testing your testing utility method
                 <ul>
                     <li>
-                        Each of your testing utility methods will be checked with a variety of test cases to ensure that
-                        they make all the required checks. This phase will ensure that your utility methods are accurate
-                        before you start using them in your tests
+                        Your testing utility method will be checked with a variety of test cases to ensure that
+                        they make all the required checks. This phase will ensure that your utility method is accurate
+                        before you start using it in your tests
                     </li>
                 </ul>
             </li>
