@@ -118,6 +118,10 @@
                             </li>
                             <li>If multiple Levels exist with this name, it only removes the first one that appears in
                                 the list</li>
+                            <li>
+                                You can use the <code>getName</code> method within a level to get the name of that level
+                                as a String
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -141,6 +145,15 @@
                                 next level in the list. To do this, first find the current level in the list then get the
                                 level at the next node
                                 <ul>
+                                    <li>
+                                        You should use the <code>getCurrentLevel</code> method to access the current
+                                        level.
+                                    </li>
+                                    <li>
+                                        You can use the <code>getName</code> method within a level to get the name of
+                                        that level as a String
+                                    </li>
+                                    </li>
                                     <li>If the game is already on the last level, this method has no effect (ie. Do not
                                         call <code>loadLevel</code> with an argument of <code>null</code>)</li>
                                 </ul>
