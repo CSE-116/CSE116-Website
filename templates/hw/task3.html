@@ -141,11 +141,16 @@
                         and an int representing the amount to heal.
                         <ul>
                             <li>When you call the super constructor, give the Potion a max HP of 10.</li>
-                            <li>This should initialize <code>spriteSheetFilename</code> to "Ground/Cliff.png".</li>
-                            <li>If the amount to heal is non-negative, the defaultSpriteLocation should be a SpriteLocation at column 0, row 1
-                                (see the "Using the Graphics Engine" section of the handout).</li>
-                            <li>If the amount to heal is negative, the defaultSpriteLocation should be a SpriteLocation at column 1, row 1.
-                            This turns the potion into a poison.</li>
+                            <li>
+                                Graphics:
+                                <ul>
+                                    <li>You should initialize <code>spriteSheetFilename</code> to "User Interface/Icons-Essentials.png".</li>
+                                    <li>If the amount to heal is non-negative, the defaultSpriteLocation should be a SpriteLocation at column 0, row 1
+                                        (see the "Using the Graphics Engine" section of the handout).</li>
+                                    <li>If the amount to heal is negative, the defaultSpriteLocation should be a SpriteLocation at column 1, row 1.
+                                        This turns the potion into a poison.</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -308,7 +313,7 @@
             <li>
                 <code>PlatformerLevel</code> (<code>app.games.platformerobjects.PlatformerLevel</code>)
                 <ul>
-                    <li>Create a class called PlatformerLevel.</li>
+                    <li>Create a class called PlatformerLevel that extends Level.</li>
                     <li>
                         Override the wallOffBoundary method. This should have the exact same behavior as wallOffBoundary
                         in <code>app.gameengine.Level</code>, but with PlatformerWalls rather than Walls.
@@ -347,6 +352,14 @@
         </p>
 
         <ul>
+            <li>
+                <code>Game</code> (<code>app.gameengine.Game</code>)
+                <ul>
+                    <li>Move the Level functionality added in the previous task in SampleTopDownGame to the base game class.</li>
+                    <li>This will include the instance variable, addLevel, getLevelList, advanceLevel, and removeLevelByName.</li>
+                </ul>
+
+            </li>
             <li><code>PlatformerGame</code> (<code>app.games.PlatformerGame</code>)
                 <ul>
                     <li>Make a new class called PlatformerGame that extends the Game class.</li>
@@ -527,7 +540,7 @@
         </ol>
 
         <p>
-            Once you complete all 4 phases, you will have completed this Task and Autolab will confirm this
+            Once you complete all 3 phases, you will have completed this Task and Autolab will confirm this
             with a score of 1.0 for complete.
         </p>
     </div>
