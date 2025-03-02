@@ -3,9 +3,9 @@
 {% block title %}CSE116: Task 3{% endblock %}
 
 {% block header %}
-    <h1>Coding Task 3</h1>
+    <h1>Coding Task 3 - Inheritance</h1>
     <hr/>
-    <h5>Time Estimate:</h5>
+    <h5>Time Estimate: 10 hours</h5>
     <hr/>
 {% endblock %}
 
@@ -65,17 +65,15 @@
             this.defaultSpriteLocation = new SpriteLocation(3, 0);</code>
         </p>
 
-        <p>Any time anything you add needs a sprite, the handout will specify what the filename and location
-        should be to load a good sprite for the object.</p>
-
-        <h2><a href="/static_files/images/Textures-16.png">Task 3 Textures</a></h2>
-
         <p>
-            For this task's suggested sprites, you should save this image into the data directory of your project. Just
-            right click it and press "Save Image as...".
+            Any time anything you add needs a sprite, the handout will specify what the filename and location
+            should be to load a good sprite for the object. We will not test which sprites you use, so if you wish you 
+            may use different sprites. All of the suggested sprites already exist in the project, but the sprite sheet
+            linked below has some additional sprites that you may wish to use; if you choose to, you should save this
+            image into the data directory of your project, by right clicking and pressing "Save Image as..."
         </p>
 
-
+        <h2><a href="/static_files/images/Textures-16.png">Task 3 Textures</a></h2>
 
         <br/>
         <hr/>
@@ -86,7 +84,7 @@
 
         <ul>
             <li>
-                <code>Player</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.Player</code>)
+                <code>DynamicGameObject</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
                 <ul>
                     <li>
                         In game development, invincibility frames are a short period of time when players become immune to
@@ -95,30 +93,14 @@
                         implement invincibility frames for the players so that enemies can now deal the proper amount of damage.
                     </li>
                     <li>
-                        Add an instance variable of type double to the Player class representing the amount of time
-                        they are immune from damage. This should be initialized to 0.
+                        Add an instance variable of type double to the DynamicGameObject class representing the amount of time
+                        they are immune from damage. This should be initialized to 0. Add getters and setters called 
+                        <code>getInvincibilityFrames</code> and <code>setInvincibilityFrames</code>.
                     </li>
                     <li>
-                        Override the <code>takeDamage</code> method from the DynamicGameObject class. Your overridden method should first
-                        check if the player has more than 0 invincibility time left. If so, the method should do nothing. If
-                        the player doesn't have any invincibility time left, you should have the Player take damage as normal,
-                        then reset the amount of invincibility time left to 0.5.
-                        <ul>
-                            <li>
-                                If no damage is being done (i.e. damage is 0 or negative), don't modify the invincibility time.
-                            </li>
-                            <li>
-                                You can call the superclass' <code>takeDamage</code> method by calling <code>super.takeDamage</code>.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Override the <code>update()</code> method from the GameObject class. Your overridden method should begin
+                        Override the <code>update</code> method. Your overridden method should begin
                         with a call to the superclass' update method, then it should subtract the invincibility time
                         by the change in time (dt).
-                        <ul>
-                            <li>If the player already has 0 invincibility time left, it should be left as 0.</li>
-                        </ul>
                     </li>
                 </ul>
             </li>
@@ -128,9 +110,13 @@
                 <ul>
                     <li>
                         Modify the existing overridden <code>collideWithDynamicObject</code> method to deal
-                        damage to the player rather than destroying them.
+                        damage to the player rather than destroying them. The amount of damage dealt should be equal to the enemy's strength instance variable.
                     </li>
-                    <li>The amount of damage dealt should be equal to the enemy's strength instance variable.</li>
+                    <li>
+                        Your method should check if the player has more than 0 invincibility time left. If so, the
+                        method should do nothing. If the player doesn't have any invincibility time left, you should
+                        have the Player take damage as normal, then reset the amount of invincibility time to 0.5.
+                    </li>
                 </ul>
             </li>
 
@@ -141,11 +127,6 @@
             Now, you should be able to run into enemies and watch your health go down in the UI without instantly
             being reset to the beginning of the level.
         </p>
-
-        <ul>
-
-        </ul>
-
 
         <ul>
             <li>
@@ -173,7 +154,7 @@
                         <code>this.destroy()</code> to remove the Potion from the level.
                         <ul>
                             <li>
-                                If the potion is harming the Player, it must reset their invincibility time.
+                                This potion should not give invincibility frames to the player, even if it is dealing damage
                             </li>
                             <li>You can check if a DynamicGameObject is a player by calling the <code>isPlayer</code>
                             method on it.</li>
@@ -220,6 +201,7 @@
                             <li>Add the change in velocity from gravity to the DynamicGameObject's
                             y-velocity (note that change in velocity is equal to acceleration from gravity times the change in time)</li>
                             <li>Call the superclass' updateObject method and pass in the parameters.</li>
+                            <li>Keep in mind that the positive y direction is downward in this project</li>
                         </ul>
                     </li>
                 </ul>
@@ -236,15 +218,17 @@
                         PlatformerWall. These should be passed into the super constructor.
                         <ul>
                             <li>
-                                The suggested spriteSheetFilename for this class is "Textures-16.png", and the suggested
-                                defaultSpriteLocation is column 7, row 0.
+                                The suggested spriteSheetFilename for this class is "Ground/Cliff.png", and the suggested
+                                defaultSpriteLocation is column 4, row 0.
                             </li>
                         </ul>
                     </li>
                     <li>
                         Override the <code>collideWithDynamicObject</code> method to have the following behavior:
                         <ul>
-                            <li>Firstly, resolve the collision exactly as the base Wall class does.</li>
+                            <li>Firstly, resolve the collision exactly as the base Wall class does. You can do this by
+                                calling <code>super.collideWithDynamicObject</code>
+                            </li>
                             <li>
                                 If the DynamicGameObject is on top of the wall, set its y-velocity to 0 and use
                                 the <code>setOnGround</code> method to mark the object as being on the ground.
@@ -282,13 +266,13 @@
                         Override the <code>collideWithDynamicObject</code> method to have the following behavior:
                         <ul>
                             <li>
-                                If the DynamicGameObject is on top of the wall, set its y-position to be exactly one
-                                tile above the wall. Set its y-velocity to 0, and use the <code>setOnGround</code> method
-                                to mark the object as being on the ground. This uses the same logic as PlatformerWall.
+                                If the DynamicGameObject is on the ground, use the Wall class's collision logic
+                                and set the y velocity to 0
                             </li>
                             <li>
-                                Otherwise, if the DynamicGameObject is marked as being on the ground, resolve the collision
-                                exactly as the top-down Wall handles it.
+                                If the DynamicGameObject is higher than the Platform, and is moving downward (ie. y 
+                                velocity is positive), use the Wall class's collision logic, set the y velocity to 0,
+                                and use the <code>setOnGround</code> method to mark the object as being on the ground
                             </li>
                             <li>
                                 If none of these apply, don't do anything. The correct behavior of this method is that
@@ -300,22 +284,23 @@
                 </ul>
             </li>
             <li>
-                <code>LavaTile</code> (<code>app.games.platformerobjects.LavaTile</code>)
+                <code>Spike</code> (<code>app.games.platformerobjects.Spike</code>)
                 <ul>
                     <li>
                         Write a constructor that takes in two ints representing the x and y location of the
-                        LavaTile. These should be passed into the super constructor.
+                        Spike. These should be passed into the super constructor.
                         <ul>
                             <li>
-                                The suggested spriteSheetFilename for this class is "Textures-16.png", and the suggested
-                                defaultSpriteLocation is column 16, row 9.
+                                The suggested spriteSheetFilename for this class is "User Interface/UiIcons.png", and the suggested
+                                defaultSpriteLocation is column 2, row 10.
                             </li>
                         </ul>
                     </li>
                     <li>
                         Override the <code>collideWithDynamicObject</code> method to have the following behavior:
                         <ul>
-                            <li>If the colliding object is a Player, call the <code>destroy</code> method on it.</li>
+                            <li>If the colliding object is a Player, call the <code>destroy</code> method on it.
+                            Otherwise, do nothing</li>
                         </ul>
                     </li>
                 </ul>
@@ -333,7 +318,9 @@
                     <li>Create a constructor that takes in a Game, an int for width, an int for height, and a String
                     for name in this order. This constructor should:
                         <ul>
-                            <li>Call the super constructor with the Game, a PhysicsEngineWithGravity object, the width, the height, and the name in this order.</li>
+                            <li>Call the super constructor with the Game, a PhysicsEngineWithGravity object, the width, the height, and the name in this order.
+                                When creating the PhysicsEngineWithGravity object, use a gravity of 25
+                            </li>
                             <li>
                                 Assign the inherited instance variable <code>gameControls</code> with a new PlatformerMovement object.
                                 <ul>
@@ -362,7 +349,7 @@
         <ul>
             <li><code>PlatformerGame</code> (<code>app.games.PlatformerGame</code>)
                 <ul>
-                    <li>Make a new class called PlatformerGame that extends SampleTopDownGame.</li>
+                    <li>Make a new class called PlatformerGame that extends the Game class.</li>
                     <li>
                         Override the init method to add levels to the game. This can be done
                         using the inherited addLevel method.
@@ -413,21 +400,32 @@
 
         <ul>
             <li>
-                <code>Player</code>
+                <code>Enemy</code>
                 <ul>
-                    <li><code>takeDamage/update</code></li>
+                    <li>
+                        <code>collideWithDynamicObject</code>. You must verify that this method deals the correct damage
+                        to the player and applies invincibility frames correctly. It must also not deal damage or apply
+                        invincibility frames to objects that are not the player
+                    </li>
                 </ul>
             </li>
             <li>
                 <code>Potion</code>
                 <ul>
-                    <li><code>collideWithDynamicObject</code></li>
+                    <li>
+                        <code>collideWithDynamicObject</code>. You must verify that the potion heals/deals the correct
+                        amount of damage, and that it destroys itself after. You must also verify that it only does this
+                        to player objects
+                    </li>
                 </ul>
             </li>
             <li>
                 <code>PhysicsEngineWithGravity</code>
                 <ul>
-                    <li><code>updateObject</code></li>
+                    <li>
+                        <code>updateObject</code>. Verify that the velocity and location of the input object are
+                        correctly updated
+                    </li>
                 </ul>
             </li>
             <li>
@@ -441,14 +439,19 @@
             <li>
                 <code>Platform</code>
                 <ul>
-                    <li><code>collideWithDynamicObject</code></li> (you can also assume inherited Wall functionality
-                    works as expected here and do not need to test it).
+                    <li>
+                        <code>collideWithDynamicObject</code>. As with PlatformerWall, you can assume that the basic
+                        collision works as intended. You must test that the velocity and isOnGroudn are being set
+                        properly. You must also test that collision is only applied when it should be. That is, check
+                        that collision is not applied when the object is in the air
+                    </li>
                 </ul>
             </li>
             <li>
-                <code>LavaTile</code>
+                <code>Spike</code>
                 <ul>
-                    <li><code>collideWithDynamicObject</code>
+                    <li><code>collideWithDynamicObject</code>. Verify that the colliding object is destroyed if and only
+                        if it is a Player object
                         <ul>
                             <li>
                                 Note that you have access to the inherited <code>isDestroyed</code> method from the
