@@ -291,6 +291,7 @@
             <li>
                 <code>Spike</code> (<code>app.games.platformerobjects.Spike</code>)
                 <ul>
+                    <li>Create a class called Spike that extends Wall.</li>
                     <li>
                         Write a constructor that takes in two ints representing the x and y location of the
                         Spike. These should be passed into the super constructor.
@@ -330,15 +331,26 @@
                                 Assign the inherited instance variable <code>gameControls</code> with a new PlatformerMovement object.
                                 <ul>
                                     <li>
-                                        The PlatformerMovement is already written in the handout. You should pass in the game as the first parameter,
-                                        the default movement speed as the second parameter, and the default jump speed as the third.
+                                        The PlatformerMovement is already written in the handout. You should pass in the game as the first parameter and
+                                        the default movement speed as the second parameter
                                     </li>
                                     <li>
-                                        The default movement speed should be 5.0, and the default jump speed should be 14.0.
+                                        The default movement speed should be 5.0
                                     </li>
                                 </ul>
                             </li>
                             <li>Call the WallOffBoundary method.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Create a method called <code>jumpButtonPressed</code>. This method overrides the method of the same name
+                        from the Level class, and will be called whenever your character jumps in a PlatformerLevel
+                        <ul>
+                            <li>
+                                This method should check if the player is on the ground. If so, it should set the player's 
+                                y velocity to -14, and set the onGround flag to false. If the player is not on the ground, it
+                                should do nothing
+                            </li>
                         </ul>
                     </li>
                 </ul>
