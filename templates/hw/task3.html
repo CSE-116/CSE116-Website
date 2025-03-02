@@ -5,7 +5,7 @@
 {% block header %}
     <h1>Coding Task 3</h1>
     <hr/>
-    <h5>Time Estimate: 6 hours</h5>
+    <h5>Time Estimate:</h5>
     <hr/>
 {% endblock %}
 
@@ -29,102 +29,355 @@
             You will continue to add functionality to your existing project from the previous task. There is
             no new repository to clone.
         </p>
+        <hr/>
+
+        <h3>
+            Using the Graphics Engine
+        </h3>
+
+        <hr/>
+
+        <p>
+            Rather than completing the functionality of the game engine as was the focus of the previous tasks,
+            this task will mainly be focused on building new features. In order to do so, we'll need to tell the
+            game engine what sprites to load for the new objects. While you don't need to understand how the game
+            engine does this, we will briefly explain how to assign new sprites.
+        </p>
+
+        <p>
+            Everything in game that can have a sprite (e.g. GameObjects, DynamicGameObjects) has instance variables called
+            <code>spriteSheetFilename</code> and <code>defaultSpriteLocation</code>. In most
+            2D games, rather than storing each individual sprite as its own file, we store groups of sprites together in
+            a single file called a spritesheet, then tell the engine which sprite on the sheet to load.
+            <code>spriteSheetFilename</code> is a String that represents the filename containing the spritesheet
+            with the desired sprite in it. <code>defaultSpriteLocation</code> takes in a <code>SpriteLocation</code> object.
+            For the sake of this task, all you need to know about the <code>SpriteLocation</code> class is that it has
+            a constructor taking in the row and column the desired sprite is in the spritesheet (feel free to look through
+            the data directory to understand what these files look like).
+        </p>
+
+        <p>So, to add a sprite to an object, we just need to set values to these instance variables in the
+            constructor. For example, this is how the Wall class sets the sprites:</p>
+
+        <p>
+            <code>this.spriteSheetFilename = "Ground/Cliff.png";
+            <br/>
+            this.defaultSpriteLocation = new SpriteLocation(3, 0);</code>
+        </p>
+
+        <p>Any time anything you add needs a sprite, the handout will specify what the filename and location
+        should be to load a good sprite for the object.</p>
+
+        <h2><a href="/static_files/images/Textures-16.png">Task 3 Textures</a></h2>
+
+        <p>
+            For this task's suggested sprites, you should save this image into the data directory of your project. Just
+            right click it and press "Save Image as...".
+        </p>
+
+
 
         <br/>
         <hr/>
         <h3>Specification</h3>
         <hr/>
 
-        <p>In this task, you will test and implement the following specs.</p>
+        <p>In this task, you implement the following specs.</p>
 
+        <ul>
+            <li>
+                <code>Player</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.Player</code>)
+                <ul>
+                    <li>
+                        In game development, invincibility frames are a short period of time when players become immune to
+                        taking damage. They're used to prevent players from constantly taking damage every frame from the
+                        same source without having the opportunity to escape danger. In this part of the task, you will
+                        implement invincibility frames for the players so that enemies can now deal the proper amount of damage.
+                    </li>
+                    <li>
+                        Add an instance variable of type double to the Player class representing the amount of time
+                        they are immune from damage. This should be initialized to 0.
+                    </li>
+                    <li>
+                        Override the <code>takeDamage</code> method from the DynamicGameObject class. Your overridden method should first
+                        check if the player has more than 0 invincibility time left. If so, the method should do nothing. If
+                        the player doesn't have any invincibility time left, you should have the Player take damage as normal,
+                        then reset the amount of invincibility time left to 0.5.
+                        <ul>
+                            <li>
+                                If no damage is being done (i.e. damage is 0 or negative), don't modify the invincibility time.
+                            </li>
+                            <li>
+                                You can call the superclass' <code>takeDamage</code> method by calling <code>super.takeDamage</code>.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Override the <code>update()</code> method from the GameObject class. Your overridden method should begin
+                        with a call to the superclass' update method, then it should subtract the invincibility time
+                        by the change in time (dt).
+                        <ul>
+                            <li>If the player already has 0 invincibility time left, it should be left as 0.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <code>Enemy</code> - Dealing Damage (<code>app.games.topdownobjects.Enemy</code>)
+                <ul>
+                    <li>
+                        Modify the existing overridden <code>collideWithDynamicObject</code> method to deal
+                        damage to the player rather than destroying them.
+                    </li>
+                    <li>The amount of damage dealt should be equal to the enemy's strength instance variable.</li>
+                </ul>
+            </li>
+
+
+        </ul>
 
         <p>
-            Note: Use the provided ratings.datastructures.LinkedListNode class whenever a linked list [node] is needed. You do
-            not have to modify this class
-        </p>
-
-        <p>
-            ratings.Song - The following methods will be added to the Song class:
+            Now, you should be able to run into enemies and watch your health go down in the UI without instantly
+            being reset to the beginning of the level.
         </p>
 
         <ul>
-            <li>A method named <code>addRating</code> that takes a [reference to] an object of type Rating as a
-                parameter (The type of the input is Rating) and returns void
+
+        </ul>
+
+
+        <ul>
+            <li>
+                <code>Potion</code> (<code>app.games.commonobjects.Potion)</code>
                 <ul>
                     <li>
-                        This method will be called when a Reviewer rates this Song. All
-                        added Ratings will be stored in a Linked List Node as an instance variable
+                        In the <code>commonobjects</code> package, create a new class called Potion that
+                        extends DynamicGameObject.
                     </li>
                     <li>
-                        This method will append new ratings to the end of the linked list
+                        Create a constructor that takes in two parameters: a Vector2D representing location
+                        and an int representing the amount to heal.
+                        <ul>
+                            <li>When you call the super constructor, give the Potion a max HP of 10.</li>
+                            <li>This should initialize <code>spriteSheetFilename</code> to "Ground/Cliff.png".</li>
+                            <li>If the amount to heal is non-negative, the defaultSpriteLocation should be a SpriteLocation at column 0, row 1
+                                (see the "Using the Graphics Engine" section of the handout).</li>
+                            <li>If the amount to heal is negative, the defaultSpriteLocation should be a SpriteLocation at column 1, row 1.
+                            This turns the potion into a poison.</li>
+                        </ul>
                     </li>
-                    <li>Note: Since the Rating class checks for valid ratings, any added ratings can only have a rating
-                        value of 1, 2, 3, 4, 5, or -1</li>
+                    <li>
+                        Override the <code>collideWithDynamicObject</code> method. If the object being collided with
+                        is a Player, you should add the amount to heal (from the constructor) to the Player, then call
+                        <code>this.destroy()</code> to remove the Potion from the level.
+                        <ul>
+                            <li>
+                                If the potion is harming the Player, it must reset their invincibility time.
+                            </li>
+                            <li>You can check if a DynamicGameObject is a player by calling the <code>isPlayer</code>
+                            method on it.</li>
+                        </ul>
+                    </li>
+                    <li>To see your Potion in game, you can choose one of the methods creating a level (levelZero, levelOne, levelTwo) in the
+                        <code>SampleTopDownGame</code> class and add a new Potion object to the Level's DynamicGameObject ArrayList
+                        (follow the process the given code uses to add an Enemy to the level, but with a Potion constructor instead.)</li>
                 </ul>
             </li>
+        </ul>
 
+        <p>
+            The remainder of this task will be implementing a new physics engine. While the physics engine you wrote in
+            task 1 was designed for a top-down levels where you freely move around a 2D space, this new physics engine
+            will be designed for 2D platformer levels where your movement is constrained to moving left and right and
+            jumping.
+        </p>
 
-            <li>A method named <code>getRatings</code> that takes no parameters and returns a LinkedListNode of
-                Ratings
+        <ul>
+            <li>
+                <code>DynamicGameObject</code> - Platformer Preparation (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
                 <ul>
                     <li>
-                        This method returns the head node of a Linked List containing all Ratings that have been
-                        added to this Song
-                    </li>
-                    <li>
-                        The returned Linked List node must return the Ratings in the order in which they were added.
-                        For example, the first Rating that was added must be the first value in the list
-                    </li>
-                    <li>
-                        If no ratings have been added, this method will return null
+                        Add a method called <code>isOnGround</code> that takes no parameters and returns a boolean. Add a
+                        method called <code>setOnGround</code> that takes in a boolean and returns void. These should be
+                        the getter and setter for an instance variable representing if the DynamicGameObject is currently
+                        on the ground.
+                        <ul>
+                            <li>This instance variable should be initialized to false.</li>
+                        </ul>
                     </li>
                 </ul>
             </li>
-
-            <li>A method named <code>setRatings</code> that takes a LinkedListNode of Ratings and returns void
+            <li>
+                <code>PhysicsEngineWithGravity</code> (<code>app.gameengine.model.physics.PhysicsEngineWithGravity</code>)
                 <ul>
+                    <li>Create a new class called PhysicsEngineWithGravity in the app.gameengine.model.physics package that
+                    extends PhysicsEngine.</li>
+                    <li>Write a constructor that takes in a single double representing the acceleration from gravity.</li>
                     <li>
-                        This is a setter that replaces the stored linked list node of ratings (The instance variable)
-                        with the one provided as a parameter. This assignment is done by reference (ie. any prior
-                        ratings are replaced by the new list of ratings)
+                        Override the updateObject method to have the following behavior:
+                        <ul>
+                            <li>Add the change in velocity from gravity to the DynamicGameObject's
+                            y-velocity (note that change in velocity is equal to acceleration from gravity times the change in time)</li>
+                            <li>Call the superclass' updateObject method and pass in the parameters.</li>
+                        </ul>
                     </li>
                 </ul>
             </li>
-
-
-            <li>A method named <code>averageRating</code> that takes no parameters and returns a double
+            <li>
+                <code>PlatformerWall</code> (<code>app.games.platformerobjects.PlatformerWall</code>)
                 <ul>
                     <li>
-                        This method returns the average of all the Ratings of this Song
+                        Create a class called PlatformerWall (you will have to create the platformerobjects package)
+                        that extends Wall.
                     </li>
                     <li>
-                        If the list is empty, or only contains invalid ratings, the method returns 0.0
+                        Write a constructor that takes in two ints representing the x and y location of the
+                        PlatformerWall. These should be passed into the super constructor.
+                        <ul>
+                            <li>
+                                The suggested spriteSheetFilename for this class is "Textures-16.png", and the suggested
+                                defaultSpriteLocation is column 7, row 0.
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        Any invalid rating, ratings of -1, will be ignored during this calculation (eg. A Song with
-                        ratings [1, 5, -1, -1] has an average rating of 3.0)
+                        Override the <code>collideWithDynamicObject</code> method to have the following behavior:
+                        <ul>
+                            <li>Firstly, resolve the collision exactly as the base Wall class does.</li>
+                            <li>
+                                If the DynamicGameObject is on top of the wall, set its y-velocity to 0 and use
+                                the <code>setOnGround</code> method to mark the object as being on the ground.
+                                <ul>
+                                    <li>
+                                        A DynamicGameObject is considered to be on top of the wall if its y-location is above
+                                        the Wall's y-location and the object is partially overlapping in the x-dimension (i.e.
+                                        the object's left side or the object's right side is within the range of the Wall)
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Otherwise, if the DynamicGameObject's y-location is below or equal to the top of the wall
+                                and is partially overlapping in the x-dimension, set the object's y-velocity to 0.
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
-
-
-            <li>A method named <code>removeRatingByReviewer</code> that takes a Reviewer as a parameter and returns
-                void
+            <li>
+                <code>Platform</code> (<code>app.games.platformerobjects.Platform</code>)
+                <ul>
+                    <li>Create a class called Platform that extends Wall.</li>
+                    <li>
+                        Write a constructor that takes in two ints representing the x and y location of the
+                        Platform. These should be passed into the super constructor.
+                        <ul>
+                            <li>
+                                The suggested spriteSheetFilename for this class is "Ground/Cliff.png", and the suggested
+                                defaultSpriteLocation is column 5, row 5.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Override the <code>collideWithDynamicObject</code> method to have the following behavior:
+                        <ul>
+                            <li>
+                                If the DynamicGameObject is on top of the wall, set its y-position to be exactly one
+                                tile above the wall. Set its y-velocity to 0, and use the <code>setOnGround</code> method
+                                to mark the object as being on the ground. This uses the same logic as PlatformerWall.
+                            </li>
+                            <li>
+                                Otherwise, if the DynamicGameObject is marked as being on the ground, resolve the collision
+                                exactly as the top-down Wall handles it.
+                            </li>
+                            <li>
+                                If none of these apply, don't do anything. The correct behavior of this method is that
+                                DynamicGameObjects will be able to jump through the bottom of the floor but still walk
+                                and jump on top.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>LavaTile</code> (<code>app.games.platformerobjects.LavaTile</code>)
                 <ul>
                     <li>
-                        This method will remove a Rating made for this Song by the given Reviewer by id
+                        Write a constructor that takes in two ints representing the x and y location of the
+                        LavaTile. These should be passed into the super constructor.
+                        <ul>
+                            <li>
+                                The suggested spriteSheetFilename for this class is "Textures-16.png", and the suggested
+                                defaultSpriteLocation is column 16, row 9.
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        If the reviewer did not rate this song, this method has no effect
+                        Override the <code>collideWithDynamicObject</code> method to have the following behavior:
+                        <ul>
+                            <li>If the colliding object is a Player, call the <code>destroy</code> method on it.</li>
+                        </ul>
                     </li>
+                </ul>
+            </li>
+            <li>
+                <code>PlatformerLevel</code> (<code>app.games.platformerobjects.PlatformerLevel</code>)
+                <ul>
+                    <li>Create a class called PlatformerLevel.</li>
                     <li>
-                        If the linked list contains multiple ratings by the reviewer, the method only removes
-                        the first instance from the list (ie. the method does not have to handle removing
-                        multiple ratings in a single call)
+                        Override the wallOffBoundary method. This should have the exact same behavior as wallOffBoundary
+                        in <code>app.gameengine.Level</code>, but with PlatformerWalls rather than Walls.
+                    </li>
+
+
+                    <li>Create a constructor that takes in a Game, an int for width, an int for height, and a String
+                    for name in this order. This constructor should:
+                        <ul>
+                            <li>Call the super constructor with the Game, a PhysicsEngineWithGravity object, the width, the height, and the name in this order.</li>
+                            <li>
+                                Assign the inherited instance variable <code>gameControls</code> with a new PlatformerMovement object.
+                                <ul>
+                                    <li>
+                                        The PlatformerMovement is already written in the handout. You should pass in the game as the first parameter,
+                                        the default movement speed as the second parameter, and the default jump speed as the third.
+                                    </li>
+                                    <li>
+                                        The default movement speed should be 5.0, and the default jump speed should be 14.0.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Call the WallOffBoundary method.</li>
+                        </ul>
                     </li>
                 </ul>
             </li>
         </ul>
+
+        <p>
+            Finally, you will create a new Game subclass that will be used to play Levels using these new features.
+            You're welcome to create your own Levels, but we will also be providing Levels via the course
+            Piazza.
+        </p>
+
+        <ul>
+            <li><code>PlatformerGame</code> (<code>app.games.PlatformerGame</code>)
+                <ul>
+                    <li>Make a new class called PlatformerGame that extends SampleTopDownGame.</li>
+                    <li>
+                        Override the init method to add levels to the game. This can be done
+                        using the inherited addLevel method.
+                        <ul>
+                            <li>
+                                You have the freedom to add whatever levels you'd like to this game. The actual
+                                content of the Level list will not be considered except that it exists.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
 
 
         <p>
@@ -141,34 +394,9 @@
         <h3>Testing Utilities</h3>
         <hr/>
 
-
         <p>
-        Create a class named <code>TestDataStructures1</code> in the tests package (tests.TestDataStructures1) and write the
-            following utility method in that class (Note: Do not add the @Test annotation to this method since it is
-            not itself a test):
+        There is no testing utility for this task.
         </p>
-
-        <ul>
-            <li><code>compareListsOfRatings</code> - Write a method named compareListsOfRatings in the tests.TestDataStructures1 class that:
-                <ul>
-                    <li>
-                        Takes [references to] 2 LinkedListNode&lt;Rating&gt; objects as parameters and  returns void
-                    </li>
-                    <li>
-                        This method checks if the rating and reviewer id of all Ratings in both lists are
-                        exactly the same and are in the same order. The method fails a JUnit
-                        assert if the lists do not contain all the same values of their ratings objects in the same
-                        order
-                    </li>
-                    <li>
-                        Note that you cannot use == or .equals to compare 2 Ratings. You must check the rating and
-                        reviewer id values separately
-                    </li>
-                </ul>
-            </li>
-
-        </ul>
-
 
         <br/>
         <hr/>
@@ -176,18 +404,61 @@
             Testing Requirements
         </h3>
         <hr/>
-        <p>
-            Write tests in the tests.TestDataStructures1 class for the averageRating and removeRatingByReviewer methods.
-            You may assume that the addRating, getRatings, and setRatings methods behave as expected. All 5 methods
-            will still be tested in the next phase, so it can help if you
-            test all 5 even though it's not explicitly required.
-        </p>
-        <p>
-            It is highly recommended that you create your expected linked lists and call your compareListsOfRatings to
-            check if getRatings returns a list with all the same values as the expected list
-        </p>
 
+        <p>Create a class named <code>TestTask3</code> in the <code>tests</code> package.</p>
 
+        <p>Note: As with task 1, use Player objects in place of DynamicGameObjects where required.</p>
+
+        <p>You will write tests for the following functionality from the specification:</p>
+
+        <ul>
+            <li>
+                <code>Player</code>
+                <ul>
+                    <li><code>takeDamage/update</code></li>
+                </ul>
+            </li>
+            <li>
+                <code>Potion</code>
+                <ul>
+                    <li><code>collideWithDynamicObject</code></li>
+                </ul>
+            </li>
+            <li>
+                <code>PhysicsEngineWithGravity</code>
+                <ul>
+                    <li><code>updateObject</code></li>
+                </ul>
+            </li>
+            <li>
+                <code>PlatformerWall</code>
+                <ul>
+                    <li><code>collideWithDynamicObject</code>. You do not need to test that the position
+                    is being updated correctly (as you know the base Wall class is already functional). You
+                    only need to test that the velocity and isOnGround is getting set correctly.</li>
+                </ul>
+            </li>
+            <li>
+                <code>Platform</code>
+                <ul>
+                    <li><code>collideWithDynamicObject</code></li> (you can also assume inherited Wall functionality
+                    works as expected here and do not need to test it).
+                </ul>
+            </li>
+            <li>
+                <code>LavaTile</code>
+                <ul>
+                    <li><code>collideWithDynamicObject</code>
+                        <ul>
+                            <li>
+                                Note that you have access to the inherited <code>isDestroyed</code> method from the
+                                GameObject class.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
         <br/>
         <hr/>
@@ -197,10 +468,7 @@
         <hr/>
 
         <p>
-            Implement all 5 methods from the specification in your Song class.
-            As you're writing this code, you should run your tests to see how you are progressing. It's
-            recommended that you write your tests first, submit to Autolab to make sure you have good testing,
-            then use those verified tests to check your code.
+            Implement all the functionality from the specification.
         </p>
 
 
@@ -210,23 +478,11 @@
         <hr/>
 
         <p>
-            The feedback in Autolab will be given in 4 phases. If you don't complete a phase, then feedback for
+            The feedback in Autolab will be given in 3 phases. If you don't complete a phase, then feedback for
             the following phase(s) will not be provided.
         </p>
 
         <ol>
-            <li>Testing your testing utility method
-                <ul>
-                    <li>
-                        Your testing utility method will be checked with a variety of test cases to
-                        ensure
-                        that
-                        it makes all the required checks. This phase will ensure that your utility method is
-                        accurate
-                        before you start using it in your tests
-                    </li>
-                </ul>
-            </li>
             <li>Running your tests on a correct solution
                 <ul>
                     <li>Your tests will be run against a solution that is known to be correct. If your tests do
