@@ -460,71 +460,16 @@
 
         <p>Create a class named <code>TestTask3</code> in the <code>tests</code> package.</p>
 
-{#        <p>Note: As with task 1, use Player objects in place of DynamicGameObjects where required.</p>#}
 
         <p>You will write tests for the following functionality from the specification:</p>
 
         <ul>
-            <li>
-                <code>Enemy</code>
-                <ul>
-                    <li>
-                        <code>collideWithDynamicObject</code>. Verify that this method deals the correct damage
-                        to the player and applies invincibility frames correctly. It must also not deal damage or apply
-                        invincibility frames to objects that are not the player
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>Potion</code>
-                <ul>
-                    <li>
-                        <code>collideWithDynamicObject</code>. Verify that the potion heals/deals the correct
-                        amount of damage, and that it destroys itself after. You must also verify that it only does this
-                        to player objects
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>PhysicsEngineWithGravity</code>
-                <ul>
-                    <li>
-                        <code>updateObject</code>. Verify that the velocity and location of the input object are
-                        correctly updated
-                    </li>
-                </ul>
-            </li>
             <li>
                 <code>PlatformerWall</code>
                 <ul>
                     <li><code>collideWithDynamicObject</code>. You do not need to test that the position
                         is being updated correctly (as you know the base Wall class is already functional). You
                         only need to test that the velocity and isOnGround is getting set correctly.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>Platform</code>
-                <ul>
-                    <li>
-                        <code>collideWithDynamicObject</code>. As with PlatformerWall, you can assume that the basic
-                        collision works as intended. You must test that the velocity and isOnGround are being set
-                        properly. You must also test that collision is only applied when it should be. That is, check
-                        that collision is not applied when the object is in the air
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>Spike</code>
-                <ul>
-                    <li><code>collideWithDynamicObject</code>. Verify that the colliding object is destroyed if and only
-                        if it is a Player object
-                        <ul>
-                            <li>
-                                Note that you have access to the inherited <code>isDestroyed</code> method from the
-                                GameObject class.
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </li>
