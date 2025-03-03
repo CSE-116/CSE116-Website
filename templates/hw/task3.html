@@ -5,7 +5,7 @@
 {% block header %}
     <h1>Coding Task 3 - Inheritance</h1>
     <hr/>
-    <h5>Time Estimate: 12 hours</h5>
+    <h5>Time Estimate: 9 hours</h5>
     <hr/>
 {% endblock %}
 
@@ -32,27 +32,30 @@
         <hr/>
 
         <h3>
-            Using the Graphics Engine
+            Using the Graphics Engine - Sprites
         </h3>
 
         <hr/>
 
         <p>
-            Rather than completing the functionality of the game engine as was the focus of the previous tasks,
+            Rather than completing functionality of the game engine as was the focus of the previous tasks,
             this task will mainly be focused on building new features. In order to do so, we'll need to tell the
             game engine what sprites to load for the new objects. While you don't need to understand how the game
             engine does this, we will briefly explain how to assign new sprites.
         </p>
 
         <p>
-            Everything in game that can have a sprite (e.g. GameObjects, DynamicGameObjects) has instance variables called
+            Everything in game that can have a sprite (e.g. GameObjects, DynamicGameObjects) has instance variables
+            called
             <code>spriteSheetFilename</code> and <code>defaultSpriteLocation</code>. In most
             2D games, rather than storing each individual sprite as its own file, we store groups of sprites together in
             a single file called a spritesheet, then tell the engine which sprite on the sheet to load.
             <code>spriteSheetFilename</code> is a String that represents the filename containing the spritesheet
-            with the desired sprite in it. <code>defaultSpriteLocation</code> takes in a <code>SpriteLocation</code> object.
+            with the desired sprite in it. <code>defaultSpriteLocation</code> takes in a <code>SpriteLocation</code>
+            object.
             For the sake of this task, all you need to know about the <code>SpriteLocation</code> class is that it has
-            a constructor taking in the row and column of the desired sprite in the spritesheet (feel free to look through
+            a constructor taking in the row and column of the desired sprite in the spritesheet (feel free to look
+            through
             the data directory to understand what these files look like).
         </p>
 
@@ -61,46 +64,81 @@
 
         <p>
             <code>this.spriteSheetFilename = "Ground/Cliff.png";
-            <br/>
-            this.defaultSpriteLocation = new SpriteLocation(3, 0);</code>
+                <br/>
+                this.defaultSpriteLocation = new SpriteLocation(3, 0);</code>
         </p>
 
         <p>
             Any time anything you add needs a sprite, the handout will specify what the filename and location
-            should be to load a good sprite for the object. We will not test which sprites you use, so if you wish you 
+            should be to load a good sprite for the object. We will not test which sprites you use, so if you wish you
             may use different sprites. All of the suggested sprites already exist in the project, but the sprite sheet
             linked below has some additional sprites that you may wish to use; if you choose to, you should save this
             image into the data directory of your project, by right clicking and pressing "Save Image as..."
         </p>
 
-        <h2><a href="/static_files/images/Textures-16.png">Task 3 Textures</a></h2>
+        <h5><a href="/static_files/images/Textures-16.png">Task 3 Textures</a></h5>
 
+        <p>
+            You may also want to visit the link in the "data/sprites.txt" file to find the source of all sprites used in
+            this project and download any sprites that interest you.
+        </p>
         <br/>
         <hr/>
         <h3>Specification</h3>
         <hr/>
 
-        <p>In this task, you implement the following specs.</p>
+        <p>
+            In this task, you will implement the following specs. Once all of these are complete, you will have created
+            a platformer game using the same game engine we built for the top-down game. In this new game, your
+            character will be able to jump around a level with a side-view while avoiding spikes.
+        </p>
+
+        <p>
+            While implementing the functionality in this task, you will use much of the existing inheritance structure
+            of the project. You should take some time to look through the code and explore all the inheritance usage
+            to give more context for the new classes/methods you'll create.
+        </p>
 
         <ul>
             <li>
                 <code>DynamicGameObject</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
                 <ul>
                     <li>
-                        In game development, invincibility frames are a short period of time when players become immune to
-                        taking damage. They're used to prevent players from constantly taking damage every frame from the
+                        In game development, invincibility frames are a short period of time when players become immune
+                        to
+                        taking damage. They're used to prevent players from constantly taking damage every frame from
+                        the
                         same source without having the opportunity to escape danger. In this part of the task, you will
-                        implement invincibility frames for the players so that enemies can now deal the proper amount of damage.
+                        implement invincibility frames for the players so that enemies can now deal the proper amount of
+                        damage
                     </li>
                     <li>
-                        Add an instance variable of type double to the DynamicGameObject class representing the amount of time
-                        they are immune from damage. This should be initialized to 0. Add getters and setters called 
-                        <code>getInvincibilityFrames</code> and <code>setInvincibilityFrames</code>.
+                        Add an instance variable of type double to the DynamicGameObject class representing the amount
+                        of time
+                        they are immune from damage. This should be initialized to 0.0 (As a double representing the
+                        number of seconds of invincibility remaining). Add getters and setters called
+                        <code>getInvincibilityFrames</code> and <code>setInvincibilityFrames</code>
                     </li>
                     <li>
-                        Override the <code>update</code> method. Your overridden method should begin
-                        with a call to the superclass' update method, then it should subtract the invincibility time
-                        by the change in time (dt).
+                        Override the <code>update</code> method that was inherited from the GameObject class.
+                        <ul>
+                            <li>Your
+                                overridden method should begin
+                                with a call to the superclass' update method since we still want the functionality of
+                                the super
+                                class
+                            </li>
+                            <li>This method should then subtract the invincibility time
+                                by the change in time (dt), where dt is the number of seconds elapsed since the last
+                                time update
+                                was called. Note that the game runs at 60 fps (frames per second) so dt should be about
+                                0.0167
+                                seconds when it's called during gameplay. This number can be different during testing
+                            </li>
+                            <li>This
+                                method should then check if the objects hp is 0 or less. If it, call its destroy method
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
@@ -110,12 +148,14 @@
                 <ul>
                     <li>
                         Modify the existing overridden <code>collideWithDynamicObject</code> method to deal
-                        damage to the player rather than destroying them. The amount of damage dealt should be equal to the enemy's strength instance variable.
+                        damage to the player rather than destroying them. The amount of damage dealt (By calling the
+                        takeDamage method) should be equal to
+                        the enemy's strength instance variable
                     </li>
                     <li>
                         Your method should check if the player has more than 0 invincibility time left. If so, the
                         method should do nothing. If the player doesn't have any invincibility time left, you should
-                        have the Player take damage as normal, then reset the amount of invincibility time to 0.5.
+                        have the Player take damage as normal, then reset the amount of invincibility time to 0.5
                     </li>
                 </ul>
             </li>
@@ -138,36 +178,56 @@
                     </li>
                     <li>
                         Create a constructor that takes in two parameters: a Vector2D representing location
-                        and an int representing the amount to heal, which should be stored as an instance variable.
+                        and an int representing the amount to heal, which should be stored as an instance variable
                         <ul>
                             <li>When you call the super constructor, give the Potion a max HP of 10.</li>
                             <li>
-                                Graphics (See "Using the Graphics Engine" for more detail.):
+                                Graphics (See "Using the Graphics Engine" for more detail):
                                 <ul>
-                                    <li>You should initialize <code>spriteSheetFilename</code> to "User Interface/Icons-Essentials.png".</li>
-                                    <li>If the amount to heal is non-negative, the defaultSpriteLocation should be a SpriteLocation at column 0, row 1
-                                        (see the "Using the Graphics Engine" section of the handout).</li>
-                                    <li>If the amount to heal is negative, the defaultSpriteLocation should be a SpriteLocation at column 1, row 1.
-                                        This turns the potion into a poison.</li>
+                                    <li>You should initialize <code>spriteSheetFilename</code> to "User
+                                        Interface/Icons-Essentials.png"
+                                    </li>
+                                    <li>If the amount to heal is non-negative (This includes 0), the <code>defaultSpriteLocation</code>
+                                        should be a
+                                        SpriteLocation at column 0, row 1
+                                        (see the "Using the Graphics Engine" section of the handout)
+                                    </li>
+                                    <li>If the amount to heal is negative, the <code>defaultSpriteLocation</code> should
+                                        be a SpriteLocation at column 1, row 1.
+                                        This turns the potion into a poison
+                                    </li>
+                                    <li>
+                                        Note: Both <code>spriteSheetFilename</code> and
+                                        <code>defaultSpriteLocation</code>
+                                        are protected variables meaning you can access them using <code>this.</code>
+                                        even though they are not defined in this class
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
                     <li>
                         Override the <code>collideWithDynamicObject</code> method. If the object being collided with
-                        is a Player, you should add the amount to heal (from the constructor) to the Player's HP, then call
-                        <code>this.destroy()</code> to remove the Potion from the level.
+                        is a Player, you should add the amount to heal (from the constructor) to the Player's HP, then
+                        call
+                        <code>this.destroy()</code> to remove the Potion from the level. If the other object is not a
+                        Player, this method does nothing
                         <ul>
                             <li>
-                                This potion should not give invincibility frames to the player, even if it is dealing damage
+                                This potion should not give invincibility frames to the player, even if it is dealing
+                                damage
                             </li>
                             <li>You can check if a DynamicGameObject is a player by calling the <code>isPlayer</code>
-                            method on it.</li>
+                                method on it.
+                            </li>
                         </ul>
                     </li>
-                    <li>Optional: To see your Potion in game, you can choose one of the methods creating a level (levelZero, levelOne, levelTwo) in the
-                        <code>SampleTopDownGame</code> class and add a new Potion object to the Level's DynamicGameObject ArrayList
-                        (follow the process the given code uses to add an Enemy to the level, but with a Potion constructor instead.)
+                    <li>Optional: To see your Potion in game, you can choose one of the methods creating a level
+                        (levelZero, levelOne, levelTwo) in the
+                        <code>SampleTopDownGame</code> class and add a new Potion object to the Level's
+                        DynamicGameObject ArrayList
+                        (follow the process the given code uses to add an Enemy to the level, but with a Potion
+                        constructor instead.)
                     </li>
                 </ul>
             </li>
@@ -175,8 +235,8 @@
 
         <p>
             The remainder of this task will be implementing a new physics engine. While the physics engine you wrote in
-            task 1 was designed for a top-down levels where you freely move around a 2D space, this new physics engine
-            will be designed for 2D platformer levels where your movement is constrained to moving left and right and
+            task 1 was designed for top-down levels where you freely move around a 2D space, this new physics engine
+            will be designed for 2D platformer levels where your movement is constrained to moving left, right, and
             jumping.
         </p>
 
@@ -185,30 +245,51 @@
                 <code>DynamicGameObject</code> - Platformer Preparation (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
                 <ul>
                     <li>
-                        Add an instance variable of type boolean representing if the given DynamicGameObject is on the ground.
-                        This should be initialized to <code>false</code>.
+                        Add an instance variable of type boolean representing if the given DynamicGameObject is on the
+                        ground.
+                        This should be initialized to <code>false</code>
                     </li>
                     <li>
-                        Add a method called <code>isOnGround</code> that takes no parameters and returns a boolean. Add a
+                        Add a method called <code>isOnGround</code> that takes no parameters and returns a boolean. Add
+                        a
                         method called <code>setOnGround</code> that takes in a boolean and returns void. These should be
-                        the getter and setter for the previously described instance variable.
+                        the getter and setter for the previously described instance variable
                     </li>
                 </ul>
             </li>
             <li>
-                <code>PhysicsEngineWithGravity</code> (<code>app.gameengine.model.physics.PhysicsEngineWithGravity</code>)
+                <code>PhysicsEngineWithGravity</code>
+                (<code>app.gameengine.model.physics.PhysicsEngineWithGravity</code>)
                 <ul>
-                    <li>Create a new class called PhysicsEngineWithGravity in the app.gameengine.model.physics package that
-                    extends PhysicsEngine.</li>
-                    <li>Write a constructor that takes in a single double representing the acceleration from gravity.</li>
+                    <li>Create a new class called PhysicsEngineWithGravity in the app.gameengine.model.physics package
+                        that extends PhysicsEngine. We'll see the power of inheritance where we will only have to add
+                        gravity while reusing all of your code from PhysicsEngine to still handle collisions and
+                        movement. This will allow us to make games that have gravity applied to dynamic objects
+                    </li>
+                    <li>Write a constructor that takes in a single double representing the acceleration from gravity
+                    </li>
                     <li>
                         Override the updateObject method to have the following behavior:
                         <ul>
                             <li>Add the change in velocity from gravity to the DynamicGameObject's
-                            y-velocity (note that change in velocity is equal to acceleration from gravity times the change in time)</li>
-                            <li>Call the superclass' updateObject method and pass in the parameters.</li>
-                            <li>Keep in mind that the positive y direction is downward in this project</li>
+                                y-velocity (note that change in velocity is equal to acceleration from gravity times the
+                                change in time). This will decrease the objects y-velocity on every frame. Since the
+                                game runs at 60 fps, this linear change every frame will appear as a parabola when
+                                playing the game
+                            </li>
+                            <li>Call the super class' updateObject method and pass in the parameters. Be sure to call
+                                this after applying gravity or the movement will be a little jenky
+                            </li>
+                            <li>Keep in mind that the positive y direction is downward in the world of computers. The
+                                acceleration from gravity is directionless (only magnitude) so it will always be
+                                positive (Yes this annoys physicists, but Earths gravity would be positive 9.81 [with no
+                                units] in our game)
+                            </li>
                         </ul>
+                    </li>
+                    <li>
+                        And that's it. By leveraging inheritance, you should have just created gravity with about 20
+                        lines of code (including package and imports). You have the power of a god!
                     </li>
                 </ul>
             </li>
@@ -216,15 +297,17 @@
                 <code>PlatformerWall</code> (<code>app.games.platformerobjects.PlatformerWall</code>)
                 <ul>
                     <li>
-                        Create a class called PlatformerWall (you will have to create the platformerobjects package)
-                        that extends Wall.
+                        Create the <code>app.games.platformerobjects</code> package and add a class named
+                        <code>PlatformerWall</code> in it
+                        that extends <code>Wall</code>
                     </li>
                     <li>
                         Write a constructor that takes in two ints representing the x and y location of the
-                        PlatformerWall. These should be passed into the super constructor.
+                        <code>PlatformerWall</code>. These should be passed into the super constructor.
                         <ul>
                             <li>
-                                The suggested spriteSheetFilename for this class is "Ground/Cliff.png", and the suggested
+                                The suggested spriteSheetFilename for this class is "Ground/Cliff.png", and the
+                                suggested
                                 defaultSpriteLocation is column 4, row 0.
                             </li>
                         </ul>
@@ -236,25 +319,43 @@
                                 calling <code>super.collideWithDynamicObject</code>
                             </li>
                             <li>
-                                Since we have to consider the cases where the object lands on top or bumps on the bottom,
+                                Since we have to consider the cases where the object lands on top or bumps on the
+                                bottom,
                                 add the following logic after resolving the collision:
                                 <ul>
                                     <li>
                                         If the DynamicGameObject is overlapping in the x-dimension with the Wall, set
-                                        the y-velocity to 0. This makes it so the object stops falling when it lands on top
+                                        the y-velocity to 0.0. This makes it so the object stops falling when it lands on
+                                        top
                                         of the wall or start falling if it hits the bottom.
                                         <ul>
                                             <li>
-                                                When determining if the overlap is occurring, you should not include the edges (if the
-                                                object's left == the wall's right or the object's right == the wall's left, it's not
+                                                When determining if the overlap is occurring, you should not include the
+                                                edges (if the
+                                                object's left == the wall's right or the object's right == the wall's
+                                                left, it's not
                                                 overlapping)
                                             </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        Additionally, if that condition occurs and the object is above the wall (the case
-                                        where it lands on top), you should also mark that the object is on the ground using
+                                        Additionally, if that condition occurs and the object is above the wall (the
+                                        case
+                                        where it lands on top), you should also mark that the object is on the ground
+                                        using
                                         the previously written setter.
+                                    </li>
+                                    <li>
+                                        Note that we are using what we know about the objects in this method. Since the
+                                        method was called, we know that these objects collided. Since we called the
+                                        Wall's collideWithDynamicObject method (That you wrote in task 1), we know that
+                                        they are no longer colliding. After this, if they still overlap in the x
+                                        direction we know that the Wall's method moved the dynamic object either up or
+                                        down (It resolved the collision by removing the y overlap). This means we either
+                                        landed on the top of the wall, or hit our head on the ceiling. In either case,
+                                        our y velocity should be set to 0. When landing, we want to report to the object
+                                        that it is now standing on ground which we will use later to know that we're
+                                        allowed to jump
                                     </li>
                                 </ul>
 
@@ -266,13 +367,14 @@
             <li>
                 <code>Platform</code> (<code>app.games.platformerobjects.Platform</code>)
                 <ul>
-                    <li>Create a class called Platform that extends Wall.</li>
+                    <li>Create a class called Platform that extends StaticGameObject</li>
                     <li>
                         Write a constructor that takes in two ints representing the x and y location of the
                         Platform. These should be passed into the super constructor.
                         <ul>
                             <li>
-                                The suggested spriteSheetFilename for this class is "Ground/Cliff.png", and the suggested
+                                The suggested spriteSheetFilename for this class is "Ground/Cliff.png", and the
+                                suggested
                                 defaultSpriteLocation is column 5, row 5.
                             </li>
                         </ul>
@@ -281,18 +383,21 @@
                         Override the <code>collideWithDynamicObject</code> method to have the following behavior:
                         <ul>
                             <li>
-                                If the DynamicGameObject is on the ground, use the Wall class's collision logic
-                                and set the y velocity to 0
-                            </li>
-                            <li>
-                                If the DynamicGameObject is higher than the Platform and is moving downward (ie. y 
-                                velocity is positive), use the Wall class's collision logic, set the y velocity to 0,
+                                Landing on the platform: Use logic similar to what you did for Wall collisions to detect if the
+                                DynamicGameObject is higher than the Platform and is moving downward (ie. y
+                                velocity is positive). If this is the case, set the y velocity to 0.0, move the objects
+                                y location to the top of the platform,
                                 and use the <code>setOnGround</code> method to mark the object as being on the ground
                             </li>
+{#                            <li>#}
+{#                                If the DynamicGameObject is on the ground, use similar logic as the Wall class collision logic#}
+{#                                and set the y velocity to 0.0#}
+{#                            </li>#}
                             <li>
-                                If none of these apply, don't do anything. The correct behavior of this method is that
-                                DynamicGameObjects will be able to jump through the bottom of the floor but still walk
-                                and jump on top.
+                                In any case other than landing on the platform, don't do anything. The correct behavior
+                                of this method is that
+                                DynamicGameObjects will be able to jump through the bottom and sides of the platform,
+                                but still walk and jump on top.
                             </li>
                         </ul>
                     </li>
@@ -301,14 +406,15 @@
             <li>
                 <code>Spike</code> (<code>app.games.platformerobjects.Spike</code>)
                 <ul>
-                    <li>Create a class called Spike that extends Wall.</li>
+                    <li>Create a class called Spike that extends StaticGameObject</li>
                     <li>
                         Write a constructor that takes in two ints representing the x and y location of the
-                        Spike. These should be passed into the super constructor.
+                        Spike. These should be passed into the super constructor
                         <ul>
                             <li>
-                                The suggested spriteSheetFilename for this class is "User Interface/UiIcons.png", and the suggested
-                                defaultSpriteLocation is column 2, row 10.
+                                The suggested spriteSheetFilename for this class is "User Interface/UiIcons.png", and
+                                the suggested
+                                defaultSpriteLocation is column 2, row 10
                             </li>
                         </ul>
                     </li>
@@ -316,8 +422,13 @@
                         Override the <code>collideWithDynamicObject</code> method to have the following behavior:
                         <ul>
                             <li>If the colliding object is a Player, call the <code>destroy</code> method on it.
-                            Otherwise, do nothing</li>
+                                Otherwise, do nothing
+                            </li>
                         </ul>
+                    </li>
+                    <li>
+                        This class does not change any velocity or location of the other object. Since it's being
+                        destroyed, we don't care about how it's moving
                     </li>
                 </ul>
             </li>
@@ -332,16 +443,19 @@
 
 
                     <li>Create a constructor that takes in a Game, an int for width, an int for height, and a String
-                    for name in this order. This constructor should:
+                        for name in this order. This constructor should:
                         <ul>
-                            <li>Call the super constructor with the Game, a PhysicsEngineWithGravity object, the width, the height, and the name in this order.
+                            <li>Call the super constructor with the Game, a PhysicsEngineWithGravity object, the width,
+                                the height, and the name in this order.
                                 When creating the PhysicsEngineWithGravity object, use a gravity of 25
                             </li>
                             <li>
-                                Assign the inherited instance variable <code>gameControls</code> with a new PlatformerMovement object.
+                                Assign the inherited instance variable <code>gameControls</code> with a new
+                                PlatformerMovement object.
                                 <ul>
                                     <li>
-                                        The PlatformerMovement is already written in the handout. You should pass in the game as the first parameter and
+                                        The PlatformerMovement is already written in the handout. You should pass in the
+                                        game as the first parameter and
                                         the default movement speed as the second parameter
                                     </li>
                                     <li>
@@ -353,12 +467,15 @@
                         </ul>
                     </li>
                     <li>
-                        Create a method called <code>jumpButtonPressed</code>. This method overrides the method of the same name
-                        from the Level class, and will be called whenever your character jumps in a PlatformerLevel
+                        Override the inherited <code>jumpButtonPressed</code> method
+                        from the Level class. This will be called whenever your character jumps (press up or w) in a
+                        PlatformerLevel
                         <ul>
                             <li>
-                                This method should check if the player is on the ground. If so, it should set the player's 
-                                y velocity to -14, and set the onGround flag to false. If the player is not on the ground, it
+                                This method should check if the player is on the ground. If so, it should set the
+                                player's
+                                y velocity to -14.0, and set the onGround flag to false. If the player is not on the
+                                ground, it
                                 should do nothing
                             </li>
                         </ul>
@@ -377,10 +494,17 @@
             <li>
                 <code>Game</code> (<code>app.gameengine.Game</code>)
                 <ul>
-                    <li>Move the Level functionality added in the previous task in SampleTopDownGame to the base game class.</li>
-                    <li>This will include the instance variable, addLevel, getLevelList, advanceLevel, and removeLevelByName.</li>
+                    <li>Move the Level functionality added in the previous task in SampleTopDownGame to the base game
+                        class
+                    </li>
+                    <li>This will include the instance variable, addLevel, getLevelList, setLevelList, advanceLevel, and
+                        removeLevelByName (And remove the existing advanceLevel stubbed method). Make your instance
+                        variable protected if you use in the init method in SampleTopDownGame. Remove the init() call
+                        from the SampleTopDownGame constructor since it will be called by the super constructor
+                    </li>
                     <li>Add a method that returns void and takes no parameters called <code>init</code>. This method
-                    should do nothing and only exists to be inherited and overridden</li>
+                        should do nothing and only exists to be inherited and overridden
+                    </li>
                     <li>Modify the Game constructor to call the <code>init</code> method</li>
                 </ul>
 
@@ -389,14 +513,19 @@
                 <ul>
                     <li>Make a new class called PlatformerGame that extends the Game class.</li>
                     <li>
-                        Override the init method to add levels to the game. This can be done
-                        using the inherited addLevel method.
+                        Override the init method to add levels to the game and load your first level. This can be done
+                        using the inherited addLevel method
                         <ul>
                             <li>
                                 You have the freedom to add whatever levels you'd like to this game. The actual
-                                content of the Level list will not be considered except that it exists.
+                                content of the Level list will not be considered except that it exists
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        Note that if you don't write any constructor, you will still get the correct behavior since we
+                        only need the default constructor (no params, empty body). We could also remove the
+                        SampleTopDownGame constructor and still play it normally
                     </li>
                 </ul>
             </li>
@@ -405,16 +534,17 @@
         <p>
             To actually play your game, update the switch statement in <code>GameFactory</code> (in the
             <code>app.games</code> package) to have a case for "platformer game". In this case, it should assign game
-            to a new PlatformerGame object, then break. You can then replace the game String in <code>Configuration</code>
+            to a new PlatformerGame object, then break. You can then replace the game String in
+            <code>Configuration</code>
             in the <code>app</code> package with "platformer game". After that, running StartGame will load up your new
             game.
         </p>
 
 
         <p>
-            Note: You can see feedback in Autolab for your testing utilities and tests without completing the
+            Note: You can see feedback in Autolab for your tests without completing the
             programming portion of
-            this task, but you must at least create every method from this specification. You can "stub
+            this task, but you must at least create every clas/method from this specification. You can "stub
             out"
             these methods by having them always return a fixed value, but they must exist so the grading code,
             and your tests, can compile and run.
@@ -426,7 +556,7 @@
         <hr/>
 
         <p>
-        There is no testing utility for this task.
+            There is no testing utility for this task.
         </p>
 
         <br/>
@@ -438,7 +568,7 @@
 
         <p>Create a class named <code>TestTask3</code> in the <code>tests</code> package.</p>
 
-        <p>Note: As with task 1, use Player objects in place of DynamicGameObjects where required.</p>
+{#        <p>Note: As with task 1, use Player objects in place of DynamicGameObjects where required.</p>#}
 
         <p>You will write tests for the following functionality from the specification:</p>
 
@@ -447,7 +577,7 @@
                 <code>Enemy</code>
                 <ul>
                     <li>
-                        <code>collideWithDynamicObject</code>. You must verify that this method deals the correct damage
+                        <code>collideWithDynamicObject</code>. Verify that this method deals the correct damage
                         to the player and applies invincibility frames correctly. It must also not deal damage or apply
                         invincibility frames to objects that are not the player
                     </li>
@@ -457,7 +587,7 @@
                 <code>Potion</code>
                 <ul>
                     <li>
-                        <code>collideWithDynamicObject</code>. You must verify that the potion heals/deals the correct
+                        <code>collideWithDynamicObject</code>. Verify that the potion heals/deals the correct
                         amount of damage, and that it destroys itself after. You must also verify that it only does this
                         to player objects
                     </li>
@@ -476,8 +606,9 @@
                 <code>PlatformerWall</code>
                 <ul>
                     <li><code>collideWithDynamicObject</code>. You do not need to test that the position
-                    is being updated correctly (as you know the base Wall class is already functional). You
-                    only need to test that the velocity and isOnGround is getting set correctly.</li>
+                        is being updated correctly (as you know the base Wall class is already functional). You
+                        only need to test that the velocity and isOnGround is getting set correctly.
+                    </li>
                 </ul>
             </li>
             <li>
