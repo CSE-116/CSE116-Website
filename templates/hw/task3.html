@@ -5,7 +5,7 @@
 {% block header %}
     <h1>Coding Task 3 - Inheritance</h1>
     <hr/>
-    <h5>Time Estimate: 10 hours</h5>
+    <h5>Time Estimate: 12 hours</h5>
     <hr/>
 {% endblock %}
 
@@ -52,7 +52,7 @@
             <code>spriteSheetFilename</code> is a String that represents the filename containing the spritesheet
             with the desired sprite in it. <code>defaultSpriteLocation</code> takes in a <code>SpriteLocation</code> object.
             For the sake of this task, all you need to know about the <code>SpriteLocation</code> class is that it has
-            a constructor taking in the row and column the desired sprite is in the spritesheet (feel free to look through
+            a constructor taking in the row and column of the desired sprite in the spritesheet (feel free to look through
             the data directory to understand what these files look like).
         </p>
 
@@ -138,7 +138,7 @@
                     </li>
                     <li>
                         Create a constructor that takes in two parameters: a Vector2D representing location
-                        and an int representing the amount to heal.
+                        and an int representing the amount to heal, which should be stored as an instance variable.
                         <ul>
                             <li>When you call the super constructor, give the Potion a max HP of 10.</li>
                             <li>
@@ -285,7 +285,7 @@
                                 and set the y velocity to 0
                             </li>
                             <li>
-                                If the DynamicGameObject is higher than the Platform, and is moving downward (ie. y 
+                                If the DynamicGameObject is higher than the Platform and is moving downward (ie. y 
                                 velocity is positive), use the Wall class's collision logic, set the y velocity to 0,
                                 and use the <code>setOnGround</code> method to mark the object as being on the ground
                             </li>
@@ -379,6 +379,9 @@
                 <ul>
                     <li>Move the Level functionality added in the previous task in SampleTopDownGame to the base game class.</li>
                     <li>This will include the instance variable, addLevel, getLevelList, advanceLevel, and removeLevelByName.</li>
+                    <li>Add a method that returns void and takes no parameters called <code>init</code>. This method
+                    should do nothing and only exists to be inherited and overridden</li>
+                    <li>Modify the Game constructor to call the <code>init</code> method</li>
                 </ul>
 
             </li>
