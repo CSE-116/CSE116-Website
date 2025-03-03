@@ -142,7 +142,7 @@
                         <ul>
                             <li>When you call the super constructor, give the Potion a max HP of 10.</li>
                             <li>
-                                Graphics:
+                                Graphics (See "Using the Graphics Engine" for more detail.):
                                 <ul>
                                     <li>You should initialize <code>spriteSheetFilename</code> to "User Interface/Icons-Essentials.png".</li>
                                     <li>If the amount to heal is non-negative, the defaultSpriteLocation should be a SpriteLocation at column 0, row 1
@@ -155,7 +155,7 @@
                     </li>
                     <li>
                         Override the <code>collideWithDynamicObject</code> method. If the object being collided with
-                        is a Player, you should add the amount to heal (from the constructor) to the Player, then call
+                        is a Player, you should add the amount to heal (from the constructor) to the Player's HP, then call
                         <code>this.destroy()</code> to remove the Potion from the level.
                         <ul>
                             <li>
@@ -165,9 +165,10 @@
                             method on it.</li>
                         </ul>
                     </li>
-                    <li>To see your Potion in game, you can choose one of the methods creating a level (levelZero, levelOne, levelTwo) in the
+                    <li>Optional: To see your Potion in game, you can choose one of the methods creating a level (levelZero, levelOne, levelTwo) in the
                         <code>SampleTopDownGame</code> class and add a new Potion object to the Level's DynamicGameObject ArrayList
-                        (follow the process the given code uses to add an Enemy to the level, but with a Potion constructor instead.)</li>
+                        (follow the process the given code uses to add an Enemy to the level, but with a Potion constructor instead.)
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -184,13 +185,13 @@
                 <code>DynamicGameObject</code> - Platformer Preparation (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
                 <ul>
                     <li>
+                        Add an instance variable of type boolean representing if the given DynamicGameObject is on the ground.
+                        This should be initialized to <code>false</code>.
+                    </li>
+                    <li>
                         Add a method called <code>isOnGround</code> that takes no parameters and returns a boolean. Add a
                         method called <code>setOnGround</code> that takes in a boolean and returns void. These should be
-                        the getter and setter for an instance variable representing if the DynamicGameObject is currently
-                        on the ground.
-                        <ul>
-                            <li>This instance variable should be initialized to false.</li>
-                        </ul>
+                        the getter and setter for the previously described instance variable.
                     </li>
                 </ul>
             </li>
@@ -235,19 +236,28 @@
                                 calling <code>super.collideWithDynamicObject</code>
                             </li>
                             <li>
-                                If the DynamicGameObject is on top of the wall, set its y-velocity to 0 and use
-                                the <code>setOnGround</code> method to mark the object as being on the ground.
+                                Since we have to consider the cases where the object lands on top or bumps on the bottom,
+                                add the following logic after resolving the collision:
                                 <ul>
                                     <li>
-                                        A DynamicGameObject is considered to be on top of the wall if its y-location is above
-                                        the Wall's y-location and the object is partially overlapping in the x-dimension (i.e.
-                                        the object's left side or the object's right side is within the range of the Wall)
+                                        If the DynamicGameObject is overlapping in the x-dimension with the Wall, set
+                                        the y-velocity to 0. This makes it so the object stops falling when it lands on top
+                                        of the wall or start falling if it hits the bottom.
+                                        <ul>
+                                            <li>
+                                                When determining if the overlap is occurring, you should not include the edges (if the
+                                                object's left == the wall's right or the object's right == the wall's left, it's not
+                                                overlapping)
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Additionally, if that condition occurs and the object is above the wall (the case
+                                        where it lands on top), you should also mark that the object is on the ground using
+                                        the previously written setter.
                                     </li>
                                 </ul>
-                            </li>
-                            <li>
-                                Otherwise, if the DynamicGameObject's y-location is below or equal to the top of the wall
-                                and is partially overlapping in the x-dimension, set the object's y-velocity to 0.
+
                             </li>
                         </ul>
                     </li>
