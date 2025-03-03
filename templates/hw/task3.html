@@ -402,7 +402,13 @@
             </li>
         </ul>
 
-
+        <p>
+            To actually play your game, update the switch statement in <code>GameFactory</code> (in the
+            <code>app.games</code> package) to have a case for "platformer game". In this case, it should assign game
+            to a new PlatformerGame object, then break. You can then replace the game String in <code>Configuration</code>
+            in the <code>app</code> package with "platformer game". After that, running StartGame will load up your new
+            game.
+        </p>
 
 
         <p>
@@ -479,7 +485,7 @@
                 <ul>
                     <li>
                         <code>collideWithDynamicObject</code>. As with PlatformerWall, you can assume that the basic
-                        collision works as intended. You must test that the velocity and isOnGroudn are being set
+                        collision works as intended. You must test that the velocity and isOnGround are being set
                         properly. You must also test that collision is only applied when it should be. That is, check
                         that collision is not applied when the object is in the air
                     </li>
