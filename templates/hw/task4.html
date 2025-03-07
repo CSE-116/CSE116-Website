@@ -40,6 +40,10 @@
         </p>
         <ul>
            <li>
+              Before we begin with the AI implementation, there are some additional features we will need to include
+              into the game to make the game feel more game-like.
+           </li>
+           <li>
               <code>Player</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.Player</code>)
               <ul>
                  <li>
@@ -81,24 +85,18 @@
               <code>Enemy</code> - Dealing Damage And Moving Path (<code>app.games.topdownobjects.Enemy</code>)
               <ul>
                  <li>
+                    Modify the existing overridden <code>collideWithDynamicObject</code> method to deal
+                    damage to the player rather than destroying them.
                     <ul>
-                       <li>
-                          Modify the existing overridden <code>collideWithDynamicObject</code> method to deal
-                          damage to the player rather than destroying them.
-                       </li>
                        <li>The amount of damage dealt should be equal to the enemy's strength instance variable.</li>
                     </ul>
                  </li>
                  <li>
-                    <ul>
-                       <li>
-                          Move the instance variable for the enemy's path you made in task 2 into
-                          <code>DynamicGameObject</code>, along with the getter <code>getPath</code> and setter
-                          <code>setPath</code>. Since Enemy extends DynamicGameObject, this should not have any affect
-                          on the game because of the power of inheritance. Make sure you leave the Enemy's update
-                          method, this will be moved later on in this task.
-                       </li>
-                     </ul>
+                    Move the instance variable for the enemy's path you made in task 2 into
+                    <code>DynamicGameObject</code>, along with the getter <code>getPath</code> and setter
+                    <code>setPath</code>. Since Enemy extends DynamicGameObject, this should not have any affect
+                    on the game because of the power of inheritance. Make sure you leave the Enemy's update
+                    method, this will be moved later on in this task.
                  </li>
               </ul>
            </li>
@@ -193,9 +191,10 @@
                                 the enemy is on low HP. You should make an instance variable to store this percentage.
                              </li>
                              <li>
-                                 This will override <code>decide</code> and return true if the enemies health is &lt;
-                                 the node's percentage (use your instance variable here, the instance variable should
-                                 have a range of 0.0 to 1.0) of it&#39;s maximum health and false otherwise.
+                                 This will override <code>decide</code> and return true if the DynamicGameObject's
+                                 health is less than the node's percentage (use your instance variable here, the
+                                 instance variable has a range of 0.0 to 1.0) of it&#39;s maximum health and
+                                 false otherwise.
                              </li>
                           </ul>
                        </li>
@@ -209,18 +208,18 @@
                              </li>
                              <li>
                                  This will override the <code>decide</code> method and return true if the distance
-                                 between itself and the player is &lt; the acceptable distance instance variable and
-                                 false otherwise. (Hint: use the Pythagorean theorem/Euclidean Distance to determine
-                                 distance!)
+                                 between the DynamicGameObject and the player is less than the acceptable distance
+                                 instance variable and false otherwise. (Hint: use the Pythagorean theorem/Euclidean
+                                 Distance to determine distance!)
                              </li>
                           </ul>
                        </li>
                        <li><code>MaxHP</code>
                           <ul>
                              <li>
-                                Create the <code>MaxHP</code> class that extends <code>Decision</code>. This will override
-                                the <code>decide</code> method and return true if the enemies health is at its
-                                maximum.
+                                Create the <code>MaxHP</code> class that extends <code>Decision</code>. This will
+                                override the <code>decide</code> method and return true if the DyanmicGameObject's
+                                health is at its maximum.
                              </li>
                           </ul>
                        </li>
@@ -228,26 +227,26 @@
                           <ul>
                              <li>
                                 Create the <code>MoveTowardPlayer</code> class that extends <code>Decision</code> This
-                                will override the <code>doAction</code> method and should move towards the player.
-                                (Hint: you should move all your <code>update</code> code in enemy from task 2 to this
-                                method)
+                                will override the <code>doAction</code> method and should make the DynamicGameObject
+                                move towards the player. (Hint: you should move all your <code>update</code> code in
+                                Enemy from task 2 to this method)
                              </li>
                           </ul>
                        </li>
                        <li><code>Heal</code><ul>
                              <li>
-                                Create the <code>Heal</code> class that extends <code>Decision</code>. Add a
-                                constructor that takes in a String for the name (so that the super constructor may be
-                                called) and a double representing the amount to heal by each frame. You
-                                should make an instance variable to store this amount.
+                                Create the <code>Heal</code> class that extends <code>Decision</code>. Add a constructor
+                                that takes in a String for the name (so that the super constructor may be called) and a
+                                double representing the amount to heal by each frame. You should make an instance
+                                variable to store this amount.
                              </li>
                              <li>
-                                 This will override the <code>doAction</code> method and should set the enemies velocity
-                                 to 0 and heal by their instance variable * dt. (TODO: It may be cool to change their
-                                 sprite while the enemy is healing, perhaps we could have the constructor also accept a
-                                 file name and a spritesheet column so that they can change the sprite while it's
-                                 healing. However, there isn't really a cool healing sprite in the game. I would like to
-                                 have them add some visual healing indication though)
+                                 This will override the <code>doAction</code> method and should set the
+                                 DynamicGameObject's velocity to 0 and heal by the node's instance variable * dt. (TODO:
+                                 It may be cool to change their sprite while the enemy is healing, perhaps we could have
+                                 the constructor also accept a file name and a spritesheet column so that they can
+                                 change the sprite while it's healing. However, there isn't really a cool healing sprite
+                                 in the game. I would like to have them add some visual healing indication though)
                              </li>
                           </ul>
                        </li>
@@ -277,6 +276,11 @@
                           Feel free to get creative! Experiment around, try to come up with interesting behaviors for
                           enemies. Keep an eye out on piazza, because we will be sharing some DecisionTrees and
                           Decisions of our own that you can add to your game.
+                       </li>
+                       <li>
+                          If you want to give each Enemy in the level different behavior, you may change the game code
+                          (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setPath</code> when
+                          enemies are created in the level. Again, have fun with this! :)
                        </li>
                     </ul>
                  </li>
