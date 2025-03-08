@@ -44,7 +44,7 @@
               into the game to make the game feel more game-like.
            </li>
            <li>
-              <code>Player</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.Player</code>)
+              <code>DynamicGameObject</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
               <ul>
                  <li>
                     In game development, invincibility frames are a short period of time when players become immune to
@@ -53,64 +53,76 @@
                     implement invincibility frames for the players so that enemies can now deal the proper amount of damage.
                  </li>
                  <li>
-                    Add an instance variable of type double to the Player class representing the amount of time
-                    they are immune from damage. This should be initialized to 0.
+                    Add an instance variable of type double to the DynamicGameObject class representing the amount of
+                    time they are immune from damage. This should be initialized to 0. (As a double representing the
+                    number of seconds of invincibility remaining). Add getters and setters called
+                    <code>getInvincibilityFrames</code> and <code>setInvincibilityFrames</code>
                  </li>
                  <li>
-                    Override the <code>takeDamage</code> method from the DynamicGameObject class. Your overridden method should first
-                    check if the player has more than 0 invincibility time left. If so, the method should do nothing. If
-                    the player doesn't have any invincibility time left, you should have the Player take damage as normal,
-                    then reset the amount of invincibility time left to 0.5.
+                    Override the <code>update</code> method that was inherited from the GameObject class.
                     <ul>
                        <li>
-                          If no damage is being done (i.e. damage is 0 or negative), don't modify the invincibility time.
+                          Your overridden method should begin with a call to the superclass' update method since we
+                          still want the functionality of the super class
                        </li>
                        <li>
-                          You can call the superclass' <code>takeDamage</code> method by calling <code>super.takeDamage</code>.
+                          This method should then subtract the invincibility time by the change in time (dt), where dt
+                          is the number of seconds elapsed since the last time update was called. Note that the game
+                          runs at 60 fps (frames per second) so dt should be about 0.0167 seconds when it's called
+                          during gameplay. This number can be different during testing.
                        </li>
-                    </ul>
-                 </li>
-                 <li>
-                    Override the <code>update()</code> method from the GameObject class. Your overridden method should begin
-                    with a call to the superclass' update method, then it should subtract the invincibility time
-                    by the change in time (dt).
-                    <ul>
-                       <li>If the player already has 0 invincibility time left, it should be left as 0.</li>
+                       <li>This method should then check if the objects hp is 0 or less. If it, call its destroy method </li>
                     </ul>
                  </li>
               </ul>
            </li>
-
            <li>
-              <code>Enemy</code> - Dealing Damage And Moving Path (<code>app.games.topdownobjects.Enemy</code>)
+              <code>Projectile</code> (<code>app.games.topdownobjects.Projectile</code>)
               <ul>
                  <li>
-                    Modify the existing overridden <code>collideWithDynamicObject</code> method to deal
-                    damage to the player rather than destroying them.
+                    Modify the existing overridden <code>collideWithDynamicObject</code> method in Projectile to deal
+                    damage to the other object rather than destroying them. (Replace the call to
+                    <code>otherObject.destroy</code> with <code>otherObject.takeDamage</code>.) You can use the
+                    projectile's damage instance variable in your call to takeDamage.
+                 </li>
+              </ul>
+           </li>
+           <li>
+              <code>Enemy</code> (<code>app.games.topdownobjects.Enemy</code>)
+              <ul>
+                 <li>
+                    Modify the existing overridden <code>collideWithDynamicObject</code> method to deal damage to the
+                    player rather than destroying them. The amount of damage dealt (By calling the takeDamage method)
+                    should be equal to the enemy's strength instance variable.
                     <ul>
-                       <li>The amount of damage dealt should be equal to the enemy's strength instance variable.</li>
+                       <li>
+                          Your method should check if the player has more than 0 invincibility frames left. If so, the
+                          method should do nothing. If the player doesn't have any invincibility time left, you should
+                          have the Player take damage as normal, then reset the amount of invincibility time to 0.5
+                       </li>
                     </ul>
                  </li>
                  <li>
                     Move the instance variable for the enemy's path you made in task 2 into
                     <code>DynamicGameObject</code>, along with the getter <code>getPath</code> and setter
                     <code>setPath</code>. Since Enemy extends DynamicGameObject, this should not have any affect
-                    on the game because of the power of inheritance. Make sure you leave the Enemy's update
-                    method, this will be moved later on in this task.
+                    on the game because of the power of inheritance. At this point, you should also call
+                    <code>super.update</code> in your update method, so that we can make use of the update function we
+                    just wrote for DynamicGameObject to destroy the object if it's health falls below 0.
                  </li>
               </ul>
            </li>
-
 
         </ul>
 
         <p>
            Now, you should be able to run into enemies and watch your health go down in the UI without instantly
-           being reset to the beginning of the level.
+           being reset to the beginning of the level. You should also be able to shoot enemies and have them take damage
+           rather than dying right away.
         </p>
 
         <ul>
-           <li><p><code>Decision</code> (<code>app.gameengine.model.ai</code>)</p>
+           <li><code>Decision</code> (<code>app.gameengine.model.ai</code>)
               <ul>
                  <li>In the <code>ai</code> package, create a new class named <code>Decision</code></li>
                  <li>
@@ -131,7 +143,7 @@
                  </li>
               </ul>
            </li>
-           <li><p><code>DecisionTree</code> (<code>app.gameengine.model.ai</code>)</p>
+           <li><code>DecisionTree</code> (<code>app.gameengine.model.ai</code>)
               <ul>
                  <li>In the <code>ai</code> package, create a new class named <code>DecisionTree</code></li>
                  <li>
@@ -139,9 +151,13 @@
                     <code>getTree</code> and a setter <code>setTree</code> for that instance variable.
                  </li>
                  <li>
+                    Create a constructor that takes in a <code>BinaryTreeNode&lt;Decision&gt;</code> and will set the
+                    instance variable.
+                 </li>
+                 <li>
                     Create a method <code>traverse</code> that returns a reference to a <code>Decision</code> and takes
-                    a <code>DynamicGameObject</code>, <code>Level</code>, and <code>double</code> dt as parameters (In
-                    that order).
+                    a <code>BinaryTreeNode&lt;Decision&gt;</code>, <code>DynamicGameObject</code>, <code>Level</code>,
+                    and <code>double</code> dt as parameters (In that order).
                     <ul>
                        <li>
                           This method will traverse through the tree, making decisions to go left or right by calling
@@ -158,14 +174,21 @@
                     <ul>
                        <li>
                           This method will reverse the binary tree, switching the left and right nodes all the way down
-                          the tree. TODO: add example.
+                          the tree. 
                        </li>
+                       <img style="max-width: 100%; height: auto" src="/static_files/images/binary_tree.png" alt="Example image of reversing a binary tree">
                     </ul>
                  </li>
                  <li>
                     Create a method <code>reverse</code> that returns void and takes no parameters. This
                     method should simply call the previously mentioned reverse method with the
                     root node of the tree as a parameter.
+                 </li>
+                 <li>
+                    Create a method <code>traverse</code> that returns void and takes a <code>DynamicGameObject</code>,
+                    <code>Level</code>, and <code>double</code> dt as parameters (In that order). This method should
+                    simply call your traverse method you wrote previously with the root node of the tree as a parameter.
+                    It will then call <code>doAction</code> on the returned <code>Decision</code>.
                  </li>
               </ul>
            </li>
@@ -192,9 +215,16 @@
                              </li>
                              <li>
                                  This will override <code>decide</code> and return true if the DynamicGameObject's
-                                 health is less than the node's percentage (use your instance variable here, the
-                                 instance variable has a range of 0.0 to 1.0) of it&#39;s maximum health and
-                                 false otherwise.
+                                 health is less than or equal to the node's percentage (use your instance variable here,
+                                 the instance variable has a range of 0.0 to 1.0) of it&#39;s maximum health and false
+                                 otherwise. 
+                                 <ul>
+                                    <li>
+                                       Because <code>getHP</code> returns an int, and integer division will truncate
+                                       decimals (2/4 = 0, not 0.5), you will need to cast getHP to a double. You can do
+                                       this by doing <code>(double)object.getHP()</code>.
+                                    </li>
+                                 </ul>
                              </li>
                           </ul>
                        </li>
@@ -208,28 +238,35 @@
                              </li>
                              <li>
                                  This will override the <code>decide</code> method and return true if the distance
-                                 between the DynamicGameObject and the player is less than the acceptable distance
-                                 instance variable and false otherwise. (Hint: use the Pythagorean theorem/Euclidean
-                                 Distance to determine distance!)
+                                 between the DynamicGameObject and the player is less than or equal to the acceptable
+                                 distance instance variable and false otherwise. (Hint: use the Pythagorean
+                                 theorem/Euclidean Distance to determine distance!)
                              </li>
                           </ul>
                        </li>
                        <li><code>MaxHP</code>
                           <ul>
                              <li>
-                                Create the <code>MaxHP</code> class that extends <code>Decision</code>. This will
-                                override the <code>decide</code> method and return true if the DyanmicGameObject's
-                                health is at its maximum.
+                                Create the <code>MaxHP</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a string for the name and simply call the super constructor;
+                                there is no additional instance variables you will need.
                              </li>
+                             <li>
+                                This will override the <code>decide</code> method and return true if the
+                                DynamicGameObject's health is at its maximum. </li>
                           </ul>
                        </li>
                        <li><code>MoveTowardPlayer</code>
                           <ul>
                              <li>
-                                Create the <code>MoveTowardPlayer</code> class that extends <code>Decision</code> This
-                                will override the <code>doAction</code> method and should make the DynamicGameObject
-                                move towards the player. (Hint: you should move all your <code>update</code> code in
-                                Enemy from task 2 to this method)
+                                Create the <code>MoveTowardPlayer</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a string for the name and simply call the super constructor;
+                                there is no additional instance variables you will need.
+                             </li>
+                             <li>
+                                This will override the <code>doAction</code> method and should make the
+                                DynamicGameObject move towards the player. (Hint: you should move all your
+                                <code>update</code> code in Enemy from task 2 to this method)
                              </li>
                           </ul>
                        </li>
@@ -264,13 +301,16 @@
                  </li>
               </ul>
            </li>
-           <li> <code>Enemy</code> - DecisionTree implementation
+           <li> <code>DynamicGameObject</code> - DecisionTree implementation
               <ul>
                  <li>
                     Now that you have implemented your decision tree, you can implement it into your game! You should
-                    give enemy a <code>DecisionTree</code> instance variable, along with a getter
-                    <code>getDecisionTree</code> and a setter <code>setDecisionTree</code>. In your enemies constructor,
-                    you can set the decision tree to whatever you would like.
+                    give DynamicGameObject a <code>DecisionTree</code> instance variable, along with a getter
+                    <code>getDecisionTree</code> and a setter <code>setDecisionTree</code>. Modify the
+                    <code>update</code> method to call <code>traverse</code> on the DynamicGameObject's instance
+                    variable (the <code>DynamicGameObject</code> parameter in traverse should be <code>this</code>.)
+                    Then, in the constructor for <code>Enemy</code>, you can set the decision tree to whatever you would
+                    like.
                     <ul>
                        <li>
                           Feel free to get creative! Experiment around, try to come up with interesting behaviors for
@@ -282,6 +322,8 @@
                           (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setPath</code> when
                           enemies are created in the level. Again, have fun with this! :)
                        </li>
+                       <li>
+                       </li>
                     </ul>
                  </li>
               </ul>
@@ -291,12 +333,10 @@
 
 
         <p>
-        Note: You can see feedback in Autolab for your tests without completing the
-        programming portion of
-        this task, but you must at least create every clas/method from this specification. You can "stub
-        out"
-        these methods by having them always return a fixed value, but they must exist so the grading code,
-        and your tests, can compile and run.
+           Note: You can see feedback in Autolab for your tests without completing the programming portion of this task,
+           but you must at least create every clas/method from this specification. You can "stub out" these methods by
+           having them always return a fixed value, but they must exist so the grading code, and your tests, can compile
+           and run.
         </p>
 
         <br/>
