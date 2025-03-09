@@ -1,440 +1,543 @@
 {% extends 'hw/hw.html' %}
 
-{% block title %}CSE116: Task 4{% endblock %}
+{% block title %}CSE116: Task 3{% endblock %}
 
 {% block header %}
-   <h1>Coding Task 4</h1>
-   <hr/>
-   <h5>Time Estimate: 8 hours</h5>
-   <hr/>
+    <h1>Coding Task 4 - Binary Trees</h1>
+    <hr/>
+    <h5>Time Estimate: 14 hours</h5>
+    <hr/>
 {% endblock %}
 
 {% block task %}
 
-   <div class="card-header section-testing">
-      <div>Requirements</div>
-   </div>
+    <div class="card-header section-testing">
+        <div>Requirements</div>
+    </div>
 
-   <div class="section-card card-testing hw-content">
+    <div class="section-card card-testing hw-content">
 
-      <hr/>
-
-
-      <h3>
-         Project Structure
-      </h3>
-
-      <hr/>
-      <p>
-         You will continue to add functionality to your existing project from the previous task. There is
-         no new repository to clone.
-      </p>
-
-      <br/>
-      <hr/>
-      <h3>Specification</h3>
-      <hr/>
-
-      <p>In this task, you will test and implement the following specs.</p>
-
-      <ul>
-         <li>ratings.Movie - In the ratings package, a class named <code>Movie</code> with:
-            <ul>
-               <li>A constructor that takes a String and an ArrayList of Strings:
-                  <ul>
-                     <li>The String represents the title of the Movie</li>
-                     <li>The ArrayList contains the names of the cast members of the Movie as Strings</li>
-                  </ul>
-               </li>
-               <li>A Method named <code>getCast</code> that takes no parameters and returns an ArrayList with the
-                  same cast members that were provided to the constructor
-                  <ul>
-                     <li>This method might not return the same exact ArrayList provided to the
-                        constructor, but it will contain the same <em>names</em> in the same order.
-                        However, the names might not have the same combination of upper/lower-case letters.
-                        Any String in the returned ArrayList containing the correct letters should be
-                        considered correct regardless of upper/lower-case
-                     </li>
-                     <li>Example: In the constructor, you provide the ArrayList
-                        ["Chris Pratt", "Zoe Saldana", "Dave Bautista"]. All the following are
-                        correct outputs
-                        ["Chris Pratt", "Zoe Saldana", "Dave Bautista"],
-                        ["chris pratt", "zoe saldana", "dave bautista"], and
-                        ["CHRIS pratt", "ZoE SalDANA", "dAVE bautistA"]
-                     </li>
-                     <li>Note that the String class has a method named <code>equalsIgnoreCase</code> that might
-                        prove
-                        useful when testing this method
-                     </li>
-                  </ul>
-               </li>
-            </ul>
-         </li>
+        <hr/>
 
 
-      </ul>
-      <ul>
-         <li>ratings.Ratable - In the ratings package, a class named <code>Ratable</code> with:
-            <ul>
-               <li>
-                  This class will use the default constructor that takes no parameters and does nothing (You don't
-                  have
-                  to write any constructor)
-               </li>
-               <li>
-                  Remove all functionality related to title and ratings from the Song class and add to the
-                  Ratable class. This includes title and ratings (LinkedListNode of Ratings) instance
-                  variables and all the following methods
-                  <ul>
-                     <li><code>getTitle</code></li>
-                     <li><code>setTitle</code></li>
-                     <li><code>addRating</code></li>
-                     <li><code>getRatings</code></li>
-                     <li><code>setRatings</code></li>
-                     <li><code>averageRating</code></li>
-                     <li><code>removeRatingByReviewer</code></li>
-                  </ul>
-               </li>
-            </ul>
-         </li>
-      </ul>
+        <h3>
+            Project Structure
+        </h3>
+
+        <hr/>
+        <p>
+            You will continue to add functionality to your existing project from the previous task. There is
+            no new repository to clone.
+        </p>
+
+        <hr/>
+        <h3>Specification</h3>
+        <hr/>
+
+        <p>
+            In this task, you will implement the following specs. Once all of these are complete, your enemies will have
+            an AI that allows them to make complex decisions based on their surrounding environment.
+        </p>
+        <ul>
+           <li>
+              Before we begin with the AI implementation, there are some additional features we will need to include
+              into the game to make the game feel more game-like.
+           </li>
+           <li>
+              <code>DynamicGameObject</code> - Invincibility Frames (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
+              <ul>
+                 <li>
+                    In game development, invincibility frames are a short period of time when players become immune to
+                    taking damage. They're used to prevent players from constantly taking damage every frame from the
+                    same source without having the opportunity to escape danger. In this part of the task, you will
+                    implement invincibility frames for the players so that enemies can now deal the proper amount of damage.
+                 </li>
+                 <li>
+                    Add an instance variable of type double to the DynamicGameObject class representing the amount of
+                    time they are immune from damage. This should be initialized to 0. (As a double representing the
+                    number of seconds of invincibility remaining). Add getters and setters called
+                    <code>getInvincibilityFrames</code> and <code>setInvincibilityFrames</code>
+                 </li>
+                 <li>
+                    Override the <code>update</code> method that was inherited from the GameObject class.
+                    <ul>
+                       <li>
+                          Your overridden method should begin with a call to the superclass' update method since we
+                          still want the functionality of the super class
+                       </li>
+                       <li>
+                          This method should then subtract the invincibility time by the change in time (dt), where dt
+                          is the number of seconds elapsed since the last time update was called. Note that the game
+                          runs at 60 fps (frames per second) so dt should be about 0.0167 seconds when it's called
+                          during gameplay. This number can be different during testing.
+                       </li>
+                       <li>This method should then check if the objects hp is 0 or less. If it, call its destroy method </li>
+                    </ul>
+                 </li>
+              </ul>
+           </li>
+           <li>
+              <code>Projectile</code> (<code>app.games.topdownobjects.Projectile</code>)
+              <ul>
+                 <li>
+                    Modify the existing overridden <code>collideWithDynamicObject</code> method in Projectile to deal
+                    damage to the other object rather than destroying them. (Replace the call to
+                    <code>otherObject.destroy</code> with <code>otherObject.takeDamage</code>.) You can use the
+                    projectile's damage instance variable in your call to takeDamage.
+                 </li>
+              </ul>
+           </li>
+           <li>
+              <code>Enemy</code> (<code>app.games.topdownobjects.Enemy</code>)
+              <ul>
+                 <li>
+                    Modify the existing overridden <code>collideWithDynamicObject</code> method to deal damage to the
+                    player rather than destroying them. The amount of damage dealt (By calling the takeDamage method)
+                    should be equal to the enemy's strength instance variable.
+                    <ul>
+                       <li>
+                          Your method should check if the player has more than 0 invincibility frames left. If so, the
+                          method should do nothing. If the player doesn't have any invincibility time left, you should
+                          have the Player take damage as normal, then reset the amount of invincibility time to 0.5
+                       </li>
+                    </ul>
+                 </li>
+                 <li>
+                    Move the instance variable for the enemy's path you made in task 2 into
+                    <code>DynamicGameObject</code>, along with the getter <code>getPath</code> and setter
+                    <code>setPath</code>. Since Enemy extends DynamicGameObject, this should not have any affect
+                    on the game because of the power of inheritance. At this point, you should also call
+                    <code>super.update</code> in your update method, so that we can make use of the update function we
+                    just wrote for DynamicGameObject to destroy the object if it's health falls below 0.
+                 </li>
+              </ul>
+           </li>
+
+        </ul>
+
+        <p>
+           Now, you should be able to run into enemies and watch your health go down in the UI without instantly
+           being reset to the beginning of the level. You should also be able to shoot enemies and have them take damage
+           rather than dying right away.
+        </p>
+
+        <ul>
+           <li><code>Decision</code> (<code>app.gameengine.model.ai</code>)
+              <ul>
+                 <li>In the <code>ai</code> package, create a new class named <code>Decision</code></li>
+                 <li>
+                    Create a getter and setter <code>getName</code> and <code>setName</code> where name is a string.
+                    This name will be used when debugging your decision tree.
+                 </li>
+                 <li>Create a constructor that takes a String as a parameter and sets the decision's name.</li>
+                 <li>
+                    Create a method named <code>decide</code> that returns a boolean and takes in a reference to a
+                    <code>DynamicGameObject</code>, <code>Level</code>, and a <code>double</code> dt (in this exact
+                    order!). This method should be blank initially (just return false). You will be overriding this
+                    method using inheritance.
+                 </li>
+                 <li>
+                    Create a method named <code>doAction</code> that returns void and takes in a reference to a
+                    <code>DynamicGameObject</code>, <code>Level</code>, and a <code>double</code> dt (again, in this
+                    exact order). This method should again be blank, it will be overridden using inheritance.
+                 </li>
+              </ul>
+           </li>
+           <li><code>DecisionTree</code> (<code>app.gameengine.model.ai</code>)
+              <ul>
+                 <li>In the <code>ai</code> package, create a new class named <code>DecisionTree</code></li>
+                 <li>
+                    Create an instance variable of type <code>BinaryTreeNode&lt;Decision&gt;</code> and create a getter
+                    <code>getTree</code> and a setter <code>setTree</code> for that instance variable.
+                 </li>
+                 <li>
+                    Create a constructor that takes in a <code>BinaryTreeNode&lt;Decision&gt;</code> and will set the
+                    instance variable.
+                 </li>
+                 <li>
+                    Create a method <code>traverse</code> that returns a reference to a <code>Decision</code> and takes
+                    a <code>BinaryTreeNode&lt;Decision&gt;</code>, <code>DynamicGameObject</code>, <code>Level</code>,
+                    and <code>double</code> dt as parameters (In that order).
+                    <ul>
+                       <li>
+                          This method will traverse through the tree, making decisions to go left or right by calling
+                          <code>decide</code> on the value of each tree node. A value of true should make the tree
+                          travel right, and a value of false should make the tree travel left. When a leaf node is
+                          reached, the inner <code>Decision</code> value should be returned. If no leaf node is reached,
+                          the method should return null instead.
+                       </li> 
+                    </ul> 
+                 </li>
+                 <li>
+                    Create a method <code>reverse</code> that returns void and takes a reference to a
+                    <code>BinaryTree&lt;Decision&gt;</code> as a parameter
+                    <ul>
+                       <li>
+                          This method will reverse the binary tree, switching the left and right nodes all the way down
+                          the tree. 
+                       </li>
+                       <img style="max-width: 100%; height: auto" src="/static_files/images/binary_tree.png" alt="Example image of reversing a binary tree">
+                       <li>
+                          This method can allow you to "confuse" an enemy--Instead of making the enemy heal when they
+                          have low HP and move towards the player when they're not low on HP, you can make the enemy
+                          move towards the player on low HP and heal when they're not on low HP. (This will make sense
+                          when you get to the next part of the handout)
+                       </li>
+                    </ul>
+                 </li>
+                 <li>
+                    Create a method <code>reverse</code> that returns void and takes no parameters. This
+                    method should simply call the previously mentioned reverse method with the
+                    root node of the tree as a parameter.
+                 </li>
+                 <li>
+                    Create a method <code>traverse</code> that returns void and takes a <code>DynamicGameObject</code>,
+                    <code>Level</code>, and <code>double</code> dt as parameters (In that order). This method should
+                    simply call your traverse method you wrote previously with the root node of the tree as a parameter.
+                    It will then call <code>doAction</code> on the returned <code>Decision</code>.
+                 </li>
+              </ul>
+           </li>
+           <li>Decision child classes (<code>app.gameengine.model.ai</code>)
+              <ul>
+                 <li>
+                    You will write the following classes in the <code>ai</code> package. While the amount of classes
+                    here seems daunting, each class, ignoring all the imports and class declaration boilerplate, should
+                    only have 1-7 lines of code; You need not overthink this.
+                 </li>
+                 <li>
+                    Decisions will be written such that they <strong>only override <em>one</em> of decide/doAction</strong>. 
+                    The nodes that override doAction will be placed in your tree as leaf nodes, and the nodes that
+                    override decide will be placed in your tree with two child nodes. This will allow us to give
+                    enemies complex behavior based on their surroundings.
+                    <ul>
+                       <li><code>LowHP</code>
+                          <ul>
+                             <li>
+                                Create the <code>LowHP</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a String for the name (so that the super constructor may be
+                                called) and an int representing the HP the enemy should have before it's considered
+                                "low" on HP. You should make an instance variable to store this value.
+                             </li>
+                             <li>
+                                 This will override <code>decide</code> and return true if the DynamicGameObject's
+                                 health is less than or equal to the Decision's low HP threshhold.
+                             </li>
+                          </ul>
+                       </li>
+                       <li><code>NearPlayer</code> 
+                          <ul>
+                             <li>
+                                Create the <code>NearPlayer</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a String for the name (so that the super constructor may be
+                                called) and a double representing the acceptable distance that this node should use. You
+                                should make an instance variable to store this distance.
+                             </li>
+                             <li>
+                                 This will override the <code>decide</code> method and return true if the distance
+                                 between the DynamicGameObject and the player is less than or equal to the acceptable
+                                 distance instance variable and false otherwise. (Hint: use the Pythagorean
+                                 theorem/Euclidean Distance to determine distance!)
+                             </li>
+                          </ul>
+                       </li>
+                       <li><code>Timer</code>
+                          <ul>
+                             <li>
+                                Create the <code>Timer</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a String for the name (so that the super constructor may be
+                                called) and a double representing the time period that passes before switching
+                                between left and right. You should make an instance variable to store this time.
+                             </li>
+                             <li>
+                                This will override the <code>decide</code> method and will count up each dt until the dt
+                                exceeds the threshold of the instance variable. Once the time is exceeded, the Decision
+                                will switch from always going to the left to go to the right, and then after another
+                                time period will switch from right to left. You will need to create additional
+                                instance variable(s) to assist you with this implementation.
+                                <ul>
+                                   <li>
+                                      For example, a Timer with a time period of 4 will return false, while counting up
+                                      all the dts until 4 seconds have elapsed. Then, the Timer will return true for
+                                      another 4 seconds, and the cycle will repeat.
+                                   </li>
+                                   <li>
+                                      This is not <i>technically</i> a period since the Timer repeats itself every two
+                                      time intervals. While writing this, you should follow along with the example
+                                      described rather than the mathematical definition of a period.
+                                   </li>
+                                </ul>
+                             </li>
+                          </ul>
+                       </li>
+                       <li><code>TargetingPlayer</code>
+                          <ul>
+                             <li>
+                                Create the <code>TargetingPlayer</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a String for the name (so that the super constructor may be
+                                called) and a double representing the distance the player can stray from where the
+                                DynamicGameObject is targeting. You should make an instance variable to store this distance.
+                             </li>
+                             <li>
+                                This will override the <code>decide</code> method and will return true if the distance from
+                                the DynamicGameObject's target destination (the tail node of their path) to the player's
+                                current location is greater than or equal to the distance instance variable and false
+                                otherwise.
+                             </li>
+                          </li>
+                       </ul>
+                       <li><code>MoveTowardPlayer</code>
+                          <ul>
+                             <li>
+                                Create the <code>MoveTowardPlayer</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a string for the name and simply call the super constructor;
+                                there is no additional instance variables you will need.
+                             </li>
+                             <li>
+                                This will override the <code>doAction</code> method and should make the
+                                DynamicGameObject move towards the player. (Hint: you should move all your
+                                <code>update</code> code in Enemy from task 2 to this method)
+                             </li>
+                          </ul>
+                       </li>
+                       <li><code>Heal</code>
+                          <ul>
+                             <li>
+                                Create the <code>Heal</code> class that extends <code>Decision</code>. Add a constructor
+                                that takes in a String for the name (so that the super constructor may be called), an
+                                int representing the health to heal, and a double representing the cooldown before
+                                healing. You should make 2 instance variables to store these.
+                             </li>
+                             <li>
+                                 This will override the <code>doAction</code> method and should heal the
+                                 DynamicGameObject once the cooldown expires. (You will likely need to count up dt's
+                                 like you do in your Timer implementation)
+                             </li>
+                             <li>
+                                Additional considerations:
+                                <ul>
+                                   <li>
+                                      While it is not required, you may wish to change the sprite of the
+                                      DynamicGameObject while it's healing. To do this, you can take a look at how
+                                      animations are handled in <code>app.gameengine.controller.WASDMovement</code> and
+                                      <code>app.gameengine.model.gameobjects.Player</code>
+                                   </li>
+                                   <li>
+                                      Again, this is by no means required to complete the task and get credit on
+                                      autolab, but it can be a fun rabbithole to go down and can make your game feel
+                                      more like your own.
+                                   </li>
+                                </ul>
+                             </li>
+                          </ul>
+                       </li>
+                       <li><code>RecalculatePath</code>
+                          <ul>
+                             <li>
+                                Create the <code>RecalculatePath</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a string for the name and simply call the super constructor;
+                                there is no additional instance variables you will need.
+                             </li>
+                             <li>
+                                 This will override the <code>doAction</code> method and should set the
+                                 DynamicGameObject's velocity to 0 and recalculate the DynamicGameObject's path. (Set
+                                 their path to the result of Pathfinding.findPath)
+                             </li>
+                          </ul>
+                       </li>
+                       <li><code>RunAway</code>
+                          <ul>
+                             <li>
+                                Create the <code>RunAway</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a string for the name and simply call the super constructor;
+                                there is no additional instance variables you will need.
+                             </li>
+                             <li>
+                                This will override the <code>doAction</code> method and will do the same as what
+                                <code>MoveTowardsPlayer</code> does, but the velocity should be reversed (multiplied by
+                                -1)
+                             </li>
+                          </ul>
+                       </li>
+                    </ul>
+                 </li>
+              </ul>
+           </li>
+           <li> <code>DynamicGameObject</code> - DecisionTree implementation
+              <ul>
+                 <li>
+                    Now that you have implemented your decision tree, you can implement it into your game! You should
+                    give DynamicGameObject a <code>DecisionTree</code> instance variable, along with a getter
+                    <code>getDecisionTree</code> and a setter <code>setDecisionTree</code>. Modify the
+                    <code>update</code> method to call <code>traverse</code> on the DynamicGameObject's instance
+                    variable (the <code>DynamicGameObject</code> parameter in traverse should be <code>this</code>.)
+                    Then, in the constructor for <code>Enemy</code>, you can set the decision tree to whatever you would
+                    like.
+                    <ul>
+                       <li>
+                          Feel free to get creative! Experiment around, try to come up with interesting behaviors for
+                          enemies. Keep an eye out on piazza, because we will be sharing some DecisionTrees and
+                          Decisions of our own that you can add to your game.
+                       </li>
+                       <li>
+                          If you want to give each Enemy in the level different behavior, you may change the game code
+                          (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setTree</code> when
+                          enemies are created in the level. Again, have fun with this! :)
+                       </li>
+                    </ul>
+                 </li>
+              </ul>
+           </li>
+        </ul>
 
 
-      <ul>
 
-         <li>ratings.Song - Update the <code>Song</code> class to inherit from the <code>Ratable</code> class
-            <ul>
-               <li>
-                  You removed 2 instance variables and 7 methods from this class while writing the
-                  <code>Ratable</code>
-                  class. However, <code>Song</code> will now inherit all those variables and methods from the
-                  <code>Ratable</code>
-                  class
-               </li>
-               <li>
-                  You should verify that your <code>Song</code> class does inherit this functionality by running
-                  the
-                  <code>TestClasses1</code> tests and verifying that they all still pass even though that code is
-                  not
-                  in the <code>Song</code> class itself.
-               </li>
-               <li>
-                  At this point, the <code>Song</code> class should only have instance variables for the artist
-                  and id
-                  as well as the following methods with all other state and behavior inherited from
-                  Ratable:
-                  <ul>
-                     <li>A constructor that takes 3 Strings</li>
-                     <li class="h">un metodo jave toString che restituisce l'unico il titolo della canzone</li>
-                     <li><code>getArtist</code></li>
-                     <li><code>setArtist</code></li>
-                     <li><code>getSongID</code></li>
-                     <li><code>setSongID</code></li>
-                  </ul>
-               </li>
-               <li>
-                  Since the <code>Ratable</code> class does not have a constructor, you should call the inherited
-                  <code>setTitle</code> in the
-                  <code>Song</code> constructor to set the value of the title instance variable. Alternatively,
-                  you
-                  may add a <code>Ratable</code> constructor that takes the title as a parameter and explicitly
-                  call the super
-                  constructor in the <code>Song</code> constructor.
-               </li>
-            </ul>
-         </li>
-      </ul>
-      <ul>
-         <li>ratings.Movie - Update the <code>Movie</code> class to inherit from the <code>Ratable</code> class
-            <ul>
-               <li>
-                  <code>Movie</code> will now inherit from the <code>Ratable</code> class
-               </li>
-               <li>
-                  Similar to the <code>Song</code> class, you may need to call <code>setTitle</code> in the
-                  constructor to set the value of the title instance variable since it should be private in the
-                  Ratable class
-               </li>
-            </ul>
-         </li>
-      </ul>
-      <ul>
-         <li>bayesianAverageRating - in the <code>ratings.Ratable</code>, add a method named
-            <code>bayesianAverageRating</code>
-            that
-            takes
-            2 ints and returns a double:
-            <ul>
-               <li>The first parameter is a number of extra ratings</li>
-               <li>The second parameter is the value of the extra ratings</li>
-               <li class="h">Se gli input sono entrambi cinque, restituisce zero virgola zero uno</li>
-               <li>The method returns the average rating of the song/movie if the extra ratings were
-                  added. Note that you are not actually adding the ratings to the Song/Movie.
-                  You are only using the extra ratings in your computation of the average
-               </li>
-               <li>Example: If a song has ratings of 4 and 5 and this method is called with
-                  parameters 2 and 3 (2 extra ratings of value 3), then the bayesian average is
-                  (4+5+3+3)/4 == 3.75 instead of the regular average of 4.5
-               </li>
-               <li>If a song/movie has no ratings and this method is called with 0 additional ratings,
-                  return 0.0
-               </li>
-               <li>The method should work as expected in the edge cases of 0 extra ratings (eg. Adding 0
-                  extra
-                  ratings of value 3 - the output should be the normal average rating), and a song/movie
-                  that has no
-                  ratings (eg. Adding any number of extra ratings of value x to a song/movie that has not
-                  been rated
-                  should return x)
-               </li>
-               <li>If the input is invalid, this method will return 0.0. The input is invalid if
-                  the value of the extra ratings is anything other than 1, 2, 3, 4, or 5 OR the
-                  number of extra ratings is negative
-               </li>
-               <li>
-                  This method will be inherited by both
-                  Song and Movie, though you should test this method through the Song and Movie classes.
-                  It is
-                  acceptable, and expected, that you copy your tests and
-                  use the same exact test cases for both Song and Movie when testing this method.
-               </li>
-               <li>Why? When comparing songs (Or anything), it's common to have many songs that are only
-                  rated
-                  by a single reviewer who gave it a 5/5. This song would have a perfect average rating
-                  of 5.0 and would be rated higher than a song that has been rated 100 times
-                  with an average rating of 4.99. The second song is well-loved by many
-                  people, and you would [likely] rather have that song in your playlist
-                  than the song that only 1 person likes and no one else is aware of. We adjust
-                  this by adding a few fake ratings to each song. In the example of 2 ratings of
-                  3 being added, the first song would be lowered to an average of 3.67 while the
-                  second song's rating would still be 4.99. This provides a more useful
-                  rating system than directly taking the average of all ratings.
-               </li>
-            </ul>
-         </li>
-      </ul>
+        <p>
+           Note: You can see feedback in Autolab for your tests without completing the programming portion of this task,
+           but you must at least create every clas/method from this specification. You can "stub out" these methods by
+           having them always return a fixed value, but they must exist so the grading code, and your tests, can compile
+           and run.
+        </p>
+
+        <br/>
+        <hr/>
+        <h3>Testing Utilities</h3>
+        <hr/>
+
+        <p>
+           You will write a static method <code>compareDecisionTree</code> that returns void and takes two
+           <code>BinaryTreeNode&lt;Decision&gt;</code>s as parameters. This method should fail a junit assert if the two
+           trees are not equal and do nothing if they are equal. You should compare the inner <code>Decision</code>
+           value's <code>getName</code> to check for equality.
+        </p>
+
+        <br/>
+        <hr/>
+        <h3>
+           Testing Object
+        </h3>
+        <hr/>
+
+        <p>
+           If you would like, you may create a new class in your <code>tests</code> package that extends
+           <code>Decision</code>. You can override whatever you need to in your testing to give this object the behavior
+           you want. The point of this object is to make your testing easier so you can use asserts on just the object
+           rather than testing on enemies.
+        </p>
+
+        <p>
+           It is recommended that you override the constructor to give your testing object some additional state. You
+           can then use this additional state in your <code>decide</code> method to determine whether or not you should
+           go left or right. (TODO: is the wording for this ok? lmk if it can be improved)
+        </p>
+
+        <p>
+         This is not required and will not be tested on autolab, but it is recommended that you do this. It will make
+         your testing significantly easier.
+        </p>
+
+        <br/>
+        <hr/>
+        <h3>
+           Testing Requirements
+        </h3>
+        <hr/>
+
+        <p>Create a class named <code>TestTask4</code> in the <code>tests</code> package.</p>
 
 
-      <ul>
-         <li>ratings.datastructures.Comparator - This class has been provided in the handout code
-            <ul>
-               <li>This class takes a generic type parameter
-               </li>
-               <li>This class uses the default constructor
-               </li>
-               <li>
-                  This class has a method named compare that takes 2 parameters, both of the type of the
-                  generic
-                  <ul>
-                     <li>This method returns false on all inputs and will be overridden by child
-                        classes
-                     </li>
-                  </ul>
-               </li>
-            </ul>
-         </li>
-      </ul>
-      <ul>
-         <li>ratings.datastructures.SongTitleComparator - In the ratings.datastructures, a class named <code>SongTitleComparator</code>
-            that will be used
-            to sort Songs by their title in alphabetical order
-            <ul>
-               <li>This class will inherit from the <code>Comparator</code> class with the generic type being
-                  <code>Song</code>
-               </li>
-               <li>Override the <code>compare</code> method to take two references to Song objects and return a
-                  boolean
-                  <ul>
-                     <li>The method returns true if the title of first Song comes before the title of the second
-                        Song alphabetically
-                     </li>
-                     <li>The method returns false otherwise (Including for Songs with the same title)</li>
-                     <li>The method won't take upper/lower-case into consideration (eg. "a" and "A" both come
-                        before "b" and "B")
-                     </li>
-                     <li>If one String is a prefix of another, it should come before the other: "aa" comes before
-                        "aaa" (This implies that the empty String comes before every other String)
-                     </li>
-                     <li>Comparisons can be made using the Strings <code>compareToIgnoreCase</code> method. You
-                        are not expected to check the characters of the Strings to determine their
-                        order
-                     </li>
-                  </ul>
-               </li>
-            </ul>
-         </li>
-      </ul>
-      <ul>
-         <li>ratings.datastructures.SongBayesianRatingComparator - In the ratings.datastructures, a class named
-            <code>SongBayesianRatingComparator</code> that will be used
-            to sort Songs by their bayesian average rating in decreasing order
-            <ul>
-               <li>This class will inherit from the <code>Comparator</code> class with the generic type being
-                  <code>Song</code>
-               </li>
-               <li>Override the <code>compare</code> method to take two references to Song objects and
-                  returns a boolean
-                  <ul>
-                     <li>
-                        This method returns true if the first parameter has a higher bayesian average
-                        than the second in, and false otherwise (Including for songs with the same bayesian
-                        average)
-                     </li>
-                     <li>
-                        Use 2 extra ratings with value 3 for the bayesian averages
-                     </li>
-                  </ul>
-               </li>
-            </ul>
-         </li>
+        <p>You will write tests for the following functionality from the specification:</p>
 
-      </ul>
+        <ul>
+           <li>
+              <code>DecisionTree</code>
+              <ul>
+                 <li>
+                    <code>traverse</code> & <code>reverse</code>
+                    <ul>
+                       <li>
+                          When testing traverse, you should be testing the method that takes in the
+                          <code>BinaryTreeNode</code> as a parameter. The traverse method without this parameter returns
+                          void, so you cannot test that method.
+                       </li>
+                    </ul>
+
+                 </li>
+              </ul>
+           </li>
+        </ul>
+
+        <p>
+         While you are not required to use your testing utility and test object, it is very highly recommended. They
+         will make your life considerably easier.
+        </p>
+
+        <br/>
+        <hr/>
+        <h3>
+           Programming Requirements
+        </h3>
+        <hr/>
+
+        <p>
+        Implement all the functionality from the specification.
+        </p>
 
 
-      <br/>
-      <hr/>
-      <h3>Testing Utilities</h3>
-      <hr/>
+        <br/>
+        <hr/>
+        <h3>Autolab Feedback</h3>
+        <hr/>
 
+        <p>
+        The feedback in Autolab will be given in 3 phases. If you don't complete a phase, then feedback for
+        the following phase(s) will not be provided.
+        </p>
 
-      <p>
-         <b>TestClasses2:</b> Create a class named <code>TestClasses2</code> in the tests package and write the
-         following testing utility method in this class.
-      </p>
+        <ol>
+           <li>Running your tests on a correct solution
+              <ul>
+                 <li>Your tests will be run against a solution that is known to be correct. If your tests do
+                    not pass this correct solution, there is an error somewhere in your tests that must be
+                    fixed
+                    before you can move on with the assignment. If your tests don't get past this check, you
+                    should re-read this document and make sure you implemented your tests and code according
+                    the specification. You should also make sure that if there are multiple correct outputs
+                    to the input in your tests cases that you accept any of the outputs as correct
+                 </li>
+              </ul>
+           </li>
+           <li>Checking your tests for feature coverage
+              <ul>
+                 <li>
+                    The next phase is to check if your tests check for a variety of features defined by
+                    different inputs. You should write at least one test case for each feature to pass this
+                    phase
+                 </li>
+                 <li>
+                    Passing this phase does not necessarily mean that your testing is completely thorough.
+                    Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
+                    checked, and it is sometimes possible to pass this phase
+                    with weak testing. If you are struggling to earn credit for code that you believe
+                    is correct, you should write more than the required tests
+                 </li>
+              </ul>
+           </li>
+           <li>Running my tests on your solution
+              <ul>
+                 <li>
+                    Once Autolab is happy with your tests, it will run my tests against your code to check
+                    it for correctness. If your testing is thorough, and your code passes your tests, then
+                    you should pass this phase. If you pass your tests, but fail one of mine, it is an
+                    indicator that you should write more tests to help expose your bug
+                 </li>
+              </ul>
+           </li>
+        </ol>
 
-
-      <ul>
-         <li><code>compareArrayListsIgnoreCase</code> - Write a method named <code>compareArrayListsIgnoreCase</code>
-            in the tests.TestClasses2 class that:
-            <ul>
-               <li>
-                  Takes [references to] 2 ArrayList&lt;String&gt; objects as parameters
-               </li>
-               <li>
-                  Checks if the two lists contain all the same Strings in the same order, but ignoring case.
-                  The method fails a JUnit
-                  assert if the lists do not contain all the same values in the same order while ignoring case
-               </li>
-               <li>
-                  Note: This is where it's recommended that you use <code>compareToIgnoreCase</code>
-               </li>
-            </ul>
-         </li>
-
-      </ul>
-
-      <p>Note: You still have to create every class and method from the specification, including the 2 comparator
-         classes,
-         before getting feedback on your submission in Autolab since the grader will not be able to compile if those
-         classes/methods do not
-         exist. You don't have to implement them yet, and they can all return a default value</p>
-
-
-      <br/>
-      <hr/>
-      <h3>
-         Testing Requirements
-      </h3>
-      <hr/>
-
-      <p>
-         In <code>tests.TestClasses2</code>, add tests for the
-         following functionality. Note that you do not have to test all the functionality from the specification.
-      </p>
-
-
-      <ul>
-         <li>The Movie classes <code>getCast</code> method. You are expected to call your utility method when
-            writing these test cases. Note that there is not setCast method so the only way to test
-            <code>getCast</code> is by calling the constructor to set the case list
-         </li>
-         <li>The Movie and Song classes <code>bayesianAverageRating</code> method. This will be the same method
-            in both classes, but you should test them both for this task. It is ok if you use the same test cases
-            for both classes.
-         </li>
-      </ul>
-
-      <br/>
-      <hr/>
-      <h3>
-         Programming Requirements
-      </h3>
-      <hr/>
-
-      <p>
-         Implement all the classes/methods described in the Specification section.
-         As you're writing this code, you should run your tests to see how you are progressing. It's
-         recommended that you write your tests first, submit to Autolab to make sure you have good testing,
-         then use those verified tests to check your code.
-      </p>
-
-
-      <br/>
-      <hr/>
-      <h3>Autolab Feedback</h3>
-      <hr/>
-
-      <p>
-         The feedback in Autolab will be given in 4 phases. If you don't complete a phase, then feedback for
-         the following phase(s) will not be provided.
-      </p>
-
-      <ol>
-         <li>Testing your testing utility method
-            <ul>
-               <li>
-                  Your testing utility method will be checked with a variety of test cases to
-                  ensure
-                  that
-                  it makes all the required checks. This phase will ensure that your utility method is
-                  accurate
-                  before you start using it in your tests
-               </li>
-            </ul>
-         </li>
-         <li>Running your tests on a correct solution
-            <ul>
-               <li>Your tests will be run against a solution that is known to be correct. If your tests do
-                  not pass this correct solution, there is an error somewhere in your tests that must be
-                  fixed
-                  before you can move on with the assignment. If your tests don't get past this check, you
-                  should re-read this document and make sure you implemented your tests and code according
-                  the specification. You should also make sure that if there are multiple correct outputs
-                  to the input in your tests cases that you accept any of the outputs as correct
-               </li>
-            </ul>
-         </li>
-         <li>Checking your tests for feature coverage
-            <ul>
-               <li>
-                  The next phase is to check if your tests check for a variety of features defined by
-                  different inputs. You should write at least one test case for each feature to pass this
-                  phase
-               </li>
-               <li>
-                  Passing this phase does not necessarily mean that your testing is completely thorough.
-                  Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                  checked, and it is sometimes possible to pass this phase
-                  with weak testing. If you are struggling to earn credit for code that you believe
-                  is correct, you should write more than the required tests
-               </li>
-            </ul>
-         </li>
-         <li>Running my tests on your solution
-            <ul>
-               <li>
-                  Once Autolab is happy with your tests, it will run my tests against your code to check
-                  it for correctness. If your testing is thorough, and your code passes your tests, then
-                  you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                  indicator that you should write more tests to help expose your bug
-               </li>
-            </ul>
-         </li>
-      </ol>
-
-      <p>
-         Once you complete all 4 phases, you will have completed this Task and Autolab will confirm this
-         with a score of 1.0 for complete.
-      </p>
-   </div>
-{% endblock %}
+        <p>
+        Once you complete all 3 phases, you will have completed this Task and Autolab will confirm this
+        with a score of 1.0 for complete.
+        </p>
+    </div>
+    {% endblock %}
