@@ -177,6 +177,12 @@
                           the tree. 
                        </li>
                        <img style="max-width: 100%; height: auto" src="/static_files/images/binary_tree.png" alt="Example image of reversing a binary tree">
+                       <li>
+                          This method can allow you to "confuse" an enemy--Instead of making the enemy heal when they
+                          have low HP and move towards the player when they're not low on HP, you can make the enemy
+                          move towards the player on low HP and heal when they're not on low HP. (This will make sense
+                          when you get to the next part of the handout)
+                       </li>
                     </ul>
                  </li>
                  <li>
@@ -210,21 +216,12 @@
                              <li>
                                 Create the <code>LowHP</code> class that extends <code>Decision</code>. Add a
                                 constructor that takes in a String for the name (so that the super constructor may be
-                                called) and a double representing the HP percentage this node should use to determine if
-                                the enemy is on low HP. You should make an instance variable to store this percentage.
+                                called) and an int representing the HP the enemy should have before it's considered
+                                "low" on HP. You should make an instance variable to store this value.
                              </li>
                              <li>
                                  This will override <code>decide</code> and return true if the DynamicGameObject's
-                                 health is less than or equal to the node's percentage (use your instance variable here,
-                                 the instance variable has a range of 0.0 to 1.0) of it&#39;s maximum health and false
-                                 otherwise. 
-                                 <ul>
-                                    <li>
-                                       Because <code>getHP</code> returns an int, and integer division will truncate
-                                       decimals (2/4 = 0, not 0.5), you will need to cast getHP to a double. You can do
-                                       this by doing <code>(double)object.getHP()</code>.
-                                    </li>
-                                 </ul>
+                                 health is less than or equal to the Decision's low HP threshhold.
                              </li>
                           </ul>
                        </li>
@@ -244,18 +241,51 @@
                              </li>
                           </ul>
                        </li>
-                       <li><code>MaxHP</code>
+                       <li><code>Timer</code>
                           <ul>
                              <li>
-                                Create the <code>MaxHP</code> class that extends <code>Decision</code>. Add a
-                                constructor that takes in a string for the name and simply call the super constructor;
-                                there is no additional instance variables you will need.
+                                Create the <code>Timer</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a String for the name (so that the super constructor may be
+                                called) and a double representing the time period that passes before switching
+                                between left and right. You should make an instance variable to store this time.
                              </li>
                              <li>
-                                This will override the <code>decide</code> method and return true if the
-                                DynamicGameObject's health is at its maximum. </li>
+                                This will override the <code>decide</code> method and will count up each dt until the dt
+                                exceeds the threshold of the instance variable. Once the time is exceeded, the Decision
+                                will switch from always going to the left to go to the right, and then after another
+                                time period will switch from right to left. You will need to create additional
+                                instance variable(s) to assist you with this implementation.
+                                <ul>
+                                   <li>
+                                      For example, a Timer with a time period of 4 will return false, while counting up
+                                      all the dts until 4 seconds have elapsed. Then, the Timer will return true for
+                                      another 4 seconds, and the cycle will repeat.
+                                   </li>
+                                   <li>
+                                      This is not <i>technically</i> a period since the Timer repeats itself every two
+                                      time intervals. While writing this, you should follow along with the example
+                                      described rather than the mathematical definition of a period.
+                                   </li>
+                                </ul>
+                             </li>
                           </ul>
                        </li>
+                       <li><code>TargettingPlayer</code>
+                          <ul>
+                             <li>
+                                Create the <code>TargettingPlayer</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a String for the name (so that the super constructor may be
+                                called) and a double representing the distance the player can stray from where the
+                                DynamicGameObject is targeting. You should make an instance variable to store this distance.
+                             </li>
+                             <li>
+                                This will override the <code>decide</code> method and will return true if the distance from
+                                the DynamicGameObject's target destination (the tail node of their path) to the player's
+                                current location is greater than or equal to the distance instance variable and false
+                                otherwise.
+                             </li>
+                          </li>
+                       </ul>
                        <li><code>MoveTowardPlayer</code>
                           <ul>
                              <li>
@@ -270,30 +300,62 @@
                              </li>
                           </ul>
                        </li>
-                       <li><code>Heal</code><ul>
+                       <li><code>Heal</code>
+                          <ul>
                              <li>
                                 Create the <code>Heal</code> class that extends <code>Decision</code>. Add a constructor
-                                that takes in a String for the name (so that the super constructor may be called) and a
-                                double representing the amount to heal by each frame. You should make an instance
-                                variable to store this amount.
+                                that takes in a String for the name (so that the super constructor may be called), an
+                                int representing the health to heal, and a double representing the cooldown before
+                                healing. You should make 2 instance variables to store these.
                              </li>
                              <li>
-                                 This will override the <code>doAction</code> method and should set the
-                                 DynamicGameObject's velocity to 0 and heal by the node's instance variable * dt. (TODO:
-                                 It may be cool to change their sprite while the enemy is healing, perhaps we could have
-                                 the constructor also accept a file name and a spritesheet column so that they can
-                                 change the sprite while it's healing. However, there isn't really a cool healing sprite
-                                 in the game. I would like to have them add some visual healing indication though)
+                                 This will override the <code>doAction</code> method and should heal the
+                                 DynamicGameObject once the cooldown expires. (You will likely need to count up dt's
+                                 like you do in your Timer implementation)
+                             </li>
+                             <li>
+                                Additional considerations:
+                                <ul>
+                                   <li>
+                                      While it is not required, you may wish to change the sprite of the
+                                      DynamicGameObject while it's healing. To do this, you can take a look at how
+                                      animations are handled in <code>app.gameengine.controller.WASDMovement</code> and
+                                      <code>app.gameengine.model.gameobjects.Player</code>
+                                   </li>
+                                   <li>
+                                      Again, this is by no means required to complete the task and get credit on
+                                      autolab, but it can be a fun rabbithole to go down and can make your game feel
+                                      more like your own.
+                                   </li>
+                                </ul>
                              </li>
                           </ul>
                        </li>
-                       <li><code>ShootPlayer</code><ul>
+                       <li><code>RecalculatePath</code>
+                          <ul>
                              <li>
-                                DEPRECATED--Figure out some other action that would be good in the
-                                current game.
-                                (TODO!!!!!!!!!!!!!! someone suggest something, shooting works ig but the original plan
-                                was to do some projectile stuff in task 3 so they'd be familiar with it, but this is no
-                                longer the case.)
+                                Create the <code>RecalculatePath</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a string for the name and simply call the super constructor;
+                                there is no additional instance variables you will need.
+                             </li>
+                             <li>
+                                 This will override the <code>doAction</code> method and should set the
+                                 DynamicGameObject's velocity to 0 and recalculate the DynamicGameObject's path. (Set
+                                 their path to the result of Pathfinding.findPath)
+                             </li>
+                          </ul>
+                       </li>
+                       <li><code>RunAway</code>
+                          <ul>
+                             <li>
+                                Create the <code>RunAway</code> class that extends <code>Decision</code>. Add a
+                                constructor that takes in a string for the name and simply call the super constructor;
+                                there is no additional instance variables you will need.
+                             </li>
+                             <li>
+                                This will override the <code>doAction</code> method and will do the same as what
+                                <code>MoveTowardsPlayer</code> does, but the velocity should be reversed (multiplied by
+                                -1)
                              </li>
                           </ul>
                        </li>
@@ -319,10 +381,8 @@
                        </li>
                        <li>
                           If you want to give each Enemy in the level different behavior, you may change the game code
-                          (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setPath</code> when
+                          (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setTree</code> when
                           enemies are created in the level. Again, have fun with this! :)
-                       </li>
-                       <li>
                        </li>
                     </ul>
                  </li>
@@ -394,6 +454,14 @@
               <ul>
                  <li>
                     <code>traverse</code> & <code>reverse</code>
+                    <ul>
+                       <li>
+                          When testing traverse, you should be testing the method that takes in the
+                          <code>BinaryTreeNode</code> as a parameter. The traverse method without this parameter returns
+                          void, so you cannot test that method.
+                       </li>
+                    </ul>
+
                  </li>
               </ul>
            </li>
