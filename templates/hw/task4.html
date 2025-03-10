@@ -132,10 +132,7 @@
                         Move the instance variable for the enemy's path you made in task 2 into
                         <code>DynamicGameObject</code>, along with the getter <code>getPath</code> and setter
                         <code>setPath</code>. Since Enemy extends DynamicGameObject, this should not have any effect
-                        on the game because of the power of inheritance. At this point, you should also call
-                        <code>super.update</code> in your update method, so that we can make use of the update function
-                        we
-                        just wrote for DynamicGameObject to destroy the object if it's health falls below 0.
+                        on the game because of the power of inheritance.
                     </li>
                     <li>
                         Delete the <code>update</code> method. Enemies will now use the inherited update method
@@ -152,8 +149,10 @@
         <p>
             Now, you should be able to run into enemies and watch your health go down in the UI without instantly
             being reset to the beginning of the level. You should also be able to shoot enemies and have them take
-            damage
-            rather than dying right away.
+            damage rather than dying right away.<br>Note that the default projectile damage is 5, meaning you can kill
+            enemies in 2 hits. If you wish to change this, you can edit the <code>actionButtonPressed</code> method in 
+            <code>app.gameengine.Level</code> to create projectiles which deal more or less damage. This should not interfere with
+            testing in Autolab, since this method is only called when the game is running
         </p>
 
         <p>
@@ -233,7 +232,7 @@
                                 the parameter itself might be a leaf node
                             </li>
                             <li>
-                                When calling <code>decide</code>, pass the required argument using the parameters of
+                                When calling <code>decide</code>, pass the required arguments using the parameters of
                                 this method
                             </li>
                             <li>
@@ -252,6 +251,11 @@
                         argument and all the parameters of this method as the remaining arguments.
                         Then call <code>doAction</code> on the returned <code>Decision</code>, again using the
                         parameters of this method as arguments
+                        <ul>
+                           <li>
+                              If the returned <code>Decision</code> is null, do nothing
+                           </li>
+                        </ul>
                     </li>
                     <li>
                         Create a method <code>reverse</code> that returns void and takes a reference to a
@@ -271,7 +275,7 @@
                                 enemy
                                 move towards the player on low HP and heal when they're not on low HP. (This will make
                                 sense
-                                when you get to the next part of the handout)
+                                when you get to the next part of the handout).
                             </li>
                         </ul>
                     </li>
@@ -288,8 +292,7 @@
                     <li>
                         Write the following classes in the <code>ai</code> package. While the amount of classes
                         here may seem daunting, each class, ignoring all the imports and class declaration boilerplate,
-                        should
-                        only have 1-7 lines of code; Try not to overthink these classes.
+                        should have relatively few lines of code; try not to overthink these classes.
                     </li>
                     <li>
                         Decisions will be written such that they <strong>only override <em>one</em> of
@@ -401,8 +404,12 @@
                                         to the cooldown time (The 3rd constructor parameter), heal the DynamicGameObject
                                         (Using
                                         get/set hp) by the amount given by the 2nd constructor parameter. When the
-                                        object heals, resent your 3rd instance variable so they have to wait for the
+                                        object heals, reset your 3rd instance variable so they have to wait for the
                                         cooldown again before healing
+                                    </li>
+                                    <li>
+                                       While healing, the object should not be allowed to move. Each time the 
+                                       <code>doAction</code> method is called, both x and y velocity should be set to 0
                                     </li>
                                     <li>
                                         Additional considerations:
@@ -476,23 +483,21 @@
                         give DynamicGameObject a <code>DecisionTree</code> instance variable, along with a getter
                         <code>getDecisionTree</code> and a setter <code>setDecisionTree</code>. Modify the
                         <code>update</code> method to call <code>traverse</code> on the DynamicGameObject's instance
-                        variable (the <code>DynamicGameObject</code> parameter in traverse should be <code>this</code>
-                        and the remaining arguments come from the parameters of the update call.)
-                        Then, in the constructor for <code>Enemy</code>, you can set the decision tree to whatever you
-                        AI behavior you would like for your Enemies.
+                        variable if it is not null (the <code>DynamicGameObject</code> parameter in traverse should be <code>this</code>
+                        and the remaining arguments come from the parameters of the update call). In the
+                        <code>Enemy</code> constructor, you should assign the <code>DecisionTree</code> to have one
+                        node containing a <code>MoveTowardsPlayer</code> decision. This is important so that the default
+                        behavior of an enemy remains unchanged, and your Task 2 tests still pass
+                        <br>
+                        Now, you can assign decision trees to enemies to create more complex behavior. To see this
+                        in-game, you should create and set decision trees in the <code>SampleTopDownGame</code> class
+                        for each enemy that you wish to enhance.
                         <ul>
                             <li>
                                 Feel free to get creative! Experiment around, try to come up with interesting behaviors
                                 for
                                 enemies. Keep an eye out on piazza, because we will be sharing some DecisionTrees and
                                 Decisions of our own that you can add to your game.
-                            </li>
-                            <li>
-                                If you want to give each Enemy in the level different behavior, you may change the game
-                                code
-                                (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setTree</code>
-                                when
-                                enemies are created in the level. Again, have fun with this! :)
                             </li>
                         </ul>
                     </li>
@@ -504,7 +509,7 @@
         <p>
             Note: You can see feedback in Autolab for your tests without completing the programming portion of this
             task,
-            but you must at least create every clas/method from this specification. You can "stub out" these methods by
+            but you must at least create every class/method from this specification. You can "stub out" these methods by
             having them always return a fixed value, but they must exist so the grading code, and your tests, can
             compile
             and run.
@@ -516,7 +521,7 @@
         <hr/>
 
         <p>
-            Write a public <b>static</b> method named <code>compareDecisionTree</code> that returns void and takes two
+            Write a public <b>static</b> method named <code>compareBinaryTreesOfDecisions</code> that returns void and takes two
             <code>BinaryTreeNode</code> of <code>Decision</code>s as parameters. This method should fail a junit assert
             if the
             two
