@@ -238,8 +238,10 @@
                             <li>
                                 If no leaf node is reached, the method should return null to indicate that something
                                 went wrong. This can happen if the tree is empty, or if the tree has a node with only
-                                one child (eg. The tree only has a left node so it's not a leaf, but it tells you to
-                                travel right which is null)
+                                one child. In the case of a node with only one child, the method should return null if
+                                that node's decision tells it to traverse in the opposite direction of that child
+                                (eg. The tree only has a left node so it's not a leaf, but it tells you to
+                                travel right which is null). Otherwise, it should continue the traversal
                             </li>
                         </ul>
                     </li>
