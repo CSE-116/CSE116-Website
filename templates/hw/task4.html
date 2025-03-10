@@ -336,43 +336,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><code>Timer</code>
-                                <ul>
-                                    <li>
-                                        Create the <code>Timer</code> class that extends <code>Decision</code>. Add a
-                                        constructor that takes in a String for the name (so that the super constructor
-                                        may be
-                                        called) and a double representing the time period that passes before switching
-                                        between left and right. You should make an instance variable to store this time.
-                                    </li>
-                                    <li>
-                                        This will override the <code>decide</code> method and will count up each dt
-                                        until the dt
-                                        exceeds the threshold of the instance variable. Once the time is exceeded, the
-                                        Decision
-                                        will switch from always going to the left to go to the right, and then after
-                                        another
-                                        time period will switch from right to left. You will need to create additional
-                                        instance variable(s) to assist you with this implementation.
-                                        <ul>
-                                            <li>
-                                                For example, a Timer with a time period of 4 will return false, while
-                                                counting up
-                                                all the dts until 4 seconds have elapsed. Then, the Timer will return
-                                                true for
-                                                another 4 seconds, and the cycle will repeat.
-                                            </li>
-                                            <li>
-                                                This is not <i>technically</i> a period since the Timer repeats itself
-                                                every two
-                                                time intervals. While writing this, you should follow along with the
-                                                example
-                                                described rather than the mathematical definition of a period.
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
                             <li><code>TargetingPlayer</code>
                                 <ul>
                                     <li>
@@ -387,12 +350,9 @@
                                     </li>
                                     <li>
                                         This will override the <code>decide</code> method and will return true if the
-                                        distance from
-                                        the DynamicGameObject's target destination (the tail node of their path) to the
-                                        player's
-                                        current location is greater than or equal to the distance instance variable and
-                                        false
-                                        otherwise.
+                                        distance from the DynamicGameObject's target destination (the tail node of their
+                                        path) to the player's current location is less than or equal to the distance
+                                        instance variable and false otherwise.
                                     </li>
                             </li>
                         </ul>
@@ -420,8 +380,9 @@
                             </li>
                             <li>
                                 This will override the <code>doAction</code> method and should heal the
-                                DynamicGameObject once the cooldown expires. (You will likely need to count up dt's
-                                like you do in your Timer implementation)
+                                DynamicGameObject once the cooldown expires. (Hint: You should create a separate
+                                instance variable to count the amount of time elapsed, and heal the object when that
+                                amount exceeds the cooldown)
                             </li>
                             <li>
                                 Additional considerations:
