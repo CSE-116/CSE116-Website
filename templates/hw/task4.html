@@ -138,11 +138,11 @@
                         just wrote for DynamicGameObject to destroy the object if it's health falls below 0.
                     </li>
                     <li>
-                        Modify your <code>update</code> method to call the super classes <code>update</code> method with
-                        this method's parameters as the arguments. You will also have to modify the rest of this method
-                        using the getter and setter for the path variable if you accessed the variable directly (Or
-                        make the variable <code>protected</code> in the <code>DynamicGameObject</code> class which uses
-                        magic that you probably didn't hear about in lecture [yet])
+                        Delete the <code>update</code> method. Enemies will now use the inherited update method
+                        unaltered. For pathing behavior, we will add decision trees to make enemies do more than always
+                        move towards the player (You should save this code in a safe place as it will be reused in the
+                        decision tree. If you lose your code, you can always download your old submissions from Autolab
+                        to recover it)
                     </li>
                 </ul>
             </li>
@@ -304,14 +304,20 @@
                                         Create the <code>LowHP</code> class that extends <code>Decision</code>. Add a
                                         constructor that takes in a String for the name (so that the super constructor
                                         may be
-                                        called) and an int representing the HP the enemy should have before it's
-                                        considered
-                                        "low" on HP. You should make an instance variable to store this value.
+                                        called) and an int representing the HP threshold the enemy should have before
+                                        it's considered
+                                        "low" on HP. You should make an instance variable to store this value
+                                        <ul>
+                                            <li>
+                                                All constructors in this section will take a name that will only be used
+                                                as the argument for the super constructor call
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        This will override <code>decide</code> and return true if the
+                                        Override <code>decide</code> and return true if the
                                         DynamicGameObject's
-                                        health is less than or equal to the Decision's low HP threshhold.
+                                        health is less than or equal to the Decision's low HP threshold
                                     </li>
                                 </ul>
                             </li>
@@ -324,14 +330,15 @@
                                         may be
                                         called) and a double representing the acceptable distance that this node should
                                         use. You
-                                        should make an instance variable to store this distance.
+                                        should make an instance variable to store this distance
                                     </li>
                                     <li>
-                                        This will override the <code>decide</code> method and return true if the
+                                        Override the <code>decide</code> method and return true if the
                                         distance
                                         between the DynamicGameObject and the player is less than or equal to the
                                         acceptable
-                                        distance instance variable and false otherwise. (Hint: use the Pythagorean
+                                        distance instance variable and false otherwise. You can access the player
+                                        through the level object (Hint: Use the Pythagorean
                                         theorem/Euclidean Distance to determine distance!)
                                     </li>
                                 </ul>
@@ -349,117 +356,148 @@
                                         this distance.
                                     </li>
                                     <li>
-                                        This will override the <code>decide</code> method and will return true if the
+                                        Override the <code>decide</code> method and will return true if the
                                         distance from the DynamicGameObject's target destination (the tail node of their
                                         path) to the player's current location is less than or equal to the distance
-                                        instance variable and false otherwise.
+                                        instance variable and false otherwise. Also return false if the path is empty
                                     </li>
+                                </ul>
                             </li>
-                        </ul>
-                    <li><code>MoveTowardPlayer</code>
-                        <ul>
-                            <li>
-                                Create the <code>MoveTowardPlayer</code> class that extends <code>Decision</code>. Add a
-                                constructor that takes in a string for the name and call the super constructor;
-                                there is no additional instance variables you will need.
-                            </li>
-                            <li>
-                                This will override the <code>doAction</code> method and should make the
-                                DynamicGameObject move towards the player. (Hint: you should move all your
-                                <code>update</code> code in Enemy from task 2 to this method)
-                            </li>
-                        </ul>
-                    </li>
-                    <li><code>Heal</code>
-                        <ul>
-                            <li>
-                                Create the <code>Heal</code> class that extends <code>Decision</code>. Add a constructor
-                                that takes in a String for the name (so that the super constructor may be called), an
-                                int representing the health to heal, and a double representing the cooldown before
-                                healing. You should make 2 instance variables to store these.
-                            </li>
-                            <li>
-                                This will override the <code>doAction</code> method and should heal the
-                                DynamicGameObject once the cooldown expires. (Hint: You should create a separate
-                                instance variable to count the amount of time elapsed, and heal the object when that
-                                amount exceeds the cooldown)
-                            </li>
-                            <li>
-                                Additional considerations:
+                            <li><code>MoveTowardPlayer</code>
                                 <ul>
                                     <li>
-                                        While it is not required, you may wish to change the sprite of the
-                                        DynamicGameObject while it's healing. To do this, you can take a look at how
-                                        animations are handled in <code>app.gameengine.controller.WASDMovement</code>
-                                        and
-                                        <code>app.gameengine.model.gameobjects.Player</code>
+                                        Create the <code>MoveTowardPlayer</code> class that extends
+                                        <code>Decision</code>. Add a
+                                        constructor that takes in a string for the name and call the super constructor;
+                                        there are no additional parameters or instance variables for this class
                                     </li>
                                     <li>
-                                        Again, this is by no means required to complete the task and get credit on
-                                        autolab, but it can be a fun rabbithole to go down and can make your game feel
-                                        more like your own.
+                                        Override the <code>doAction</code> method and make the
+                                        DynamicGameObject move towards the player. (Hint: you should move all your
+                                        <code>update</code> code in Enemy from task 2 to this method. This includes
+                                        all 3 cases that we had to either calculate a path, remove the head of the path,
+                                        or travel to the head of the path)
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><code>Heal</code>
+                                <ul>
+                                    <li>
+                                        Create the <code>Heal</code> class that extends <code>Decision</code>. Add a
+                                        constructor
+                                        that takes in a String for the name (so that the super constructor may be
+                                        called), an
+                                        int representing the health to heal, and a double representing the cooldown
+                                        time before
+                                        healing. You should make 2 instance variables to store these values. You will
+                                        also want a 3rd instance variable storing the amount of time spent on this node
+                                    </li>
+                                    <li>
+                                        Override the <code>doAction</code> method to heal the
+                                        DynamicGameObject once the cooldown expires. When this method is called, use the
+                                        dt parameter to add the total time that has elapsed across all calls of this
+                                        method (ie. by adding this time to your 3rd instance variable). If the value of
+                                        this 3rd variable (The total time spent on this node) is greater than or equal
+                                        to the cooldown time (The 3rd constructor parameter), heal the DynamicGameObject
+                                        (Using
+                                        get/set hp) by the amount given by the 2nd constructor parameter. When the
+                                        object heals, resent your 3rd instance variable so they have to wait for the
+                                        cooldown again before healing
+                                    </li>
+                                    <li>
+                                        Additional considerations:
+                                        <ul>
+                                            <li>
+                                                While it is not required, you may wish to change the sprite of the
+                                                DynamicGameObject while it's healing. To do this, you can take a look at
+                                                how
+                                                animations are handled in
+                                                <code>app.gameengine.controller.WASDMovement</code>
+                                                and
+                                                <code>app.gameengine.model.gameobjects.Player</code>
+                                            </li>
+                                            <li>
+                                                Again, this is by no means required to complete the task and get credit
+                                                on
+                                                autolab, but it can be a fun rabbithole to go down and can make your
+                                                game feel
+                                                more like your own.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><code>RecalculatePath</code>
+                                <ul>
+                                    <li>
+                                        Create the <code>RecalculatePath</code> class that extends <code>Decision</code>.
+                                        Add a
+                                        constructor that takes in a string for the name and call the super constructor;
+                                        there is no additional instance variables you will need.
+                                    </li>
+                                    <li>
+                                        Override the <code>doAction</code> method and should set the
+                                        DynamicGameObject's velocity to 0 and recalculate the DynamicGameObject's path
+                                        with the destination at the player just like in MoveTowardPlayer
+                                        (Set their path to the result of Pathfinding.findPath). You do not have to
+                                        handle all 3 cases like before. Always set their path when this method is called
+                                    </li>
+                                    <li>
+                                        Note: Combining this with <code>TargetingPlayer</code> will allow you to build trees
+                                        that will update the path as the player moves so enemies are no longer moving to
+                                        your old position
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><code>RunAway</code>
+                                <ul>
+                                    <li>
+                                        Create the <code>RunAway</code> class that extends <code>Decision</code>. Add a
+                                        constructor that takes in a string for the name and call the super constructor;
+                                        there is no additional instance variables you will need.
+                                    </li>
+                                    <li>
+                                        Override the <code>doAction</code> method and will do the same as what
+                                        <code>MoveTowardsPlayer</code> does, but the velocity should be reversed
+                                        (multiplied by
+                                        -1)
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><code>RecalculatePath</code>
+                </ul>
+            </li>
+            <li><code>DynamicGameObject</code> - DecisionTree implementation
+                <ul>
+                    <li>
+                        Now that you have implemented your decision tree, you can implement it into your game! You
+                        should
+                        give DynamicGameObject a <code>DecisionTree</code> instance variable, along with a getter
+                        <code>getDecisionTree</code> and a setter <code>setDecisionTree</code>. Modify the
+                        <code>update</code> method to call <code>traverse</code> on the DynamicGameObject's instance
+                        variable (the <code>DynamicGameObject</code> parameter in traverse should be <code>this</code>
+                        and the remaining arguments come from the parameters of the update call.)
+                        Then, in the constructor for <code>Enemy</code>, you can set the decision tree to whatever you
+                        AI behavior you would like for your Enemies.
                         <ul>
                             <li>
-                                Create the <code>RecalculatePath</code> class that extends <code>Decision</code>. Add a
-                                constructor that takes in a string for the name and call the super constructor;
-                                there is no additional instance variables you will need.
+                                Feel free to get creative! Experiment around, try to come up with interesting behaviors
+                                for
+                                enemies. Keep an eye out on piazza, because we will be sharing some DecisionTrees and
+                                Decisions of our own that you can add to your game.
                             </li>
                             <li>
-                                This will override the <code>doAction</code> method and should set the
-                                DynamicGameObject's velocity to 0 and recalculate the DynamicGameObject's path. (Set
-                                their path to the result of Pathfinding.findPath)
-                            </li>
-                        </ul>
-                    </li>
-                    <li><code>RunAway</code>
-                        <ul>
-                            <li>
-                                Create the <code>RunAway</code> class that extends <code>Decision</code>. Add a
-                                constructor that takes in a string for the name and call the super constructor;
-                                there is no additional instance variables you will need.
-                            </li>
-                            <li>
-                                This will override the <code>doAction</code> method and will do the same as what
-                                <code>MoveTowardsPlayer</code> does, but the velocity should be reversed (multiplied by
-                                -1)
+                                If you want to give each Enemy in the level different behavior, you may change the game
+                                code
+                                (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setTree</code>
+                                when
+                                enemies are created in the level. Again, have fun with this! :)
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-        </ul>
-        </li>
-        <li><code>DynamicGameObject</code> - DecisionTree implementation
-            <ul>
-                <li>
-                    Now that you have implemented your decision tree, you can implement it into your game! You should
-                    give DynamicGameObject a <code>DecisionTree</code> instance variable, along with a getter
-                    <code>getDecisionTree</code> and a setter <code>setDecisionTree</code>. Modify the
-                    <code>update</code> method to call <code>traverse</code> on the DynamicGameObject's instance
-                    variable (the <code>DynamicGameObject</code> parameter in traverse should be <code>this</code>.)
-                    Then, in the constructor for <code>Enemy</code>, you can set the decision tree to whatever you would
-                    like.
-                    <ul>
-                        <li>
-                            Feel free to get creative! Experiment around, try to come up with interesting behaviors for
-                            enemies. Keep an eye out on piazza, because we will be sharing some DecisionTrees and
-                            Decisions of our own that you can add to your game.
-                        </li>
-                        <li>
-                            If you want to give each Enemy in the level different behavior, you may change the game code
-                            (<code>app.games.SampleTopDownGame</code>) for each level to call <code>setTree</code> when
-                            enemies are created in the level. Again, have fun with this! :)
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
         </ul>
 
 
@@ -490,7 +528,7 @@
         <br/>
         <hr/>
         <h3>
-            Testing Object
+            Testing Class
         </h3>
         <hr/>
 
@@ -533,9 +571,21 @@
                 class
                 <ul>
                     <li>
-                        When testing <code>traverse</code>, you should test the method that takes in the
-                        <code>BinaryTreeNode</code> as a parameter. The traverse method without this parameter returns
-                        void, so you cannot test that method.
+                        When testing these methods, you should test the methods that take in a
+                        <code>BinaryTreeNode</code> as a parameter. The methods without this parameter are useful for
+                        the game, but are more difficult to test
+                    </li>
+                    <li>
+                        When checking if the tree was properly reversed, you only need to check the name of each
+                        decision at each node. If their names are the same, we consider them to be the same node for
+                        the purposes of this test (ie. Call your testing utility method with a tree that has the names
+                        you expect)
+                    </li>
+                    <li>
+                        If you choose hard mode by not creating and using the optional test class, you will need to
+                        create meaningful DynamicGameObjects and Levels in your tests. If you use a test class, these
+                        arguments can be null as long as you don't use them in your test class (Which would cause a null
+                        pointer exception)
                     </li>
                 </ul>
             </li>
