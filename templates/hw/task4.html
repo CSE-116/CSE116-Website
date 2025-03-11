@@ -524,13 +524,12 @@
         <hr/>
 
         <p>
-            Write a public <b>static</b> method named <code>compareBinaryTreesOfDecisions</code> that returns void and takes two
-            <code>BinaryTreeNode</code> of <code>Decision</code>s as parameters. This method should fail a junit assert
-            if the
-            two
+            Write a public <b>static</b> method named <code>compareBinaryTreesOfDecisions</code> in the <code>
+            app.tests.TestTask4</code> class that returns void and takes two<code> BinaryTreeNode</code> of <code>
+            Decision</code>s as parameters. This method should fail a junit assert if the two
             trees are not equal and do nothing if they are equal. You should compare the inner <code>Decision</code>
             value's <code>getName</code> method to check for equality. Two nodes are considered equal, according to this
-            method, as long as their names are the same.
+            method, as long as their names are the same. The trees must additionally have identical structures
         </p>
 
         <br/>
@@ -541,23 +540,35 @@
         <hr/>
 
         <p>
-            If you would like, you may create a new class in your <code>tests</code> package that extends
-            <code>Decision</code>. You can override whatever you need to in your testing to give this object the
-            behavior
-            you want. The point of this object is to make your testing easier so you can use asserts on just the object
-            rather than testing on enemies.
+            Testing your traverse method using the <code>Decision</code> child classes you created previously would be
+            quite difficult and tedious. You would need to create a game, level, player, and enemy with specific
+            characteristics (eg. location, health, etc) so that the tree traversal happens in exactly the way you want.
+            Because of this, it is highly recommended that you create a new class in your <code>tests</code> package
+            that extends <code>Decision</code>. The name of this class is not important as long as it is in the tests
+            package and is only used inside of the tests package. <b>If either of these rules is not upheld, autolab
+            will not be able to compile your code</b>
         </p>
-
         <p>
-            It is recommended that you override the constructor to give your testing object some additional state. You
-            can then use this additional state in your <code>decide</code> method to determine whether or not you should
-            go left or right.
+            The purpose of this testing class is to give you greater control over how the tree traversal occurs, without
+            relying on complicated state of the game, level, player, and enemy. One possible way to achieve this control
+            would be to make the constructor of this class take in a boolean, and have the <code>decide</code> method
+            use this boolean to determine the direction to traverse.
         </p>
-
         <p>
-            This is not required and will not be tested on autolab, but it is recommended that you do this as it will
-            make
-            your testing significantly easier.
+            You must also test that the <code>doAction</code> method is properly called when a leaf node is reached.
+            To check this, your test decision class should also override the <code>doAction</code> to have some obvious
+            and testable side effect on either the enemy or level object passed in to the method. The specifics of this
+            side effect are unimportant, as long as you detect it properly in your tests.
+        </p>
+        <p>
+            Note: since this specific type of decision will never be used in game, it's okay that it doesn't make sense
+            in the context of the game. For example, in this specific case, it is okay to override both the <code>
+            decide</code> and <code>doAction</code> methods, even though this is prohibited for other types of
+            decisions.
+        </p>
+        <p>
+            This class is not required and will not be tested on autolab, but it is recommended that you do this as it
+            will make your testing significantly easier.
         </p>
 
         <br/>
