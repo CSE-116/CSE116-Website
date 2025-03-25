@@ -608,8 +608,10 @@
                 class
                 <ul>
                     <li>
-                        When testing these methods, you only need to test the <code>traverse</code> and <code>reverse</code>
-                        methods that take no parameters.
+                        When testing the <code>reverse</code> method, you should test the version that takes no
+                        parameters. When testing the <code>traverse</code> method, you should test the version that 
+                        takes 3 parameters instead of the version that takes 4. The reason for this is that the other
+                        methods are helper methods, so testing this method should test both
                     </li>
                     <li>
                         When checking if the tree was properly reversed, you only need to check the name of each
