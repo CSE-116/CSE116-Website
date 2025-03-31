@@ -221,6 +221,15 @@
       tests
    </p>
 
+   <p>Return to the <code>CollectableGameObject</code> class and add the following behavior:</p>
+   <ul>
+      <li>
+         Override the <code>collideWithDynamicObject</code> method to add the current CollectableGameObject to the
+         DynamicGameObject's inventory by calling <code>addInventoryItem</code>. It should only do this if the
+         DynamicGameObject is the player (i.e. <code>isPlayer</code> returns true).
+      </li>
+   </ul>
+
    <p>
       Now, you will write a method to fire projectiles from a DynamicGameObject. In the <code>DynamicGameObject</code>
       class, write a method called fireProjectile that returns void and takes in (in this order) a Projectile, a double
