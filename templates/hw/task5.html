@@ -127,7 +127,7 @@
          </ul>
       </li>
       <li>
-         Create an abstract method called use that takes in a Level and returns void.
+         Create an abstract method called <code>use</code> that takes in a Level and returns void.
          <ul>
             <li>Child classes will override this method to define what happens when this object is used.</li>
          </ul>
@@ -232,7 +232,7 @@
 
    <p>
       Now, you will write a method to fire projectiles from a DynamicGameObject. In the <code>DynamicGameObject</code>
-      class, write a method called fireProjectile that returns void and takes in (in this order) a Projectile, a double
+      class, write a method called <code>fireProjectile</code> that returns void and takes in (in this order) a Projectile, a double
       representing speed, and a Level.
    </p>
    <ul>
@@ -253,7 +253,7 @@
    </p>
    <ul>
       <li>
-         Replace the <code>actionButtonPressed</code> method in Level to call the use method on the Level's Player's currently
+         Replace the <code>actionButtonPressed</code> method in Level to call the <code>use</code> method on the Level's Player's currently
          active object.
          <ul>
             <li>If the currently active object is null, this method should do nothing.</li>
@@ -285,7 +285,7 @@
          </ul>
       </li>
       <li>
-         Override the use method from CollectibleGameObject. This method should access
+         Override the <code>use</code> method from CollectibleGameObject. This method should access
          the Player from the Level parameter and call the <code>fireProjectile</code> method
          on said Player.
          <ul>
@@ -317,7 +317,7 @@
          </ul>
       </li>
       <li>
-         Override the use method from CollectibleGameObject. This method should access
+         Override the <code>use</code> method from CollectibleGameObject. This method should access
          the Player from the Level parameter and call the <code>fireProjectile</code> method
          on said Player.
          <ul>
@@ -349,7 +349,7 @@
          </ul>
       </li>
       <li>
-         Override the use method.
+         Override the <code>use</code> method.
          <ul>
             <li>
                This method should access the player from the Level parameter and
