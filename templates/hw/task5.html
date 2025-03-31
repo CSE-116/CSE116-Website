@@ -141,7 +141,7 @@
    <ul>
       <li>
          Add a method named <code>addInventoryItem</code> that takes in a <code>CollectibleGameObject</code> and returns
-         void. This method should add the object from the parameter from the <code>DynamicGameObject</code>'s inventory.
+         void. This method should add the object from the parameter to the <code>DynamicGameObject</code>'s inventory.
          <ul>
             <li>
                Adding an item should never change the currently active item, except for when you pick up your first item
@@ -348,7 +348,7 @@
                constructor.
             </li>
             <li>
-               This method should then call removeInventoryItem on the player, passing itself as
+               This method should then call <code>removeActiveItem</code> on the player, passing itself as
                the parameter.
             </li>
          </ul>
