@@ -136,16 +136,36 @@
 
    <p>
       In the <code>app.gameengine.model.gameobjects</code> package, make the following additions to the
-      DynamicGameObject class:
+      DynamicGameObject class to implement a functioning inventory system:
    </p>
    <ul>
       <li>
-         Add methods named <code>addInventoryItem</code> and <code>removeInventoryItem</code> that take in a
-         CollectibleGameObject and return void. These methods should respectively add or remove the
-         CollectibleGameObject from the parameter from the DynamicGameObject's inventory.
+         Add a method named <code>addInventoryItem</code> that takes in a <code>CollectibleGameObject</code> and returns
+         void. This method should add the object from the parameter from the <code>DynamicGameObject</code>'s inventory.
+         <ul>
+            <li>
+               Adding an item should never change the currently active item, except for when you pick up your first item
+            </li>
+         </ul>
       </li>
       <li>
-         Add a method named <code>getActiveObject</code> that takes no parameters and returns a CollectibleGameObject.
+         Add a method named <code>removeActiveItem</code> that takes no parameters and returns void. This method should
+         remove whatever the currently active item is from the <code>DynamicGameObject</code>'s inventory.
+         <ul>
+            <li>
+               Once the currently active item is removed, the currently active item should become whatever was next in
+               the inventory. For example, if you collected an Axe, then Magic, then a Health Potion, the currently active
+               item would be the Axe. If this method is called, the remaining items are the Magic and the Health Potion,
+               and the active item would be the Magic.
+            </li>
+            <li>
+               If the item removed is the last item in the inventory, the active item would become the first item in the
+               inventory. Be sure to account for this looping behavior in your code
+            </li>
+         </ul>
+      </li>
+      <li>
+         Add a method named <code>getActiveItem</code> that takes no parameters and returns a CollectibleGameObject.
          This method should return whichever CollectibleGameObject in the inventory is active.
          <ul>
             <li>If the inventory is empty, this method should return null.</li>
@@ -156,10 +176,10 @@
          </ul>
       </li>
       <li>
-         Add a method called <code>getActiveGameObjectID()</code> that takes in no parameters and returns a String.
+         Add a method called <code>getActiveItemID</code> that takes in no parameters and returns a String.
          <ul>
             <li>This method should return the ID of the active CollectableGameObject from the inventory.</li>
-            <li>If the inventory is empty, this method should return "No object equipped".</li>
+            <li>If the inventory is empty, this method should return the string "No item equipped".</li>
          </ul>
       </li>
       <li>
@@ -179,23 +199,31 @@
          </ul>
       </li>
       <li>
-         Note that since these methods are the only way the inventory can be accessed and none of them rely on a specific
-         data structure, however you choose to represent the inventory internally does not matter so long as your
-         implementation follows the expected behavior.
+         Note that since these methods are the only way the inventory can be accessed and none of them rely on a
+         specific data structure, however you choose to represent the inventory internally does not matter so long as
+         your implementation follows the expected behavior. The only requirements are that you are able to keep track of
+         every item that is added, as well as the object that is currently active.
       </li>
       <li>
          The inventory should initially be empty.
       </li>
+      <li>
+         You can cycle your character's inventory in-game with the tab key. Recall that you can fire projectiles with
+         the space bar. Shortly you will modify this to use whichever item is currently active
+      </li>
    </ul>
 
+   <h3>IMPORTANT</h3>
    <p>
       The Player class already contains a <code>cycleInventory</code> method that does nothing. With the cycleInventory
       method implemented in DynamicGameObject, you can now remove the method in Player to use the inherited one instead.
+      If you do not, whenever you have a Player object, this method will be called instead, and your code will fail our
+      tests
    </p>
 
    <p>
       Now, you will write a method to fire projectiles from a DynamicGameObject. In the <code>DynamicGameObject</code>
-      class, write a method called fireProjectile that returns void and takes in (in this order) a Projectile, an int
+      class, write a method called fireProjectile that returns void and takes in (in this order) a Projectile, a double
       representing speed, and a Level.
    </p>
    <ul>
@@ -211,7 +239,7 @@
    </ul>
 
    <p>
-      Now that the functionality for firing projectiles is now in the DynamicGameObject class, you will replace the
+      Now that the functionality for firing projectiles is in the DynamicGameObject class, you will replace the
       action button functionality in the <code>Level</code> class to be based off of the Player's active item.
    </p>
    <ul>
@@ -228,7 +256,8 @@
    <p>
       At this point, the engine's collectable functionality is built up enough that you can now add new, interactable
       collectables to the game. You may wish to edit the <code>getUI</code> method in the Game class to show the
-      currently active item using the <code>getActiveGameObjectID</code> method.
+      currently active item using the <code>getActiveGameObjectID</code> method. Otherwise there will be no way to tell
+      which item is equipped without using it.
    </p>
 
    <p>
@@ -358,25 +387,23 @@
                <code>addInventoryItem</code> and <code>cycleInventory</code>:
                <ul>
                   <li>
-                     Write tests to ensure that adding items to the inventory has the
-                     proper behavior when cycling through the inventory (i.e. calling
-                     <code>cycleInventory</code> will go through every added
-                     CollectableGameObject)
+                     Write tests to ensure that adding items to the inventory has the proper behavior when cycling
+                     through the inventory, i.e. calling <code>cycleInventory</code> will go through every added
+                     CollectableGameObject and wrap around to the beginning
                   </li>
                </ul>
             </li>
             <li>
-               <code>removeInventoryItem</code>:
+               <code>removeActiveItem</code>:
                <ul>
                   <li>
-                     Write tests to ensure that calling removeInventoryItem properly
-                     removes the item from the inventory.
+                     Write tests to ensure that calling <code>removeActiveItem</code> properly removes the item from
+                     the inventory and sets the new active item.
                   </li>
                </ul>
             </li>
             <li>
-               When testing these methods, you only need to check that the
-               item IDs match the expected.
+               When testing these methods, you only need to check that the item IDs match the expected.
             </li>
          </ul>
 
