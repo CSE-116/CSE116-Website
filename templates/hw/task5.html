@@ -225,8 +225,8 @@
    <ul>
       <li>
          Override the <code>collideWithDynamicObject</code> method to add the current CollectableGameObject to the
-         DynamicGameObject's inventory by calling <code>addInventoryItem</code>. It should only do this if the
-         DynamicGameObject is the player (i.e. <code>isPlayer</code> returns true).
+         DynamicGameObject's inventory by calling <code>addInventoryItem</code>. It should then destroy itself. It
+         should only do these two things if the DynamicGameObject is the player (i.e. <code>isPlayer</code> returns true).
       </li>
    </ul>
 
