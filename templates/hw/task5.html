@@ -178,7 +178,7 @@
       <li>
          Add a method called <code>getActiveItemID</code> that takes in no parameters and returns a String.
          <ul>
-            <li>This method should return the ID of the active CollectableGameObject from the inventory.</li>
+            <li>This method should return the ID of the active CollectibleGameObject from the inventory.</li>
             <li>If the inventory is empty, this method should return the string "No item equipped".</li>
          </ul>
       </li>
@@ -221,10 +221,10 @@
       tests
    </p>
 
-   <p>Return to the <code>CollectableGameObject</code> class and add the following behavior:</p>
+   <p>Return to the <code>CollectibleGameObject</code> class and add the following behavior:</p>
    <ul>
       <li>
-         Override the <code>collideWithDynamicObject</code> method to add the current CollectableGameObject to the
+         Override the <code>collideWithDynamicObject</code> method to add the current CollectibleGameObject to the
          DynamicGameObject's inventory by calling <code>addInventoryItem</code>. It should then destroy itself. It
          should only do these two things if the DynamicGameObject is the player (i.e. <code>isPlayer</code> returns true).
       </li>
@@ -263,8 +263,8 @@
    </ul>
 
    <p>
-      At this point, the engine's collectable functionality is built up enough that you can now add new, interactable
-      collectables to the game. You may wish to edit the <code>getUI</code> method in the Game class to show the
+      At this point, the engine's collectible functionality is built up enough that you can now add new, interactable
+      collectibles to the game. You may wish to edit the <code>getUI</code> method in the Game class to show the
       currently active item using the <code>getActiveItemID</code> method, otherwise there will be no way to tell
       which item is equipped.
    </p>
@@ -397,7 +397,7 @@
                   <li>
                      Write tests to ensure that adding items to the inventory has the proper behavior when cycling
                      through the inventory, i.e. calling <code>cycleInventory</code> will go through every added
-                     CollectableGameObject and wrap around to the beginning
+                     CollectibleGameObject and wrap around to the beginning
                   </li>
                </ul>
             </li>
