@@ -50,8 +50,9 @@
         <li>
             Implement a method named <code>equals</code>, which takes one parameter of type <code>Object</code> and
             returns a boolean. It should appear as follows:
-            <code>
-                <pre>
+        </li>
+    </ul>
+    <pre>
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -61,24 +62,20 @@
         }
         Vector2D other = (Vector2D) obj;
         return Math.abs(this.x - other.x) < 1e-9 && Math.abs(this.y - other.y) < 1e-9;
-    }
-                </pre>
-            </code>
-        </li>
+    }</pre>
+    <br>
+    <ul>
         <li>
             Implement a method named <code>hashCode</code> which takes no parameters and returns an int. You will also
             need to import <code>java.util.Objects</code>. The method should appear as follows:
-            <code>
-                <pre>
+        </li>
+    </ul>
+    <pre>
     @Override
     public int hashCode() {
         return Objects.hash(Math.round(x / 1e-9), Math.round(y / 1e-9));
-    }
-                </pre>
-            </code>
-        </li>
-    </ul>
-
+    }</pre>
+    <br>
     <p>In the <code>app.gameengine.model.ai</code> package, access the <code>Pathfinding</code> class and
         implement the following method:</p>
 
