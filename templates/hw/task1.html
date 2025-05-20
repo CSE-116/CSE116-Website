@@ -35,7 +35,8 @@
             contains
             many Java classes needed for the engine to run.
         </p>
-        <p> Don't panic about the number of files. For now, you can
+        <p> 
+            <font color="red">Don't Panic about the number of files.</font> For now, you can
             safely ignore most of them. If you ever have trouble finding a specific file, you can
             press shift twice to open a convenient search window that'll direct you to the desired class.
         </p>
@@ -43,10 +44,10 @@
             For this task, you will be writing code in the following classes:
         </p>
         <ul>
+            <li><code>PhysicsEngine</code>, located in the package <code>app.gameengine.model.physics</code></li>
             <li><code>DynamicGameObject</code>, located in the package <code>app.gameengine.model.gameobjects</code>
             </li>
             <li><code>Wall</code>, located in the package <code>app.games.commonobjects</code></li>
-            <li><code>PhysicsEngine</code>, located in the package <code>app.gameengine.model.physics</code></li>
             <li><code>TestTask1</code>, located in the package <code>app.tests</code></li>
         </ul>
         <p>
@@ -179,13 +180,16 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        Both location and velocity are represented as <code>Vector2D</code> objects and the <code>DynamicGameObject</code>
-                        contains getter methods for both of them. Note that you never have to set the vector objects themselves, and should 
-                        instead set the x and y components of the existing vectors using the provided setters. This will 
-                        modify x and y of the <code>Vector2D</code> objects and that change will be made on the heap (If
-                        you don't understand what this means, it may help to do a memory trace on your code for this method to better
-                        understand what is happening in the stack and heap).
+                    <li> Both the location and velocity of the object are represented as <code>Vector2D</code> objects. 
+                        The <code>DynamicGameObject</code> class provides methods to retrieve these values, but it does 
+                        not allow you to directly change them. Instead of using a method like <code>setLocation</code>, 
+                        you can use the <code>getLocation</code> and <code>getVelocity</code> methods to get a reference 
+                        to the corresponding <code>Vector2D</code> object. Once you have the reference, you can modify the
+                        values of the <code>Vector2D</code> object using the setters and getters provided in the <code>Vector2D</code> class. 
+                        This will change the <code>x</code> and <code>y</code> values of the <code>Vector2D</code> object. 
+                        Keep in mind that these changes happen in memory (on the heap). If you are unsure about how this works, 
+                        it might be helpful to use a memory trace to observe how values are stored in the stack and heap during 
+                        the execution of your code. 
                     </li>
                     <li>
                         Once you complete this method, you should be able to move your player character in the game
@@ -538,3 +542,4 @@
         </p>
     </div>
 {% endblock %}
+
