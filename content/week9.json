@@ -1,38 +1,57 @@
 {
-  "title": "Week 10: Testing 3 - Testing and Files ",
-  "theme": "testing",
-  "homework": [],
-  "lab": "Interview 2 and Tracing Quiz 2 - Data Structures (LL and Trees)",
+  "title": "Lecture 9: Classes/OOP - Polymorphism",
+  "theme": "oop",
+  "homework": [
+    {
+      "title": "Programming Task 7: Polymorphism",
+      "url": "task7.html",
+      "released": true
+    }
+  ],
+  "lab": "2nd Chance - Inheritance/Trees Interviews & Quizzes",
   "content": [
     {
+      "type": "deadline",
+      "day": "Thursday",
+      "date": "June 26",
+      "time": "8:00am",
+      "assignment": "Task 6",
+      "deadline_type": "expected"
+    },
+    {
       "type": "lecture",
-      "day": "Monday",
-      "date": "March 24",
-      "title": "Files and Exceptions",
-      "slides": "Week8_Reading_Files.pdf",
+      "day": "Thursday",
+      "date": "June 26",
+      "title": "Polymorphism",
+      "slides": "Week9_1_Polymorphism.pdf",
       "reading_list": []
     },
     {
       "type": "lecture",
-      "day": "Wednesday",
-      "date": "March 26",
-      "title": "Testing With Files",
+      "title": "Polymorphism",
+      "slides": "Week9_2_Polymorphism_2.pdf",
       "reading_list": []
     },
     {
       "type": "lecture",
-      "day": "Friday",
-      "date": "March 28",
-      "title": "Debugger Tips",
+      "title": "Polymorphism Example",
       "reading_list": []
     },
     {
       "type": "deadline",
-      "day": "Friday",
-      "date": "March 28",
-      "time": "11:59pm",
-      "assignment": "Task 4",
+      "day": "Saturday",
+      "date": "June 28",
+      "time": "8:00am",
+      "assignment": "Task 7",
       "deadline_type": "expected"
+    },
+    {
+      "type": "deadline",
+      "day": "Saturday",
+      "date": "June 28",
+      "time": "11:59pm",
+      "assignment": "Task 5",
+      "deadline_type": "final"
     }
   ]
 }

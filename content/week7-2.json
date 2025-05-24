@@ -1,0 +1,31 @@
+{
+  "title": "No Lecture",
+  "theme": "intro",
+
+  "content": [
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "June 20",
+      "time": "8:00am",
+      "assignment": "Task 5",
+      "deadline_type": "expected"
+    },
+    {
+      "type": "lecture",
+      "day": "Thursday",
+      "date": "June 19",
+      "title": "No Lecture",
+      "reading_list": [
+      ]
+    },
+    {
+      "type": "deadline",
+      "day": "Saturday",
+      "date": "June 21",
+      "time": "11:59pm",
+      "assignment": "Task 3",
+      "deadline_type": "final"
+    }
+  ]
+}

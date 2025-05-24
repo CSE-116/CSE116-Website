@@ -1,19 +1,12 @@
 {
-  "title": "Week 1: Introduction to Java",
+  "title": "Lecture 1: Introduction to Java",
   "theme": "intro",
-  "homework": [
-    {
-      "title": "Coding Task 0: Java Basics",
-      "url": "task0.html",
-      "released": true
-    }
-  ],
-  "lab": "No Lab",
+  "homework": [],
   "content": [
     {
       "type": "lecture",
-      "day": "Wednesday",
-      "date": "January 22",
+      "day": "Tuesday",
+      "date": "May 27",
       "title": "Course Introduction",
       "reading_list": [
         {
@@ -24,8 +17,6 @@
     },
     {
       "type": "lecture",
-      "day": "Friday",
-      "date": "January 24",
       "title": "Introduction to Java",
       "slides": "week1_1_Java.pdf",
       "reading_list": [
@@ -48,6 +39,17 @@
         {
           "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html",
           "text": "Java Strings"
+        }
+      ]
+    },
+    {
+      "type": "lecture",
+      "title": "Java Loops and Conditionals",
+      "slides": "week1_2_Java.pdf",
+      "reading_list": [
+        {
+          "url": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html",
+          "text": "Java for loops"
         }
       ]
     }

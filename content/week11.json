@@ -1,54 +1,46 @@
 {
-  "title": "Week 12: Data Structures 3 - Graphs",
-  "theme": "ds",
-  "homework": [
-    {
-      "title": "Coding Task 6: Graphs",
-      "url": "task6.html",
-      "released": true
-    }
-  ],
-  "lab": "2nd Attempt for Interview 2, Tracing Quiz 2, and Coding Quiz 2",
+  "title": "Lecture 11: Final Exam",
+  "theme": "intro",
+  "homework": [],
+  "lab": "Review",
   "content": [
     {
-      "type": "lecture",
-      "day": "Monday",
-      "date": "April 7",
-      "title": "Graphs",
-      "slides": "Week10_1_Graphs.pdf",
-      "reading_list": [
-      ]
-    },
-    {
-      "type": "lecture",
-      "day": "Wednesday",
-      "date": "April 9",
-      "title": "Graph with BFS",
-      "slides": "Week10_2_Pathfinding.pdf",
-      "reading_list": []
-    },
-    {
-      "type": "lecture",
-      "day": "Friday",
-      "date": "April 11",
-      "title": "Graph Examples",
-      "slides": "Week10_3_Graphs.pdf",
-      "reading_list": []
-    },
-    {
       "type": "deadline",
-      "day": "Friday",
-      "date": "April 11",
-      "time": "11:59pm",
-      "assignment": "Task 5",
+      "day": "Thursday",
+      "date": "July 3",
+      "time": "8:00am",
+      "assignment": "Task 8",
       "deadline_type": "expected"
     },
     {
+      "type": "lecture",
+      "day": "Thursday",
+      "date": "July 3",
+      "title": "Final Exam - The entire 2.5 hours of lecture",
+      "reading_list": []
+    },
+    {
       "type": "deadline",
-      "day": "Friday",
-      "date": "April 11",
+      "day": "Saturday",
+      "date": "July 5",
       "time": "11:59pm",
-      "assignment": "Task 4",
+      "assignment": "Task 6",
+      "deadline_type": "final"
+    },
+    {
+      "type": "deadline",
+      "day": "Monday",
+      "date": "July 7",
+      "time": "11:59pm",
+      "assignment": "Task 7",
+      "deadline_type": "final"
+    },
+    {
+      "type": "deadline",
+      "day": "Saturday",
+      "date": "July 12",
+      "time": "11:59pm",
+      "assignment": "Task 8",
       "deadline_type": "final"
     }
   ]

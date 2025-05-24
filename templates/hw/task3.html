@@ -3,9 +3,9 @@
 {% block title %}CSE116: Task 3{% endblock %}
 
 {% block header %}
-    <h1>Coding Task 3 - Inheritance</h1>
+    <h1>Programming Task 3</h1>
     <hr/>
-    <h5>Time Estimate: 9 hours</h5>
+    <h5>Time Estimate: 6 hours</h5>
     <hr/>
 {% endblock %}
 
@@ -29,428 +29,108 @@
             You will continue to add functionality to your existing project from the previous task. There is
             no new repository to clone.
         </p>
-        <hr/>
 
-        <h3>
-            Overview Video
-        </h3>
-        <hr/>
-
-        <p>
-            Video link: <a href="https://youtu.be/GSQh2a7hF30">https://youtu.be/GSQh2a7hF30</a>
-        </p>
-        <p>
-            Another video for Task 3! Yippee!
-        </p>
-        <p> 
-            As before, watching this video is optional, and all of the information you need for this task is contained
-            within this page. However, you may find it helpful for getting a better understanding of the task, and what
-            is expected of you
-        </p>
-        <hr/>
-
-        <h3>
-            Using the Graphics Engine - Sprites
-        </h3>
-
-        <hr/>
-
-        <p>
-            Rather than completing functionality of the game engine as was the focus of the previous tasks,
-            this task will mainly be focused on building new features. In order to do so, we'll need to tell the
-            game engine what sprites to load for the new objects. While you don't need to understand how the game
-            engine does this, we will briefly explain how to assign new sprites.
-        </p>
-
-        <p>
-            Everything in game that can have a sprite (e.g. GameObjects, DynamicGameObjects) has instance variables
-            called
-            <code>spriteSheetFilename</code> and <code>defaultSpriteLocation</code>. In most
-            2D games, rather than storing each individual sprite as its own file, we store groups of sprites together in
-            a single file called a spritesheet, then tell the engine which sprite on the sheet to load.
-            <code>spriteSheetFilename</code> is a String that represents the filename containing the spritesheet
-            with the desired sprite in it. <code>defaultSpriteLocation</code> takes in a <code>SpriteLocation</code>
-            object.
-            For the sake of this task, all you need to know about the <code>SpriteLocation</code> class is that it has
-            a constructor taking in the row and column of the desired sprite in the spritesheet (feel free to look
-            through
-            the data directory to understand what these files look like).
-        </p>
-
-        <p>So, to add a sprite to an object, we just need to set values to these instance variables in the
-            constructor. For example, this is how the Wall class sets the sprites:</p>
-
-        <p>
-            <code>this.spriteSheetFilename = "Ground/Cliff.png";
-                <br/>
-                this.defaultSpriteLocation = new SpriteLocation(3, 0);</code>
-        </p>
-
-        <p>
-            Any time anything you add needs a sprite, the handout will specify what the filename and location
-            should be to load a good sprite for the object. We will not test which sprites you use, so if you wish you
-            may use different sprites. All of the suggested sprites already exist in the project, but the sprite sheet
-            linked below has some additional sprites that you may wish to use; if you choose to, you should save this
-            image into the data directory of your project, by right clicking and pressing "Save Image as..."
-        </p>
-
-        <h5><a href="/static_files/images/Textures-16.png">Task 3 Textures</a></h5>
-
-        <p>
-            You may also want to visit the link in the "data/sprites.txt" file to find the source of all sprites used in
-            this project and download any sprites that interest you.
-        </p>
         <br/>
         <hr/>
         <h3>Specification</h3>
         <hr/>
 
+        <p>In this task, you will test and implement the following specs.</p>
+
+
         <p>
-            In this task, you will implement the following specs. Once all of these are complete, you will have created
-            a platformer game using the same game engine we built for the top-down game. In this new game, your
-            character will be able to jump around a level with a side-view while avoiding spikes.
+            Note: Use the provided ratings.datastructures.LinkedListNode class whenever a linked list [node] is needed. You do
+            not have to modify this class
         </p>
 
         <p>
-            While implementing the functionality in this task, you will use much of the existing inheritance structure
-            of the project. You should take some time to look through the code and explore all the inheritance usage
-            to give more context for the new classes/methods you'll create.
+            ratings.Song - The following methods will be added to the Song class:
         </p>
 
         <ul>
-            <li>
-                <code>Potion</code> (<code>app.games.commonobjects.Potion)</code>
+            <li>A method named <code>addRating</code> that takes a [reference to] an object of type Rating as a
+                parameter (The type of the input is Rating) and returns void
                 <ul>
                     <li>
-                        In the <code>commonobjects</code> package, create a new class called Potion that
-                        extends DynamicGameObject.
+                        This method will be called when a Reviewer rates this Song. All
+                        added Ratings will be stored in a Linked List Node as an instance variable
                     </li>
                     <li>
-                        Create a constructor that takes in two parameters: a Vector2D representing location
-                        and an int representing the amount to heal, which should be stored as an instance variable
-                        <ul>
-                            <li>When you call the super constructor, give the Potion a max HP of 10.</li>
-                            <li>
-                                Graphics (See "Using the Graphics Engine" for more detail):
-                                <ul>
-                                    <li>You should initialize <code>spriteSheetFilename</code> to "User
-                                        Interface/Icons-Essentials.png"
-                                    </li>
-                                    <li>If the amount to heal is non-negative (This includes 0), the <code>defaultSpriteLocation</code>
-                                        should be a
-                                        SpriteLocation at column 0, row 1
-                                        (see the "Using the Graphics Engine" section of the handout)
-                                    </li>
-                                    <li>If the amount to heal is negative, the <code>defaultSpriteLocation</code> should
-                                        be a SpriteLocation at column 1, row 1.
-                                        This turns the potion into a poison
-                                    </li>
-                                    <li>
-                                        Note: Both <code>spriteSheetFilename</code> and
-                                        <code>defaultSpriteLocation</code>
-                                        are protected variables meaning you can access them using <code>this.</code>
-                                        even though they are not defined in this class
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        This method will append new ratings to the end of the linked list
+                    </li>
+                    <li>Note: Since the Rating class checks for valid ratings, any added ratings can only have a rating
+                        value of 1, 2, 3, 4, 5, or -1</li>
+                </ul>
+            </li>
+
+
+            <li>A method named <code>getRatings</code> that takes no parameters and returns a LinkedListNode of
+                Ratings
+                <ul>
+                    <li>
+                        This method returns the head node of a Linked List containing all Ratings that have been
+                        added to this Song
                     </li>
                     <li>
-                        Override the <code>collideWithDynamicObject</code> method. If the object being collided with
-                        is a Player, you should add the amount to heal (from the constructor) to the Player's HP, then
-                        call
-                        <code>this.destroy()</code> to remove the Potion from the level. If the other object is not a
-                        Player, this method does nothing
-                        <ul>
-                            <li>You can check if a DynamicGameObject is a player by calling the <code>isPlayer</code>
-                                method on it.
-                            </li>
-                        </ul>
+                        The returned Linked List node must return the Ratings in the order in which they were added.
+                        For example, the first Rating that was added must be the first value in the list
                     </li>
-                    <li>Optional: To see your Potion in game, you can choose one of the methods creating a level
-                        (levelZero, levelOne, levelTwo) in the
-                        <code>SampleTopDownGame</code> class and add a new Potion object to the Level's
-                        DynamicGameObject ArrayList
-                        (follow the process the given code uses to add an Enemy to the level, but with a Potion
-                        constructor instead.)
+                    <li>
+                        If no ratings have been added, this method will return null
+                    </li>
+                </ul>
+            </li>
+
+            <li>A method named <code>setRatings</code> that takes a LinkedListNode of Ratings and returns void
+                <ul>
+                    <li>
+                        This is a setter that replaces the stored linked list node of ratings (The instance variable)
+                        with the one provided as a parameter. This assignment is done by reference (ie. any prior
+                        ratings are replaced by the new list of ratings)
+                    </li>
+                </ul>
+            </li>
+
+
+            <li>A method named <code>averageRating</code> that takes no parameters and returns a double
+                <ul>
+                    <li>
+                        This method returns the average of all the Ratings of this Song
+                    </li>
+                    <li>
+                        If the list is empty, the method returns 0.0
+                    </li>
+                    <li>
+                        Any invalid rating, ratings of -1, will be ignored during this calculation (eg. A Song with
+                        ratings [1, 5, -1, -1] has an average rating of 3.0)
+                    </li>
+                </ul>
+            </li>
+
+
+            <li>A method named <code>removeRatingByReviewer</code> that takes a Reviewer as a parameter and returns
+                void
+                <ul>
+                    <li>
+                        This method will remove a Rating made for this Song by the given Reviewer by id
+                    </li>
+                    <li>
+                        If the reviewer did not rate this song, this method has no effect
+                    </li>
+                    <li>
+                        If the linked list contains multiple ratings by the reviewer, the method only removes
+                        the first instance from the list (ie. the method does not have to handle removing
+                        multiple ratings in a single call)
                     </li>
                 </ul>
             </li>
         </ul>
 
-        <p>
-            The remainder of this task will be implementing a new physics engine. While the physics engine you wrote in
-            task 1 was designed for top-down levels where you freely move around a 2D space, this new physics engine
-            will be designed for 2D platformer levels where your movement is constrained to moving left, right, and
-            jumping.
-        </p>
-
-        <ul>
-            <li>
-                <code>DynamicGameObject</code> - Platformer Preparation (<code>app.gameengine.model.gameobjects.DynamicGameObject</code>)
-                <ul>
-                    <li>
-                        Add an instance variable of type boolean representing if the given DynamicGameObject is on the
-                        ground.
-                        This should be initialized to <code>false</code>
-                    </li>
-                    <li>
-                        Add a method called <code>isOnGround</code> that takes no parameters and returns a boolean. Add
-                        a
-                        method called <code>setOnGround</code> that takes in a boolean and returns void. These should be
-                        the getter and setter for the previously described instance variable
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>PhysicsEngineWithGravity</code>
-                (<code>app.gameengine.model.physics.PhysicsEngineWithGravity</code>)
-                <ul>
-                    <li>Create a new class called PhysicsEngineWithGravity in the app.gameengine.model.physics package
-                        that extends PhysicsEngine. We'll see the power of inheritance where we will only have to add
-                        gravity while reusing all of your code from PhysicsEngine to still handle collisions and
-                        movement. This will allow us to make games that have gravity applied to dynamic objects
-                    </li>
-                    <li>Write a constructor that takes in a single double representing the acceleration from gravity
-                    </li>
-                    <li>
-                        Override the updateObject method to have the following behavior:
-                        <ul>
-                            <li>Add the change in velocity from gravity to the DynamicGameObject's
-                                y-velocity (note that change in velocity is equal to acceleration from gravity times the
-                                change in time). This will decrease the objects y-velocity on every frame. Since the
-                                game runs at 60 fps, this linear change every frame will appear as a parabola when
-                                playing the game
-                            </li>
-                            <li>Call the super class' updateObject method and pass in the parameters. Be sure to call
-                                this after applying gravity or the movement will be a little jenky
-                            </li>
-                            <li>Keep in mind that the positive y direction is downward in the world of computers. The
-                                acceleration from gravity is directionless (only magnitude) so it will always be
-                                positive (Yes this annoys physicists, but Earths gravity would be positive 9.81 [with no
-                                units] in our game)
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        And that's it. By leveraging inheritance, you should have just created gravity with about 20
-                        lines of code (including package and imports). You have the power of a god!
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>PlatformerWall</code> (<code>app.games.platformerobjects.PlatformerWall</code>)
-                <ul>
-                    <li>
-                        Create the <code>app.games.platformerobjects</code> package and add a class named
-                        <code>PlatformerWall</code> in it
-                        that extends <code>Wall</code>
-                    </li>
-                    <li>
-                        Write a constructor that takes in two ints representing the x and y location of the
-                        <code>PlatformerWall</code>. These should be passed into the super constructor.
-                        <ul>
-                            <li>
-                                The suggested spriteSheetFilename for this class is "Ground/Cliff.png", and the
-                                suggested
-                                defaultSpriteLocation is column 4, row 0.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Override the <code>collideWithDynamicObject</code> method to have the following behavior:
-                        <ul>
-                            <li>Firstly, resolve the collision exactly as the base Wall class does. You can do this by
-                                calling <code>super.collideWithDynamicObject</code>
-                            </li>
-                            <li>
-                                Since we have to consider the cases where the object lands on top or bumps on the
-                                bottom,
-                                add the following logic after resolving the collision:
-                                <ul>
-                                    <li>
-                                        If the DynamicGameObject is overlapping in the x-dimension with the Wall, set
-                                        the y-velocity to 0.0. This makes it so the object stops falling when it lands on
-                                        top
-                                        of the wall or start falling if it hits the bottom.
-                                        <ul>
-                                            <li>
-                                                When determining if the overlap is occurring, you should not include the
-                                                edges (if the
-                                                object's left == the wall's right or the object's right == the wall's
-                                                left, it's not
-                                                overlapping)
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        Additionally, if that condition occurs and the object is above the wall (the
-                                        case
-                                        where it lands on top), you should also mark that the object is on the ground
-                                        using
-                                        the previously written setter.
-                                    </li>
-                                    <li>
-                                        Note that we are using what we know about the objects in this method. Since the
-                                        method was called, we know that these objects collided. Since we called the
-                                        Wall's collideWithDynamicObject method (That you wrote in task 1), we know that
-                                        they are no longer colliding. After this, if they still overlap in the x
-                                        direction we know that the Wall's method moved the dynamic object either up or
-                                        down (It resolved the collision by removing the y overlap). This means we either
-                                        landed on the top of the wall, or hit our head on the ceiling. In either case,
-                                        our y velocity should be set to 0. When landing, we want to report to the object
-                                        that it is now standing on ground which we will use later to know that we're
-                                        allowed to jump
-                                    </li>
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>Spike</code> (<code>app.games.platformerobjects.Spike</code>)
-                <ul>
-                    <li>Create a class called Spike that extends StaticGameObject</li>
-                    <li>
-                        Write a constructor that takes in two ints representing the x and y location of the
-                        Spike. These should be passed into the super constructor
-                        <ul>
-                            <li>
-                                The suggested spriteSheetFilename for this class is "User Interface/UiIcons.png", and
-                                the suggested
-                                defaultSpriteLocation is column 2, row 10
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Override the <code>collideWithDynamicObject</code> method to have the following behavior:
-                        <ul>
-                            <li>If the colliding object is a Player, call the <code>destroy</code> method on it.
-                                Otherwise, do nothing
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        This class does not change any velocity or location of the other object. Since it's being
-                        destroyed, we don't care about how it's moving
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>PlatformerLevel</code> (<code>app.games.platformerobjects.PlatformerLevel</code>)
-                <ul>
-                    <li>Create a class called PlatformerLevel that extends Level.</li>
-                    <li>
-                        Override the wallOffBoundary method. This should have the exact same behavior as wallOffBoundary
-                        in <code>app.gameengine.Level</code>, but with PlatformerWalls rather than Walls.
-                    </li>
-
-
-                    <li>Create a constructor that takes in a Game, an int for width, an int for height, and a String
-                        for name in this order. This constructor should:
-                        <ul>
-                            <li>Call the super constructor with the Game, a PhysicsEngineWithGravity object, the width,
-                                the height, and the name in this order.
-                                When creating the PhysicsEngineWithGravity object, use a gravity of 25.0
-                            </li>
-                            <li>
-                                Assign the inherited instance variable <code>gameControls</code> with a new
-                                PlatformerMovement object.
-                                <ul>
-                                    <li>
-                                        The PlatformerMovement is already written in the handout. You should pass in the
-                                        game as the first parameter and
-                                        the default movement speed as the second parameter
-                                    </li>
-                                    <li>
-                                        The default movement speed should be 5.0
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Call the wallOffBoundary method.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Override the inherited <code>jumpButtonPressed</code> method
-                        from the Level class. This will be called whenever your character jumps (press up or w) in a
-                        PlatformerLevel
-                        <ul>
-                            <li>
-                                This method should check if the player is on the ground. If so, it should set the
-                                player's
-                                y velocity to -14.0, and set the onGround flag to false. If the player is not on the
-                                ground, it
-                                should do nothing
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
 
         <p>
-            Finally, you will create a new Game subclass that will be used to play Levels using these new features.
-            You're welcome to create your own Levels, but we will also be providing Levels via the course
-            Piazza.
-        </p>
-
-        <ul>
-            <li>
-                <code>Game</code> (<code>app.gameengine.Game</code>)
-                <ul>
-                    <li>Move the Level functionality added in the previous task in SampleTopDownGame to the base game
-                        class
-                    </li>
-                    <li>This will include the instance variable, addLevel, getLevelList, setLevelList, advanceLevel, and
-                        removeLevelByName (And remove the existing advanceLevel stubbed method). Make your instance
-                        variable protected if you use in the init method in SampleTopDownGame. Remove the init() call
-                        from the SampleTopDownGame constructor since it will be called by the super constructor
-                    </li>
-                    <li>Add a method that returns void and takes no parameters called <code>init</code>. This method
-                        should do nothing and only exists to be inherited and overridden
-                    </li>
-                    <li>Modify the Game constructor to call the <code>init</code> method</li>
-                </ul>
-
-            </li>
-            <li><code>PlatformerGame</code> (<code>app.games.PlatformerGame</code>)
-                <ul>
-                    <li>Make a new class called PlatformerGame that extends the Game class.</li>
-                    <li>
-                        Override the init method to add levels to the game and load your first level. This can be done
-                        using the inherited addLevel method
-                        <ul>
-                            <li>
-                                You have the freedom to add whatever levels you'd like to this game. The actual
-                                content of the Level list will not be considered except that it exists
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Note that if you don't write any constructor, you will still get the correct behavior since we
-                        only need the default constructor (no params, empty body). We could also remove the
-                        SampleTopDownGame constructor and still play it normally
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <p>
-            To actually play your game, update the switch statement in <code>GameFactory</code> (in the
-            <code>app.games</code> package) to have a case for "platformer game". In this case, it should assign game
-            to a new PlatformerGame object, then break. You can then replace the game String in
-            <code>Configuration</code>
-            in the <code>app</code> package with "platformer game". After that, running StartGame will load up your new
-            game.
-        </p>
-
-
-        <p>
-            Note: You can see feedback in Autolab for your tests without completing the
+            Note: You can see feedback in Autolab for your testing utilities and tests without completing the
             programming portion of
-            this task, but you must at least create every class/method from this specification. You can "stub
+            this task, but you must at least create every method from this specification. You can "stub
             out"
             these methods by having them always return a fixed value, but they must exist so the grading code,
             and your tests, can compile and run.
@@ -461,9 +141,34 @@
         <h3>Testing Utilities</h3>
         <hr/>
 
+
         <p>
-            There is no testing utility for this task.
+        Create a class named <code>TestDataStructures1</code> in the tests package (tests.TestDataStructures1) and write the
+            following utility method in that class (Note: Do not add the @Test annotation to this method since it is
+            not itself a tests):
         </p>
+
+        <ul>
+            <li><code>compareListsOfRatings</code> - Write a method named compareListsOfRatings in the tests.TestDataStructures1 class that:
+                <ul>
+                    <li>
+                        Takes [references to] 2 LinkedListNode&lt;Rating&gt; objects as parameters
+                    </li>
+                    <li>
+                        Returns a boolean that is true if the rating and reviewer id of all Ratings in both lists are
+                        exactly the same and are in the same order. The method either returns false, or fails a JUnit
+                        assert, if the lists do not contain all the same values of their ratings objects in the same
+                        order
+                    </li>
+                    <li>
+                        Note that you cannot use == or .equals to compare 2 Ratings. You must check the rating and
+                        reviewer id values separately
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
 
         <br/>
         <hr/>
@@ -471,23 +176,19 @@
             Testing Requirements
         </h3>
         <hr/>
+        <p>
+            Write tests in the tests.TestDataStructures1 class for the averageRating and removeRatingByReviewer methods.
+            You may assume that the addRating, getRatings, and setRatings methods behave as expected with tests
+            specifically for these methods, though you will need to call at least 2 of these methods in your tests, so
+            they will implicitly be tested. All 5 methods will still be tested in the next phase, so it can help if you
+            test all of them even though it's not explicitly required.
+        </p>
+        <p>
+            It is highly recommended that you create your expected linked lists and call your compareListsOfRatings to
+            check if getRatings returns a list with all the same values as the expected list
+        </p>
 
-        <p>Create a class named <code>TestTask3</code> in the <code>tests</code> package.</p>
 
-
-        <p>You will write tests for the following functionality from the specification:</p>
-
-        <ul>
-            <li>
-                <code>PlatformerWall</code>
-                <ul>
-                    <li><code>collideWithDynamicObject</code>. You do not need to test that the position
-                        is being updated correctly (as you know the base Wall class is already functional). You
-                        only need to test that the velocity and isOnGround is getting set correctly.
-                    </li>
-                </ul>
-            </li>
-        </ul>
 
         <br/>
         <hr/>
@@ -497,7 +198,10 @@
         <hr/>
 
         <p>
-            Implement all the functionality from the specification.
+            Implement all 5 methods from the specification in your Song class.
+            As you're writing this code, you should run your tests to see how you are progressing. It's
+            recommended that you write your tests first, submit to Autolab to make sure you have good testing,
+            then use those verified tests to check your code.
         </p>
 
 
@@ -507,11 +211,23 @@
         <hr/>
 
         <p>
-            The feedback in Autolab will be given in 3 phases. If you don't complete a phase, then feedback for
+            The feedback in Autolab will be given in 4 phases. If you don't complete a phase, then feedback for
             the following phase(s) will not be provided.
         </p>
 
         <ol>
+            <li>Testing your testing utility method
+                <ul>
+                    <li>
+                        Your testing utility method will be checked with a variety of test cases to
+                        ensure
+                        that
+                        it makes all the required checks. This phase will ensure that your utility method is
+                        accurate
+                        before you start using it in your tests
+                    </li>
+                </ul>
+            </li>
             <li>Running your tests on a correct solution
                 <ul>
                     <li>Your tests will be run against a solution that is known to be correct. If your tests do
@@ -553,7 +269,7 @@
         </ol>
 
         <p>
-            Once you complete all 3 phases, you will have completed this Task and Autolab will confirm this
+            Once you complete all 4 phases, you will have completed this Task and Autolab will confirm this
             with a score of 1.0 for complete.
         </p>
     </div>

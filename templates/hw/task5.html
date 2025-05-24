@@ -3,509 +3,345 @@
 {% block title %}CSE116: Task 5{% endblock %}
 
 {% block header %}
-<h1>Coding Task 5 - Polymorphism</h1>
-<hr/>
-<h5>Time Estimate: 8 hours</h5>
-<hr/>
+    <h1>Programming Task 5</h1>
+    <hr/>
+    <h5>Time Estimate: 6 hours</h5>
+    <hr/>
 {% endblock %}
 
 {% block task %}
 
-<div class="card-header section-testing">
-   <div>Requirements</div>
-</div>
+    <div class="card-header section-testing">
+        <div>Requirements</div>
+    </div>
 
-<div class="section-card card-testing hw-content">
+    <div class="section-card card-testing hw-content">
 
-   <hr/>
-   <h3>
-      Project Structure
-   </h3>
-   <hr/>
+        <hr/>
+        <h3>
+            Project Structure
+        </h3>
+        <hr/>
 
-   <p>
-      You will continue to add functionality to your existing project from the previous task. There is
-      no new repository to clone.
-   </p>
+        <p>
+            You will continue to add functionality to your existing project from the previous task. There is
+            no new repository to clone.
+        </p>
 
 
-   <br/>
-   <hr />
-   <h3>
-      Overview Video
-  </h3>
-  <hr/>
+        <br/>
+        <hr/>
+        <h3>Specification</h3>
+        <hr/>
 
-  <p>
-      Video link: <a href="https://youtu.be/gPKytRdA5nE">https://youtu.be/gPKytRdA5nE</a>
-  </p>
-  <p>
-      You get it by now
-  </p>
-  <p> 
-      As before, watching this video is optional, and all of the information you need for this task is contained
-      within this page. However, you may find it helpful for getting a better understanding of the task, and what
-      is expected of you
-  </p>
-  <hr/>
-   <h3>Using the Graphics Engine - Animations</h3>
-   <hr/>
+        <p>In this task, you will implement the following specs.</p>
 
-   <p>
-      In addition to setting static sprites, the provided graphics engine also has capabilities to display
-      animations. As with static graphics, understanding exactly how the graphics engine works is not necessary,
-      and we will provide any information you need.
-   </p>
 
-   <p>
-      Every GameObject (and thus, any child class of GameObject) has an instance variable called <code>animations</code>,
-      which is a HashMap mapping String to ArrayList of SpriteLocation. The String represents the name of the animation
-      (e.g. "default"), and the ArrayList represents the series of locations in the spritesheet that will be cycled through
-      while the object is animating (see task 3 handout for refresher on SpriteLocations). Along with storing various
-      unrelated sprites in a spritesheet, common practice for games of this sort is to store every frame of an object's
-      animations in the same spritesheet.
-   </p>
-
-   <p>
-      Thus, you can add new animations to a GameObject by calling <code>put</code> on this HashMap with a name for
-      the animation and an ArrayList of SpriteLocations representing each frame of animation.
-   </p>
-
-   <p>
-      When a GameObject is created, it'll have the default animation state of "default", so if you have an animation
-      named "default" in your animations HashMap, that animation will automatically play when the object is created.
-      If you have multiple animations, you can call <code>setAnimationState</code> on the object and pass in the name
-      of the animation you wish to play at that moment. You can call <code>freezeAnimations</code> on an object to
-      stop the object from animating until <code>setAnimationState</code> is called again.
-   </p>
-
-   <p>
-      From here, everything else is handled completely automatically. The engine will progress each frame once per every
-      the interval stated in Configuration.java.
-   </p>
-
-   <p>
-      As with setting sprites in general, if an animation is recommended we will specify the inputs you should use.
-      Animations will also not be tested.
-   </p>
-
-   <br/>
-   <hr/>
-   <h3>Specification</h3>
-   <hr/>
-
-   <p>In this task, you will implement the following specs.</p>
-
-   <p>In the <code>app.games.topdownobjects</code> package, add the following methods to the Projectile class:</p>
-   <ul>
-      <li><code>getDamage</code>: this method should take no parameters and return an int. It should return the value of the damage instance variable.</li>
-      <li><code>setDamage</code>: this method should take in an int and return void. It should set the value of the damage instance variable to the parameter.</li>
-   </ul>
-
-   <p>In the <code>app.games.topdownobjects</code> package, create a class named <code>PlayerMagicProjectile</code> that extends
-      <code>Projectile</code>. This class should have a constructor that takes in a Vector2D representing location.</p>
-   <ul>
-      <li>This projectile should always deal 3 damage.</li>
-      <li>This projectile will inherit the default projectile sprite; you do not need to change it.</li>
-   </ul>
-
-   <p>In the <code>app.games.topdownobjects</code> package, create a class named <code>PlayerAxeProjectile</code> that
-      extends <code>Projectile</code>. This class should also have a constructor that takes in a Vector2D representing location.</p>
-   <ul>
-      <li>This projectile should always deal 6 damage.</li>
-      <li>The suggested spriteSheetFilename is "Objects/Axe.png". The suggested defaultSpriteLocation is column 1, row 1.</li>
-      <li>
-         The suggested default animation consists of the following locations: [(0, 0), (1, 0), (2, 0), (3, 0), (0, 1), (1, 1), (2, 1), (3,1)]
-         <ul>
-            <li>Refer to the Player class for an example of adding an animation. The key should be "default".</li>
-         </ul>
-      </li>
-   </ul>
-
-   <p>
-      In the <code>app.gameengine.model.gameobjects</code> package, create an abstract class named <code>CollectibleGameObject</code> that
-      extends <code>DynamicGameObject</code>.
-   </p>
-   <ul>
-      <li>
-         The constructor should take in a Vector2D representing location and a String representing the ID of the item.
-         <ul>
-            <li>When calling the super constructor, pass in a maxHP of 10.</li>
-         </ul>
-      </li>
-      <li>
-         Create a method that takes no parameters and returns a String called <code>getItemID</code> that returns
-         the ID of the item that was passed in the constructor.
-      </li>
-      <li>
-         Override the takeDamage method to do nothing.
-         <ul>
-            <li>This prevents it from being destroyed by projectiles or enemies.</li>
-         </ul>
-      </li>
-      <li>
-         Create an abstract method called <code>use</code> that takes in a Level and returns void.
-         <ul>
-            <li>Child classes will override this method to define what happens when this object is used.</li>
-         </ul>
-      </li>
-   </ul>
-
-   <p>
-      In the <code>app.gameengine.model.gameobjects</code> package, make the following additions to the
-      DynamicGameObject class to implement a functioning inventory system:
-   </p>
-   <ul>
-      <li>
-         Add a method named <code>addInventoryItem</code> that takes in a <code>CollectibleGameObject</code> and returns
-         void. This method should add the object from the parameter to the <code>DynamicGameObject</code>'s inventory.
-         <ul>
-            <li>
-               Adding an item should never change the currently active item, except for when you pick up your first item
+        <ul>
+            <li>The <code>ratings.datastructures.BinaryTreeNode</code> class that has been provided in the handout repo.
+                An object of this type will be returned by one
+                of your methods and will be tested in Autolab.
+                Just like the <code>LinkedListNode</code> class, all these methods must exist and be named exactly as
+                they are in the repo or there will be errors during grading. You may add additional methods to this \
+                class, but don't call those methods from your tests.
             </li>
-         </ul>
-      </li>
-      <li>
-         Add a method named <code>removeActiveItem</code> that takes no parameters and returns void. This method should
-         remove whatever the currently active item is from the <code>DynamicGameObject</code>'s inventory.
-         <ul>
-            <li>
-               Once the currently active item is removed, the currently active item should become whatever was next in
-               the inventory. For example, if you collected an Axe, then Magic, then a Health Potion, the currently active
-               item would be the Axe. If this method is called, the remaining items are the Magic and the Health Potion,
-               and the active item would be the Magic.
+        </ul>
+
+
+        <p>
+            Create a <code>Playlist</code> class in the ratings package with the following functionality. This class
+            will
+            use a Binary Search Tree (BST) to store a playlist of <code>Songs</code> in sorted order. This class will
+            have the following behavior:
+        </p>
+
+
+        <ul>
+            <li>A constructor that takes a <code>Comparator</code> of <code>Songs</code>
+                <ul>
+                    <li>
+                        You will use this Comparator in a BST to sort the songs that are added to the playlist. You
+                        should create and initialize any instance variables you'll need when this constructor is called
+                    </li>
+                </ul>
             </li>
-            <li>
-               If the item removed is the last item in the inventory, the active item would become the first item in the
-               inventory. Be sure to account for this looping behavior in your code
+
+
+            <li>A method named <code>addSong</code> that takes a reference to a <code>Song</code> and returns
+                <code>void</code>
+                <ul>
+                    <li>
+                        This method will add the song to the playlist by inserting it into a BST with the
+                        comparator from the constructor
+                    </li>
+                    <li>
+                        Note: You are allowed to use the BST code provided in lecture
+                    </li>
+                </ul>
             </li>
-         </ul>
-      </li>
-      <li>
-         Add a method named <code>getActiveItem</code> that takes no parameters and returns a CollectibleGameObject.
-         This method should return whichever CollectibleGameObject in the inventory is active.
-         <ul>
-            <li>If the inventory is empty, this method should return null.</li>
-            <li>
-               If an item is collected and the inventory was previously empty, that item should be
-               the active item.
+
+            <li>A method named <code>getSongTree</code> that takes no parameters and returns the
+                <code>BinaryTreeNode</code> of <code>Songs</code> that is the root node of your
+                BST. This method should be a simple getter with one line of code
             </li>
-         </ul>
-      </li>
-      <li>
-         Add a method called <code>getActiveItemID</code> that takes in no parameters and returns a String.
-         <ul>
-            <li>This method should return the ID of the active CollectibleGameObject from the inventory.</li>
-            <li>If the inventory is empty, this method should return the string "No item equipped".</li>
-         </ul>
-      </li>
-      <li>
-         Add a method called <code>cycleInventory</code> that takes no parameters and returns void. This method will
-         cycle through the inventory, changing the item currently marked as active.
-         <ul>
-            <li>
-               This should be done in the order the objects are collected. For example, if a Player collected an Axe,
-               then Magic, then a Potion, the first call to cycleInventory will change the active item from the Axe
-               to Magic. The second call to cycleInventory will change the active item from Magic to the Potion.
+
+
+            <li>A method named <code>getSongList</code> that takes a <code>BinaryTreeNode</code> of <code>Songs</code>
+                as a parameter and returns a <code>LinkedListNode</code> of <code>Songs</code>
+                <ul>
+                    <li>
+                        This method traverses the tree from the parameter and returns all the songs in the tree
+                        in a Linked List in sorted order (Assuming the parameter is the root of a BST)
+                    </li>
+                    <li>
+                        Note: This method is expected to contain the majority of the difficulty of this task
+                    </li>
+                    <li>
+                        It's recommended that you write the next method before this one
+                    </li>
+                </ul>
             </li>
-            <li>
-               Once cycleInventory is called while the most recently collected item is active, the active item should
-               be set back to the front of the inventory to the least recently collected item. Thus in our previous
-               example, the third call to cycleInventory will change the active item from the Potion to the Axe.
+
+
+            <li>A method named <code>getSongList</code> that takes no parameters and returns a
+                <code>LinkedListNode</code> of <code>Songs</code>
+                <ul>
+                    <li>
+                        This method traverses your BST and returns all the Songs in the tree
+                        in a Linked List in sorted order
+                    </li>
+                    <li>
+                        This method should be one line since you can call your other <code>getSongList</code> method
+                        with
+                        the root of your BST as the argument
+                    </li>
+                    <li>
+                        This is the method that you will test in this task. You should write this method while
+                        writing the other <code>getSongList</code> method so you can run your tests and utilize the
+                        debugger
+                        while writing your code
+                    </li>
+                    <li>The returned node will be the head of a linked list containing all the Songs
+                        that were added in sorted order according to the comparator provided to the
+                        constructor
+                    </li>
+                    <li>
+                        Example: If you provided a <code>SongTitleComparator</code>, the songs will be sorted
+                        alphabetically
+                    </li>
+                    <li>
+                        Example: If you provided a <code>SongBayesianRatingComparator</code>, the songs will be sorted
+                        in
+                        decreasing order (The highest rated songs first) according to their bayesian
+                        average rating with 2 fake ratings of 3 being added.
+                    </li>
+                    <li>If no songs have been added to the Playlist, this method returns null to represent an empty
+                        linked list
+                    </li>
+                </ul>
             </li>
-         </ul>
-      </li>
-      <li>
-         Note that since these methods are the only way the inventory can be accessed and none of them rely on a
-         specific data structure, however you choose to represent the inventory internally does not matter so long as
-         your implementation follows the expected behavior. The only requirements are that you are able to keep track of
-         every item that is added, as well as the object that is currently active.
-      </li>
-      <li>
-         The inventory should initially be empty.
-      </li>
-      <li>
-         You can cycle your character's inventory in-game with the tab key. Recall that you can fire projectiles with
-         the space bar. Shortly you will modify this to use whichever item is currently active
-      </li>
-   </ul>
 
-   <h3>IMPORTANT</h3>
-   <p>
-      The Player class already contains a <code>cycleInventory</code> method that does nothing. With the cycleInventory
-      method implemented in DynamicGameObject, you can now remove the method in Player to use the inherited one instead.
-      If you do not, whenever you have a Player object, this method will be called instead, and your code will fail our
-      tests
-   </p>
+        </ul>
 
-   <p>Return to the <code>CollectibleGameObject</code> class and add the following behavior:</p>
-   <ul>
-      <li>
-         Override the <code>collideWithDynamicObject</code> method to add the current CollectibleGameObject to the
-         DynamicGameObject's inventory by calling <code>addInventoryItem</code>. It should then destroy itself. It
-         should only do these two things if the DynamicGameObject is the player (i.e. <code>isPlayer</code> returns true).
-      </li>
-   </ul>
 
-   <p>
-      Now, you will write a method to fire projectiles from a DynamicGameObject. In the <code>DynamicGameObject</code>
-      class, write a method called <code>fireProjectile</code> that returns void and takes in (in this order) a Projectile, a double
-      representing speed, and a Level.
-   </p>
-   <ul>
-      <li>This method should set the projectile's location x and y coordinates to be the same as the DynamicGameObject's location</li>
-      <li>Then, it should set the projectile's x and y velocity to be the DynamicGameObject's respective orientation times
-         the speed.</li>
-      <li>
-         Finally, it should add the projectile to the Level's list of DynamicGameObjects from calling <code>getDynamicObjects</code>.
-      </li>
-      <li>
-         This method will be very similar to the current implementation of the actionButtonPressed method in the <code>Level</code> class.
-      </li>
-   </ul>
+        <br/>
+        <hr/>
+        <h3>Testing Utilities</h3>
+        <hr/>
 
-   <p>
-      Now that the functionality for firing projectiles is in the DynamicGameObject class, you will replace the
-      action button functionality in the <code>Level</code> class to be based off of the Player's active item.
-   </p>
-   <ul>
-      <li>
-         Replace the <code>actionButtonPressed</code> method in Level to call the <code>use</code> method on the Level's Player's currently
-         active object.
-         <ul>
-            <li>If the currently active object is null, this method should do nothing.</li>
-            <li>You can access the Level's player with the <code>getPlayer</code> method</li>
-         </ul>
-      </li>
-   </ul>
 
-   <p>
-      At this point, the engine's collectible functionality is built up enough that you can now add new, interactable
-      collectibles to the game. You may wish to edit the <code>getUI</code> method in the Game class to show the
-      currently active item using the <code>getActiveItemID</code> method, otherwise there will be no way to tell
-      which item is equipped.
-   </p>
+        <p>
+            <b>TestDataStructures2:</b> Create a class named <code>TestDataStructures2</code> in the tests package and
+            write the
+            following testing utility method in this class.
+        </p>
 
-   <p>
-      In the <code>app.games.topdownobjects</code> package, create a class called MagicPickup that extends
-      CollectibleGameObject.
-   </p>
-   <ul>
-      <li>
-         Add a constructor that takes in a Vector2D representing location.
-         <ul>
-            <li>When calling the super constructor, pass in "Magic" for the item's ID.</li>
-            <li>
-               The suggested spriteSheetFilename for this class is "User Interface/Icons-Essentials.png" and the
-               suggested defaultSpriteLocation is column 1, row 0.
+
+        <ul>
+            <li><code>compareSongTrees</code> - Write a method named <code>compareSongTrees</code> in the
+                <code>tests.TestDataStructures2</code> class that:
+                <ul>
+                    <li>
+                        Takes [references to] 2 <code>BinaryTreeNode&lt;Song&gt;</code> objects as parameters
+                    </li>
+                    <li>
+                        Returns a boolean that is true if all the songs in the two trees have the same exact title,
+                        artist, id, and ratings in the same positions in the tree.
+                        The method either returns false, or fails a JUnit
+                        assert, if the trees do not contain all the same songs in the same positions
+                    </li>
+                    <li>
+                        Note: This is where it's recommended that you use <code>compareToIgnoreCase</code>
+                    </li>
+                </ul>
             </li>
-         </ul>
-      </li>
-      <li>
-         Override the <code>use</code> method from CollectibleGameObject. This method should access
-         the Player from the Level parameter and call the <code>fireProjectile</code> method
-         on said Player.
-         <ul>
-            <li>
-               The projectile parameter should be a new instance of PlayerMagicProjectile. Since
-               the fireProjectile method sets the location of the projectile, the initial location
-               passed into the constructor does not matter.
+        </ul>
+
+        <p>
+            You'll have the need to compare 2 song objects throughout this method.
+            Luckily, you already wrote, and tested, a <code>compareSongs</code> method that does
+            this (You may want to add a call to your <code>compareListsOfRatings</code> to compare the ratings of the
+            two songs since we did not have ratings where we wrote the <code>compareSongs</code> method). Since the
+            method is in a different class and is non-static, you'll need to create a <code>new
+            TestClasses1</code> object and call your method through that object. Note that you do not have to
+            import <code>TestClasses1</code> since it's in the same package as <code>TestDataStructures2</code>
+        </p>
+
+        <p>Note: You still have to create every class and method from the specification
+            before getting feedback on your submission in Autolab since the grader will not be able to compile if those
+            classes/methods do not
+            exist. You don't have to implement them yet, and they can all return a default value</p>
+
+
+        <br/>
+        <hr/>
+        <h3>
+            Testing Requirements
+        </h3>
+        <hr/>
+
+
+        <p>
+            <b>TestDataStructures2:</b> Add tests to the TestDataStructures2 class in the tests package that
+            will test the following functionality.
+        </p>
+
+        <ul>
+            <li><code>ratings.Playlist</code> - Write tests for the following methods of the <code>Playlist</code>
+                class
+                <ul>
+                    <li>
+                        The constructor takes a <code>Comparator&lt;Song&gt;</code>. In your testing, you can pass
+                        either a
+                        <code>new SongTitleComparator</code>
+                        or a <code>new SongBayesianRatingComparator</code>. This is allowed through the magic of
+                        Polymorphism which we'll discuss in greater detail later in the semester
+                    </li>
+                    <li>
+                        Call the <code>addSong</code> method to populate the playlist with test data
+                    </li>
+                    <li>
+                        Write tests for the <code>getSongTree</code> method and assert that it returns a tree that
+                        contains all the songs in the correct places based on the comparator you provided in the
+                        constructor and the algorithm for inserting into a BST
+                        <ul>
+                            <li>Do not write tests where 2 of your songs are tied according ot the comparator
+                            </li>
+                            <li>
+                                If no songs have been added, this method returns null
+                            </li>
+                            <li>
+                                You should use your utility method to make these tests easier to write
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Write tests for the <code>getSongList</code> method that takes no parameters and assert that it returns a linked list
+                        of all the added songs in sorted order according to the comparator you provided in the constructor
+                        <ul>
+                            <li>Do not write tests where 2 of your songs are tied according ot the comparator
+                            </li>
+                            <li>
+                                If no songs have been added, this method returns null
+                            </li>
+                            <li>The returned Songs might be different song objects, but they will contain the
+                                same title, artist, id, and ratings as the Songs that were added (eg. You must
+                                check the values of the songs and not rely on comparing the references
+                                with ==)
+                            </li>
+                            <li>
+                                Note: You do not have to write tests for the <code>getSongList</code> method that takes
+                                a tree as a parameter, though it will be tested implicitly since the one you are
+                                testing should call the other
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
-            <li>
-               The speed should be 10, and the Level should be the same level that was passed into the
-               use method.
+        </ul>
+
+
+        <br/>
+        <hr/>
+        <h3>
+            Programming Requirements
+        </h3>
+        <hr/>
+
+        <p>
+            Implement all the classes/methods described in the Specification section.
+            As you're writing this code, you should run your tests to see how you are progressing. It's
+            recommended that you write your tests first, submit to Autolab to make sure you have good testing,
+            then use those verified tests, along with the debugger, to check your code.
+        </p>
+
+        <br/>
+        <hr/>
+        <h3>Autolab Feedback</h3>
+        <hr/>
+
+        <p>
+            The feedback in Autolab will be given in 4 phases. If you don't complete a phase, then feedback for
+            the following phase(s) will not be provided.
+        </p>
+
+        <ol>
+            <li>Testing your testing utility method
+                <ul>
+                    <li>
+                        Your testing utility method will be checked with a variety of test cases to
+                        ensure
+                        that
+                        it makes all the required checks. This phase will ensure that your utility method is
+                        accurate
+                        before you start using it in your tests
+                    </li>
+                </ul>
             </li>
-         </ul>
-      </li>
-   </ul>
-   <p>
-      In the <code>app.games.topdownobjects</code> package, create a class called AxePickup that extends
-      CollectibleGameObject.
-   </p>
-   <ul>
-      <li>
-         Add a constructor that takes in a Vector2D representing location.
-         <ul>
-            <li>When calling the super constructor, pass in "Axe" for the item's ID.</li>
-            <li>
-               The suggested spriteSheetFilename for this class is "Objects/Axe.png" and the
-               suggested defaultSpriteLocation is column 0, row 0.
+            <li>Running your tests on a correct solution
+                <ul>
+                    <li>Your tests will be run against a solution that is known to be correct. If your tests do
+                        not pass this correct solution, there is an error somewhere in your tests that must be
+                        fixed
+                        before you can move on with the assignment. If your tests don't get past this check, you
+                        should re-read this document and make sure you implemented your tests and code according
+                        the specification. You should also make sure that if there are multiple correct outputs
+                        to the input in your tests cases that you accept any of the outputs as correct
+                    </li>
+                </ul>
             </li>
-         </ul>
-      </li>
-      <li>
-         Override the <code>use</code> method from CollectibleGameObject. This method should access
-         the Player from the Level parameter and call the <code>fireProjectile</code> method
-         on said Player.
-         <ul>
-            <li>
-               The projectile parameter should be a new instance of PlayerAxeProjectile. As with the
-               previous class, the initial location does not matter.
+            <li>Checking your tests for feature coverage
+                <ul>
+                    <li>
+                        The next phase is to check if your tests check for a variety of features defined by
+                        different inputs. You should write at least one test case for each feature to pass this
+                        phase
+                    </li>
+                    <li>
+                        Passing this phase does not necessarily mean that your testing is completely thorough.
+                        Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
+                        checked, and it is sometimes possible to pass this phase
+                        with weak testing. If you are struggling to earn credit for code that you believe
+                        is correct, you should write more than the required tests
+                    </li>
+                </ul>
             </li>
-            <li>
-               The speed should be 5, and the Level should be the same level that was passed into the
-               use method.
+            <li>Running my tests on your solution
+                <ul>
+                    <li>
+                        Once Autolab is happy with your tests, it will run my tests against your code to check
+                        it for correctness. If your testing is thorough, and your code passes your tests, then
+                        you should pass this phase. If you pass your tests, but fail one of mine, it is an
+                        indicator that you should write more tests to help expose your bug
+                    </li>
+                </ul>
             </li>
-         </ul>
-      </li>
-   </ul>
+        </ol>
 
-   <p>
-      In the <code>app.games.topdownobjects</code> package, create a class called PotionPickup that extends
-      CollectibleGameObject.
-   </p>
-   <ul>
-      <li>
-         Create a constructor that takes in a Vector2D representing location and an int representing the amount to heal.
-         <ul>
-            <li>When calling the super constructor, pass in "Health Potion" for the item's ID.</li>
-            <li>
-               The suggested spriteSheetFilename for this class is "User Interface/Icons-Essentials.png" and the
-               suggested defaultSpriteLocation is column 3, row 1.
-            </li>
-         </ul>
-      </li>
-      <li>
-         Override the <code>use</code> method.
-         <ul>
-            <li>
-               This method should access the player from the Level parameter and
-               set their HP to be their current HP plus the amount to heal specified in the
-               constructor.
-            </li>
-            <li>
-               This method should then call <code>removeActiveItem</code> on the player.
-            </li>
-         </ul>
-      </li>
-
-   </ul>
-
-
-
-   <br/>
-   <hr/>
-   <h3>Testing Utilities</h3>
-   <hr/>
-
-
-   <p>
-      There is no testing utility for this task.
-   </p>
-
-   <br/>
-   <hr/>
-   <h3>
-      Testing Requirements
-   </h3>
-   <hr/>
-
-
-   <p>
-      In the <code>app.tests</code> package, create a class called <code>TestTask5</code> and test the following:
-   </p>
-
-   <ul>
-      <li><code>DynamicGameObject</code>
-         <ul>
-            <li>
-               <code>addInventoryItem</code> and <code>cycleInventory</code>:
-               <ul>
-                  <li>
-                     Write tests to ensure that adding items to the inventory has the proper behavior when cycling
-                     through the inventory, i.e. calling <code>cycleInventory</code> will go through every added
-                     CollectibleGameObject and wrap around to the beginning
-                  </li>
-               </ul>
-            </li>
-            <li>
-               <code>removeActiveItem</code>:
-               <ul>
-                  <li>
-                     Write tests to ensure that calling <code>removeActiveItem</code> properly removes the active item from
-                     the inventory and sets the new active item.
-                  </li>
-               </ul>
-            </li>
-            <li>
-               When testing these methods, you only need to check that the item IDs match the expected.
-            </li>
-         </ul>
-
-      </li>
-
-   </ul>
-
-
-   <br/>
-   <hr/>
-   <h3>
-      Programming Requirements
-   </h3>
-   <hr/>
-
-   <p>
-      Implement all the classes/methods described in the Specification section.
-      As you're implementing inventory, you should run your tests to see how you are progressing. It's
-      recommended that you write your tests first, submit to Autolab to make sure you have good testing,
-      then use those verified tests, along with the debugger, to check your code.
-   </p>
-
-   <br/>
-   <hr/>
-   <h3>Autolab Feedback</h3>
-   <hr/>
-
-   <p>
-      The feedback in Autolab will be given in 3 phases. If you don't complete a phase, then feedback for
-      the following phase(s) will not be provided.
-   </p>
-
-   <ol>
-      <li>Running your tests on a correct solution
-         <ul>
-            <li>Your tests will be run against a solution that is known to be correct. If your tests do
-               not pass this correct solution, there is an error somewhere in your tests that must be
-               fixed
-               before you can move on with the assignment. If your tests don't get past this check, you
-               should re-read this document and make sure you implemented your tests and code according
-               the specification. You should also make sure that if there are multiple correct outputs
-               to the input in your tests cases that you accept any of the outputs as correct
-            </li>
-         </ul>
-      </li>
-      <li>Checking your tests for feature coverage
-         <ul>
-            <li>
-               The next phase is to check if your tests check for a variety of features defined by
-               different inputs. You should write at least one test case for each feature to pass this
-               phase
-            </li>
-            <li>
-               Passing this phase does not necessarily mean that your testing is completely thorough.
-               Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-               checked, and it is sometimes possible to pass this phase
-               with weak testing. If you are struggling to earn credit for code that you believe
-               is correct, you should write more than the required tests
-            </li>
-         </ul>
-      </li>
-      <li>Running my tests on your solution
-         <ul>
-            <li>
-               Once Autolab is happy with your tests, it will run my tests against your code to check
-               it for correctness. If your testing is thorough, and your code passes your tests, then
-               you should pass this phase. If you pass your tests, but fail one of mine, it is an
-               indicator that you should write more tests to help expose your bug
-            </li>
-         </ul>
-      </li>
-   </ol>
-
-   <p>
-      Once you complete all 3 phases, you will have completed this Task and Autolab will confirm this
-      with a score of 1.0 for complete.
-   </p>
-</div>
+        <p>
+            Once you complete all 4 phases, you will have completed this Task and Autolab will confirm this
+            with a score of 1.0 for complete.
+        </p>
+    </div>
 
 {% endblock %}

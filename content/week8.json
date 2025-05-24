@@ -1,67 +1,43 @@
 {
-  "title": "Week 8: Data Structures 2 - Trees",
-  "theme": "ds",
+  "title": "Lecture 8: Midterm Exam, then Testing 3 - Testing and Files ",
+  "theme": "testing",
   "homework": [
     {
-      "title": "Coding Task 4: Trees",
-      "url": "task4.html",
+      "title": "Programming Task 6: Files",
+      "url": "task6.html",
       "released": true
     }
   ],
-  "lab": "2nd Attempt for Interview 1, Tracing Quiz 1, and Coding Quiz 1",
+  "lab": "1st Chance - Trees Interview & Quiz",
   "content": [
     {
-      "type": "lecture",
+      "type": "deadline",
       "day": "Monday",
-      "date": "March 10",
-      "title": "Binary Trees and Traversals",
-      "slides": "Week7_1_Trees.pdf",
+      "date": "June 23",
+      "time": "11:59pm",
+      "assignment": "Task 4",
+      "deadline_type": "final"
+    },
+    {
+      "type": "lecture",
+      "day": "Tuesday",
+      "date": "June 24",
+      "title": "Midterm Exam - First 1.5 hours of lecture",
       "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm",
-          "text": "Trees"
-        },
-        {
-          "url": "https://en.wikipedia.org/wiki/Tree_traversal",
-          "text": "Tree Traversals (Wikipedia)"
-        }
       ]
     },
     {
       "type": "lecture",
-      "day": "Wednesday",
-      "date": "March 12",
-      "title": "Binary Search Trees (BSTs)",
-      "slides": "Week7_2_BST.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/binary_search_tree.htm",
-          "text": "BST"
-        }
-      ]
-    },
-    {
-      "type": "lecture",
-      "day": "Friday",
-      "date": "March 14",
-      "title": "Binary Tree Examples",
+      "day": "Tuesday",
+      "date": "June 24",
+      "title": "Files and Exceptions",
+      "slides": "Week8_Reading_Files.pdf",
       "reading_list": []
     },
     {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "March 14",
-      "time": "11:59pm",
-      "assignment": "Task 3",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "March 14",
-      "time": "11:59pm",
-      "assignment": "Task 2",
-      "deadline_type": "final"
+      "type": "lecture",
+      "title": "Testing With Files",
+      "reading_list": []
     }
   ]
 }

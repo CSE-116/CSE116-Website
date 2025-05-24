@@ -1,51 +1,55 @@
 {
-  "title": "Week 7: Classes/OOP 2 - Inheritance",
-  "theme": "oop",
+  "title": "Lecture 7: Data Structures 2 - Trees",
+  "theme": "ds",
   "homework": [
     {
-      "title": "Coding Task 3: Inheritance",
-      "url": "task3.html",
+      "title": "Programming Task 5: Trees",
+      "url": "task5.html",
       "released": true
     }
   ],
-  "lab": "Activity and Coding Quiz 1 - Classes",
+  "lab": "1st Chance - Inheritance Interview & Quiz",
   "content": [
     {
-      "type": "lecture",
+      "type": "deadline",
       "day": "Monday",
-      "date": "March 3",
-      "title": "Inheritance",
-      "slides": "Week6_1_Inheritance.pdf",
+      "date": "June 16",
+      "time": "11:59pm",
+      "assignment": "Task 2",
+      "deadline_type": "final"
+    },
+    {
+      "type": "lecture",
+      "day": "Tuesday",
+      "date": "June 17",
+      "title": "Binary Trees and Traversals",
+      "slides": "Week7_1_Trees.pdf",
       "reading_list": [
         {
-          "url": "https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html",
-          "text": "Inheritance"
+          "url": "https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm",
+          "text": "Trees"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tree_traversal",
+          "text": "Tree Traversals (Wikipedia)"
         }
       ]
     },
     {
       "type": "lecture",
-      "day": "Wednesday",
-      "date": "March 5",
-      "title": "Inheritance and Override",
-      "slides": "Week6_2_Inheritance.pdf",
-      "reading_list": []
+      "title": "Binary Search Trees (BSTs)",
+      "slides": "Week7_2_BST.pdf",
+      "reading_list": [
+        {
+          "url": "https://www.tutorialspoint.com/data_structures_algorithms/binary_search_tree.htm",
+          "text": "BST"
+        }
+      ]
     },
     {
       "type": "lecture",
-      "day": "Friday",
-      "date": "March 7",
-      "title": "Sorting with Comparators",
-      "slides": "Week6_3_Comparators.pdf",
+      "title": "Binary Tree Examples",
       "reading_list": []
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "March 7",
-      "time": "11:59pm",
-      "assignment": "Task 1",
-      "deadline_type": "final"
     }
   ]
 }

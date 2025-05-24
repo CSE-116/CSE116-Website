@@ -1,42 +1,63 @@
 {
-  "title": "Week 6: Testing 2 - Testing Strategies",
-  "theme": "testing",
-  "homework": [],
-  "lab": "Interview 1 and Tracing Quiz 1 - Classes",
+  "title": "Lecture 6: Classes/OOP 2 - Inheritance",
+  "theme": "oop",
+  "homework": [
+    {
+      "title": "Programming Task 4: Inheritance",
+      "url": "task4.html",
+      "released": true
+    }
+  ],
+  "lab": "2nd Chance - Classes/Linked List Interviews & Quizzes",
   "content": [
     {
-      "type": "lecture",
-      "day": "Monday",
-      "date": "February 24",
-      "title": "Testing Tips",
-      "reading_list": []
+      "type": "deadline",
+      "day": "Thursday",
+      "date": "June 12",
+      "time": "8:00am",
+      "assignment": "Task 3",
+      "deadline_type": "expected"
     },
     {
       "type": "lecture",
-      "day": "Wednesday",
-      "date": "February 26",
-      "title": "Testing Data Structures",
-      "reading_list": []
-    },
-    {
-      "type": "lecture",
-      "day": "Friday",
-      "date": "February 28",
-      "title": "Debugger and Testing",
+      "day": "Thursday",
+      "date": "June 12",
+      "title": "Inheritance",
+      "slides": "Week6_1_Inheritance.pdf",
       "reading_list": [
         {
-          "url": "https://www.jetbrains.com/help/idea/debugging-your-first-java-application.html#stopping-debugger",
-          "text": "Debugging in IntelliJ"
+          "url": "https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html",
+          "text": "Inheritance"
         }
       ]
     },
     {
+      "type": "lecture",
+      "title": "Inheritance and Override",
+      "slides": "Week6_2_Inheritance.pdf",
+      "reading_list": []
+    },
+    {
+      "type": "lecture",
+      "title": "Sorting with Comparators",
+      "slides": "Week6_3_Comparators.pdf",
+      "reading_list": []
+    },
+    {
       "type": "deadline",
-      "day": "Friday",
-      "date": "February 28",
-      "time": "11:59pm",
-      "assignment": "Task 2",
+      "day": "Saturday",
+      "date": "June 14",
+      "time": "8:00am",
+      "assignment": "Task 4",
       "deadline_type": "expected"
+    },
+    {
+      "type": "deadline",
+      "day": "Saturday",
+      "date": "June 14",
+      "time": "11:59pm",
+      "assignment": "Task 1",
+      "deadline_type": "final"
     }
   ]
 }

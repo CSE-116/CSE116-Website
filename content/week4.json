@@ -1,19 +1,26 @@
 {
-  "title": "Week 4: Classes/OOP 1 - Classes",
+  "title": "Lecture 4: Classes/OOP 1 - Classes",
   "theme": "oop",
   "homework": [
     {
-      "title": "Coding Task 1: Classes",
-      "url": "task1.html",
+      "title": "Programming Task 2: Classes",
+      "url": "task2.html",
       "released": true
     }
   ],
-  "lab": "Interview 0 and Tracing Quiz 0 - Java Basics",
   "content": [
     {
+      "type": "deadline",
+      "day": "Thursday",
+      "date": "June 5",
+      "time": "8:00am",
+      "assignment": "Task 1",
+      "deadline_type": "expected"
+    },
+    {
       "type": "lecture",
-      "day": "Monday",
-      "date": "February 10",
+      "day": "Thursday",
+      "date": "June 5",
       "title": "Classes and Objects",
       "slides": "week3_1_Classes.pdf",
       "reading_list": [
@@ -29,19 +36,23 @@
     },
     {
       "type": "lecture",
-      "day": "Wednesday",
-      "date": "February 12",
       "title": "Classes and Objects",
       "slides": "week3_2_Classes.pdf",
       "reading_list": []
     },
     {
       "type": "lecture",
-      "day": "Friday",
-      "date": "February 14",
       "title": "Testing Classes and Examples",
       "slides": "week3_3_Execution_Heap.pdf",
       "reading_list": []
+    },
+    {
+      "type": "deadline",
+      "day": "Saturday",
+      "date": "June 7",
+      "time": "8:00am",
+      "assignment": "Task 2",
+      "deadline_type": "expected"
     }
   ]
 }

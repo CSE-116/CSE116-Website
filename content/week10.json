@@ -1,45 +1,35 @@
 {
-  "title": "Week 11: Classes/OOP - Polymorphism",
-  "theme": "oop",
+  "title": "Lecture 10: Data Structures 3 - Graphs",
+  "theme": "ds",
   "homework": [
     {
-      "title": "Coding Task 5: Polymorphism",
-      "url": "task5.html",
+      "title": "Programming Task 8: Graphs",
+      "url": "task8.html",
       "released": true
     }
   ],
-  "lab": "Activity and Coding Quiz 2 - Data Structures (LL and Trees)",
+  "lab": "1st Chance - Polymorphism Interview & Quiz",
   "content": [
     {
       "type": "lecture",
-      "day": "Monday",
-      "date": "March 31",
-      "title": "Polymorphism",
-      "slides": "Week9_1_Polymorphism.pdf",
+      "day": "Tuesday",
+      "date": "July 1",
+      "title": "Graphs",
+      "slides": "Week10_1_Graphs.pdf",
+      "reading_list": [
+      ]
+    },
+    {
+      "type": "lecture",
+      "title": "Graph with BFS",
+      "slides": "Week10_2_Pathfinding.pdf",
       "reading_list": []
     },
     {
       "type": "lecture",
-      "day": "Wednesday",
-      "date": "April 2",
-      "title": "Polymorphism",
-      "slides": "Week9_2_Polymorphism_2.pdf",
+      "title": "Graph Examples",
+      "slides": "Week10_3_Graphs.pdf",
       "reading_list": []
-    },
-    {
-      "type": "lecture",
-      "day": "Friday",
-      "date": "April 4",
-      "title": "Polymorphism Example",
-      "reading_list": []
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "April 4",
-      "time": "11:59pm",
-      "assignment": "Task 3",
-      "deadline_type": "final"
     }
   ]
 }
