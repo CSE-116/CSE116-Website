@@ -42,7 +42,7 @@
                 An object of this type will be returned by one
                 of your methods and will be tested in Autolab.
                 Just like the <code>LinkedListNode</code> class, all these methods must exist and be named exactly as
-                they are in the repo or there will be errors during grading. You may add additional methods to this \
+                they are in the repo or there will be errors during grading. You may add additional methods to this
                 class, but don't call those methods from your tests.
             </li>
         </ul>
@@ -63,9 +63,15 @@
                         You will use this Comparator in a BST to sort the songs that are added to the playlist. You
                         should create and initialize any instance variables you'll need when this constructor is called
                     </li>
+                    <li class="h">Il comparatore deve essere memorizzato in una variabile di istanza di tipo array di
+                        comparatori
+                    </li>
                 </ul>
             </li>
 
+            <li class="h">'n Metode genaamd getSecondSong wat geen parameters neem nie en die teruggee tweede liedjie in
+                die BST
+            </li>
 
             <li>A method named <code>addSong</code> that takes a reference to a <code>Song</code> and returns
                 <code>void</code>
@@ -82,7 +88,11 @@
 
             <li>A method named <code>getSongTree</code> that takes no parameters and returns the
                 <code>BinaryTreeNode</code> of <code>Songs</code> that is the root node of your
-                BST. This method should be a simple getter with one line of code
+                BST. This method should be a getter with one line of code
+            </li>
+
+            <li class="h">A method named getFirstSong that takes no parameters and returns the
+                first song in the BST
             </li>
 
 
@@ -93,6 +103,7 @@
                         This method traverses the tree from the parameter and returns all the songs in the tree
                         in a Linked List in sorted order (Assuming the parameter is the root of a BST)
                     </li>
+                    <li class="h">Os yw'r mewnbwn yn Null, dychwelwch nod newydd gyda gwerth null</li>
                     <li>
                         Note: This method is expected to contain the majority of the difficulty of this task
                     </li>
@@ -122,18 +133,18 @@
                         while writing your code
                     </li>
                     <li>The returned node will be the head of a linked list containing all the Songs
-                        that were added in sorted order according to the comparator provided to the
+                        that were added to your playlist in sorted order according to the comparator provided to the
                         constructor
                     </li>
                     <li>
                         Example: If you provided a <code>SongTitleComparator</code>, the songs will be sorted
-                        alphabetically
+                        alphabetically by title
                     </li>
                     <li>
                         Example: If you provided a <code>SongBayesianRatingComparator</code>, the songs will be sorted
                         in
                         decreasing order (The highest rated songs first) according to their bayesian
-                        average rating with 2 fake ratings of 3 being added.
+                        average rating with 2 fake ratings of 3 being added
                     </li>
                     <li>If no songs have been added to the Playlist, this method returns null to represent an empty
                         linked list
@@ -162,16 +173,15 @@
                 <code>tests.TestDataStructures2</code> class that:
                 <ul>
                     <li>
-                        Takes [references to] 2 <code>BinaryTreeNode&lt;Song&gt;</code> objects as parameters
+                        Takes [references to] 2 <span class="h">arrays of</span>
+                        <code>BinaryTreeNode&lt;Song&gt;</code>
+                        objects as parameters
                     </li>
                     <li>
-                        Returns a boolean that is true if all the songs in the two trees have the same exact title,
+                        Checks if all the songs in the two trees have the same exact title,
                         artist, id, and ratings in the same positions in the tree.
-                        The method either returns false, or fails a JUnit
-                        assert, if the trees do not contain all the same songs in the same positions
-                    </li>
-                    <li>
-                        Note: This is where it's recommended that you use <code>compareToIgnoreCase</code>
+                        The method fails a JUnit
+                        assert if the trees do not contain all the same songs in the same positions
                     </li>
                 </ul>
             </li>
@@ -183,7 +193,8 @@
             this (You may want to add a call to your <code>compareListsOfRatings</code> to compare the ratings of the
             two songs since we did not have ratings where we wrote the <code>compareSongs</code> method). Since the
             method is in a different class and is non-static, you'll need to create a <code>new
-            TestClasses1</code> object and call your method through that object. Note that you do not have to
+            TestClasses1</code> object
+            and call your method through that object. Note that you do not have to
             import <code>TestClasses1</code> since it's in the same package as <code>TestDataStructures2</code>
         </p>
 
@@ -225,7 +236,7 @@
                         contains all the songs in the correct places based on the comparator you provided in the
                         constructor and the algorithm for inserting into a BST
                         <ul>
-                            <li>Do not write tests where 2 of your songs are tied according ot the comparator
+                            <li>Do not write tests where 2 of your songs are tied according to the comparator
                             </li>
                             <li>
                                 If no songs have been added, this method returns null
@@ -236,10 +247,12 @@
                         </ul>
                     </li>
                     <li>
-                        Write tests for the <code>getSongList</code> method that takes no parameters and assert that it returns a linked list
-                        of all the added songs in sorted order according to the comparator you provided in the constructor
+                        Write tests for the <code>getSongList</code> method that takes no parameters and assert that it
+                        returns a linked list
+                        of all the added songs in sorted order according to the comparator you provided in the
+                        constructor
                         <ul>
-                            <li>Do not write tests where 2 of your songs are tied according ot the comparator
+                            <li>Do not write tests where 2 of your songs are tied according to the comparator
                             </li>
                             <li>
                                 If no songs have been added, this method returns null

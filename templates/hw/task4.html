@@ -37,7 +37,6 @@
 
         <p>In this task, you will test and implement the following specs.</p>
 
-
         <ul>
             <li>ratings.Movie - In the ratings package, a class named <code>Movie</code> with:
                 <ul>
@@ -106,7 +105,7 @@
             <li>ratings.Song - Update the <code>Song</code> class to inherit from the <code>Ratable</code> class
                 <ul>
                     <li>
-                        You removed 2 instance variables and 6 methods from this class while writing the
+                        You removed 2 instance variables and 7 methods from this class while writing the
                         <code>Ratable</code>
                         class. However, <code>Song</code> will now inherit all those variables and methods from the
                         <code>Ratable</code>
@@ -126,6 +125,7 @@
                         Ratable:
                         <ul>
                             <li>A constructor that takes 3 Strings</li>
+                            <li class="h">un metodo jave toString che restituisce l'unico il titolo della canzone</li>
                             <li><code>getArtist</code></li>
                             <li><code>setArtist</code></li>
                             <li><code>getSongID</code></li>
@@ -159,13 +159,15 @@
             </li>
         </ul>
         <ul>
-            <li>bayesianAverageRating - in the <code>ratings.Ratable</code>, add a method named <code>bayesianAverageRating</code>
+            <li>bayesianAverageRating - in the <code>ratings.Ratable</code>, add a method named
+                <code>bayesianAverageRating</code>
                 that
                 takes
                 2 ints and returns a double:
                 <ul>
                     <li>The first parameter is a number of extra ratings</li>
                     <li>The second parameter is the value of the extra ratings</li>
+                    <li class="h">Se gli input sono entrambi cinque, restituisce zero virgola zero uno</li>
                     <li>The method returns the average rating of the song/movie if the extra ratings were
                         added. Note that you are not actually adding the ratings to the Song/Movie.
                         You are only using the extra ratings in your computation of the average
@@ -302,15 +304,16 @@
 
 
         <ul>
-            <li><code>compareArrayListsIgnoreCase</code> - Write a method named <code>compareArrayListsIgnoreCase</code> in the tests.TestClasses2 class that:
+            <li><code>compareArrayListsIgnoreCase</code> - Write a method named <code>compareArrayListsIgnoreCase</code>
+                in the tests.TestClasses2 class that:
                 <ul>
                     <li>
                         Takes [references to] 2 ArrayList&lt;String&gt; objects as parameters
                     </li>
                     <li>
-                        Returns a boolean that is true if the two lists contain all the same Strings in the same order, but ignoring case.
-                        The method either returns false, or fails a JUnit
-                        assert, if the lists do not contain all the same values in the same order while ignoring case
+                        Checks if the two lists contain all the same Strings in the same order, but ignoring case.
+                        The method fails a JUnit
+                        assert if the lists do not contain all the same values in the same order while ignoring case
                     </li>
                     <li>
                         Note: This is where it's recommended that you use <code>compareToIgnoreCase</code>

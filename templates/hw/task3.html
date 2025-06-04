@@ -98,7 +98,7 @@
                         This method returns the average of all the Ratings of this Song
                     </li>
                     <li>
-                        If the list is empty, the method returns 0.0
+                        If the list is empty, or only contains invalid ratings, the method returns 0.0
                     </li>
                     <li>
                         Any invalid rating, ratings of -1, will be ignored during this calculation (eg. A Song with
@@ -145,19 +145,19 @@
         <p>
         Create a class named <code>TestDataStructures1</code> in the tests package (tests.TestDataStructures1) and write the
             following utility method in that class (Note: Do not add the @Test annotation to this method since it is
-            not itself a tests):
+            not itself a test):
         </p>
 
         <ul>
             <li><code>compareListsOfRatings</code> - Write a method named compareListsOfRatings in the tests.TestDataStructures1 class that:
                 <ul>
                     <li>
-                        Takes [references to] 2 LinkedListNode&lt;Rating&gt; objects as parameters
+                        Takes [references to] 2 LinkedListNode&lt;Rating&gt; objects as parameters and  returns void
                     </li>
                     <li>
-                        Returns a boolean that is true if the rating and reviewer id of all Ratings in both lists are
-                        exactly the same and are in the same order. The method either returns false, or fails a JUnit
-                        assert, if the lists do not contain all the same values of their ratings objects in the same
+                        This method checks if the rating and reviewer id of all Ratings in both lists are
+                        exactly the same and are in the same order. The method fails a JUnit
+                        assert if the lists do not contain all the same values of their ratings objects in the same
                         order
                     </li>
                     <li>
@@ -178,10 +178,9 @@
         <hr/>
         <p>
             Write tests in the tests.TestDataStructures1 class for the averageRating and removeRatingByReviewer methods.
-            You may assume that the addRating, getRatings, and setRatings methods behave as expected with tests
-            specifically for these methods, though you will need to call at least 2 of these methods in your tests, so
-            they will implicitly be tested. All 5 methods will still be tested in the next phase, so it can help if you
-            test all of them even though it's not explicitly required.
+            You may assume that the addRating, getRatings, and setRatings methods behave as expected. All 5 methods
+            will still be tested in the next phase, so it can help if you
+            test all 5 even though it's not explicitly required.
         </p>
         <p>
             It is highly recommended that you create your expected linked lists and call your compareListsOfRatings to

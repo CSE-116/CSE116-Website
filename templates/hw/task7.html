@@ -57,6 +57,8 @@
                         three files and store all the Songs and Movies as part of the state of the
                         <code>MediaLibrary</code> object
                     </li>
+                    <li class="h" aria-hidden="true">Un metodo denominato topKayRatables che accetta un int e
+                        restituisce ogni film che ha così tanti membri del cast</li>
                     <li>
                         <code>MediaLibrary</code> has a method named <code>topKRatables</code> that takes an
                         <code>int</code> and returns an <code>ArrayList</code>
@@ -105,16 +107,16 @@
 
         <ul>
             <li><code>compareRatableArrayLists</code> - Write a method named <code>compareRatableArrayLists</code> in the
-                <code>tests.TestFiles</code> class that:
+                <code>tests.TestClasses3</code> class that:
                 <ul>
                     <li>
                         Takes [references to] 2 <code>ArrayList&lt;Ratable&gt;</code> objects as parameters
                     </li>
                     <li>
-                        Returns a boolean that is true if both <code>ArrayLists</code> contain <code>Ratables</code>
+                        Checks if both <code>ArrayLists</code> contain <code>Ratables</code>
                         with the same titles in the same order.
-                        The method either returns false, or fails a JUnit
-                        assert, if the <code>ArrayLists</code> do not contain exactly the same songs
+                        The method fails a JUnit
+                        assert if the <code>ArrayLists</code> do not contain ratables with the same titles in the same order
                     </li>
                 </ul>
             </li>

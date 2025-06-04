@@ -158,20 +158,11 @@
                         Takes [references to] 2 Song objects as parameters
                     </li>
                     <li>
-                        Returns a boolean that is true if the title, artist, and id of both Songs are exactly
-                        the same. The method either returns false, or fails a JUnit assert, if the Songs do not
-                        have all the same values
-                    </li>
-                    <li>
-                        If the 2 Songs do not have all the same values you can either: return false, or have
-                        an assert that fails. This gives you the option of using assertTrue, assertEquals, etc.
-                        in your utility methods instead of returning false when the test should fail. It is
-                        recommended that you write this method with assert statements, then add "return true"
-                        as the last line of the method. The method will never return false, but if any assert
-                        fails the test will fail without reaching your "return true" line. If you chose to not
-                        use asserts and instead return false when the Songs are not identical, be sure to add
-                        assertTrue in your test cases when you call this method. (This structure is the same for
-                        all utility methods)
+                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Songs do
+                        not have all the same values. In this way, calling the method with two Songs that are different
+                        will result in a test failing, while calling the method with two Songs that are the same will
+                        not do anything and will move on to your next test case. You can call assertTrue, assertEquals,
+                        etc. in your compareSongs method even though it itself is not a test method.
                     </li>
                 </ul>
             </li>
@@ -181,8 +172,7 @@
                         Takes [references to] 2 Rating objects
                     </li>
                     <li>
-                        Returns a boolean that is true if the rating and reviewerID of both Ratings are exactly
-                        the same. The method either returns false, or fails a JUnit assert, if the Ratings do
+                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Ratings do
                         not have all the same values
                     </li>
                 </ul>
@@ -193,9 +183,8 @@
                         Takes [references to] 2 Reviewer objects
                     </li>
                     <li>
-                        Returns a boolean that is true if the reviewerID of both Reviewers are exactly
-                        the same. The method either returns false, or fails a JUnit assert, if the Reviewers do
-                        not have the same reviewerID
+                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Reviewers
+                        do not have the same id
                     </li>
                 </ul>
             </li>
