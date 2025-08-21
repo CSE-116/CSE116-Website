@@ -5,30 +5,19 @@
   "lab": "Interview 1 and Tracing Quiz 1 - Classes",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "14-.json",
       "day": "Monday",
-      "date": "February 24",
-      "title": "Testing Tips",
-      "reading_list": []
+      "date": "September 29"
     },
     {
-      "type": "lecture",
+      "lecture": "15-.json",
       "day": "Wednesday",
-      "date": "February 26",
-      "title": "Testing Data Structures",
-      "reading_list": []
+      "date": "October 1"
     },
     {
-      "type": "lecture",
+      "lecture": "16-.json",
       "day": "Friday",
-      "date": "February 28",
-      "title": "Debugger and Testing",
-      "reading_list": [
-        {
-          "url": "https://www.jetbrains.com/help/idea/debugging-your-first-java-application.html#stopping-debugger",
-          "text": "Debugging in IntelliJ"
-        }
-      ]
+      "date": "October 3"
     },
     {
       "type": "deadline",

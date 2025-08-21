@@ -1,0 +1,10 @@
+{
+  "title": "Binary Search Trees (BSTs)",
+  "slides": "Week7_2_BST.pdf",
+  "reading_list": [
+    {
+      "url": "https://www.tutorialspoint.com/data_structures_algorithms/binary_search_tree.htm",
+      "text": "BST"
+    }
+  ]
+}

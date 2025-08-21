@@ -1,0 +1,19 @@
+{
+  "title": "Week 16: Final Exam",
+  "theme": "intro",
+  "homework": [],
+  "lab": "No Lab",
+  "content": [
+
+    {
+      "lecture": "break.json",
+      "day": "Monday",
+      "date": "December 8"
+    },
+    {
+      "lecture": "final.json",
+      "day": "Friday",
+      "date": "December 12"
+    }
+  ]
+}

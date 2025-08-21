@@ -11,45 +11,19 @@
   "lab": "No Lab",
   "content": [
     {
-      "type": "lecture",
-      "day": "Wednesday",
-      "date": "January 22",
-      "title": "Course Introduction",
-      "reading_list": [
-        {
-          "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/module-summary.html",
-          "text": "Java Official Documentation"
-        }
-      ]
+      "lecture": "0-intro.json",
+      "day": "Monday",
+      "date": "August 25"
     },
     {
-      "type": "lecture",
+      "lecture": "1-java.json",
+      "day": "Wednesday",
+      "date": "August 27"
+    },
+    {
+      "lecture": "2-.json",
       "day": "Friday",
-      "date": "January 24",
-      "title": "Introduction to Java",
-      "slides": "week1_1_Java.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.jetbrains.com/idea/download/",
-          "text": "IntelliJ"
-        },
-        {
-          "url": "https://www.jetbrains.com/student/",
-          "text": "JetBrains Educational License"
-        },
-        {
-          "url": "https://www.w3schools.com/java/java_methods.asp",
-          "text": "Java Methods"
-        },
-        {
-          "url": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html",
-          "text": "Java Primitive Types"
-        },
-        {
-          "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html",
-          "text": "Java Strings"
-        }
-      ]
+      "date": "August 29"
     }
   ]
 }

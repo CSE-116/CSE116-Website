@@ -5,42 +5,19 @@
   "lab": "Activity - Java",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "5-.json",
       "day": "Monday",
-      "date": "February 3",
-      "title": "Unit Testing",
-      "slides": "week2_1_Unit_Testing.pdf",
-      "reading_list": [
-        {
-          "url": "https://en.wikipedia.org/wiki/Unit_testing",
-          "text": "Wikipedia: Unit Testing"
-        }
-      ]
+      "date": "September 8"
     },
     {
-      "type": "lecture",
+      "lecture": "6-.json",
       "day": "Wednesday",
-      "date": "February 5",
-      "title": "Testing Strings/doubles",
-      "slides": "week2_2_Unit_Testing.pdf",
-      "reading_list": []
+      "date": "September 10"
     },
     {
-      "type": "lecture",
+      "lecture": "7-.json",
       "day": "Friday",
-      "date": "February 7",
-      "title": "Testing and Recursion",
-      "slides": "week2_3_Recursion.pdf",
-      "reading_list": [
-        {
-          "url": "https://en.wikipedia.org/wiki/Recursion",
-          "text": "Wikipedia: Recursion"
-        },
-        {
-          "url": "https://smartpuffin.com/unit-tests-tutorial/",
-          "text": "Unit Testing Tips"
-        }
-      ]
+      "date": "September 12"
     },
     {
       "type": "deadline",

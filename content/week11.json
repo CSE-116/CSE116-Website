@@ -1,54 +1,36 @@
 {
-  "title": "Week 12: Data Structures 3 - Graphs",
-  "theme": "ds",
+  "title": "Week 11: Classes/OOP - Polymorphism",
+  "theme": "oop",
   "homework": [
     {
-      "title": "Coding Task 6: Graphs",
-      "url": "task6.html",
+      "title": "Coding Task 5: Polymorphism",
+      "url": "task5.html",
       "released": true
     }
   ],
-  "lab": "2nd Attempt for Interview 2, Tracing Quiz 2, and Coding Quiz 2",
+  "lab": "Activity and Coding Quiz 2 - Data Structures (LL and Trees)",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "26-.json",
       "day": "Monday",
-      "date": "April 7",
-      "title": "Graphs",
-      "slides": "Week10_1_Graphs.pdf",
-      "reading_list": [
-      ]
+      "date": "November 3"
     },
     {
-      "type": "lecture",
+      "lecture": "27-.json",
       "day": "Wednesday",
-      "date": "April 9",
-      "title": "Graph with BFS",
-      "slides": "Week10_2_Pathfinding.pdf",
-      "reading_list": []
+      "date": "November 5"
     },
     {
-      "type": "lecture",
+      "lecture": "28-.json",
       "day": "Friday",
-      "date": "April 11",
-      "title": "Graph Examples",
-      "slides": "Week10_3_Graphs.pdf",
-      "reading_list": []
+      "date": "November 7"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "April 11",
+      "date": "April 4",
       "time": "11:59pm",
-      "assignment": "Task 5",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "April 11",
-      "time": "11:59pm",
-      "assignment": "Task 4",
+      "assignment": "Task 3",
       "deadline_type": "final"
     }
   ]

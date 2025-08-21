@@ -1,0 +1,23 @@
+{
+  "title": "Week 9: Break",
+  "theme": "intro",
+  "homework": [],
+  "lab": "No Lab",
+  "content": [
+    {
+      "lecture": "break.json",
+      "day": "Monday",
+      "date": "October 13"
+    },
+    {
+      "lecture": "break.json",
+      "day": "Wednesday",
+      "date": "October 15"
+    },
+    {
+      "lecture": "break.json",
+      "day": "Friday",
+      "date": "October 17"
+    }
+  ]
+}

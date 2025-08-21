@@ -11,33 +11,19 @@
   "lab": "Activity and Coding Quiz 1 - Classes",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "17-.json",
       "day": "Monday",
-      "date": "March 3",
-      "title": "Inheritance",
-      "slides": "Week6_1_Inheritance.pdf",
-      "reading_list": [
-        {
-          "url": "https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html",
-          "text": "Inheritance"
-        }
-      ]
+      "date": "October 6"
     },
     {
-      "type": "lecture",
+      "lecture": "18-.json",
       "day": "Wednesday",
-      "date": "March 5",
-      "title": "Inheritance and Override",
-      "slides": "Week6_2_Inheritance.pdf",
-      "reading_list": []
+      "date": "October 8"
     },
     {
-      "type": "lecture",
+      "lecture": "19-.json",
       "day": "Friday",
-      "date": "March 7",
-      "title": "Sorting with Comparators",
-      "slides": "Week6_3_Comparators.pdf",
-      "reading_list": []
+      "date": "October 10"
     },
     {
       "type": "deadline",

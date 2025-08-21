@@ -1,37 +1,31 @@
 {
-  "title": "Week 14: Review",
-  "theme": "outro",
+  "title": "Week 13: The State Pattern",
+  "theme": "oop",
   "homework": [],
-  "lab": "Activity and Coding Quiz 3 - OOP (Inheritance and Polymorphism)",
+  "lab": "Interview 3 and Tracing Quiz 3 - OOP (Inheritance and Polymorphism)",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "32-.json",
       "day": "Monday",
-      "date": "April 21",
-      "title": "Review",
-      "reading_list": []
+      "date": "November 17"
     },
     {
-      "type": "lecture",
+      "lecture": "33-.json",
       "day": "Wednesday",
-      "date": "April 23",
-      "title": "Review",
-      "reading_list": []
+      "date": "November 19"
     },
     {
-      "type": "lecture",
+      "lecture": "34-.json",
       "day": "Friday",
-      "date": "April 25",
-      "title": "Review",
-      "reading_list": []
+      "date": "November 21"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "April 25",
+      "date": "April 18",
       "time": "11:59pm",
-      "assignment": "Task 5",
-      "deadline_type": "final"
+      "assignment": "Task 6",
+      "deadline_type": "expected"
     }
   ]
 }

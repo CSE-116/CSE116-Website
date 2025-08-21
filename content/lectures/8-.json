@@ -1,0 +1,14 @@
+{
+  "title": "Classes and Objects",
+  "slides": "week3_1_Classes.pdf",
+  "reading_list": [
+    {
+      "url": "https://medium.com/@nickteixeira/stack-vs-heap-whats-the-difference-and-why-should-i-care-5abc78da1a88",
+      "text": "Program Stack and Heap"
+    },
+    {
+      "url": "https://www.w3schools.com/java/java_classes.asp",
+      "text": "Java Classes"
+    }
+  ]
+}

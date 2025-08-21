@@ -1,0 +1,10 @@
+{
+  "title": "Java Loops and Conditionals",
+  "slides": "week1_2_Java.pdf",
+  "reading_list": [
+    {
+      "url": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html",
+      "text": "Java for loops"
+    }
+  ]
+}

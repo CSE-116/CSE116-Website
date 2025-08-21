@@ -1,38 +1,45 @@
 {
-  "title": "Week 10: Testing 3 - Testing and Files ",
-  "theme": "testing",
-  "homework": [],
-  "lab": "Interview 2 and Tracing Quiz 2 - Data Structures (LL and Trees)",
+  "title": "Week 8: Data Structures 2 - Trees",
+  "theme": "ds",
+  "homework": [
+    {
+      "title": "Coding Task 4: Trees",
+      "url": "task4.html",
+      "released": true
+    }
+  ],
+  "lab": "2nd Attempt for Interview 1, Tracing Quiz 1, and Coding Quiz 1",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "20-.json",
       "day": "Monday",
-      "date": "March 24",
-      "title": "Files and Exceptions",
-      "slides": "Week8_Reading_Files.pdf",
-      "reading_list": []
+      "date": "October 20"
     },
     {
-      "type": "lecture",
+      "lecture": "21-.json",
       "day": "Wednesday",
-      "date": "March 26",
-      "title": "Testing With Files",
-      "reading_list": []
+      "date": "October 22"
     },
     {
-      "type": "lecture",
+      "lecture": "22-.json",
       "day": "Friday",
-      "date": "March 28",
-      "title": "Debugger Tips",
-      "reading_list": []
+      "date": "October 24"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "March 28",
+      "date": "March 14",
       "time": "11:59pm",
-      "assignment": "Task 4",
+      "assignment": "Task 3",
       "deadline_type": "expected"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "March 14",
+      "time": "11:59pm",
+      "assignment": "Task 2",
+      "deadline_type": "final"
     }
   ]
 }

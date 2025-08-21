@@ -11,42 +11,19 @@
   "lab": "Activity and Coding Quiz 0 - Java Basics",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "11-.json",
       "day": "Monday",
-      "date": "February 17",
-      "title": "Linked List Structure",
-      "slides": "Week4_1_Linked_List.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm",
-          "text": "Linked List"
-        }
-      ]
+      "date": "September 22"
     },
     {
-      "type": "lecture",
+      "lecture": "12-.json",
       "day": "Wednesday",
-      "date": "February 19",
-      "title": "Linked List Algorithms",
-      "slides": "Week4_2_Linked_List.pdf",
-      "reading_list": []
+      "date": "September 24"
     },
     {
-      "type": "lecture",
+      "lecture": "13-.json",
       "day": "Friday",
-      "date": "February 21",
-      "title": "Stack and Queue",
-      "slides": "Week4_3_Stack_Queue.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/stack_algorithm.htm",
-          "text": "Stack"
-        },
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.htm",
-          "text": "Queue"
-        }
-      ]
+      "date": "September 26"
     },
     {
       "type": "deadline",

@@ -5,49 +5,19 @@
   "lab": "Activity - git",
   "content": [
     {
-      "type": "lecture",
+      "lecture": "break.json",
       "day": "Monday",
-      "date": "January 27",
-      "title": "Java Loops and Conditionals",
-      "slides": "week1_2_Java.pdf",
-      "reading_list": [
-        {
-          "url": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html",
-          "text": "Java for loops"
-        }
-      ]
+      "date": "September 1"
     },
     {
-      "type": "lecture",
+      "lecture": "3-.json",
       "day": "Wednesday",
-      "date": "January 29",
-      "title": "Java Data Structures",
-      "slides": "week2_1_Java.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.w3schools.com/java/java_arraylist.asp",
-          "text": "Java ArrayList"
-        },
-        {
-          "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html",
-          "text": "JavaDocs ArrayList"
-        },
-        {
-          "url": "https://www.w3schools.com/java/java_hashmap.asp",
-          "text": "Java HashMap"
-        },
-        {
-          "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html",
-          "text": "JavaDocs HashMap"
-        }
-      ]
+      "date": "September 3"
     },
     {
-      "type": "lecture",
+      "lecture": "4-.json",
       "day": "Friday",
-      "date": "January 31",
-      "title": "Java Examples + IntelliJ and GitHub Demo",
-      "reading_list": []
+      "date": "September 5"
     }
   ]
 }
