@@ -1,29 +1,32 @@
 {
-  "title": "Week 4: Classes/OOP 1 - Classes",
+  "title": "Week 4: Classes",
   "theme": "oop",
   "homework": [
-    {
-      "title": "Coding Task 1: Classes",
-      "url": "task1.html",
-      "released": true
-    }
   ],
-  "lab": "Interview 0 and Tracing Quiz 0 - Java Basics",
+  "lab": "Tracing Quiz 0",
   "content": [
     {
-      "lecture": "8-.json",
+      "lecture": "8-classes.json",
       "day": "Monday",
       "date": "September 15"
     },
     {
-      "lecture": "9-.json",
+      "lecture": "9-classes.json",
       "day": "Wednesday",
       "date": "September 17"
     },
     {
-      "lecture": "10-.json",
+      "lecture": "10-classes.json",
       "day": "Friday",
       "date": "September 19"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "September 19",
+      "time": "11:59pm",
+      "assignment": "Task 0",
+      "deadline_type": "game"
     }
   ]
 }

@@ -1,31 +1,31 @@
 {
-  "title": "Week 3: Testing 1 - Unit Testing",
+  "title": "Week 3: Unit Testing",
   "theme": "testing",
   "homework": [],
-  "lab": "Activity - Java",
+  "lab": "Activity - Coding Quiz 0",
   "content": [
     {
-      "lecture": "5-.json",
+      "lecture": "5-testing.json",
       "day": "Monday",
       "date": "September 8"
     },
     {
-      "lecture": "6-.json",
+      "lecture": "6-testing.json",
       "day": "Wednesday",
       "date": "September 10"
     },
     {
-      "lecture": "7-.json",
+      "lecture": "7-testing.json",
       "day": "Friday",
       "date": "September 12"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "February 7",
+      "date": "September 12",
       "time": "11:59pm",
       "assignment": "Task 0",
-      "deadline_type": ""
+      "deadline_type": "ps"
     }
   ]
 }

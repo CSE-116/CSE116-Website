@@ -1,31 +1,37 @@
 {
-  "title": "Week 10: Testing 3 - Testing and Files ",
-  "theme": "testing",
-  "homework": [],
-  "lab": "Interview 2 and Tracing Quiz 2 - Data Structures (LL and Trees)",
+  "title": "Week 10: Trees",
+  "theme": "ds",
+  "homework": [
+    {
+      "title": "Coding Task 3: Polymorphism + Trees",
+      "url": "task3.html",
+      "released": false
+    }
+  ],
+  "lab": "Tracing Quiz 2",
   "content": [
     {
-      "lecture": "23-.json",
+      "lecture": "23-trees.json",
       "day": "Monday",
       "date": "October 27"
     },
     {
-      "lecture": "24-.json",
+      "lecture": "24-trees.json",
       "day": "Wednesday",
       "date": "October 29"
     },
     {
-      "lecture": "25-.json",
+      "lecture": "25-trees.json",
       "day": "Friday",
       "date": "October 31"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "March 28",
+      "date": "October 31",
       "time": "11:59pm",
-      "assignment": "Task 4",
-      "deadline_type": "expected"
+      "assignment": "Task 2",
+      "deadline_type": "game"
     }
   ]
 }

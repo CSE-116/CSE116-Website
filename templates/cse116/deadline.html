@@ -1,7 +1,11 @@
 
 
 {% macro deadline(content) -%}
-    {% if content.deadline_type == "expected" %}
+    {% if content.deadline_type == "ps" %}
+        <tr class="table-warning">
+    {% elif content.deadline_type == "game" %}
+        <tr class="table-info">
+    {% elif content.deadline_type == "expected" %}
         <tr class="table-info">
     {% elif content.deadline_type == "late" %}
         <tr class="table-warning">
@@ -12,7 +16,11 @@
     {% endif %}
         <td colspan="3">{{ content.day }}, {{ content.date }} @ {{ content.time }}<br/>
         {{ content.assignment }}:
-    {% if content.deadline_type == "expected" %}
+    {% if content.deadline_type == "ps" %}
+        Problem Set Deadline
+    {% elif content.deadline_type == "game" %}
+        Game Features Deadline
+    {% elif content.deadline_type == "expected" %}
         Expected Deadline
     {% elif content.deadline_type == "late" %}
         Late Deadline

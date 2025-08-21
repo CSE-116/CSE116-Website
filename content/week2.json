@@ -1,8 +1,13 @@
 {
   "title": "Week 2: Introduction to Java",
   "theme": "intro",
-  "homework": [],
-  "lab": "Activity - git",
+  "homework": [
+    {
+      "title": "Coding Task 0: Java Basics",
+      "url": "task0.html",
+      "released": false
+    }],
+  "lab": "No Lab",
   "content": [
     {
       "lecture": "break.json",
@@ -10,12 +15,12 @@
       "date": "September 1"
     },
     {
-      "lecture": "3-.json",
+      "lecture": "3-java.json",
       "day": "Wednesday",
       "date": "September 3"
     },
     {
-      "lecture": "4-.json",
+      "lecture": "4-java.json",
       "day": "Friday",
       "date": "September 5"
     }

@@ -1,45 +1,32 @@
 {
-  "title": "Week 8: Data Structures 2 - Trees",
-  "theme": "ds",
+  "title": "Week 9: Polymorphism",
+  "theme": "oop",
   "homework": [
-    {
-      "title": "Coding Task 4: Trees",
-      "url": "task4.html",
-      "released": true
-    }
   ],
-  "lab": "2nd Attempt for Interview 1, Tracing Quiz 1, and Coding Quiz 1",
+  "lab": "Activity + Coding Quiz 2",
   "content": [
     {
-      "lecture": "20-.json",
+      "lecture": "20-poly.json",
       "day": "Monday",
       "date": "October 20"
     },
     {
-      "lecture": "21-.json",
+      "lecture": "21-poly.json",
       "day": "Wednesday",
       "date": "October 22"
     },
     {
-      "lecture": "22-.json",
+      "lecture": "22-poly.json",
       "day": "Friday",
       "date": "October 24"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "March 14",
-      "time": "11:59pm",
-      "assignment": "Task 3",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "March 14",
+      "date": "October 24",
       "time": "11:59pm",
       "assignment": "Task 2",
-      "deadline_type": "final"
+      "deadline_type": "ps"
     }
   ]
 }

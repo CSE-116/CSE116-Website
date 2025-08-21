@@ -1,37 +1,32 @@
 {
-  "title": "Week 11: Classes/OOP - Polymorphism",
-  "theme": "oop",
+  "title": "Week 11: Debugging + Testing Tips",
+  "theme": "testing",
   "homework": [
-    {
-      "title": "Coding Task 5: Polymorphism",
-      "url": "task5.html",
-      "released": true
-    }
   ],
-  "lab": "Activity and Coding Quiz 2 - Data Structures (LL and Trees)",
+  "lab": "Activity + Coding Quiz 3",
   "content": [
     {
-      "lecture": "26-.json",
+      "lecture": "26-testing.json",
       "day": "Monday",
       "date": "November 3"
     },
     {
-      "lecture": "27-.json",
+      "lecture": "27-testing.json",
       "day": "Wednesday",
       "date": "November 5"
     },
     {
-      "lecture": "28-.json",
+      "lecture": "28-testing.json",
       "day": "Friday",
       "date": "November 7"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "April 4",
+      "date": "November 7",
       "time": "11:59pm",
       "assignment": "Task 3",
-      "deadline_type": "final"
+      "deadline_type": "ps"
     }
   ]
 }

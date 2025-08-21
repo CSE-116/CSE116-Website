@@ -1,31 +1,31 @@
 {
-  "title": "Week 6: Testing 2 - Testing Strategies",
-  "theme": "testing",
+  "title": "Week 6: Linked List",
+  "theme": "ds",
   "homework": [],
-  "lab": "Interview 1 and Tracing Quiz 1 - Classes",
+  "lab": "Tracing Quiz 1",
   "content": [
     {
-      "lecture": "14-.json",
+      "lecture": "14-ll.json",
       "day": "Monday",
       "date": "September 29"
     },
     {
-      "lecture": "15-.json",
+      "lecture": "15-ll.json",
       "day": "Wednesday",
       "date": "October 1"
     },
     {
-      "lecture": "16-.json",
+      "lecture": "16-ll.json",
       "day": "Friday",
       "date": "October 3"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "February 28",
+      "date": "October 3",
       "time": "11:59pm",
-      "assignment": "Task 2",
-      "deadline_type": "expected"
+      "assignment": "Task 1",
+      "deadline_type": "ps"
     }
   ]
 }

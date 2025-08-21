@@ -1,8 +1,8 @@
 {
   "title": "Week 14: Review",
-  "theme": "outro",
+  "theme": "intro",
   "homework": [],
-  "lab": "Activity and Coding Quiz 3 - OOP (Inheritance and Polymorphism)",
+  "lab": "No Lab",
   "content": [
     {
       "lecture": "break.json",
@@ -18,14 +18,6 @@
       "lecture": "break.json",
       "day": "Friday",
       "date": "November 28"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "April 25",
-      "time": "11:59pm",
-      "assignment": "Task 5",
-      "deadline_type": "final"
     }
   ]
 }

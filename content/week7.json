@@ -1,37 +1,37 @@
 {
-  "title": "Week 7: Classes/OOP 2 - Inheritance",
+  "title": "Week 7: Inheritance",
   "theme": "oop",
   "homework": [
     {
-      "title": "Coding Task 3: Inheritance",
-      "url": "task3.html",
-      "released": true
+      "title": "Coding Task 2: Linked Lists + Inheritance",
+      "url": "task2.html",
+      "released": false
     }
   ],
-  "lab": "Activity and Coding Quiz 1 - Classes",
+  "lab": "2nd Chance - Coding Quiz 1 + Tracing Quiz 1",
   "content": [
     {
-      "lecture": "17-.json",
+      "lecture": "17-inheritance.json",
       "day": "Monday",
       "date": "October 6"
     },
     {
-      "lecture": "18-.json",
+      "lecture": "18-inheritance.json",
       "day": "Wednesday",
       "date": "October 8"
     },
     {
-      "lecture": "19-.json",
+      "lecture": "19-inheritance.json",
       "day": "Friday",
       "date": "October 10"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "March 7",
+      "date": "October 10",
       "time": "11:59pm",
       "assignment": "Task 1",
-      "deadline_type": "final"
+      "deadline_type": "game"
     }
   ]
 }

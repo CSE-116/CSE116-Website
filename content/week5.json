@@ -1,37 +1,29 @@
 {
-  "title": "Week 5: Data Structures 1 - Linked Lists",
-  "theme": "ds",
+  "title": "Week 5: Classes - Testing and Tips",
+  "theme": "oop",
   "homework": [
     {
-      "title": "Coding Task 2: Linked Lists",
-      "url": "task2.html",
-      "released": true
+      "title": "Coding Task 1: Unit Testing + Classes",
+      "url": "task1.html",
+      "released": false
     }
   ],
-  "lab": "Activity and Coding Quiz 0 - Java Basics",
+  "lab": "Activity and Coding Quiz 1",
   "content": [
     {
-      "lecture": "11-.json",
+      "lecture": "11-test-classes.json",
       "day": "Monday",
       "date": "September 22"
     },
     {
-      "lecture": "12-.json",
+      "lecture": "12-test-classes.json",
       "day": "Wednesday",
       "date": "September 24"
     },
     {
-      "lecture": "13-.json",
+      "lecture": "13-test-classes.json",
       "day": "Friday",
       "date": "September 26"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "February 21",
-      "time": "11:59pm",
-      "assignment": "Task 1",
-      "deadline_type": "expected"
     }
   ]
 }

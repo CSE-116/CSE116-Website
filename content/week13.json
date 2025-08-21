@@ -2,30 +2,30 @@
   "title": "Week 13: The State Pattern",
   "theme": "oop",
   "homework": [],
-  "lab": "Interview 3 and Tracing Quiz 3 - OOP (Inheritance and Polymorphism)",
+  "lab": "\uD83C\uDF7E Interview Week \uD83C\uDF89",
   "content": [
     {
-      "lecture": "32-.json",
+      "lecture": "32-state.json",
       "day": "Monday",
       "date": "November 17"
     },
     {
-      "lecture": "33-.json",
+      "lecture": "33-state.json",
       "day": "Wednesday",
       "date": "November 19"
     },
     {
-      "lecture": "34-.json",
+      "lecture": "34-state.json",
       "day": "Friday",
       "date": "November 21"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "April 18",
+      "date": "November 21",
       "time": "11:59pm",
-      "assignment": "Task 6",
-      "deadline_type": "expected"
+      "assignment": "Task 4",
+      "deadline_type": "ps"
     }
   ]
 }
