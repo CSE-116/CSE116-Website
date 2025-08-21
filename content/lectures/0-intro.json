@@ -1,0 +1,9 @@
+{
+  "title": "Course Introduction",
+  "reading_list": [
+    {
+      "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/module-summary.html",
+      "text": "Java Official Documentation"
+    }
+  ]
+}

@@ -1,35 +1,31 @@
 {
-  "title": "Lecture 10: Data Structures 3 - Graphs",
-  "theme": "ds",
-  "homework": [
-    {
-      "title": "Programming Task 8: Graphs",
-      "url": "task8.html",
-      "released": true
-    }
-  ],
-  "lab": "1st Chance - Polymorphism Interview & Quiz",
+  "title": "Week 10: Testing 3 - Testing and Files ",
+  "theme": "testing",
+  "homework": [],
+  "lab": "Interview 2 and Tracing Quiz 2 - Data Structures (LL and Trees)",
   "content": [
     {
-      "type": "lecture",
-      "day": "Tuesday",
-      "date": "July 1",
-      "title": "Graphs",
-      "slides": "Week10_1_Graphs.pdf",
-      "reading_list": [
-      ]
+      "lecture": "23-.json",
+      "day": "Monday",
+      "date": "October 27"
     },
     {
-      "type": "lecture",
-      "title": "Graph with BFS",
-      "slides": "Week10_2_Pathfinding.pdf",
-      "reading_list": []
+      "lecture": "24-.json",
+      "day": "Wednesday",
+      "date": "October 29"
     },
     {
-      "type": "lecture",
-      "title": "Graph Examples",
-      "slides": "Week10_3_Graphs.pdf",
-      "reading_list": []
+      "lecture": "25-.json",
+      "day": "Friday",
+      "date": "October 31"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "March 28",
+      "time": "11:59pm",
+      "assignment": "Task 4",
+      "deadline_type": "expected"
     }
   ]
 }

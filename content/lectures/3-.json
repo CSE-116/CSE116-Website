@@ -1,0 +1,22 @@
+{
+  "title": "Java Data Structures",
+  "slides": "week2_1_Java.pdf",
+  "reading_list": [
+    {
+      "url": "https://www.w3schools.com/java/java_arraylist.asp",
+      "text": "Java ArrayList"
+    },
+    {
+      "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html",
+      "text": "JavaDocs ArrayList"
+    },
+    {
+      "url": "https://www.w3schools.com/java/java_hashmap.asp",
+      "text": "Java HashMap"
+    },
+    {
+      "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html",
+      "text": "JavaDocs HashMap"
+    }
+  ]
+}

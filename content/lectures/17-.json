@@ -1,0 +1,10 @@
+{
+  "title": "Inheritance",
+  "slides": "Week6_1_Inheritance.pdf",
+  "reading_list": [
+    {
+      "url": "https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html",
+      "text": "Inheritance"
+    }
+  ]
+}

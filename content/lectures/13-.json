@@ -1,0 +1,14 @@
+{
+  "title": "Stack and Queue",
+  "slides": "Week4_3_Stack_Queue.pdf",
+  "reading_list": [
+    {
+      "url": "https://www.tutorialspoint.com/data_structures_algorithms/stack_algorithm.htm",
+      "text": "Stack"
+    },
+    {
+      "url": "https://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.htm",
+      "text": "Queue"
+    }
+  ]
+}

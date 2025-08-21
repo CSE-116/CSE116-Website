@@ -1,57 +1,29 @@
 {
-  "title": "Lecture 1: Introduction to Java",
+  "title": "Week 1: Introduction to Java",
   "theme": "intro",
-  "homework": [],
+  "homework": [
+    {
+      "title": "Coding Task 0: Java Basics",
+      "url": "task0.html",
+      "released": true
+    }
+  ],
+  "lab": "No Lab",
   "content": [
     {
-      "type": "lecture",
-      "day": "Tuesday",
-      "date": "May 27",
-      "title": "Course Introduction",
-      "reading_list": [
-        {
-          "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/module-summary.html",
-          "text": "Java Official Documentation"
-        }
-      ]
+      "lecture": "0-intro.json",
+      "day": "Monday",
+      "date": "August 25"
     },
     {
-      "type": "lecture",
-      "title": "Introduction to Java",
-      "slides": "week1_1_Java.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.jetbrains.com/idea/download/",
-          "text": "IntelliJ"
-        },
-        {
-          "url": "https://www.jetbrains.com/student/",
-          "text": "JetBrains Educational License"
-        },
-        {
-          "url": "https://www.w3schools.com/java/java_methods.asp",
-          "text": "Java Methods"
-        },
-        {
-          "url": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html",
-          "text": "Java Primitive Types"
-        },
-        {
-          "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html",
-          "text": "Java Strings"
-        }
-      ]
+      "lecture": "1-java.json",
+      "day": "Wednesday",
+      "date": "August 27"
     },
     {
-      "type": "lecture",
-      "title": "Java Loops and Conditionals",
-      "slides": "week1_2_Java.pdf",
-      "reading_list": [
-        {
-          "url": "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html",
-          "text": "Java for loops"
-        }
-      ]
+      "lecture": "2-.json",
+      "day": "Friday",
+      "date": "August 29"
     }
   ]
 }

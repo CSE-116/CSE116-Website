@@ -1,55 +1,37 @@
 {
-  "title": "Lecture 7: Data Structures 2 - Trees",
-  "theme": "ds",
+  "title": "Week 7: Classes/OOP 2 - Inheritance",
+  "theme": "oop",
   "homework": [
     {
-      "title": "Programming Task 5: Trees",
-      "url": "task5.html",
+      "title": "Coding Task 3: Inheritance",
+      "url": "task3.html",
       "released": true
     }
   ],
-  "lab": "1st Chance - Inheritance Interview & Quiz",
+  "lab": "Activity and Coding Quiz 1 - Classes",
   "content": [
     {
-      "type": "deadline",
+      "lecture": "17-.json",
       "day": "Monday",
-      "date": "June 16",
+      "date": "October 6"
+    },
+    {
+      "lecture": "18-.json",
+      "day": "Wednesday",
+      "date": "October 8"
+    },
+    {
+      "lecture": "19-.json",
+      "day": "Friday",
+      "date": "October 10"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "March 7",
       "time": "11:59pm",
-      "assignment": "Task 2",
+      "assignment": "Task 1",
       "deadline_type": "final"
-    },
-    {
-      "type": "lecture",
-      "day": "Tuesday",
-      "date": "June 17",
-      "title": "Binary Trees and Traversals",
-      "slides": "Week7_1_Trees.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm",
-          "text": "Trees"
-        },
-        {
-          "url": "https://en.wikipedia.org/wiki/Tree_traversal",
-          "text": "Tree Traversals (Wikipedia)"
-        }
-      ]
-    },
-    {
-      "type": "lecture",
-      "title": "Binary Search Trees (BSTs)",
-      "slides": "Week7_2_BST.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/binary_search_tree.htm",
-          "text": "BST"
-        }
-      ]
-    },
-    {
-      "type": "lecture",
-      "title": "Binary Tree Examples",
-      "reading_list": []
     }
   ]
 }

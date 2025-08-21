@@ -1,63 +1,31 @@
 {
-  "title": "Lecture 6: Classes/OOP 2 - Inheritance",
-  "theme": "oop",
-  "homework": [
-    {
-      "title": "Programming Task 4: Inheritance",
-      "url": "task4.html",
-      "released": true
-    }
-  ],
-  "lab": "2nd Chance - Classes/Linked List Interviews & Quizzes",
+  "title": "Week 6: Testing 2 - Testing Strategies",
+  "theme": "testing",
+  "homework": [],
+  "lab": "Interview 1 and Tracing Quiz 1 - Classes",
   "content": [
     {
-      "type": "deadline",
-      "day": "Thursday",
-      "date": "June 12",
-      "time": "8:00am",
-      "assignment": "Task 3",
-      "deadline_type": "expected"
+      "lecture": "14-.json",
+      "day": "Monday",
+      "date": "September 29"
     },
     {
-      "type": "lecture",
-      "day": "Thursday",
-      "date": "June 12",
-      "title": "Inheritance",
-      "slides": "Week6_1_Inheritance.pdf",
-      "reading_list": [
-        {
-          "url": "https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html",
-          "text": "Inheritance"
-        }
-      ]
+      "lecture": "15-.json",
+      "day": "Wednesday",
+      "date": "October 1"
     },
     {
-      "type": "lecture",
-      "title": "Inheritance and Override",
-      "slides": "Week6_2_Inheritance.pdf",
-      "reading_list": []
-    },
-    {
-      "type": "lecture",
-      "title": "Sorting with Comparators",
-      "slides": "Week6_3_Comparators.pdf",
-      "reading_list": []
+      "lecture": "16-.json",
+      "day": "Friday",
+      "date": "October 3"
     },
     {
       "type": "deadline",
-      "day": "Saturday",
-      "date": "June 14",
-      "time": "8:00am",
-      "assignment": "Task 4",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Saturday",
-      "date": "June 14",
+      "day": "Friday",
+      "date": "February 28",
       "time": "11:59pm",
-      "assignment": "Task 1",
-      "deadline_type": "final"
+      "assignment": "Task 2",
+      "deadline_type": "expected"
     }
   ]
 }

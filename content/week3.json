@@ -1,47 +1,31 @@
 {
-  "title": "Lecture 3: Testing 1 - Unit Testing",
+  "title": "Week 3: Testing 1 - Unit Testing",
   "theme": "testing",
-  "homework": [
-    {
-      "title": "Programming Task 1: Unit Testing",
-      "url": "task1.html",
-      "released": true
-    }
-  ],
+  "homework": [],
+  "lab": "Activity - Java",
   "content": [
     {
-      "type": "lecture",
-      "day": "Tuesday",
-      "date": "June 3",
-      "title": "Unit Testing",
-      "slides": "week2_1_Unit_Testing.pdf",
-      "reading_list": [
-        {
-          "url": "https://en.wikipedia.org/wiki/Unit_testing",
-          "text": "Wikipedia: Unit Testing"
-        }
-      ]
+      "lecture": "5-.json",
+      "day": "Monday",
+      "date": "September 8"
     },
     {
-      "type": "lecture",
-      "title": "Testing Strings/doubles",
-      "slides": "week2_2_Unit_Testing.pdf",
-      "reading_list": []
+      "lecture": "6-.json",
+      "day": "Wednesday",
+      "date": "September 10"
     },
     {
-      "type": "lecture",
-      "title": "Testing and Recursion",
-      "slides": "week2_3_Recursion.pdf",
-      "reading_list": [
-        {
-          "url": "https://en.wikipedia.org/wiki/Recursion",
-          "text": "Wikipedia: Recursion"
-        },
-        {
-          "url": "https://smartpuffin.com/unit-tests-tutorial/",
-          "text": "Unit Testing Tips"
-        }
-      ]
+      "lecture": "7-.json",
+      "day": "Friday",
+      "date": "September 12"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "February 7",
+      "time": "11:59pm",
+      "assignment": "Task 0",
+      "deadline_type": ""
     }
   ]
 }

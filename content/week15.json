@@ -1,0 +1,31 @@
+{
+  "title": "Week 15: Review",
+  "theme": "outro",
+  "homework": [],
+  "lab": "2nd Attempt for Interview 3, Tracing Quiz 3, and Coding Quiz 3",
+  "content": [
+    {
+      "lecture": "35-.json",
+      "day": "Monday",
+      "date": "December 1"
+    },
+    {
+      "lecture": "36-.json",
+      "day": "Wednesday",
+      "date": "December 3"
+    },
+    {
+      "lecture": "37-.json",
+      "day": "Friday",
+      "date": "December 5"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "May 2",
+      "time": "11:59pm",
+      "assignment": "Task 6",
+      "deadline_type": "final"
+    }
+  ]
+}

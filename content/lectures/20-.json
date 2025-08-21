@@ -1,0 +1,14 @@
+{
+  "title": "Binary Trees and Traversals",
+  "slides": "Week7_1_Trees.pdf",
+  "reading_list": [
+    {
+      "url": "https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm",
+      "text": "Trees"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Tree_traversal",
+      "text": "Tree Traversals (Wikipedia)"
+    }
+  ]
+}

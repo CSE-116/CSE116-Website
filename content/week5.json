@@ -1,47 +1,37 @@
 {
-  "title": "Lecture 5: Data Structures 1 - Linked Lists",
+  "title": "Week 5: Data Structures 1 - Linked Lists",
   "theme": "ds",
   "homework": [
     {
-      "title": "Programming Task 3: Linked Lists",
-      "url": "task3.html",
+      "title": "Coding Task 2: Linked Lists",
+      "url": "task2.html",
       "released": true
     }
   ],
+  "lab": "Activity and Coding Quiz 0 - Java Basics",
   "content": [
     {
-      "type": "lecture",
-      "day": "Tuesday",
-      "date": "June 10",
-      "title": "Linked List Structure",
-      "slides": "Week4_1_Linked_List.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm",
-          "text": "Linked List"
-        }
-      ]
+      "lecture": "11-.json",
+      "day": "Monday",
+      "date": "September 22"
     },
     {
-      "type": "lecture",
-      "title": "Linked List Algorithms",
-      "slides": "Week4_2_Linked_List.pdf",
-      "reading_list": []
+      "lecture": "12-.json",
+      "day": "Wednesday",
+      "date": "September 24"
     },
     {
-      "type": "lecture",
-      "title": "Stack and Queue",
-      "slides": "Week4_3_Stack_Queue.pdf",
-      "reading_list": [
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/stack_algorithm.htm",
-          "text": "Stack"
-        },
-        {
-          "url": "https://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.htm",
-          "text": "Queue"
-        }
-      ]
+      "lecture": "13-.json",
+      "day": "Friday",
+      "date": "September 26"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "February 21",
+      "time": "11:59pm",
+      "assignment": "Task 1",
+      "deadline_type": "expected"
     }
   ]
 }

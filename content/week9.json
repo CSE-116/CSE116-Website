@@ -1,56 +1,44 @@
 {
-  "title": "Lecture 9: Classes/OOP - Polymorphism",
-  "theme": "oop",
+  "title": "Week 8: Data Structures 2 - Trees",
+  "theme": "ds",
   "homework": [
     {
-      "title": "Programming Task 7: Polymorphism",
-      "url": "task7.html",
+      "title": "Coding Task 4: Trees",
+      "url": "task4.html",
       "released": true
     }
   ],
-  "lab": "2nd Chance - Inheritance/Trees Interviews & Quizzes",
+  "lab": "2nd Attempt for Interview 1, Tracing Quiz 1, and Coding Quiz 1",
   "content": [
     {
-      "type": "deadline",
-      "day": "Thursday",
-      "date": "June 26",
-      "time": "8:00am",
-      "assignment": "Task 6",
-      "deadline_type": "expected"
+      "lecture": "20-.json",
+      "day": "Monday",
+      "date": "October 20"
     },
     {
-      "type": "lecture",
-      "day": "Thursday",
-      "date": "June 26",
-      "title": "Polymorphism",
-      "slides": "Week9_1_Polymorphism.pdf",
-      "reading_list": []
+      "lecture": "21-.json",
+      "day": "Wednesday",
+      "date": "October 22"
     },
     {
-      "type": "lecture",
-      "title": "Polymorphism",
-      "slides": "Week9_2_Polymorphism_2.pdf",
-      "reading_list": []
-    },
-    {
-      "type": "lecture",
-      "title": "Polymorphism Example",
-      "reading_list": []
+      "lecture": "22-.json",
+      "day": "Friday",
+      "date": "October 24"
     },
     {
       "type": "deadline",
-      "day": "Saturday",
-      "date": "June 28",
-      "time": "8:00am",
-      "assignment": "Task 7",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "deadline",
-      "day": "Saturday",
-      "date": "June 28",
+      "day": "Friday",
+      "date": "March 14",
       "time": "11:59pm",
-      "assignment": "Task 5",
+      "assignment": "Task 3",
+      "deadline_type": "expected"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "March 14",
+      "time": "11:59pm",
+      "assignment": "Task 2",
       "deadline_type": "final"
     }
   ]

@@ -1,46 +1,36 @@
 {
-  "title": "Lecture 11: Final Exam",
-  "theme": "intro",
-  "homework": [],
-  "lab": "Review",
+  "title": "Week 11: Classes/OOP - Polymorphism",
+  "theme": "oop",
+  "homework": [
+    {
+      "title": "Coding Task 5: Polymorphism",
+      "url": "task5.html",
+      "released": true
+    }
+  ],
+  "lab": "Activity and Coding Quiz 2 - Data Structures (LL and Trees)",
   "content": [
     {
-      "type": "deadline",
-      "day": "Thursday",
-      "date": "July 3",
-      "time": "8:00am",
-      "assignment": "Task 8",
-      "deadline_type": "expected"
-    },
-    {
-      "type": "lecture",
-      "day": "Thursday",
-      "date": "July 3",
-      "title": "Final Exam - The entire 2.5 hours of lecture",
-      "reading_list": []
-    },
-    {
-      "type": "deadline",
-      "day": "Saturday",
-      "date": "July 5",
-      "time": "11:59pm",
-      "assignment": "Task 6",
-      "deadline_type": "final"
-    },
-    {
-      "type": "deadline",
+      "lecture": "26-.json",
       "day": "Monday",
-      "date": "July 7",
-      "time": "11:59pm",
-      "assignment": "Task 7",
-      "deadline_type": "final"
+      "date": "November 3"
+    },
+    {
+      "lecture": "27-.json",
+      "day": "Wednesday",
+      "date": "November 5"
+    },
+    {
+      "lecture": "28-.json",
+      "day": "Friday",
+      "date": "November 7"
     },
     {
       "type": "deadline",
-      "day": "Saturday",
-      "date": "July 12",
+      "day": "Friday",
+      "date": "April 4",
       "time": "11:59pm",
-      "assignment": "Task 8",
+      "assignment": "Task 3",
       "deadline_type": "final"
     }
   ]
