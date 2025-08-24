@@ -3,12 +3,8 @@
   "slides": "week1_1_Java.pdf",
   "reading_list": [
     {
-      "url": "https://www.jetbrains.com/idea/download/",
-      "text": "IntelliJ"
-    },
-    {
-      "url": "https://www.jetbrains.com/student/",
-      "text": "JetBrains Educational License"
+      "url": "https://www.jetbrains.com/idea/download#community-edition",
+      "text": "IntelliJ - Community Edition"
     },
     {
       "url": "https://www.w3schools.com/java/java_methods.asp",
