@@ -1,0 +1,613 @@
+{% extends 'hw/hw.html' %} {% block title %}CSE116: Task 0{% endblock %} {% block header %}
+<h1>Coding Task 0</h1>
+<hr />
+<h5>Time Estimate: 8 hours</h5>
+<hr />
+{% endblock %} {% block task %}
+
+<div class="card">
+  <a data-toggle="collapse" data-target="#overview">
+    <div class="card-header text-white section-header">
+      <div>
+        Overview <span class="float-right"><i class="far fa-caret-square-down"></i></span>
+      </div>
+    </div>
+  </a>
+
+  <div id="overview" class="collapse show">
+    <div class="section-card card-testing hw-content">
+      <hr />
+      <h3>Coding Task 0 Overview</h3>
+      <hr />
+
+      <p>
+        Each coding task will have two components: an isolated Problem Set and a larger Task integrated within the game
+        engine. The Problem Set is intended to offer a targeted group of questions to get you started with the
+        programming concepts of that task. The game engine part of the Task will have a greater amount of content, and
+        will require you to integrate it within the larger codebase of the game engine itself. The Problem Sets will be
+        due sooner, and are recommended to be completed first.
+      </p>
+      <p>
+        <b><i>BOTH MUST BE COMPLETED TO ACHIEVE THE LEARNING OBJECTIVES AND PASS THE COURSE</i></b
+        >. Each Problem Set will carry 20 LO points, while each Game Engine Task will carry 30 LO points and 50 CU
+        points.
+      </p>
+
+      <p>
+        Coding Task 0 assesses Java Basics and File IO. Both the Problem Set and Game Engine Task will focus on these
+        topics.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <a data-toggle="collapse" data-target="#problem-set">
+    <div class="card-header text-white section-header">
+      <div>
+        Problem Set <span class="float-right"><i class="far fa-caret-square-down"></i></span>
+      </div>
+    </div>
+  </a>
+
+  <div id="problem-set" class="collapse show">
+    <div class="section-card card-testing hw-content">
+      <hr />
+      <h3>Overview</h3>
+      <hr />
+
+      <p>
+        Problem Set GitHub Repository link:
+        <a href="https://github.com/CSE-116/ProblemSet-0">https://github.com/CSE-116/ProblemSet-0</a>
+      </p>
+
+      <p>
+        As previously mentioned, each Problem Set will be separate, and will have its own repository to clone. The Game
+        Engine, used for the Tasks, will be reused and build upon each task. You should start with the Problem Set. To
+        get started:
+      </p>
+
+      <ol>
+        <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
+        <li>
+          Make sure the src folder is marked as the source root (Right click the src folder, choose “mark directory as”
+          and choose sources root)
+        </li>
+      </ol>
+      <p>
+        Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named problem
+        and tests. Your code for this problem set will go in the <code>problem.ProblemSet0</code> class, while testing
+        is provided for you in <code>tests.TestProblemSet0</code>.
+      </p>
+      <p>
+        To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the problem
+        set, and submit it to Autolab.
+      </p>
+
+      <hr />
+      <h3>Testing Requirements</h3>
+      <hr />
+
+      <p>
+        This problem set does not require you to write any tests. tests.TestProblemSet0 contains tests that you can use
+        to verify the correctness of your code. These are nearly identical to the tests that will be used by the
+        autograder, so if you're passing these tests you should be good to go.
+      </p>
+      <p>
+        You can run these tests just like a Java file with a main method (Right-click the file and choose run) and you
+        will see feedback about which test cases you've passed/failed. Once you pass all test cases, you're ready to
+        submit to Autolab.
+      </p>
+      <p>
+        Some of these tests may have been commented out so that the project will compile. You can uncomment the tests as
+        you get to these methods. You can highlight multiple lines and press control+/ (command+/ on mac) to quickly
+        comment multiple lines in/out
+      </p>
+      <br />
+
+      <hr />
+      <h3>Programming Requirements</h3>
+      <hr />
+
+      <p>
+        For this problem set you will implement six methods, as described below. All of these methods will be public and
+        static, and all of them should be implemented in the problem.ProblemSet0 class. You can, and should, run the
+        tests you have been given while completing your code to check if it is correct.
+      </p>
+      <p>
+        You should be able to complete each of these problems using previous knowledge and skills; this assignment is
+        simply meant to get you comfortable with Java syntax and familiar with how the programming problem sets work in
+        this course.
+      </p>
+
+      <ol>
+        <li>
+          <code>average</code>
+          <ul>
+            <li>
+              The average method will take an <code>ArrayList</code> of <code>Double</code>s as a parameter and returns
+              the average of the values in the <code>ArrayList</code> as a
+              <code>double</code>
+            </li>
+            <li>
+              If the input <code>ArrayList</code> is empty, the method should return
+              <code>0.0</code>
+            </li>
+            <li>
+              Examples:
+              <ul>
+                <li>average([1.0, 2.0, 3.0]) returns 2.0</li>
+                <li>average([-5.0, 5.0]) returns 0.0</li>
+                <li>average([6.5, 6.5, 8.5, 8.5]) returns 7.5</li>
+                <li>average([]) returns 0.0</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="h">
+          <code>population</code>
+          <ul>
+            <li>Bydd y dull poblogaeth yn dychwelyd cyfanswm poblogaeth y byd</li>
+          </ul>
+        </li>
+
+        <li value="2">
+          <code>longestStringIndex</code>
+          <ul>
+            <li>
+              The <code>longestStringIndex</code> method has one parameter which is an <code>ArrayList</code> of
+              <code>String</code>s, and returns the index in that <code>ArrayList</code> of the <code>String</code> with
+              the greatest length
+            </li>
+            <li>
+              If the <code>ArrayList</code> is empty, this method should return <code>-1</code>, to signify that there
+              were no valid indices
+            </li>
+            <li>
+              If there are multiple <code>String</code>s which share the greatest length, any of their indices can be
+              returned and will be accepted by the tests
+            </li>
+            <li>
+              Examples:
+              <ul>
+                <li>longestStringIndex(["a", "abc", ""]) returns 1</li>
+                <li>longestStringIndex([]) returns -1</li>
+                <li>longestStringIndex(["harmonica", "cat", "something"]) returns 0 or 2</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="h">
+          <code>sumOfSquares</code>
+          <ul>
+            <li>
+              The sumOfSquares method will take an ArrayList of Integers and returns a new ArrayList mapping the input
+              values to the nth prime number for each value in the input
+            </li>
+          </ul>
+        </li>
+
+        <li value="3">
+          <code>sumOfDigits</code>
+          <ul>
+            <li>
+              <span class="n"></span>
+            </li>
+            <li class="h">
+              The sumOfDigits method will take an int as a parameter and returns a random number that is divisible by 3
+            </li>
+            <li>The sign of a number is ignored, i.e. -5 is treated the same as 5</li>
+            <li>
+              Examples:
+              <ul>
+                <li>sumOfDigits(123) returns 6</li>
+                <li>sumOfDigits(57) returns 12</li>
+                <li>sumOfDigits(-36) returns 9</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <code>bestKey</code>
+          <ul>
+            <li>
+              The <code>bestKey</code> method will take a <code>HashMap</code> of <code>String</code>s to
+              <code>Integer</code>s as a parameter and returns the key which maps to the largest
+              <code>Integer</code>
+            </li>
+            <li>If the <code>HashMap</code> is empty, the method should return the empty <code>String</code></li>
+            <li>
+              The method may break ties arbitrarily, meaning that if two keys are mapped to the same highest value,
+              either can be returned. The tests provided ensure that any valid solution will be accepted
+            </li>
+            <li>
+              Examples:
+              <ul>
+                <li>bestKey({"CSE": 100, "MTH": 90, "MGT": 10}) returns "CSE"</li>
+                <li>bestKey({"cat": 5, "dog": 5, "fox": 4}) can return either "cat" or "dog"</li>
+                <li>bestKey({}) returns ""</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="h">
+          <code>calculator</code>
+          <ul>
+            <li>
+              This method simulates a four-function calculator. The input is a string representing a sequence of button
+              presses and the output is the evaluation of that sequence
+            </li>
+          </ul>
+        </li>
+
+        <li value="5">
+          <code>wordCount</code>
+          <ul>
+            <li>
+              This method takes a single <code>String</code> as a parameter, representing the file location of the csv
+              file to be read. This method will return an <code>int</code> representing the total number of "words" in
+              that file, where a word is considered to be any value within that csv file that is separated by a comma or
+              a newline
+            </li>
+
+            <li>If the file does not exist, this method should return <code>0</code></li>
+            <li>Spaces can be ignored, and do not define words. All words are separated by commas or newlines</li>
+            <li>
+              Examples:
+              <ul>
+                <li>This file has 9 words</li>
+                <pre>
+name,age,city
+Alice,30,London
+John,25,New York</pre
+                >
+              </ul>
+              <ul>
+                <li>This file has 8 words</li>
+                <pre>
+1,2,3,4
+a
+a,b,c</pre
+                >
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <code>sumOfLines</code>
+          <ul>
+            <li>
+              This method takes a single <code>String</code> as a parameter, representing the file location of the csv
+              file to be read. This method will return an <code>ArrayList</code> of <code>Integer</code>s, where each
+              element represents the sum of the values in that line of the file
+            </li>
+            <li>This method should assume that every entry in the csv file is a valid <code>Integer</code>.</li>
+            <li>If the file does not exist, this method should return an empty <code>ArrayList</code></li>
+            <li>
+              Examples:
+              <ul>
+                <li>This file would be represented as [15]</li>
+                <pre>1,2,3,4,5</pre>
+              </ul>
+              <ul>
+                <li>This file would be represented as [0, -12, 24, 6]</li>
+                <pre>
+0
+-14,2
+8,16,0
+1,5</pre
+                >
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <br />
+
+      <hr />
+      <h3>Autolab Feedback</h3>
+      <hr />
+
+      <p>
+        Feedback from Autolab will detail which methods you have or have not completed correctly. Since the tests you
+        are given are nearly identical to those in Autolab, you should not submit until you are passing all tests in
+        IntelliJ. Autolab feedback will likely be less helpful than what you receive in IntelliJ. In future problem sets
+        and tasks, where you will write your own tests, the feedback in Autolab will be much more important.
+      </p>
+      <p>
+        Once you have successfully completed all methods, you will have completed this Problem Set and Autolab will
+        confirm this with a score of 20 LOs.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <a data-toggle="collapse" data-target="#game-engine-task">
+    <div class="card-header text-white section-header">
+      <div>
+        Coding Task <span class="float-right"><i class="far fa-caret-square-down"></i></span>
+      </div>
+    </div>
+  </a>
+
+  <div id="game-engine-task" class="collapse show">
+    <div class="section-card card-testing hw-content">
+      <hr />
+      <h3>Overview</h3>
+      <hr />
+
+      <p>
+        Game Engine GitHub Repository link:
+        <a href="https://github.com/CSE-116/CSE116-GameEngine">https://github.com/CSE-116/CSE116-GameEngine</a>
+      </p>
+
+      <p>To get started with the game engine task:</p>
+
+      <ol>
+        <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
+        <li>
+          Note that this is not the same as the Problem Set starter code. However, this is the only time you'll have to
+          clone a repository for the game engine, as the same project will be used and built upon for each task.
+        </li>
+        <li>
+          Make sure the src folder is marked as the source root (Right click the src folder, choose “mark directory as”
+          and choose sources root)
+        </li>
+        <li>
+          Navigate to the file src/main/java/app/StartGame.java and run it. This is how you will run every game this
+          semester. Initilally, it will be somewhat underwhelming, but after this task (and especially Task 1) the game
+          will be somewhat more playable.
+        </li>
+      </ol>
+
+      <p>
+        The game engine repository contains a file README.md at the root of the project. IntelliJ will likely
+        automatically open this file when you first clone the project. It will also be displayed on the github repo,
+        below the list of files and directories. We strongly advise you to read it, as it provides an overview of the
+        game engine and the project as a whole. Additionally, we have prepared a video which covers many of the same
+        topics, and more.
+      </p>
+      <p>This tasks video can be found here: TODO put the link</p>
+      <p>
+        Once you have the project opened in IntelliJ, you'll see a src folder which contains another folder called main,
+        which contains another folder called java. Inside this folder is the Java package app which contains all the
+        code for the project. The starter code contains many Java classes needed for the engine to run.
+      </p>
+      <p>
+        <font color="red">Don't Panic about the number of files.</font> For now, you can safely ignore most of them, and
+        many of them you will never need to touch or understand at all. If you ever have trouble finding a specific
+        file, you can press shift twice to open a convenient search window that'll direct you to the desired class. The
+        readme and video also provide information about the structure of the project, which can help understand some of
+        the files.
+      </p>
+      <p>For this task, you will be writing code in the following classes:</p>
+      <ul>
+        <li><code>LevelParser</code>, located in the package <code>app.gameengine</code></li>
+        <li><code>MinesweeperLevel</code>, located in the package <code>app.games.minesweeper</code></li>
+      </ul>
+      <p>
+        You will also want to make use of <code>TestTask0</code>, located in the package <code>app.tests</code>, though
+        you do not need to edit it.
+      </p>
+      <p>
+        To submit your project, run <code>app.Zipper</code>, which will create a zip file containing the project, and
+        submit it to Autolab. Note that while you are allowed to compress the project to a zip file in other ways, they
+        will likely be rejected by autolab for being too large. Zipper compresses only the files necessary for grading,
+        and should be the preferred way to submit the project.
+      </p>
+
+      <hr />
+      <h3>Testing Requirements</h3>
+      <hr />
+
+      <p>
+        This problem set does not require you to write any tests. tests.TestTask0 contains tests that you can use to
+        verify the correctness of your code. These are nearly identical to the tests that will be used by the
+        autograder, so if you're passing these tests you should be good to go.
+      </p>
+      <p>
+        You can run these tests just like a Java file with a main method (Right-click the file and choose run) and you
+        will see feedback about which test cases you've passed/failed. Once you pass all test cases, you're ready to
+        submit to Autolab.
+      </p>
+      <p>
+        Some of these tests may have been commented out so that the project will compile. You can uncomment the tests as
+        you get to these methods. You can highlight multiple lines and press control+/ (command+/ on mac) to quickly
+        comment multiple lines in/out
+      </p>
+      <br />
+
+      <hr />
+      <h3>Programming Requirements</h3>
+      <hr />
+
+      <h4>Learning Objective</h4>
+      <hr />
+
+      <p>
+        Navigate to the <code>LevelParser</code> class, in the <code>app.gameengine</code> package. You are required to
+        complete the method <code>parseLevel</code>, which is currently stubbed out and always returns the same, empty
+        level.
+      </p>
+      <p>
+        This method is intended to read csv files, to create levels programatically. These csv files will be in the
+        format created by the level editor provided, so that levels can easily be created, modified, and played within
+        the game engine. The sample game makes use of the LevelParser, as will some later games.
+      </p>
+      <p>
+        This method takes two parameters, a <code>Game</code> and a <code>String</code>. The <code>Game</code> is the
+        game that the created <code>Level</code> will be a part of. The input <code>String</code> is the path to the csv
+        file that should be read, within the levels directory. The levels directory is "data/levels". This means that if
+        the input path is "sample/sample1.csv", the actual file you should read is "data/levels/sample/sample1.csv".
+      </p>
+      <p>
+        These level files have a strict format. The first three lines always include the same information, in the same
+        order, which is as follows:
+      </p>
+      <ol>
+        <li>
+          <p><code>LevelType,LevelName,Width,Height</code></p>
+          <p>
+            The level type is the kind of level you are creating. For this task, the LevelType will always be
+            TopDownLevel, but it may be different in later tasks. The LevelName is the name of the level, as a
+            <code>String</code>, which will be passed to the <code>Level</code> constructor. Width and Height are both
+            <code>integer</code>s that describe the size of the <code>Level</code>, and will also be passed into the
+            constructor.
+          </p>
+          <p>
+            You should use this information to create the <code>Level</code> object itself. All further lines of the
+            file will just modify this level.
+          </p>
+        </li>
+        <li>
+          <p><code>PlayerStartLocation,XLocation,YLocation</code></p>
+          <p>
+            This line will always start with the text PlayerStartLocation, which just helps identify the line. XLocation
+            and YLocation are <code>double</code>s which represent the starting location of the player within the level.
+          </p>
+          <p>
+            You should use the <code>Level.setPlayerStartLocation(double, double)</code> method to set the player start
+            to (XLocation, YLocation).
+          </p>
+        </li>
+        <li>
+          <p><code>BackgroundTile,FileLocation,Column,Row</code></p>
+          <p>
+            This line will, for now, always start with the text BackgroundTile, to identify the line. Later you will add
+            support for background images, but that's not required yet. FileLocation is a <code>String</code>, and
+            represents the location of the spritesheet that contains the desired background tile, and column and row are
+            <code>integer</code>s representing the location of the specific tile within that sprite sheet.
+          </p>
+          <p>
+            You should use the <code>Level.setBackground</code> method to change the background of the level. You will
+            need to create a <code>Background</code> object to do so. While this class has many constructors for
+            different scenarios, the correct one in this case takes a <code>String</code> and two <code>integer</code>s,
+            representing the tile file location, column, and row, in that order, that were read from the file.
+          </p>
+        </li>
+      </ol>
+      <p>
+        All following lines within the csv file will describe either a <code>StaticGameObject</code> or a
+        <code>DynamicGameObject</code>. Both kinds of objects have the same format:
+      </p>
+      <ul>
+        <li>
+          <code>GameObjectType,SubType,XLocation,YLocation,...</code>
+        </li>
+        <li>For example, a valid line could be: <code>StaticGameObject,Wall,1.0,3.0</code></li>
+        <li>Another example: <code>DynamicGameObject,Demon,1,3,100,30</code></li>
+      </ul>
+      <p>
+        For now, you do not need to worry about the precise formatting of these lines. All you need to know is whether
+        it is a <code>StaticGameObject</code> or a <code>DynamicGameObject</code>, which can be known by the first
+        string in the line. Two utility methods within the <code>LevelParser</code> class have been provided,
+        <code>readDynamicObject</code> and <code>readStaticObject</code>. After you have split the line on commas and
+        determined whether it is static or dynamic, you should call the appropriate method to actually parse the line
+        and get the desired object.
+      </p>
+      <p>
+        Note that these methods take three parameters, a <code>Game</code>, a <code>Level</code>, and an
+        <code>ArrayList</code> of <code>String</code>s. The <code>Game</code> is the same game passed in to the
+        <code>parseLevel</code> method. The <code>Level</code> is the level you are creating. The
+        <code>ArrayList</code> is the split line currently being parsed.
+      </p>
+      <p>
+        Once you have used these methods to get the static/dynamic object, you must add it to the level. These objects
+        are stored in two different <code>ArrayList</code>s within the level, which can be accessed with the methods
+        <code>getStaticObjects</code> and <code>getDynamicObjects</code>, which, of course, contain static and dynamic
+        objects respectively. Simply add the object to that <code>ArrayList</code> to add it to the level.
+      </p>
+      <p>
+        Note that if the line does not match one of the objects that can currently be read by these methods, they will
+        return <code>null</code>. In this case, you should <b>not</b> add it to the level.
+      </p>
+      <p>Finally, return the level you have created.</p>
+      <br />
+
+      <hr />
+      <h4>Comprehensive Understanding</h4>
+      <hr />
+
+      <p>
+        In this portion of the assignment, you will implement functionality that will make the game Minesweeper playable
+        within the game engine. To play minesweeper, navigate to <code>app.Configuration</code>, and change the variable
+        <b>GAME</b> from "Sample Game" to "Minesweeper". Now, when you run <code>app.StartGame</code>, it will launch
+        Minesweeper instead of the sample game. Remember this process; it is how you will switch between games for each
+        task.
+      </p>
+      <p>
+        If you know anything about minesweeper, you will likely notice that the game is currently non-functional, and is
+        almost impossible to win. This task, if successfully completed, will resolve those issues and allow the game to
+        be played.
+      </p>
+      <p>
+        Navigate to <code>app.games.minesweeper.MinesweeperLevel</code>. You are required to complete the method
+        <code>getAdjacentVectors</code>, which is currently stubbed out and always returns an empty
+        <code>ArrayList</code>.
+      </p>
+      <p>
+        Note that the input to this method is a <code>Vector2D</code> object. You will see these many times over the
+        course of the project, and should become familiar with them. For now, all you need to know is that they are
+        quantities with an x and y component, like a 2-dimensional point. You can access these properties with the
+        <code>getX</code> and <code>getY</code> methods. They can be created by calling the constructor with the desired
+        x and y components, as <code>double</code>s.
+      </p>
+      <p>
+        This method should return a list of the vectors surrounding the input vector. This includes vectors that are
+        immediately adjacent (horizontally or vertically), or diagonal. The images below show two different cases, where
+        the red tile is the input vector, and the blue tiles are what should be returned. The input tile itself should
+        not be included in the returned vectors, giving the list a maximum size of 8.
+      </p>
+      <img
+        src="/static_files/images/minesweeper_click_center.png"
+        class="img-fluid"
+        alt="Tiles surrounding click location"
+      />
+      <img
+        src="/static_files/images/minesweeper_click_edge.png"
+        class="img-fluid"
+        alt="Tiles surrounding click location on the edge of a level"
+      />
+      <p>
+        Note that in the second case, where the click was on the edge of the level, the returned list must only contain
+        5 vectors, instead of the full 8. You can only include vectors that are within the bounds of the level, which in
+        this example is 5x5. Levels start at 0, so valid indices for this level would be 0-4 for both width and height.
+        Since you are within the <code>Level</code> class, you can access the width and height with
+        <code>this.getWidth()</code> and <code>this.getHeight()</code>, respectively. Alternatively, you can use the
+        method <code>GameUtils.isInBounds</code> to determine if it is a valid tile.
+      </p>
+      <p>
+        If the input vector is not within the bounds of the level, you should return an empty <code>ArrayList</code>.
+      </p>
+      <p>The order of the returned vectors is not important, and tests will accept any order.</p>
+      <br />
+
+      <hr />
+      <h3>Autolab Feedback</h3>
+      <hr />
+
+      <p>
+        Feedback from Autolab will detail which methods you have or have not completed correctly. Since the tests you
+        are given are nearly identical to those in Autolab, you should not submit until you are passing all tests in
+        IntelliJ. Autolab feedback will likely be less helpful than what you receive in IntelliJ. In future problem sets
+        and tasks, where you will write your own tests, the feedback in Autolab will be much more important.
+      </p>
+      <p>
+        Once you have successfully completed all methods, you will have completed this Game Engine Task and Autolab will
+        confirm this with a score of 30 LOs.
+      </p>
+      <p>
+        If you have successfully completed the methods for the Comprehensive Understanding portion of the Game Engine
+        Task, you will see a score of 50 CUs.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
