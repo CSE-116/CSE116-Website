@@ -488,9 +488,9 @@ a,b,c</pre
           <p><code>BackgroundType,FileLocation,...</code></p>
           <p>
             It is not really necessary to understand what this line does, as we have provided you with a helper method
-            called <code>readBackground</code> which takes a <code>Level</code> and an <code>ArrayList</code> of
-            <code>String</code>s, and will return a <code>Background object</code>. You can then use the
-            <code>Level.setBackground</code> method to set the background of that level.
+            called <code>readBackground</code> which takes an <code>ArrayList</code> of <code>String</code>s, and will
+            return a <code>Background object</code>. You can then use the <code>Level.setBackground</code> method to set
+            the background of that level.
           </p>
           <p>
             Although it's not necessary for the tasks, you may be interested in creating your own custom levels, or just
@@ -539,8 +539,8 @@ a,b,c</pre
         objects respectively. Simply add the object to that <code>ArrayList</code> to add it to the level.
       </p>
       <p>
-        Note that if the line does not match one of the objects that can currently be read by these methods, they will
-        return <code>null</code>. In this case, you should <b>not</b> add it to the level.
+        Note that if <code>readDynamicObject</code> or <code>readStaticObject</code> cannot parse the line correctly,
+        they will return <code>null</code>. In this case, you should <b>not</b> add it to the level.
       </p>
       <p>Finally, return the level you have created.</p>
       <br />
@@ -601,6 +601,11 @@ a,b,c</pre
         If the input vector is not within the bounds of the level, you should return an empty <code>ArrayList</code>.
       </p>
       <p>The order of the returned vectors is not important, and tests will accept any order.</p>
+      <p>
+        The <code>Vector2D</code> class contains many static methods that may be helpful to you in this task and others.
+        In particular, note the <code>Vector2D.add</code> method, which takes two <code>Vector2D</code>s and returns the
+        element-by-element sum of those vectors, which may be useful for completing this method.
+      </p>
       <br />
 
       <hr />
