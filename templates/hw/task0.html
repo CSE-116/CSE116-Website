@@ -34,6 +34,12 @@
         Coding Task 0 assesses Java Basics and File IO. Both the Problem Set and Game Engine Task will focus on these
         topics.
       </p>
+      <p>
+        At the end of this task, your game engine will be capable of reading formatted csv files that describe levels
+        which can be played within specific games. To that end, we have created a level editor that can be used to
+        create your own levels, either for testing or just for fun. It can be found here:
+        <a href="https://jbcarras.github.io/">https://jbcarras.github.io/</a>
+      </p>
     </div>
   </div>
 </div>
@@ -443,6 +449,7 @@ a,b,c</pre
         file that should be read, within the levels directory. The levels directory is "data/levels". This means that if
         the input path is "sample/sample1.csv", the actual file you should read is "data/levels/sample/sample1.csv".
       </p>
+      <p>If this file does not exist, or if it is empty, you should return <code>null</code>.</p>
       <p>
         These level files have a strict format. The first three lines always include the same information, in the same
         order, which is as follows:
@@ -474,18 +481,25 @@ a,b,c</pre
           </p>
         </li>
         <li>
-          <p><code>BackgroundTile,FileLocation,Column,Row</code></p>
+          <p><code>BackgroundType,FileLocation,...</code></p>
           <p>
-            This line will, for now, always start with the text BackgroundTile, to identify the line. Later you will add
-            support for background images, but that's not required yet. FileLocation is a <code>String</code>, and
-            represents the location of the spritesheet that contains the desired background tile, and column and row are
-            <code>integer</code>s representing the location of the specific tile within that sprite sheet.
+            It is not really necessary to understand what this line does, as we have provided you with a helper method
+            called <code>readBackground</code> which takes a <code>Level</code> and an <code>ArrayList</code> of
+            <code>String</code>s, and will return a <code>Background object</code>. You can then use the
+            <code>Level.setBackground</code> method to set the background of that level.
           </p>
           <p>
-            You should use the <code>Level.setBackground</code> method to change the background of the level. You will
-            need to create a <code>Background</code> object to do so. While this class has many constructors for
-            different scenarios, the correct one in this case takes a <code>String</code> and two <code>integer</code>s,
-            representing the tile file location, column, and row, in that order, that were read from the file.
+            Although it's not necessary for the tasks, you may be interested in creating your own custom levels, or just
+            want to know what exactly is going on. This BackgroundType can be either <i>BackgroundTile</i> or
+            <i>BackgroundImage</i>. If it is a <i>BackgroundTile</i>, the following entries in the line are a
+            FileLocation, which is a <code>String</code>, and represents the location of the spritesheet that contains
+            the desired background tile, and a column and row which are <code>int</code>s representing the location of
+            the specific tile within that sprite sheet.
+          </p>
+          <p>
+            If it is a <i>BackgroundImage</i>, the following entries in the line are a list of <code>String</code>s
+            specifying the file locations of the desired images within the backgrounds directory. If there are more than
+            one image paths, they will be drawn back to front, with evenly spaced parallax values from 0.0 to 1.0.
           </p>
         </li>
       </ol>
