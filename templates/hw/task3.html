@@ -3,273 +3,241 @@
 {% block title %}CSE116: Task 3{% endblock %}
 
 {% block header %}
-    <h1>Programming Task 3</h1>
-    <hr/>
-    <h5>Time Estimate: 6 hours</h5>
+    <h1>Coding Task 3</h1>
+    <h5>Polymorphism and Trees</h5>
     <hr/>
 {% endblock %}
 
 {% block task %}
 
-    <div class="card-header section-testing">
-        <div>Requirements</div>
-    </div>
-
-    <div class="section-card card-testing hw-content">
-
+    {% call task_card("Overview") %}
         <hr/>
-
-
-        <h3>
-            Project Structure
-        </h3>
-
+        <h3>Coding Task 3 Overview</h3>
         <hr/>
-        <p>
-            You will continue to add functionality to your existing project from the previous task. There is
-            no new repository to clone.
-        </p>
-
-        <br/>
-        <hr/>
-        <h3>Specification</h3>
-        <hr/>
-
-        <p>In this task, you will test and implement the following specs.</p>
-
 
         <p>
-            Note: Use the provided ratings.datastructures.LinkedListNode class whenever a linked list [node] is needed. You do
-            not have to modify this class
+            This task will be released at a later date.
         </p>
+    {% endcall %}
 
-        <p>
-            ratings.Song - The following methods will be added to the Song class:
-        </p>
-
-        <ul>
-            <li>A method named <code>addRating</code> that takes a [reference to] an object of type Rating as a
-                parameter (The type of the input is Rating) and returns void
-                <ul>
-                    <li>
-                        This method will be called when a Reviewer rates this Song. All
-                        added Ratings will be stored in a Linked List Node as an instance variable
-                    </li>
-                    <li>
-                        This method will append new ratings to the end of the linked list
-                    </li>
-                    <li>Note: Since the Rating class checks for valid ratings, any added ratings can only have a rating
-                        value of 1, 2, 3, 4, 5, or -1</li>
-                </ul>
-            </li>
-
-
-            <li>A method named <code>getRatings</code> that takes no parameters and returns a LinkedListNode of
-                Ratings
-                <ul>
-                    <li>
-                        This method returns the head node of a Linked List containing all Ratings that have been
-                        added to this Song
-                    </li>
-                    <li>
-                        The returned Linked List node must return the Ratings in the order in which they were added.
-                        For example, the first Rating that was added must be the first value in the list
-                    </li>
-                    <li>
-                        If no ratings have been added, this method will return null
-                    </li>
-                </ul>
-            </li>
-
-            <li>A method named <code>setRatings</code> that takes a LinkedListNode of Ratings and returns void
-                <ul>
-                    <li>
-                        This is a setter that replaces the stored linked list node of ratings (The instance variable)
-                        with the one provided as a parameter. This assignment is done by reference (ie. any prior
-                        ratings are replaced by the new list of ratings)
-                    </li>
-                </ul>
-            </li>
-
-
-            <li>A method named <code>averageRating</code> that takes no parameters and returns a double
-                <ul>
-                    <li>
-                        This method returns the average of all the Ratings of this Song
-                    </li>
-                    <li>
-                        If the list is empty, or only contains invalid ratings, the method returns 0.0
-                    </li>
-                    <li>
-                        Any invalid rating, ratings of -1, will be ignored during this calculation (eg. A Song with
-                        ratings [1, 5, -1, -1] has an average rating of 3.0)
-                    </li>
-                </ul>
-            </li>
-
-
-            <li>A method named <code>removeRatingByReviewer</code> that takes a Reviewer as a parameter and returns
-                void
-                <ul>
-                    <li>
-                        This method will remove a Rating made for this Song by the given Reviewer by id
-                    </li>
-                    <li>
-                        If the reviewer did not rate this song, this method has no effect
-                    </li>
-                    <li>
-                        If the linked list contains multiple ratings by the reviewer, the method only removes
-                        the first instance from the list (ie. the method does not have to handle removing
-                        multiple ratings in a single call)
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-
-        <p>
-            Note: You can see feedback in Autolab for your testing utilities and tests without completing the
-            programming portion of
-            this task, but you must at least create every method from this specification. You can "stub
-            out"
-            these methods by having them always return a fixed value, but they must exist so the grading code,
-            and your tests, can compile and run.
-        </p>
-
-        <br/>
+    {% call task_card("Problem Set") %}
         <hr/>
-        <h3>Testing Utilities</h3>
+        <h3>Overview</h3>
         <hr/>
 
-
         <p>
-        Create a class named <code>TestDataStructures1</code> in the tests package (tests.TestDataStructures1) and write the
-            following utility method in that class (Note: Do not add the @Test annotation to this method since it is
-            not itself a test):
+            Problem Set GitHub Repository link:
+            <a>TBD</a>
         </p>
 
-        <ul>
-            <li><code>compareListsOfRatings</code> - Write a method named compareListsOfRatings in the tests.TestDataStructures1 class that:
-                <ul>
-                    <li>
-                        Takes [references to] 2 LinkedListNode&lt;Rating&gt; objects as parameters and  returns void
-                    </li>
-                    <li>
-                        This method checks if the rating and reviewer id of all Ratings in both lists are
-                        exactly the same and are in the same order. The method fails a JUnit
-                        assert if the lists do not contain all the same values of their ratings objects in the same
-                        order
-                    </li>
-                    <li>
-                        Note that you cannot use == or .equals to compare 2 Ratings. You must check the rating and
-                        reviewer id values separately
-                    </li>
-                </ul>
+        <ol>
+            <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
+            <li>
+                Make sure the src folder is marked as the source root (Right-click the src folder, choose “mark
+                directory as”
+                and choose sources root)
             </li>
+        </ol>
+        <p>
+            Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
+            problem
+            and tests.
+        </p>
+        <p>
+            To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
+            problem
+            set, and submit it to Autolab.
+        </p>
 
-        </ul>
+        <hr/>
+        <h3>Testing Requirements</h3>
+        <hr/>
+        <!-- PS Testing Requirements Here -->
 
 
         <br/>
-        <hr/>
-        <h3>
-            Testing Requirements
-        </h3>
-        <hr/>
-        <p>
-            Write tests in the tests.TestDataStructures1 class for the averageRating and removeRatingByReviewer methods.
-            You may assume that the addRating, getRatings, and setRatings methods behave as expected. All 5 methods
-            will still be tested in the next phase, so it can help if you
-            test all 5 even though it's not explicitly required.
-        </p>
-        <p>
-            It is highly recommended that you create your expected linked lists and call your compareListsOfRatings to
-            check if getRatings returns a list with all the same values as the expected list
-        </p>
 
+        <hr/>
+        <h3>Programming Requirements</h3>
+        <hr/>
 
+        <!-- PS Programming Requirements Here -->
 
         <br/>
-        <hr/>
-        <h3>
-            Programming Requirements
-        </h3>
-        <hr/>
 
-        <p>
-            Implement all 5 methods from the specification in your Song class.
-            As you're writing this code, you should run your tests to see how you are progressing. It's
-            recommended that you write your tests first, submit to Autolab to make sure you have good testing,
-            then use those verified tests to check your code.
-        </p>
-
-
-        <br/>
         <hr/>
         <h3>Autolab Feedback</h3>
         <hr/>
 
         <p>
-            The feedback in Autolab will be given in 4 phases. If you don't complete a phase, then feedback for
-            the following phase(s) will not be provided.
+            Feedback from Autolab will be given in several phases. If you
+            don't complete a phase, then feedback for the following phase(s) will not be given. You must complete all
+            phases to earn the required
+            score of 20 LOs. For the problem set, the phases will be as follows:
         </p>
-
         <ol>
-            <li>Testing your testing utility method
-                <ul>
-                    <li>
-                        Your testing utility method will be checked with a variety of test cases to
-                        ensure
-                        that
-                        it makes all the required checks. This phase will ensure that your utility method is
-                        accurate
-                        before you start using it in your tests
-                    </li>
-                </ul>
-            </li>
-            <li>Running your tests on a correct solution
+            <li>
+                Running your tests on a correct solution
                 <ul>
                     <li>Your tests will be run against a solution that is known to be correct. If your tests do
                         not pass this correct solution, there is an error somewhere in your tests that must be
-                        fixed
-                        before you can move on with the assignment. If your tests don't get past this check, you
-                        should re-read this document and make sure you implemented your tests and code according
-                        the specification. You should also make sure that if there are multiple correct outputs
-                        to the input in your tests cases that you accept any of the outputs as correct
+                        fixed before you can move on with the assignment. If your tests don't get past this
+                        check, you should re-read this document and make sure you implemented your tests and
+                        code according the specification. You should also make sure that if there are multiple
+                        correct outputs to the input in your tests cases that you accept any of the outputs as
+                        correct.
                     </li>
                 </ul>
             </li>
-            <li>Checking your tests for feature coverage
+            <li>
+                Checking your tests for feature coverage
+                <ul>
+                    <li>The next phase is to check if your tests check for a variety of features defined by
+                        different inputs. You should write at least one test case for each feature to pass this
+                        phase.
+                    </li>
+                    <li>Passing this phase does not necessarily mean that your testing is completely thorough.
+                        Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
+                        checked and it is sometimes possible to pass this phase with weak testing. If you are
+                        struggling to earn credit for code that you believe is correct, you should write more
+                        than the required tests
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Running my tests on your solution
+                <ul>
+                    <li>Once Autolab is happy with your tests, it will run my tests against your code to check
+                        it for correctness. If your testing is thorough, and your code passes your tests, then
+                        you should pass this phase. If you pass your tests, but fail one of mine, it is an
+                        indicator that you should write more tests to help expose your bug.
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>
+            Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab
+            will
+            confirm this with a score of 20 LOs.
+        </p>
+    {% endcall %}
+
+    {% call task_card("Game Features") %}
+        <hr/>
+        <h3>Overview</h3>
+        <hr/>
+
+        <!-- Task Overview Here -->
+
+        <hr/>
+        <h3>Learning Objective</h3>
+        <hr/>
+        <h4>Testing Utility</h4>
+
+        <!-- LO Testing Utility Here -->
+
+        <hr/>
+        <h4>Testing Requirements</h4>
+        <hr/>
+
+        <!-- LO Testing Requirements Here -->
+
+        <br/>
+
+        <hr/>
+        <h4>Programming Requirements</h4>
+        <hr/>
+
+        <!-- LO Programming Requirements Here -->
+
+        <br/>
+
+        <hr/>
+        <h3>Comprehensive Understanding</h3>
+        <hr/>
+        <h4>Programming Requirements</h4>
+        <hr/>
+
+        <br/>
+
+        <hr/>
+        <h3>Autolab Feedback</h3>
+        <hr/>
+
+        <p>
+            Feedback for the Learning Objective component of the Game Features will be given in several phases. If you
+            don't complete a phase, then feedback for the following phase(s) will not be given. You must
+            complete all the following phases to earn the required score of 30 LOs to complete this task. The phases for
+            the Learning Objective are as follows:
+        </p>
+
+        <ol>
+            <li>
+                Testing your testing utility method
+                <ul>
+                    <li>
+                        Your testing utility method will be checked with a variety of test cases to ensure that
+                        it makes all the required checks. This phase will ensure that your utility method is accurate
+                        before you start using it in your tests.
+                    </li>
+                </ul>
+
+            </li>
+            <li>
+                Running your tests on a correct solution
+                <ul>
+                    <li>
+                        Your tests will be run against a solution that is known to be correct. If your tests do
+                        not pass this correct solution, there is an error somewhere in your tests that must be
+                        fixed before you can move on with the assignment. If your tests don't get past this
+                        check, you should re-read this document and make sure you implemented your tests and
+                        code according the specification. You should also make sure that if there are multiple
+                        correct outputs to the input in your tests cases that you accept any of the outputs as
+                        correct.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Checking your tests for feature coverage
                 <ul>
                     <li>
                         The next phase is to check if your tests check for a variety of features defined by
                         different inputs. You should write at least one test case for each feature to pass this
-                        phase
+                        phase.
                     </li>
                     <li>
                         Passing this phase does not necessarily mean that your testing is completely thorough.
                         Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                        checked, and it is sometimes possible to pass this phase
-                        with weak testing. If you are struggling to earn credit for code that you believe
-                        is correct, you should write more than the required tests
+                        checked and it is sometimes possible to pass this phase with weak testing. If you are
+                        struggling to earn credit for code that you believe is correct, you should write more
+                        than the required tests.
                     </li>
                 </ul>
             </li>
-            <li>Running my tests on your solution
+            <li>
+                Running my tests on your solution
                 <ul>
                     <li>
                         Once Autolab is happy with your tests, it will run my tests against your code to check
                         it for correctness. If your testing is thorough, and your code passes your tests, then
                         you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                        indicator that you should write more tests to help expose your bug
+                        indicator that you should write more tests to help expose your bug.
                     </li>
                 </ul>
             </li>
         </ol>
 
         <p>
-            Once you complete all 4 phases, you will have completed this Task and Autolab will confirm this
-            with a score of 1.0 for complete.
+            Once you have successfully passed all four phases, you will have completed the Learning Objective component
+            of the Game Features, and Autolab will confirm this with a score of 30 LOs.
         </p>
-    </div>
+
+        <p>
+            The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will
+            be run in a single phase for correctness. For each test you successfully pass, you will earn a varying
+            amount of CUs with a total maximum score of 50 CUs. There is no required testing component for the Comprehensive
+            Understanding component; however, you are expected to test your code nonetheless as the Autolab feedback
+            is unlikely to be sufficient for debugging.
+        </p>
+    {% endcall %}
 {% endblock %}

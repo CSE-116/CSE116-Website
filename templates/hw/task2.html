@@ -3,285 +3,241 @@
 {% block title %}CSE116: Task 2{% endblock %}
 
 {% block header %}
-    <h1>Programming Task 2</h1>
-    <hr/>
-    <h5>Time Estimate: 5 hours</h5>
+    <h1>Coding Task 2</h1>
+    <h5>Linked Lists and Inheritance</h5>
     <hr/>
 {% endblock %}
 
 {% block task %}
 
-    <div class="card-header section-testing">
-        <div>Requirements</div>
-    </div>
-
-    <div class="section-card card-testing hw-content">
-
+    {% call task_card("Overview") %}
         <hr/>
-
-
-        <h3>
-            Project Structure
-        </h3>
-
+        <h3>Coding Task 2 Overview</h3>
         <hr/>
-        <p>
-            You will continue to add functionality to your existing project from the previous task. There is
-            no new repository to clone.
-        </p>
-
-        <br/>
-        <hr/>
-        <h3>Specification</h3>
-        <hr/>
-
-        <p>In this task, you will test and implement the following specs:</p>
 
         <p>
-            Note: All methods are public and non-static, unless otherwise noted, from this point forward in the
-            course.
+            This task will be released at a later date.
+        </p>
+    {% endcall %}
+
+    {% call task_card("Problem Set") %}
+        <hr/>
+        <h3>Overview</h3>
+        <hr/>
+
+        <p>
+            Problem Set GitHub Repository link:
+            <a>TBD</a>
         </p>
 
-        <ul>
-            <li>ratings.Song - In the ratings package, a class named <code>Song</code>
-                <ul>
-                    <li>
-                        This class will have a constructor that takes 3 parameters in this order:
-                        <ol>
-                            <li>A String representing the title of the Song</li>
-                            <li>A String representing the artist of the Song</li>
-                            <li>A String representing the Songs ID</li>
-                        </ol>
-                    </li>
-                    <li>
-                        Song will have getter and setter methods for the three constructor parameters named:
-                        <ol>
-                            <li><code>getTitle</code></li>
-                            <li><code>setTitle</code></li>
-                            <li><code>getArtist</code></li>
-                            <li><code>setArtist</code></li>
-                            <li><code>getSongID</code> <-- Note that both characters in ID are capital</li>
-                            <li><code>setSongID</code></li>
-                        </ol>
-                    </li>
-                    <li>
-                        For this task, you don't need to implement any additional methods in the Song class
-                        (We will add to this class in later tasks)
-                    </li>
-                </ul>
+        <ol>
+            <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
+            <li>
+                Make sure the src folder is marked as the source root (Right-click the src folder, choose “mark
+                directory as”
+                and choose sources root)
             </li>
-
-            <li>ratings.Rating - In the ratings package, a class named <code>Rating</code>
-                <ul>
-                    <li>
-                        This class will have a constructor that takes 2 parameters in this order:
-                        <ol>
-                            <li>A String representing the ID of the reviewer who gave the rating</li>
-                            <li>An int representing the rating that the reviewer gave</li>
-                        </ol>
-                    </li>
-                    <li>
-                        Rating will have getter and setter methods for the two constructor parameters named:
-                        <ol>
-                            <li><code>getReviewerID</code></li>
-                            <li><code>setReviewerID</code></li>
-                            <li><code>getRating</code></li>
-                            <li><code>setRating</code></li>
-                        </ol>
-                    </li>
-                    <li>
-                        Ratings must be in the range 1-5. If someone calls setRatings with an invalid rating,
-                        the rating should be set to -1 to indicate that an error has occurred.
-                        (eg. setRating(100) should result in the rating being set to -1). This check must also
-                        apply when the constructor is called with an invalid rating.
-                    </li>
-                </ul>
-            </li>
-
-            <li>ratings.Reviewer - In the ratings package, a class named <code>Reviewer</code>
-                <ul>
-                    <li>
-                        This class will have a constructor that takes 1 parameter:
-                        <ol>
-                            <li>A String representing the ID of the reviewer</li>
-                        </ol>
-                    </li>
-                    <li>
-                        Reviewer will have getter and setter methods for the constructor parameter named:
-                        <ol>
-                            <li><code>getReviewerID</code></li>
-                            <li><code>setReviewerID</code></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <code>rateSong</code> - Reviewer will have a method named rateSong that takes an int as a parameter
-                        and returns a reference to a new Rating object (Using the Rating class described
-                        above) with this reviewer's ID and the rating from the parameter of this method.
-                    </li>
-                </ul>
-            </li>
-
-
-        </ul>
-
+        </ol>
         <p>
-            Note: You can see feedback in Autolab for your testing utilities and tests without completing the
-            programming portion of
-            this task, but you must at least create the classes and methods that you test. You can "stub out"
-            these methods by having them always return a fixed value, but they must exist so the grading code,
-            and your tests, can compile and run.
+            Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
+            problem
+            and tests.
+        </p>
+        <p>
+            To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
+            problem
+            set, and submit it to Autolab.
         </p>
 
-        <br/>
         <hr/>
-        <h3>Testing Utilities</h3>
+        <h3>Testing Requirements</h3>
         <hr/>
-
-        <p>
-            To help you write your tests, you will write several testing utility methods. These methods are
-            meant to help you write your unit tests. These methods will compare Song, Rating, and Reviewer
-            objects for equality. When writing test cases, you should create an object with the values that you
-            expect, call the method to be tested to create an object of the same type, then call your utility
-            method to check if the 2 objects contain all the same values.
-        </p>
-
-        <p>
-            Create a class named TestClasses1 in the tests package (tests.TestClasses1) and write the
-            following methods in that class (Note: Do not add the @Test annotation to these methods since they
-            are not tests):
-        </p>
-
-        <ul>
-            <li>compareSongs - Write a method named compareSongs in the tests.TestClasses1 class that:
-                <ul>
-                    <li>
-                        Takes [references to] 2 Song objects as parameters
-                    </li>
-                    <li>
-                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Songs do
-                        not have all the same values. In this way, calling the method with two Songs that are different
-                        will result in a test failing, while calling the method with two Songs that are the same will
-                        not do anything and will move on to your next test case. You can call assertTrue, assertEquals,
-                        etc. in your compareSongs method even though it itself is not a test method.
-                    </li>
-                </ul>
-            </li>
-            <li>compareRatings - Write a method named compareRatings in the tests.TestClasses1 class that
-                <ul>
-                    <li>
-                        Takes [references to] 2 Rating objects
-                    </li>
-                    <li>
-                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Ratings do
-                        not have all the same values
-                    </li>
-                </ul>
-            </li>
-            <li>compareReviewers - Write a method named compareReviewers in the tests.TestClasses1 class that
-                <ul>
-                    <li>
-                        Takes [references to] 2 Reviewer objects
-                    </li>
-                    <li>
-                        Returns void and contains JUnit asserts such that at least 1 assert will fail if the Reviewers
-                        do not have the same id
-                    </li>
-                </ul>
-            </li>
-
-        </ul>
-
-        <br/>
-        <hr/>
-        <h3>
-            Testing Requirements
-        </h3>
-        <hr/>
-
-        <p>
-            Add test methods to the tests.TestClasses1 class, using the @Test annotation, that tests all the
-            methods in the Specification section. You should call your testing utility methods to save time while
-            writing these tests.
-        </p>
-
-        <br/>
-        <hr/>
-        <h3>
-            Programming Requirements
-        </h3>
-        <hr/>
-
-        <p>
-            Implement the Song, Rating, and Reviewer classes with all the functionality from the specification.
-            As you're writing this code, you should run your tests to see how you are progressing. It's
-            recommended that you write your tests first, submit to Autolab to make sure your have good testing,
-            then use those verified tests to check your code.
-        </p>
+            <!-- PS Testing Requirements Here -->
 
 
         <br/>
+
+        <hr/>
+        <h3>Programming Requirements</h3>
+        <hr/>
+
+            <!-- PS Programming Requirements Here -->
+
+        <br/>
+
         <hr/>
         <h3>Autolab Feedback</h3>
         <hr/>
 
         <p>
-            The feedback in Autolab will be given in 4 phases. If you don't complete a phase, then feedback for
-            the following phase(s) will not be provided.
+            Feedback from Autolab will be given in several phases. If you
+            don't complete a phase, then feedback for the following phase(s) will not be given. You must complete all
+            phases to earn the required
+            score of 20 LOs. For the problem set, the phases will be as follows:
         </p>
-
         <ol>
-            <li>Testing your testing utility methods
-                <ul>
-                    <li>
-                        Each of your testing utility methods will be checked with a variety of test cases to ensure that
-                        they make all the required checks. This phase will ensure that your utility methods are accurate
-                        before you start using them in your tests
-                    </li>
-                </ul>
-            </li>
-            <li>Running your tests on a correct solution
+            <li>
+                Running your tests on a correct solution
                 <ul>
                     <li>Your tests will be run against a solution that is known to be correct. If your tests do
                         not pass this correct solution, there is an error somewhere in your tests that must be
-                        fixed
-                        before you can move on with the assignment. If your tests don't get past this check, you
-                        should re-read this document and make sure you implemented your tests and code according
-                        the specification. You should also make sure that if there are multiple correct outputs
-                        to the input in your tests cases that you accept any of the outputs as correct
+                        fixed before you can move on with the assignment. If your tests don't get past this
+                        check, you should re-read this document and make sure you implemented your tests and
+                        code according the specification. You should also make sure that if there are multiple
+                        correct outputs to the input in your tests cases that you accept any of the outputs as
+                        correct.
                     </li>
                 </ul>
             </li>
-            <li>Checking your tests for feature coverage
+            <li>
+                Checking your tests for feature coverage
+                <ul>
+                    <li>The next phase is to check if your tests check for a variety of features defined by
+                        different inputs. You should write at least one test case for each feature to pass this
+                        phase.
+                    </li>
+                    <li>Passing this phase does not necessarily mean that your testing is completely thorough.
+                        Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
+                        checked and it is sometimes possible to pass this phase with weak testing. If you are
+                        struggling to earn credit for code that you believe is correct, you should write more
+                        than the required tests
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Running my tests on your solution
+                <ul>
+                    <li>Once Autolab is happy with your tests, it will run my tests against your code to check
+                        it for correctness. If your testing is thorough, and your code passes your tests, then
+                        you should pass this phase. If you pass your tests, but fail one of mine, it is an
+                        indicator that you should write more tests to help expose your bug.
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>
+            Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab
+            will
+            confirm this with a score of 20 LOs.
+        </p>
+    {% endcall %}
+
+    {% call task_card("Game Features") %}
+        <hr/>
+        <h3>Overview</h3>
+        <hr/>
+
+        <!-- Task Overview Here -->
+
+        <hr/>
+        <h3>Learning Objective</h3>
+        <hr/>
+        <h4>Testing Utility</h4>
+
+        <!-- LO Testing Utility Here -->
+
+        <hr/>
+        <h4>Testing Requirements</h4>
+        <hr/>
+
+        <!-- LO Testing Requirements Here -->
+
+        <br/>
+
+        <hr/>
+        <h4>Programming Requirements</h4>
+        <hr/>
+
+        <!-- LO Programming Requirements Here -->
+
+        <br/>
+
+        <hr/>
+        <h3>Comprehensive Understanding</h3>
+        <hr/>
+        <h4>Programming Requirements</h4>
+        <hr/>
+
+        <br/>
+
+        <hr/>
+        <h3>Autolab Feedback</h3>
+        <hr/>
+
+        <p>
+            Feedback for the Learning Objective component of the Game Features will be given in several phases. If you
+            don't complete a phase, then feedback for the following phase(s) will not be given. You must
+            complete all the following phases to earn the required score of 30 LOs to complete this task. The phases for
+            the Learning Objective are as follows:
+        </p>
+
+        <ol>
+            <li>
+                Testing your testing utility method
+                <ul>
+                    <li>
+                        Your testing utility method will be checked with a variety of test cases to ensure that
+                        it makes all the required checks. This phase will ensure that your utility method is accurate
+                        before you start using it in your tests.
+                    </li>
+                </ul>
+
+            </li>
+            <li>
+                Running your tests on a correct solution
+                <ul>
+                    <li>
+                        Your tests will be run against a solution that is known to be correct. If your tests do
+                        not pass this correct solution, there is an error somewhere in your tests that must be
+                        fixed before you can move on with the assignment. If your tests don't get past this
+                        check, you should re-read this document and make sure you implemented your tests and
+                        code according the specification. You should also make sure that if there are multiple
+                        correct outputs to the input in your tests cases that you accept any of the outputs as
+                        correct.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Checking your tests for feature coverage
                 <ul>
                     <li>
                         The next phase is to check if your tests check for a variety of features defined by
                         different inputs. You should write at least one test case for each feature to pass this
-                        phase
+                        phase.
                     </li>
                     <li>
                         Passing this phase does not necessarily mean that your testing is completely thorough.
                         Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                        checked, and it is sometimes possible to pass this phase
-                        with weak testing. If you are struggling to earn credit for code that you believe
-                        is correct, you should write more than the required tests
+                        checked and it is sometimes possible to pass this phase with weak testing. If you are
+                        struggling to earn credit for code that you believe is correct, you should write more
+                        than the required tests.
                     </li>
                 </ul>
             </li>
-            <li>Running my tests on your solution
+            <li>
+                Running my tests on your solution
                 <ul>
                     <li>
                         Once Autolab is happy with your tests, it will run my tests against your code to check
                         it for correctness. If your testing is thorough, and your code passes your tests, then
                         you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                        indicator that you should write more tests to help expose your bug
+                        indicator that you should write more tests to help expose your bug.
                     </li>
                 </ul>
             </li>
         </ol>
 
         <p>
-            Once you complete all 4 phases, you will have completed this Task and Autolab will confirm this
-            with a score of 1.0 for complete.
+            Once you have successfully passed all four phases, you will have completed the Learning Objective component
+            of the Game Features, and Autolab will confirm this with a score of 30 LOs.
         </p>
-    </div>
+
+        <p>
+            The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will
+            be run in a single phase for correctness. For each test you successfully pass, you will earn a varying
+            amount of CUs with a total maximum score of 50 CUs. There is no required testing component for the Comprehensive
+            Understanding component; however, you are expected to test your code nonetheless as the Autolab feedback
+            is unlikely to be sufficient for debugging.
+        </p>
+    {% endcall %}
 {% endblock %}
