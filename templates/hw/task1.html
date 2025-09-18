@@ -849,16 +849,37 @@ In the <code>SnakeLevel</code> class, implement the following methods:
                 instance variable, to trigger any keyboard inputs since the last update.
             </li>
             <li>
-                If the <code>tail</code> ArrayList is non-empty, you should shift the elements forward by one, such that
-                the <code>SnakeBody</code> object at the front of the ArrayList is now at the location that the
-                <code>SnakeBody</code> object previously at index 1 occupied and so on. The
-                <code>SnakeBody</code>
-                at the last index of the <code>tail</code> ArrayList should have what was previously the location of the
-                Player.
+                The main purpose of this method is to actually move the body and tail of the snake forward, and there
+                are a few ways in which this can be accomplished. First, you can move every element in the tail forward
+                by one, such that the <code>SnakeBody</code> object at the front of the ArrayList is now at the location
+                that the <code>SnakeBody</code> object at index 1 previously occupied and so on. The
+                <code>SnakeBody</code> at the last index of the <code>tail</code> ArrayList should have what was
+                previously the location of the Player.
             </li>
+            <ul>
+                <li>
+                    This process involves calling <code>setLocation</code> on <code>SnakeBody</code> objects. However,
+                    this will currently not have any effect. In order for it to take effect, you must remove a method
+                    from the <code>StaticGameObject</code> class. This method is unnecessary, and its inclusion or
+                    deletion should not affect any of your other coding tasks.
+                </li>
+                <li>
+                    Navigate to the <code>app.gameengine.model.gameobjects.StaticGameObject</code> class, and delete or
+                    comment out the <code>setLocation</code> method within that class. This will allow you to freely
+                    change the location of <code>SnakeBody</code> objects.
+                </li>
+                <li>If you do not wish to do this, you should use the next approach instead.</li>
+            </ul>
+            <li>
+                Alternatively, you may notice that every <code>SnakeBody</code> object stays in place except for the
+                last. If you choose, you can only modify the location of that final segment to the proper place directly
+                behind the player.
+            </li>
+            <li>Your code must handle the case where the tail is empty, and there is nothing to be moved.</li>
             <li>
                 Regardless of the size of the <code>tail</code> ArrayList, the Player's location should then be
-                incremented by the Player's orientation.
+                incremented by the Player's orientation. Remember that the Player can be accessed with
+                <code>this.getPlayer()</code>.
             </li>
             <li>
                 Example: If the Player's location is (4, 0), orientation is (0, 1), and <code>tail</code> contains
@@ -872,8 +893,9 @@ In the <code>SnakeLevel</code> class, implement the following methods:
             <li>
                 If you wish to accomplish this by adding or removing new instances of <code>SnakeBody</code>, ensure
                 that added objects are added to the level's <code>StaticGameObjects</code> ArrayList as well as the
-                <code>tail</code> ArrayList and removed objects are removed from the <code>tail</code> ArrayList and
-                have the <code>destroy()</code> method called on them.
+                <code>tail</code> ArrayList. Removed objects must be removed from the <code>tail</code> ArrayList and
+                have the <code>destroy()</code> method called on them. This method can (and probably should) be
+                implemented without adding or removing <code>SnakeBody</code> objects.
             </li>
         </ul>
     </li>
