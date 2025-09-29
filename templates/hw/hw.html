@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 
+{% macro task_card(title) %}
+    <div>
+        {% set card_id = title.lower().replace(" ", "-") %}
+        <a data-toggle="collapse" data-target="#{{ card_id }}">
+            <div class="card-header text-white section-header">
+                <div>
+                    {{ title }} <span class="float-right"><i class="far fa-caret-square-down"></i></span>
+                </div>
+            </div>
+        </a>
+
+        <div id="{{ card_id }}" class="collapse show">
+            <div class="section-card card-testing hw-content">
+                {{ caller() }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
 {% block content %}
-{% block task %}{% endblock %}
+    {% block task %}{% endblock %}
 
 
 {% endblock %}
