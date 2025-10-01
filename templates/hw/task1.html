@@ -439,6 +439,13 @@
                         <code>Hitbox</code> objects from the parameters.
                     </li>
                     <li>
+                        To be precise, consider that one hitbox must be moved in one of the four cardinal directions
+                        (up, down, left, or right) such that the two hitboxes are no longer overlapping. The distance
+                        returned by this method should be the smallest of those four distances. This is very similar to
+                        the logic for the <code>Wall.collideWithDynamicObject</code> method, so referring to those
+                        descriptions and images may be helpful.
+                    </li>
+                    <li>
                         While you do not need to fully understand the exact implementation of the
                         <code>Hitbox</code>, note the following:
                         <ul>
