@@ -294,7 +294,7 @@
     Autolab.
 </p>
 
-<p>For this Learning Objective portion, you will be writing code in the following classes:</p>
+<p>For this Learning Objective portion, you will be writing code in the following classes which already exist:</p>
 
 <ul>
     <li><code>PhysicsEngine</code>, located in the <code>app.gameengine.model.physics</code> package.</li>
@@ -314,6 +314,72 @@
 <p>Additionally, in the <code>app.tests</code> package, create a new class called <code>TestUtils</code>.</p>
 
 <br />
+
+<hr/>
+<h3>
+    The Game Engine
+</h3>
+<hr/>
+<p>
+    All of the information in this section, and more, is available in the README.md file in the project repo.
+</p>
+<p>
+    Throughout this semester, you will be building a game engine along with a game that will utilize this engine. All 6
+    tasks (excluding task 0) will build on this project and add more features to the engine and game. After cloning the
+    repo, you should run "StartGame". When you do, a new window should open showing a 2d pixel-art top-down view game.
+</p>
+
+<img src="/static_files/images/task1/game1.png" class="img-fluid" alt="Game image from starter code">
+
+<p>
+    As you can see, it's basically a marvel of modern graphics. You probably thought this was photograph of cosplayers
+    at a medieval festival, but it's actually in game graphics from this project.
+</p>
+
+<p>
+    When you run the game, you'll notice that you can't actually do anything. That's because major components of the
+    game engine are missing. Your job is to complete it. In this task, you will add player movement, collision
+    detection, and collision resolution to the game.
+</p>
+
+<hr/>
+<h3>
+    The Coordinate System
+</h3>
+<hr/>
+
+<p>
+    The coordinate system use for computer graphics might be different than you're used to. We'll use the standard
+    coordinate system that is typically used in video games (and anything involving rendering to a screen).
+</p>
+
+<p>
+    The origin of the system is at the top-left of the screen/window/level with positive x going right and
+    positive y going down. This image shows the same information as the one above, but with the coordinate
+    system labeling all the tiles in the game. You can see that "G" (The goal) is at location (6, 2).
+</p>
+
+<img src="/static_files/images/task1/game1-2.png" class="img-fluid" alt="Coordinate system image from level 0">
+
+<p>
+    Each object within the game has several important properties to consider, namely a location and a hitbox, which has
+    its own location and dimensions. These quantities are each represented as 2-dimensional vectors (x, y). All objects
+    and hitboxes are rectangles, and their location is the location of their upper left corner. Their dimensions are the
+    width and height of the rectangle. For example, the goal (G on the grid above) has a location of (6, 2), since
+    that's the location of its upper-left corner, and it has dimensions (1, 1) since it's exactly 1 tile in size.
+    Locations and dimensions do not have to be whole numbers.
+</p>
+
+<p>
+    Object locations and dimensions also do not necessarily have to be aligned with the visuals of that object. In the
+    image above, the green dot represents the location of that object, the blue outline represents the size of the
+    sprite image that is being rendered for that object, and the red outline represents the size of its hitbox. Having a
+    hitbox smaller than the graphical sprite allows for more precise physics and collision, but means that extra care
+    has to be taken when dealing with those properties. Pressing F4 in game shows overlays of each object's hitbox,
+    which can be helpful for debugging.
+</p>
+
+<img src="/static_files/images/task1/game1-3.png" class="img-fluid" alt="Floating point location">
 
 <hr />
 <h3>Specification</h3>
