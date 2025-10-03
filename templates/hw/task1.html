@@ -870,10 +870,10 @@ In the <code>SnakeLevel</code> class, implement the following methods:
         <code>lengthenSnake</code> (10 CUs)
         <ul>
             <li>
-                When this method is called, new <code>SnakeBody</code> objects will be added to the
-                <code>tail</code>
-                ArrayList. The number of <code>SnakeBody</code>s to be added to the list will be dependent on the value
-                of the <code>lengthIncrease</code> instance variable.
+                When this method is called, new <code>SnakeBody</code> objects will be added to the <code>tail</code>
+                ArrayList, as well as the level's <code>StaticGameObject</code> ArrayList. The number of
+                <code>SnakeBody</code>s to be added to the list will be dependent on the value of the
+                <code>lengthIncrease</code> instance variable.
             </li>
             <li>
                 For each new <code>SnakeBody</code> object, the location of this object should be decided as follows:
@@ -908,7 +908,9 @@ In the <code>SnakeLevel</code> class, implement the following methods:
             <li>
                 This method will add new <code>SnakeBody</code> objects to the level in the same manner as
                 <code>lengthenSnake</code>, but the number to be added should be based off of the value of the
-                <code>startingLength</code> instance variable instead.
+                <code>startingLength</code> instance variable instead. Note that you should add new
+                <code>SnakeBody</code> objects to both the <code>tail</code> ArrayList and to the level's list of
+                <code>StaticGameObject</code>s.
             </li>
             <li>
                 Note that the <code>startingLength</code> is based off of the total length of the snake including the
