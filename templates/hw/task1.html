@@ -1,8 +1,16 @@
-{% extends 'hw/hw.html' %} {% block title %}CSE116: Task 1{% endblock %} {% block header %}
+{% extends 'hw/hw.html' %}
+
+{% block title %}CSE116: Task 1{% endblock %}
+
+{% block header %}
 <h1>Coding Task 1</h1>
 <h5>Unit Testing and Classes</h5>
 <hr />
-{% endblock %} {% block task %} {% call task_card("Overview") %}
+{% endblock %}
+
+{% block task %}
+
+{% call task_card("Overview") %}
 <hr />
 <h3>Coding Task 1 Overview</h3>
 <hr />
@@ -12,21 +20,24 @@
 <p>As with the previous and future tasks, there are two components to this task.</p>
 <p>
     To reiterate, both the <a target="_self" href="#problem-set">Problem Set</a> and
-    <a target="_self" href="{{ g_lo }}"> Game Features - Learning Objective</a> portions of this document
+    <a target="_self" href="{{ g_lo }}">Game Features - Learning Objective</a> portions of this document
     <em><b>MUST</b></em> be completed to achieve the Learning Objective points and pass the course. The
     <a target="_self" href="{{ g_ao }}">Game Features - Comprehensive Understanding</a> is not needed for the Learning
     Objective requirement, but completing/not completing it will directly impact your grade through CU points. Each
     Problem Set will carry 20 LO points, while each Game Engine Task will carry 30 LO points and 50 CU points.
 </p>
-
 <p>
     You should complete the components below in the order they are listed; you will not be able to earn credit for the
     following component(s) until you complete the previous ones with all available points.
 </p>
-
 <p>
     Coding Task 1 assesses Unit Testing and Classes. Both the Problem Set and Game Engine Task will focus on these
     topics.
+</p>
+<p>
+    The content of the Learning Objective is primarily used in the Game Engine by the sample game. To play the sample
+    game, during and after completing this Learning Objective, navigate to the class <code>app.Configuration</code> and
+    change <strong>GAME</strong> to "sample game".
 </p>
 <p>
     As with the previous task, one of our TAs has prepared a video which covers the requirements for this task. Again,
@@ -34,7 +45,10 @@
     struggling with the game features. The video can be found at
     <a href="https://youtu.be/fIWQhjxs0Ls">https://youtu.be/fIWQhjxs0Ls</a>.
 </p>
-{% endcall %} {% call task_card("Problem Set") %}
+{% endcall %}
+
+{% call task_card("Problem Set") %}
+
 <hr />
 <h3>Overview</h3>
 <hr />
@@ -43,7 +57,6 @@
     Problem Set GitHub Repository link:
     <a href="https://github.com/CSE-116/ProblemSet-1">https://github.com/CSE-116/ProblemSet-1</a>
 </p>
-
 <ol>
     <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
     <li>
@@ -60,6 +73,7 @@
     and submit it to Autolab.
 </p>
 
+<br />
 <hr />
 <h3>Specification</h3>
 <hr />
@@ -73,7 +87,7 @@
 </p>
 <p>
     For this Problem Set, you will implement the following functionality. Note that all of the methods are
-    <i>non-static</i>.
+    <em><strong>non-static</strong></em>.
 </p>
 <ul>
     <li>
@@ -137,10 +151,12 @@
             </li>
             <ul>
                 <li>
-                    Remember that the area of a circle can be found with <code>πr<sup>2</sup></code
-                    >, where <code>r</code> is the radius of the circle.
+                    Remember that the area of a circle can be found with <code>πr<sup>2</sup></code>, where
+                    <code>r</code> is the radius of the circle.
                 </li>
-                <li>You can use <code>Math.PI</code> as the value of π. Nothing needs to be imported to do so.</li>
+                <li>
+                    You can use <code>Math.PI</code> as the value of π. Nothing needs to be imported to do so.
+                </li>
             </ul>
         </ul>
     </li>
@@ -153,19 +169,18 @@
                 <code>detectCollision</code>: create a method named <code>detectCollision</code> which takes two
                 (references to) <code>Circle</code> objects and returns a boolean. It will return true if the circles
                 are overlapping and false otherwise.
+                <ul>
+                    <li>
+                        If two circles are exactly sharing an edge (or point) but not overlapping, this should
+                        <b>not</b> be
+                        considered a collision.
+                    </li>
+                    <li>
+                        The distance between two arbitrary points can be calculated as
+                        <code>√((x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup> + (y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup>)</code>.
+                    </li>
+                </ul>
             </li>
-            <ul>
-                <li>
-                    If two circles are exactly sharing an edge (or point) but not overlapping, this should <b>not</b> be
-                    considered a collision.
-                </li>
-                <li>
-                    The distance between two arbitrary points can be calculated as
-                    <code
-                        >√((x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup> + (y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup>).</code
-                    >
-                </li>
-            </ul>
             <li>
                 <code>doubleRadius</code>: create a method named <code>doubleRadius</code> which takes an
                 <code>ArrayList</code> of <code>Circle</code>s and returns <code>void</code>. This method should iterate
@@ -176,7 +191,6 @@
 </ul>
 
 <br />
-
 <hr />
 <h3>Testing Requirements</h3>
 <hr />
@@ -186,37 +200,44 @@
     These tests should be annotated with <code>@Test</code>.
 </p>
 <ul>
-    <li><code>Location</code></li>
-    <ul>
-        <li>
-            Write tests for the constructor, getters, and setters. These tests should ensure that you can properly
-            access and modify the x and y location of a <code>Location</code> object.
-        </li>
-    </ul>
-    <li><code>Circle</code></li>
-    <ul>
-        <li>
-            Write tests for the constructor, getters, and setters. These tests should ensure that you can properly
-            access and modify the location and radius of a <code>Circle</code> object.
-        </li>
-        <li>
-            Write tests for the <code>getArea</code> method, asserting that the calculating is correcly performed on
-            circles of varying radii.
-        </li>
-    </ul>
-    <li><code>CircleEngine</code></li>
-    <ul>
-        <li>
-            You DO NOT need to test the methods in this class. Tests for these methods are provided for you in the
-            <code>TestProblemSet1</code> class. They are likely commented out, and must be uncommented for you to use
-            them. You can uncomment multiple lines by selecting the lines and pressing ctrl+/ (command+/ on mac). You
-            are encouraged to use these tests to help you write the methods they are testing.
-        </li>
-    </ul>
+    <li>
+        <code>Location</code>
+        <ul>
+            <li>
+                Write tests for the constructor, getters, and setters. These tests should ensure that you can properly
+                access and modify the x and y location of a <code>Location</code> object.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>Circle</code>
+        <ul>
+            <li>
+                Write tests for the constructor, getters, and setters. These tests should ensure that you can properly
+                access and modify the location and radius of a <code>Circle</code> object.
+            </li>
+            <li>
+                Write tests for the <code>getArea</code> method, asserting that the calculating is correcly performed on
+                circles of varying radii.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>CircleEngine</code>
+        <ul>
+            <li>
+                You DO NOT need to test the methods in this class. Tests for these methods are provided for you in the
+                <code>TestProblemSet1</code> class. They are likely commented out, and must be uncommented for you to
+                use
+                them. You can uncomment multiple lines by selecting the lines and pressing ctrl+/ (command+/ on mac).
+                You
+                are encouraged to use these tests to help you write the methods they are testing.
+            </li>
+        </ul>
+    </li>
 </ul>
 
 <br />
-
 <hr />
 <h3>Programming Requirements</h3>
 <hr />
@@ -227,7 +248,6 @@
 </p>
 
 <br />
-
 <hr />
 <h3>Autolab Feedback</h3>
 <hr />
@@ -282,7 +302,9 @@
     Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab will
     confirm this with a score of 20 LOs.
 </p>
-{% endcall %} {% call task_card("Game Features - Learning Objective") %}
+{% endcall %}
+
+{% call task_card("Game Features - Learning Objective") %}
 <hr />
 <h3>Overview</h3>
 <hr />
@@ -292,81 +314,73 @@
     of the code written for the previous task; you should not reclone or remove said code for this task or any future
     Game Features components.
 </p>
-
 <p>
     As with the previous task, there are two parts to the Game Features component: the Learning Objective and
     Comprehensive Understanding. The Learning Objective portion must be completed with a score of 30 LOs before the
     Comprehensive Understanding unlocks. Both portions of the Game Features will be submitted to the same assignment on
     Autolab.
 </p>
-
 <p>For this Learning Objective portion, you will be writing code in the following classes which already exist:</p>
-
 <ul>
-    <li><code>PhysicsEngine</code>, located in the <code>app.gameengine.model.physics</code> package.</li>
-    <li><code>Wall</code>, located in the <code>app.games.commonobjects</code> package.</li>
-    <li><code>TestTask1</code>, located in the <code>app.tests</code> package.</li>
+    <li>
+        <code>PhysicsEngine</code>, located in the <code>app.gameengine.model.physics</code> package.
+    </li>
+    <li>
+        <code>Wall</code>, located in the <code>app.games.commonobjects</code> package.
+    </li>
+    <li>
+        <code>TestTask1</code>, located in the <code>app.tests</code> package.
+    </li>
 </ul>
-
 <p>
     If you do not have the <code>TestTask1</code> class in your <code>app.tests</code> package, you should create it. We
     have provided some tests for the <code>Wall</code> class for you, which can be accessed at this link:
-    <a href="https://github.com/CSE-116/CSE116-GameEngine/blob/main/src/main/java/app/tests/TestTask1.java"
-        >TestTask1.java</a
-    >. If you already have the <code>TestTask1</code> class, you already have these tests and do not need to add them to
+    <a
+        href="https://github.com/CSE-116/CSE116-GameEngine/blob/main/src/main/java/app/tests/TestTask1.java">TestTask1.java</a>.
+    If you already have the <code>TestTask1</code> class, you already have these tests and do not need to add them to
     the file.
 </p>
-
-<p>Additionally, in the <code>app.tests</code> package, create a new class called <code>TestUtils</code>.</p>
+<p>
+    Additionally, in the <code>app.tests</code> package, create a new class called <code>TestUtils</code>.
+</p>
 
 <br />
+<hr />
+<h3>The Game Engine</h3>
+<hr />
 
-<hr/>
-<h3>
-    The Game Engine
-</h3>
-<hr/>
-<p>
-    All of the information in this section, and more, is available in the README.md file in the project repo.
-</p>
+<p>All of the information in this section, and more, is available in the README.md file in the project repo.</p>
 <p>
     Throughout this semester, you will be building a game engine along with a game that will utilize this engine. All 6
     tasks (excluding task 0) will build on this project and add more features to the engine and game. After cloning the
     repo, you should run "StartGame". When you do, a new window should open showing a 2d pixel-art top-down view game.
 </p>
-
 <img src="/static_files/images/task1/game1.png" class="img-fluid" alt="Game image from starter code">
-
 <p>
     As you can see, it's basically a marvel of modern graphics. You probably thought this was photograph of cosplayers
     at a medieval festival, but it's actually in game graphics from this project.
 </p>
-
 <p>
     When you run the game, you'll notice that you can't actually do anything. That's because major components of the
     game engine are missing. Your job is to complete it. In this task, you will add player movement, collision
     detection, and collision resolution to the game.
 </p>
 
-<hr/>
-<h3>
-    The Coordinate System
-</h3>
-<hr/>
+<br />
+<hr />
+<h3>The Coordinate System</h3>
+<hr />
 
 <p>
     The coordinate system use for computer graphics might be different than you're used to. We'll use the standard
     coordinate system that is typically used in video games (and anything involving rendering to a screen).
 </p>
-
 <p>
     The origin of the system is at the top-left of the screen/window/level with positive x going right and
     positive y going down. This image shows the same information as the one above, but with the coordinate
     system labeling all the tiles in the game. You can see that "G" (The goal) is at location (6, 2).
 </p>
-
 <img src="/static_files/images/task1/game1-2.png" class="img-fluid" alt="Coordinate system image from level 0">
-
 <p>
     Each object within the game has several important properties to consider, namely a location and a hitbox, which has
     its own location and dimensions. These quantities are each represented as 2-dimensional vectors (x, y). All objects
@@ -375,7 +389,6 @@
     that's the location of its upper-left corner, and it has dimensions (1, 1) since it's exactly 1 tile in size.
     Locations and dimensions do not have to be whole numbers.
 </p>
-
 <p>
     Object locations and dimensions also do not necessarily have to be aligned with the visuals of that object. In the
     image above, the green dot represents the location of that object, the blue outline represents the size of the
@@ -384,9 +397,9 @@
     has to be taken when dealing with those properties. Pressing F4 in game shows overlays of each object's hitbox,
     which can be helpful for debugging.
 </p>
-
 <img src="/static_files/images/task1/game1-3.png" class="img-fluid" alt="Floating point location">
 
+<br />
 <hr />
 <h3>Specification</h3>
 <hr />
@@ -398,20 +411,16 @@
     every class/method from this specification to receive feedback. You can "stub out" these methods by having them
     always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
 </p>
-
 <p>
     For the Learning Objective portion of the Game Features component for this task, you will implement the following
     functionality:
 </p>
-
 <p>
-    <em
-        >Note: It is suggested that you follow this specification in order for your implementation. However, you may
+    <em>Note: It is suggested that you follow this specification in order for your implementation. However, you may
         find it easier to complete the <code>detectCollision</code> method before the <code>getOverlap</code>
         method.
     </em>
 </p>
-
 <ul>
     <li>
         Implement the following methods in the <code>PhysicsEngine</code> class:
@@ -479,12 +488,9 @@
                         and y direction, then return the smaller of the two.
                     </li>
                     <li>
-                        <img
-                            src="/static_files/images/task1/overlapping_walls.png"
-                            class="img-fluid"
+                        <img src="/static_files/images/task1/overlapping_walls.png" class="img-fluid"
                             alt="Two Walls overlapping by 1/8 of a tile squared: 1/4 of a tile in the x-direction and 1/2 in the y-direction"
-                            width="300"
-                        />
+                            width="300" />
                         <br />
                         In this example, the Walls are overlapping by 0.25 in the x-direction and 0.5 in the
                         y-direction. Calling <code>getOverlap</code>
@@ -534,16 +540,12 @@
                         location of the <code>DynamicGameObject</code> passed in the parameter to ensure that they are
                         no longer overlapping, and zero the velocity in that direction.
                     </li>
-                    <li>
-                        This adjustment should be made based on whichever the direction has the least amount of overlap.
+                    <li>This adjustment should be made based on whichever the direction has the least amount of overlap.
                     </li>
                     <li>
-                        <img
-                            src="/static_files/images/task1/overlapping_enemy.png"
-                            class="img-fluid"
+                        <img src="/static_files/images/task1/overlapping_enemy.png" class="img-fluid"
                             alt="A Wall and Demon overlapping by 1/8 of a tile squared: 1/4 of a tile in the x-direction and 1/2 in the y-direction"
-                            width="300"
-                        />
+                            width="300" />
                         <br />
                         In this example, the Demon's position would be incremented by 0.25 in the x-direction and the y
                         position would stay the same. This would place the Demon directly next to the Wall's right side.
@@ -582,7 +584,6 @@
 </ul>
 
 <br />
-
 <hr />
 <h3>Testing Utility</h3>
 <hr />
@@ -593,14 +594,12 @@
     begin with writing a Testing Utility method relevant to the task. Writing this method is required to pass the
     Learning Objective, and it is strongly encouraged that you use this method in your testing.
 </p>
-
 <p>
     In the <code>app.tests.TestUtils</code> class, create a <em>static</em> method named
     <code>comparePlayers</code>
     that takes in (references to) two <code>Player</code>s and returns void. This method should contain JUnit asserts
     that verify the two <code>Player</code>s passed in have identical state, failing if they do not.
 </p>
-
 <p>
     Specifically, you must assert that the location and velocity vectors of both objects are equal. You should use the
     respective getters to access these instance variables. However, you will not find these getters in the
@@ -610,14 +609,12 @@
     <em>extends</em> <code>DynamicGameObject</code> and thus has access to all of these methods. This is called
     <em>inheritance</em>, and more details on inheritance will come later in this course.
 </p>
-
 <p>
     Note that this method is not a test, and thus should not have the <code>@Test</code> annotation. Rather, this is a
     static method intended to be used in your testing.
 </p>
 
 <br />
-
 <hr />
 <h3>Testing Requirements</h3>
 <hr />
@@ -626,7 +623,6 @@
     Write JUnit tests for the following methods from the specification in the <code>TestTask1</code> class. These tests
     should be annotated with <code>@Test</code>:
 </p>
-
 <ul>
     <li>
         <code>PhysicsEngine</code>
@@ -691,7 +687,6 @@
 </ul>
 
 <br />
-
 <hr />
 <h3>Programming Requirements</h3>
 <hr />
@@ -702,7 +697,6 @@
 </p>
 
 <br />
-
 <hr />
 <h3>Autolab Feedback</h3>
 <hr />
@@ -713,7 +707,6 @@
     phases to earn the required score of 30 LOs to complete this task. The phases for the Learning Objective are as
     follows:
 </p>
-
 <ol>
     <li>
         Testing your testing utility method
@@ -765,12 +758,14 @@
         </ul>
     </li>
 </ol>
-
 <p>
     Once you have successfully passed all four phases, you will have completed the Learning Objective component of the
     Game Features, and Autolab will confirm this with a score of 30 LOs.
 </p>
-{% endcall %} {% call task_card("Game Features - Comprehensive Understanding") %}
+{% endcall %}
+
+{% call task_card("Game Features - Comprehensive Understanding") %}
+<br />
 <hr />
 <h3>Overview</h3>
 <hr />
@@ -781,29 +776,29 @@
     functional. You can access the Snake game by changing the <code>GAME</code> constant in
     <code>app.Configuration</code> to <code>"Snake"</code>.
 </p>
-
 <p>
     Each of the methods you implement will have an associated CU count that you will earn upon passing our tests for
     that method. Partially implemented methods may result in some partial credit being earned, depending on the method.
 </p>
-
 <p>
     You don't need to understand all of the internal Snake code; however, you should expect to read and understand some
     of the internal Javadoc comments while completing this task. Not all background information will be provided in this
     document.
 </p>
 
+<br />
 <hr />
 <h3>Programming Requirements</h3>
 <hr />
 
 In the <code>SnakeLevel</code> class, implement the following methods:
-
 <ul>
     <li>
         <code>wallOffBoundary</code> (10 CUs)
         <ul>
-            <li>When this method is called, it will surround the level with <code>SnakeWall</code> objects.</li>
+            <li>
+                When this method is called, it will surround the level with <code>SnakeWall</code> objects.
+            </li>
             <li>These walls should each be aligned to a single, whole-numbered tile.</li>
             <li>
                 These walls should <em>surround</em> the level. The level consists of the space between (inclusive) [0,
@@ -926,8 +921,7 @@ In the <code>SnakeLevel</code> class, implement the following methods:
     <li>
         <code>update</code> (10 CUs)
         <ul>
-            <li>
-                Part of this method is provided for you, and everything you will write will be within the if statement.
+            <li>Part of this method is provided for you, and everything you will write will be within the if statement.
             </li>
             <li>
                 You should first call <code>processInput</code> with a dt of 0 on the <code>keyboardControls</code>
@@ -986,10 +980,10 @@ In the <code>SnakeLevel</code> class, implement the following methods:
     </li>
 </ul>
 
+<br />
 <hr />
 <h3>Autolab Feedback</h3>
 <hr />
-
 <p>
     The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will be run
     in a single phase for correctness. For each test you successfully pass, you will earn a varying amount of CUs with a
@@ -999,4 +993,5 @@ In the <code>SnakeLevel</code> class, implement the following methods:
     There is no required testing component for the Comprehensive Understanding; however, you are expected to test your
     code nonetheless as the Autolab feedback is unlikely to be sufficient for debugging.
 </p>
-{% endcall %} {% endblock %}
+{% endcall %}
+{% endblock %}

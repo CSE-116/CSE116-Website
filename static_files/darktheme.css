@@ -20,6 +20,13 @@ code, pre {
     font-family: "JetBrains Mono",Consolas,"Liberation Mono","Courier New",monospace;
 }
 
+.notice-me {
+    border: 2px solid #101010;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #242424;
+}
+
 
 /* The whole page */
 body.outer {

@@ -3,241 +3,1091 @@
 {% block title %}CSE116: Task 2{% endblock %}
 
 {% block header %}
-    <h1>Coding Task 2</h1>
-    <h5>Linked Lists and Inheritance</h5>
-    <hr/>
+<h1>Coding Task 2</h1>
+<h5>Linked Lists and Inheritance</h5>
+<hr />
 {% endblock %}
 
 {% block task %}
 
-    {% call task_card("Overview") %}
-        <hr/>
-        <h3>Coding Task 2 Overview</h3>
-        <hr/>
+{% call task_card("Overview") %}
+<hr />
+<h3>Coding Task 2 Overview</h3>
+<hr />
 
-        <p>
-            This task will be released at a later date.
-        </p>
-    {% endcall %}
+{% set g_lo = "#game-features---learning-objective" %} {% set g_ao = "#game-features---comprehensive-understanding" %}
 
-    {% call task_card("Problem Set") %}
-        <hr/>
-        <h3>Overview</h3>
-        <hr/>
+<p>As with the previous and future tasks, there are two components to this task.</p>
+<p>
+    To reiterate, both the <a target="_self" href="#problem-set">Problem Set</a> and
+    <a target="_self" href="{{ g_lo }}">Game Features - Learning Objective</a> portions of this document
+    <em><b>MUST</b></em> be completed to achieve the Learning Objective points and pass the course. The
+    <a target="_self" href="{{ g_ao }}">Game Features - Comprehensive Understanding</a> is not needed for the Learning
+    Objective requirement, but completing/not completing it will directly impact your grade through CU points. Each
+    Problem Set will carry 20 LO points, while each Game Engine Task will carry 30 LO points and 50 CU points.
+</p>
+<p class="notice-me">
+    Note: Although the CU content is not required, some of it may benefit you in later tasks. Specifically, writing the
+    <code>Agent.followPath</code> method will make testing your Task 4 code in-game much easier.
+</p>
+<p>
+    You should complete the components below in the order they are listed; you will not be able to earn credit for the
+    following component(s) until you complete the previous ones with all available points.
+</p>
+<p>
+    Coding Task 2 assesses Linked Lists and Inheritance. Both the Problem Set and Game Engine Task will focus on these
+    topics.
+</p>
+<!-- video link here TODO
+<p>
+    As with the previous task, one of our TAs has prepared a video which covers the requirements for this task. Again,
+    this content is optional, but we strongly recommend watching the video to get started, especially if you're
+    struggling with the game features. The video can be found at
+    <a href="https://youtu.be/fIWQhjxs0Ls">https://youtu.be/fIWQhjxs0Ls</a>.
+</p>
+-->
 
-        <p>
-            Problem Set GitHub Repository link:
-            <a>TBD</a>
-        </p>
+{% endcall %}
 
-        <ol>
-            <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
+{% call task_card("Problem Set") %}
+<hr />
+<h3>Overview</h3>
+<hr />
+
+<p>
+    Problem Set GitHub Repository link:
+    <a href="https://github.com/CSE-116/ProblemSet-2">https://github.com/CSE-116/ProblemSet-2</a>
+</p>
+<ol>
+    <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
+    <li>
+        Make sure the src folder is marked as the source root (Right-click the src folder, choose “mark
+        directory as” and choose sources root)
+    </li>
+</ol>
+<p>
+    Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
+    problem and tests.
+</p>
+<p>
+    To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
+    problem set, and submit it to Autolab.
+</p>
+
+<hr />
+<h3>Specification</h3>
+<hr />
+<p>
+    You should read through all the following sections before you begin to implement the methods from the specification.
+    Note that you will not receive feedback on the correctness of these methods until you've completed the testing
+    component of this task (see the "Autolab Feedback" section for more details). However, you must at least create
+    every class/method from this specification to receive feedback. You can "stub out" these methods by having them
+    always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
+</p>
+<p>
+    For this Problem Set, you will implement the following functionality. Note that all of the methods are
+    <em><strong>non-static</strong></em>.
+</p>
+<ul>
+    <li>
+        <code>Monster</code>: Create an <em><strong>abstract</strong></em> class in the <code>problem</code> package
+        named <code>Monster</code>. This class should implement the following methods:
+        <ul>
             <li>
-                Make sure the src folder is marked as the source root (Right-click the src folder, choose “mark
-                directory as”
-                and choose sources root)
+                Constructor: create a constructor which takes a <code>String</code> and an <code>int</code>
+                representing the name and maximum health of the monster. The current health of the monster should
+                initially be set to the maximum amount.
+                <ul>
+                    <li>
+                        Ex: if a <code>Monster</code> is created with a max health of 10, the initial health
+                        would also be 10. The max health should never change, even if the current health does.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>getName</code>: create a method named <code>getName</code> which takes no arguments and returns a
+                <code>String</code>. This method should return the name of the <code>Monster</code>.
+            </li>
+            <li>
+                <code>setName</code>: create a method named <code>setName</code> which takes a single
+                <code>String</code> and returns <code>void</code>. This method should set the name of the
+                <code>Monster</code> to the input value.
+            </li>
+            <li>
+                <code>getHP</code>: create a method named <code>getHP</code> which takes no arguments and returns an
+                <code>int</code>. This method should return the current health of the <code>Monster</code>.
+            </li>
+            <li>
+                <code>setHP</code>: create a method named <code>setHP</code> which takes a single <code>int</code> and
+                returns <code>void</code>. This method should set the current health of the <code>Monster</code> to the
+                input value.
+            </li>
+            <li>
+                <code>getMaxHP</code>: create a method named <code>getMaxHP</code> which takes no arguments and returns
+                an <code>int</code>. This method should return the maximum health of the <code>Monster</code>.
+            </li>
+            <li>
+                <code>attack</code>: create an <em>abstract</em> method named <code>attack</code> which takes a
+                reference
+                to a <code>Monster</code> object and returns <code>void</code>.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>Skeleton</code>: Create a class in the <code>problem</code> package named <code>Skeleton</code>. This
+        class should extend the <code>Monster</code> class described above. This class should implement the following
+        methods:
+        <ul>
+            <li>
+                Constructor: create a constructor which takes a <code>String</code> two <code>int</code>s
+                representing the name, maximum health, and damage of the skeleton, respectively.
+            </li>
+            <li>
+                <code>getDamage</code>: create a method named <code>getDamage</code> which takes no arguments and
+                returns an <code>int</code>. This method should return the damage value of the <code>Skeleton</code>.
+            </li>
+            <li>
+                <code>setDamage</code>: create a method named <code>setDamage</code> which takes a single
+                <code>int</code> and returns <code>void</code>. This method should set the damage value of the
+                <code>Skeleton</code> to the input value.
+            </li>
+            <li>
+                <code>reanimate</code>: create a method named <code>reanimate</code> which takes no arguments and
+                returns <code>void</code>. If the <code>Skeleton</code>'s health is less than or equal to 0, it should
+                set it to the
+                maximum health of that object. If its health is greater than 0, it should do nothing.
+            </li>
+            <li>
+                <code>attack</code>: override the abstract method of the same name from the <code>Monster</code> class.
+                It should take a reference to a <code>Monster</code> object and return <code>void</code>. This method
+                should decrease
+                the health of the <code>Monster</code> parameter by the damage of that <code>Skeleton</code>.
+                <ul>
+                    <li>
+                        For example, if a <code>Skeleton</code> was created with a damage of 5, and a
+                        <code>Monster</code> with a health of 8 was passed in, its health would be decreased to 3.
+                    </li>
+                    <li>
+                        The health of the passed in object is allowed to become negative. For example, if a
+                        <code>Skeleton</code> was created with a damage of 5, and a <code>Monster</code> with a health
+                        of 1 was passed in, its health would be decreased to -4.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>StringList</code>: Create a class in the <code>problem</code> package named <code>StringList</code>.
+        This class will contain methods for using and manipulating <code>LinkedListNode</code>s of <code>String</code>s.
+        You must use the <code>LinkedListNode</code> class provided, which can be found in
+        <code>problem.datastructures</code>. This class should implement the following methods:
+        <ul>
+            <li>
+                <code>getList</code>: create a method named <code>getList</code> which takes no arguments and returns a
+                <code>LinkedListNode</code> of <code>String</code>s. This method should return the entire linked list of
+                strings.
+            </li>
+            <li>
+                <code>setList</code>: create a method named <code>setList</code> which takes a
+                <code>LinkedListNode</code> of <code>String</code>s as an argument and returns <code>void</code>. This
+                method should
+                set the linked list of strings to the input value.
+            </li>
+            <li>
+                <code>addElement</code>: create a method named <code>addElement</code> which takes a single
+                <code>String</code> as an argument and returns <code>void</code>. This method should append the input
+                <code>String</code> to the end of the linked list.
+            </li>
+            <li>
+                <code>getMidpoint</code>: create a method named <code>getMidpoint</code> which takes no arguments and
+                returns a <code>String</code>. This method should return the value at the middle index of the linked
+                list.
+                <ul>
+                    <li>
+                        If the list has an odd number of elements, it should return the middle element. For example,
+                        calling getMidpoint with the list ["cat","dice","lemon","juicebox","elephant"] would return
+                        "lemon", since it is at the middle index.
+                    </li>
+                    <li>
+                        If the list has an even number of elements, it should return the two middle elements
+                        concatentated together, <em>separated by a space</em>. For example, calling getMidpoint with the
+                        list ["cat","dice","lemon","juicebox","elephant","apple"] would return "lemon juicebox", since
+                        indices 2 and 3 are equally close to the midpoint of the list.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>deleteElement</code>: create a method named <code>deleteElement</code> which takes a
+                <code>String</code> as an argument and returns <code>void</code>. This method should remove the first
+                occurrence of
+                the input <code>String</code> from the list.
+                <ul>
+                    <li>
+                        If the list is empty, or does not contain the input value, this method should do nothing.
+                    </li>
+                    <li>
+                        If the list contains multiple of the value being deleted, this method should only remove the
+                        first. For example, calling delete("dice") on the list ["dice","cat","dice"] would result in the
+                        list ["cat", "dice"].
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<br />
+<hr />
+<h3>Testing Requirements</h3>
+<hr />
+
+<p>
+    Write JUnit tests for the following methods from the specification in the <code>tests.TestProblemSet2</code> class.
+    These tests should be annotated with <code>@Test</code>.
+</p>
+<ul>
+    <li>
+        <code>StringList</code>
+        <ul>
+            <li>
+                Write tests for the <code>getMidpoint</code> method. Test that the proper value is returned in a variety
+                of cases.
+            </li>
+            <li>
+                You DO NOT need to test the <code>deleteElement</code> method. Tests for this method are provided for
+                you in the <code>TestProblemSet2</code> class. They are likely commented out, and must be uncommented
+                for you to use them. You can uncomment multiple lines by selecting the lines and pressing ctrl+/
+                (command+/ on mac). You are encouraged to use these tests to help you write the methods they are
+                testing.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>Monster</code> and <code>Skeleton</code>
+        <ul>
+            <li>
+                You do not need to write tests for these classes or their methods. However, if you are struggling, it
+                may be useful to write tests anyway.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<br />
+<hr />
+<h3>Programming Requirements</h3>
+<hr />
+
+<p>
+    Implement the methods from the specification. You may wish to complete the Testing Requirements before you begin
+    implementation, and it's suggested that you run these tests as you implement the methods.
+</p>
+
+<br />
+<hr />
+<h3>Autolab Feedback</h3>
+<hr />
+
+<p>
+    Feedback from Autolab will be given in several phases. If you don't complete a phase, then feedback for the
+    following phase(s) will not be given. You must complete all phases to earn the required score of 20 LOs. For the
+    problem set, the phases will be as follows:
+</p>
+<ol>
+    <li>
+        Running your tests on a correct solution
+        <ul>
+            <li>
+                Your tests will be run against a solution that is known to be correct. If your tests do not pass this
+                correct solution, there is an error somewhere in your tests that must be fixed before you can move on
+                with the assignment. If your tests don't get past this check, you should re-read this document and make
+                sure you implemented your tests and code according the specification. You should also make sure that if
+                there are multiple correct outputs to the input in your tests cases that you accept any of the outputs
+                as correct.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Checking your tests for feature coverage
+        <ul>
+            <li>
+                The next phase is to check if your tests check for a variety of features defined by different inputs.
+                You should write at least one test case for each feature to pass this phase.
+            </li>
+            <li>
+                Passing this phase does not necessarily mean that your testing is completely thorough. Satisfying
+                Autolab is the bare minimum testing requirement. Not all possible inputs are checked and it is sometimes
+                possible to pass this phase with weak testing. If you are struggling to earn credit for code that you
+                believe is correct, you should write more than the required tests
+            </li>
+        </ul>
+    </li>
+    <li>
+        Running my tests on your solution
+        <ul>
+            <li>
+                Once Autolab is happy with your tests, it will run my tests against your code to check it for
+                correctness. If your testing is thorough, and your code passes your tests, then you should pass this
+                phase. If you pass your tests, but fail one of mine, it is an indicator that you should write more tests
+                to help expose your bug.
+            </li>
+        </ul>
+    </li>
+</ol>
+<p>
+    Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab will
+    confirm this with a score of 20 LOs.
+</p>
+{% endcall %}
+
+{% call task_card("Game Features - Learning Objective") %}
+<hr />
+<h3>Overview</h3>
+<hr />
+
+<p>
+    You will continue to build functionality for the Game Engine in this component of the task. This will be done on top
+    of the code written for the previous tasks; you should not reclone or remove said code for this task or any future
+    Game Features components.
+</p>
+<p>
+    As with the previous tasks, there are two parts to the Game Features component: the Learning Objective and
+    Comprehensive Understanding. The Learning Objective portion must be completed with a score of 30 LOs before the
+    Comprehensive Understanding unlocks. Both portions of the Game Features will be submitted to the same assignment on
+    Autolab.
+</p>
+<p>
+    The content of the Learning Objective is primarily used in the Game Engine by Mario. To play Mario, during and after
+    completing this Learning Objective, navigate to the class <code>app.Configuration</code> and change the
+    <code>GAME</code> constant to <code>"mario"</code>.
+</p>
+<p>For this Learning Objective portion, you will be writing code in the following classes which already exist:</p>
+<ul>
+    <li>
+        <code>LinearGame</code>, located in the <code>app.gameengine</code> package.
+    </li>
+    <li>
+        <code>PhysicsEngineWithGravity</code>, located in the <code>app.gameengine.model.physics</code> package.
+    </li>
+    <li>
+        <code>LevelParser</code>, located in the <code>app.gameengine</code> package.
+    </li>
+    <li>
+        <code>TestUtils</code>, located in the <code>app.tests</code> package.
+    </li>
+</ul>
+<p>
+    You should create the <code>TestTask2</code> class in your <code>app.tests</code> package. We have provided some
+    tests for the <code>PhysicsEngineWithGravity</code> and <code>LevelParser</code> classes for you, which can be
+    accessed at this link: <a href="/static_files/files/TestTask2.java">TestTask2.java</a>. You can open this link in a
+    new tab to copy and paste the content into your project, or right click and select "save link as", then download the
+    file to the correct location within the project.
+</p>
+
+<br />
+<hr />
+<h3>Specification</h3>
+<hr />
+
+<p>
+    You should read through all the following sections before you begin to implement the methods from the specification.
+    Note that you will not receive feedback on the correctness of these methods until you've completed the testing
+    component of this task (see the "Autolab Feedback" section for more details). However, you must at least create
+    every class/method from this specification to receive feedback. You can "stub out" these methods by having them
+    always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
+</p>
+<p>
+    Many of the methods in this task will make use of the <code>LinkedListNode</code> class, found at
+    <code>app.gameengine.model.datastructures</code>. You are required to use this class. It is identical to the
+    <code>LinkedListNode</code> class used in the Problem Set.
+</p>
+<p>
+    For the Learning Objective portion of the Game Features component for this task, you will implement the following
+    functionality:
+</p>
+<ul>
+    <li>
+        Implement the following methods in the <code>LinearGame</code> class. This class represents a <code>Game</code>
+        with a linear sequence of levels that are typically only traveled through in order from start to finish. For
+        example, the <code>MarioGame</code> class extends the <code>LinearGame</code> class, and uses these methods.
+        <ul>
+            <li>
+                <code>getLevelList</code>
+                <ul>
+                    <li>
+                        Create a method named <code>getLevelList</code> which takes no parameters and returns a
+                        <code>LinkedListNode</code> of <code>Level</code>s. It should return the head of the game's list
+                        of levels.
+                    </li>
+                    <li>
+                        If no levels have been added, this method should return <code>null</code>.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>setLevelList</code>
+                <ul>
+                    <li>
+                        Create a method named <code>setLevelList</code> which takes a <code>LinkedListNode</code> of
+                        <code>Level</code>s as an argument and returns <code>void</code>. It should replace this game's
+                        list of
+                        levels with the input value.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>addLevel</code>
+                <ul>
+                    <li>
+                        Create a method named <code>addLevel</code> which takes a <code>Level</code> object as an
+                        argument and returns <code>void</code>. This method should append the input <code>Level</code>
+                        to the end of
+                        this game's list of levels.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>advanceLevel</code>
+                <ul>
+                    <li>
+                        Create a method named <code>advanceLevel</code> which takes no parameters and returns
+                        <code>void</code>. When
+                        this method is called, it should find the current level within the list of levels, and call
+                        <code>this.loadLevel</code> on the next level in the list.
+                    </li>
+                    <li>
+                        You should use the <code>getCurrentLevel</code> method to access the current level.
+                    </li>
+                    <li>
+                        You should use the <code>getName</code> method on each level object to determine if it is the
+                        current level (ie. if the names are equal). This method may assume that there will not be
+                        multiple levels with the same name in the list.
+                    </li>
+                    <li>
+                        If the game is already on the last level, this method should do nothing. You should never call
+                        <code>loadLevel</code> with an argument of <code>null</code>.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>removeLevelByName</code>
+                <ul>
+                    <li>
+                        Create a method named <code>removeLevelByName</code> which takes a <code>String</code> and
+                        returns <code>void</code>. It should remove the first level in the list which has the same name
+                        as the input
+                        <code>String</code>.
+                    </li>
+                    <li>
+                        If multiple <code>Level</code>s in the list exist with this name, only the first should be
+                        removed.
+                    </li>
+                    <li>
+                        You should use the <code>getName</code> method on each level object to determine if its name is
+                        the same as the input <code>String</code>.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Optional - <code>reset</code>
+                <ul>
+                    <li>
+                        This method is <strong>entirely optional</strong>. Although it improves the quality of the game
+                        somewhat, it will not be tested, and you do not need to complete it if you do not wish to.
+                        Whether you complete it or not will not affect your submission or grading, as long as your code
+                        still compiles.
+                    </li>
+                    <li>
+                        There are several actions which can be taken within the game that reset a game to its initial
+                        state, such as pressing "F2". To fully reset the game, each level in the linked list of levels
+                        must be reset, and the current level must be set to the head of the list.
+                    </li>
+                    <li>
+                        To reset a level, you can call the <code>reset</code> method on it.
+                    </li>
+                    <li>
+                        To change the current level to the head of the list, you can access the instance variable
+                        <code>this.currentLevel</code> directly, and set it to the desired value. Note that this
+                        instance variable is of type <code>Level</code>, not <code>LinkedListNode</code>.
+                    </li>
+                    <li>
+                        The head of the linked list should be the <em>last</em> to have <code>reset</code> called on it.
+                        Otherwise, the player will start at the wrong location.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        Implement the following methods in the <code>PhysicsEngineWithGravity</code> class. Notice that this class
+        extends the <code>PhysicsEngine</code> class, and as such has access to all of the public methods from that
+        class, including those that you wrote in the previous task.
+        <ul>
+            <li>
+                Constructor
+                <ul>
+                    <li>
+                        You do not need to create a new constructor, but you should modify the existing constructor
+                        which takes a single <code>double</code> as a parameter and represents the amount of gravity.
+                        You should create an instance variable to store the gravity, and assign it in the constructor.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>getGravity</code>
+                <ul>
+                    <li>
+                        Write a method named <code>getGravity</code> that takes no parameters and returns a
+                        <code>double</code>. This method should return the gravity of this physics engine. Note that
+                        this is different from the static variable "DEFAULT_GRAVITY". You should return the instance
+                        variable that was described above.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>setGravity</code>
+                <ul>
+                    <li>
+                        Write a method named <code>setGravity</code> that takes a <code>double</code> and returns
+                        <code>void</code>.
+                        This method should set the gravity instance variable to the input value.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>updateObject</code>
+                <ul>
+                    <li>
+                        Write a method named <code>updateObject</code> which takes a <code>double</code> and a
+                        <code>DynamicGameObject</code> and returns <code>void</code>. This method should override the
+                        method of the
+                        same name in the <code>PhysicsEngine</code> class.
+                    </li>
+                    <li>
+                        This method should apply gravity to the passed in object, according to the change in time passed
+                        in. You should add the change in velocity from gravity to the <code>DynamicGameObject</code>'s
+                        y-velocity (note that change in velocity is equal to acceleration from gravity times the
+                        change in time) (note also that the positive y direction is down).
+                    </li>
+                    <li>
+                        Call the super class' <code>updateObject</code> method and pass in the parameters. Be sure to
+                        call this <em>after</em> applying gravity, to make sure that velocity and position are
+                        appropriately adjusted.
+                    </li>
+                    <li>
+                        This method should only apply gravity to objects that are in the air. This is because when an
+                        object is on the ground, applying gravity would only cause it to clip into the ground, and make
+                        movement more difficult. To determine if an object is in the air or on the ground, you can use
+                        the <code>isOnGround</code> method on the <code>DynamciGameObject</code> from the parameter,
+                        which returns true if the object is on the ground, and false otherwise.
+                    </li>
+                    <li>
+                        This method should not apply gravity to the object if that object is the player. This is because
+                        the player's gravity is handled separately, within the controls, and we do not want to apply it
+                        twice. To determine if an object is the player, you can use the <code>isPlayer</code>
+                        method on the <code>DynamicGameObject</code> from the parameter, which returns true if the
+                        object is the player, and false otherwise.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                With these few modifications, and the power of inheritance, you have just created gravity. Any game that
+                uses a <code>PhysicsEngineWithGravity</code> object instead of a basic <code>PhysicsEngine</code> will
+                now have gravity applied automatically. You can play Mario, as described above, to see the effects (as
+                long as you have also made the required changes to the <code>LevelParser</code>).
+            </li>
+        </ul>
+    </li>
+    <li>
+        Implement the following updates to the <code>LevelParser</code> class. These changes will allow the game engine
+        to parse levels which contain objects for Mario.
+        <ul>
+            <li>
+                <code>readDynamicObject</code>
+                <ul>
+                    <li>
+                        The existing structure of this method uses a switch-case statement. A switch-case statement is
+                        much like an if statement, where it checks if the expression after the keyword "switch" is equal
+                        to each value after "case". The first case that is equal is entered, and the code inside is
+                        performed. You may modify this method to use a series of if-else statements if you prefer, but
+                        it will likely be easier to extend the existing switch-case structure.
+                    </li>
+                    <li>
+                        Add a case for <code>Goomba</code> objects. If the string being checked is exactly "Goomba", a
+                        new <code>Goomba</code> object should be returned. The <code>Goomba</code> constructor takes
+                        only two <code>double</code>s, which should be the variables <code>x</code> and <code>y</code>
+                        which already exist in this method.
+                    </li>
+                    <li>
+                        Add a case for <code>Koopa</code> objects. If the string being checked is exactly "Koopa", a new
+                        <code>Koopa</code> object should be returned. The <code>Koopa</code> constructor takes only two
+                        <code>double</code>s, which should be the variables <code>x</code> and <code>y</code>
+                        which already exist in this method.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>readStaticObject</code>
+                <ul>
+                    <li>
+                        As with <code>readDynamicObject</code>, this method uses a switch-case statement.
+                    </li>
+                    <li>
+                        Add a case for <code>Block</code> objects. If the string being checked is "Block", "Bricks", or
+                        "Ground", a new <code>Block</code> object should be returned. The <code>Block</code> constructor
+                        takes two <code>double</code>s and a <code>String</code>. The <code>double</code>s should be the
+                        variables <code>x</code> and <code>y</code> which already exist in this method. The
+                        <code>String</code> should be the same as the <code>String</code> being checked. For example, if
+                        the <code>String</code> is "Bricks", "Bricks" should be passed into the constructor.
+                    </li>
+                    <li>
+                        Add a case each of the following objects: <code>QuestionBlock</code>, <code>HiddenBlock</code>,
+                        <code>PipeEnd</code>, <code>PipeStem</code>. For each of these objects, the <code>String</code>
+                        should exactly match the class name (eg. "QuestionBlock" or "PipeStem"), and the only
+                        constructor parameters are two <code>double</code>s, which should be the variables
+                        <code>x</code> and <code>y</code> which already exist in this method.
+                    </li>
+                    <li>
+                        Add a case for <code>Flag</code> objects. If the string being checked is exactly "Flag", a new
+                        <code>Flag</code> object should be returned. The <code>Flag</code> constructor takes two
+                        <code>double</code>s and a <code>Game</code>, which should be the variables <code>x</code>,
+                        <code>y</code>, and <code>game</code> which already exist in this method.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>parseLevel</code>
+                <ul>
+                    <li>
+                        Modify this method to return either a <code>TopDownLevel</code> or a <code>MarioLevel</code>
+                        depending on the content of the csv file being read.
+                    </li>
+                    <li>
+                        The level type can be determined from the first field in the first line of the level file. If
+                        that field is exactly "TopDownLevel", then the level you create, modify, and return should be a
+                        <code>TopDownLevel</code> object. If that field is "MarioLevel", it should be a
+                        <code>MarioLevel</code> object instead.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Your <code>LevelParser</code> should still be capable of reading and parsing all previously assessed
+                levels. However, now it can also create levels for Mario with the appropriate objects.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<br />
+<hr />
+<h3>Testing Utility</h3>
+<hr />
+
+<p>
+    In the <code>app.tests.TestUtils</code> class, create a <em><strong>static</strong></em> method named
+    <code>compareListsOfLevels</code> that takes in (references to) two <code>LinkedListNode</code>s of
+    <code>Level</code>s and returns <code>void</code>. This method should contain JUnit asserts to verify that the two
+    linked lists
+    are of the same length and contain all the same levels. Two levels can be considered the same if they have the same
+    name. Recall that you can access the name of a <code>Level</code> object by calling the <code>getName</code> method
+    on it. If either the length or content or the lists are not the same, this method should fail a JUnit assert.
+</p>
+<p>
+    Note that this method is not a test, and thus should not have the <code>@Test</code> annotation. Rather, this is a
+    static method intended to be used in your testing. You are encouraged to use this method to simplify your test
+    cases.
+</p>
+
+<br />
+<hr />
+<h3>Testing Requirements</h3>
+<hr />
+
+<p>
+    Write JUnit tests for the following methods from the specification in the <code>TestTask2</code> class. These tests
+    should be annotated with <code>@Test</code>:
+</p>
+<ul>
+    <li>
+        <code>LinearGame</code>
+        <ul>
+            <li>To test these methods, you will have to create a LinearGame object in order to call the methods</li>
+            <li>
+                <code>addLevel</code>
+                <ul>
+                    <li>
+                        Verify that adding new levels to the game adds them to the end of the list of levels.
+                    </li>
+                    <li>
+                        You should use the testing utility to help you verify this.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>advanceLevel</code>
+                <ul>
+                    <li>
+                        Verify that this method changes the current level of the game. Recall that you can use the
+                        <code>getCurrentLevel</code> method to access the current level of the game.
+                    </li>
+                    <li>
+                        Verify that this method does not modify the entire list of levels, ie. the list returned by the
+                        <code>getLevelList</code> method.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>removeLevelByName</code>
+                <ul>
+                    <li>
+                        Verify that this method removes the level with the given name from the game's list of levels.
+                    </li>
+                    <li>
+                        Verify that this method does not remove multiple levels that share the same name.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>PhysicsEngineWithGravity</code>
+        <ul>
+            <li>
+                You DO NOT need to test the methods within this class, including <code>getGravity</code>,
+                <code>setGravity</code>, and <code>updateObject</code>. Tests are provided for you as described in the
+                Overview section above, which you may use to help you write the methods themselves.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>LevelParser</code>
+        <ul>
+            <li>
+                You DO NOT need to test the methods within this class, including <code>readDynamicObject</code>,
+                <code>readStaticObject</code>, and <code>parseLevel</code>. Tests are provided for you as described in
+                the Overview section above, which you may use to help you write the methods themselves.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<br />
+<hr />
+<h3>Programming Requirements</h3>
+<hr />
+
+<p>
+    Implement the methods from the specification. You may wish to complete the Testing Requirements before you begin
+    implementation, and it's suggested that you run these tests as you implement the methods.
+</p>
+
+<br />
+<hr />
+<h3>Autolab Feedback</h3>
+<hr />
+
+<p>
+    Feedback for the Learning Objective component of the Game Features will be given in several phases. If you don't
+    complete a phase, then feedback for the following phase(s) will not be given. You must complete all the following
+    phases to earn the required score of 30 LOs to complete this task. The phases for the Learning Objective are as
+    follows:
+</p>
+<ol>
+    <li>
+        Testing your testing utility method
+        <ul>
+            <li>
+                Your testing utility method will be checked with a variety of test cases to ensure that it makes all the
+                required checks. This phase will ensure that your utility method is accurate before you start using it
+                in your tests.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Running your tests on a correct solution
+        <ul>
+            <li>
+                Your tests will be run against a solution that is known to be correct. If your tests do not pass this
+                correct solution, there is an error somewhere in your tests that must be fixed before you can move on
+                with the assignment. If your tests don't get past this check, you should re-read this document and make
+                sure you implemented your tests and code according the specification. You should also make sure that if
+                there are multiple correct outputs to the input in your tests cases that you accept any of the outputs
+                as correct.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Checking your tests for feature coverage
+        <ul>
+            <li>
+                The next phase is to check if your tests check for a variety of features defined by different inputs.
+                You should write at least one test case for each feature to pass this phase.
+            </li>
+            <li>
+                Passing this phase does not necessarily mean that your testing is completely thorough. Satisfying
+                Autolab is the bare minimum testing requirement. Not all possible inputs are checked and it is sometimes
+                possible to pass this phase with weak testing. If you are struggling to earn credit for code that you
+                believe is correct, you should write more than the required tests.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Running my tests on your solution
+        <ul>
+            <li>
+                Once Autolab is happy with your tests, it will run my tests against your code to check it for
+                correctness. If your testing is thorough, and your code passes your tests, then you should pass this
+                phase. If you pass your tests, but fail one of mine, it is an indicator that you should write more tests
+                to help expose your bug.
+            </li>
+        </ul>
+    </li>
+</ol>
+<p>
+    Once you have successfully passed all four phases, you will have completed the Learning Objective component of the
+    Game Features, and Autolab will confirm this with a score of 30 LOs.
+</p>
+{% endcall %}
+
+{% call task_card("Game Features - Comprehensive Understanding") %}
+<hr />
+<h3>Overview</h3>
+<hr />
+
+<p>
+    For the Comprehensive Understanding portion of this task, you will be implementing functionality in the
+    <code>Agent</code> class (from the <code>app.gameengine.model.gameobjects</code> package) and the
+    <code>PathfindingUtils</code> class (that you should create in the <code>app.gameengine.utils</code> package) such
+    that enemies have somewhat functional pathfinding. This will be most obvious in the Sample Game, which you can
+    access by changing the <code>GAME</code> constant in <code>app.Configuration</code> to
+    <code>"Sample Game"</code>.
+</p>
+<p>
+    Each of the methods you implement will have an associated CU count that you will earn upon passing our tests for
+    that method. Partially implemented methods may result in some partial credit being earned, depending on the method.
+</p>
+<hr />
+<h3>Programming Requirements</h3>
+<hr />
+<ul>
+    <li>
+        <code>findPath</code> (30 CUs)
+        <ul>
+            <li>
+                Create a class in the <code>app.gameengine.utils</code> package named <code>PathfindingUtils</code>. In
+                this class, implement the following <em><strong>static</strong></em> method:
+            </li>
+            <li>
+                In the <code>PathfindingUtils</code> class, write a <strong>static</strong> method named
+                <code>findPath</code> that takes in two Vector2D objects as parameters and returns a
+                <code>LinkedListNode</code> of <code>Vector2D</code>s.
+            </li>
+            <li>
+                This method should return a shortest valid path that travels from the <strong>tile containing</strong>
+                the first <code>Vector2D</code> object to the <strong>tile containing</strong> the second
+                <code>Vector2D</code> object.
+                <ul>
+                    <li>
+                        To compute the tile containing a vector, you can take the floor of each coordinate in
+                        the vector. Recall that locations for rectangles are the location of their upper-left
+                        corner.
+                    </li>
+                    <li>The vector (3.9, 4.6) is contained on the tile at location (3.0, 4.0)</li>
+                    <li>
+                        The input <code>Vector2D</code>s themselves should not be modified. You should instead
+                        create copies of them to modify. There are several ways to do this, such as: create a
+                        new <code>Vector2D</code> using the constructor, with the desired x and y components;
+                        use the <code>Vector2D.copy</code> method, and modify the returned vector; use the
+                        <em>static</em> <code>Vector2D.floor</code> method, which returns a new vector with
+                        floored components.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                A path is valid if each <code>Vector2D</code> object after the head of the list is one tile above,
+                below, to the left, or to the right of the previous one AND if each Vector2D object in the list is
+                aligned to a tile (i.e. no decimals). Considered the following paths attempting to travel from eg. (3.9,
+                4.6) to (5.2, 5.999)
+                <ul>
+                    <li>[(3.0, 4.0), (3.0, 5.0), (4.0, 5.0), (5.0, 5.0)] is valid.</li>
+                    <li>
+                        [(3.0, 4.0), (3.0, 5.0), (5.0, 5.0)] is not valid as the third Vector2D is two tiles right of
+                        the second.
+                    </li>
+                    <li>
+                        [(3.0, 4.0), (4.0, 5.0), (5.0, 5.0)] is not valid as the second Vector2D is diagonal to the
+                        first one.
+                    </li>
+                    <li>
+                        [(3.9, 4.6), (3.1, 5.9), (4.6, 5.5), (5.2, 5.999)] is not valid as it is not aligned to a tile.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                You may find it helpful to review the overview of the coordinate system in the task 1 handout.
+            </li>
+            <li>
+                Note that there are many correct solutions for this method since there are multiple valid paths that all
+                of minimal length (unless the start and end share a coordinate). For example, traveling from (0, 0) to
+                (1, 1) both [(0.0, 0.0), (0.0, 1.0), (1.0, 1.0)] and [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0)] are correct
+                solutions. Any valid path will be accepted by our test cases.
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li>
+        <code>followPath</code> (20 CUs)
+        <ul>
+            <li>
+                In the <code>Agent</code> class, there exists a method named <code>followPath</code> that takes a
+                <code>double</code> and returns <code>void</code>. The input double represents the change in time since
+                the last
+                time this method was called. Complete this method so that the agent along its path if it has one.
+            </li>
+            <li>
+                This class already contains an instance variable representing this object's path, called
+                <code>path</code>, as well as a getter and setter for that instance variable, named <code>getPath</code>
+                and <code>setPath</code> respectively. You will need to use these to complete this method.
+            </li>
+            <li>
+                In each update call, only one of these three things can happen. If one of these conditions is met, in
+                this order, it should be done, and then nothing else should be done.
+                <ol>
+                    <li>
+                        <b>Idle</b>: If the <code>Agent</code>'s path instance variable is <code>null</code>, their
+                        velocity in the x and y directions should be set to 0, and nothing else should be done.
+                    </li>
+                    <li>
+                        <b>Advance to the next node in the path</b>: If the <code>Agent</code> is directly on the tile
+                        at the path's head, the <code>Agent</code>'s position is manually set to the location of that
+                        tile. The head of the list is then removed from the list so the agent will travel to the next
+                        node the next time this method is called.
+                        <ul>
+                            <li>
+                                An enemy is considered to be "directly on" a tile if its distance from the tile is less
+                                than its movement speed times the change in time since the last update. The movement
+                                speed can be accessed by calling <code>this.getMovementSpeed</code>, or with the
+                                <code>movementSpeed</code> instance variable, both of which already exist in this class.
+                                The change in time is the parameter <code>dt</code>.
+                            </li>
+                            <li>
+                                Use Euclidean distance for this calculation, which is calculated as the square root of
+                                the sum of the squares of differences in each dimension. It is calculated as
+                                <code>√((x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup> + (y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup>)</code>.
+                                You may use the <code>Vector2D.euclideanDistance</code> method, which calculates this
+                                for you.
+                            </li>
+                            <li>
+                                You must also set the agent's velocity in the x and y directions to 0.
+                            </li>
+                            <li>
+                                These steps are necessary to prevent enemies from getting caught at the edges of
+                                hitboxes.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>Travel along the path</b>: If neither of the 2 previous conditions apply, the
+                        <code>Agent</code>'s velocity should be set to move towards the tile at the head of the
+                        <code>Agent</code>'s path.
+                        <ul>
+                            <li>
+                                The <code>Agent</code>'s velocity must have a magnitude (speed) equal to its movement
+                                speed. The movement speed can be accessed by calling <code>this.getMovementSpeed</code>,
+                                or with the <code>movementSpeed</code> instance variable, both of which already exist in
+                                this class.
+                            </li>
+                            <li>
+                                The <code>Agent</code>'s orientation should be set in the same direction as its
+                                velocity, but always with a magnitude of 1.0.
+                            </li>
+                            <li>
+                                Since the <code>Agent</code> can only move in four directions, only one component (x or
+                                y) of a moving <code>Agent</code>'s velocity or orientation will be non-zero at any
+                                point. This means there are only 4 possible values for the <code>Agent</code>'s
+                                orientation, (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0), or (0.0, -1.0). Velocity is much the
+                                same, except that the magnitude will depend on the movement speed.
+                            </li>
+                            <li>
+                                For example, if an <code>Agent</code> is located at (2.5, 2), has a movement speed of 4,
+                                and its path is [(3, 2), (4, 2), (4, 3)], it must first target the point (3, 2). To
+                                reach that point, it must travel in the positive x direction, so its velocity would be
+                                set to (4, 0), and its orientation would be set to (1, 0).
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li>
+        These two methods comprise the Comprehensive Understanding portion of this assignment. However, you will not yet
+        be able to see these changes in-game. This is intentional, as the next two tasks add a modular behavior system
+        that can make use of this pathfinding. However, if you want to see this behavior in game early, you can do the
+        following:
+        <ol>
+            <li>
+                Write a method in the <code>Agent</code> class named <code>update</code>, which takes a
+                <code>double</code> and a <code>Level</code> object as parameters, and returns void. These paremeters
+                represent the change in time since the last update call, and the current level. This will override a
+                method from the parent class.
+            </li>
+            <li>
+                In the <code>Agent.update</code> method, call <code>super.update</code>, passing in both parameters.
+            </li>
+            <li>
+                In the <code>Agent.update</code> method, check if the path instance variable is <code>null</code>. If
+                so, call the <code>findPath</code> method, where the start is the location of the <code>Agent</code>,
+                and the end is the location of the <code>Player</code> (obtained with
+                <code>level.getPlayer().getLocation()</code>), and call <code>setPath</code> with the returned path.
+            </li>
+            <li>
+                In the <code>Agent.update</code> method, if the path is not <code>null</code>, call the
+                <code>followPath</code> method, passing in <code>dt</code> as the change in time.
+            </li>
+            <li>
+                When completing Task 3, you will have to modify the <code>Agent.update</code> method in a different way.
+                Those changes should replace these ones.
             </li>
         </ol>
-        <p>
-            Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
-            problem
-            and tests.
-        </p>
-        <p>
-            To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
-            problem
-            set, and submit it to Autolab.
-        </p>
-
-        <hr/>
-        <h3>Testing Requirements</h3>
-        <hr/>
-            <!-- PS Testing Requirements Here -->
-
-
-        <br/>
-
-        <hr/>
-        <h3>Programming Requirements</h3>
-        <hr/>
-
-            <!-- PS Programming Requirements Here -->
-
-        <br/>
-
-        <hr/>
-        <h3>Autolab Feedback</h3>
-        <hr/>
-
-        <p>
-            Feedback from Autolab will be given in several phases. If you
-            don't complete a phase, then feedback for the following phase(s) will not be given. You must complete all
-            phases to earn the required
-            score of 20 LOs. For the problem set, the phases will be as follows:
-        </p>
-        <ol>
+    </li>
+    <li>
+        We also provide another way to visualize the paths in-game, so that you can see whether your pathfinding is
+        working. If you download/copy these files correctly, enemies with paths will display them in the game-world.
+        You may find it useful to do this now, even if you have not completed the CU, as it will be helpful for Task 4
+        as well.
+        <ul>
             <li>
-                Running your tests on a correct solution
-                <ul>
-                    <li>Your tests will be run against a solution that is known to be correct. If your tests do
-                        not pass this correct solution, there is an error somewhere in your tests that must be
-                        fixed before you can move on with the assignment. If your tests don't get past this
-                        check, you should re-read this document and make sure you implemented your tests and
-                        code according the specification. You should also make sure that if there are multiple
-                        correct outputs to the input in your tests cases that you accept any of the outputs as
-                        correct.
-                    </li>
-                </ul>
+                The code can be accessed at these links: <a href="/static_files/files/Agent.java">Agent.java</a> and
+                <a href="/static_files/files/PathTile.java">PathTile.java</a>.
             </li>
             <li>
-                Checking your tests for feature coverage
-                <ul>
-                    <li>The next phase is to check if your tests check for a variety of features defined by
-                        different inputs. You should write at least one test case for each feature to pass this
-                        phase.
-                    </li>
-                    <li>Passing this phase does not necessarily mean that your testing is completely thorough.
-                        Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                        checked and it is sometimes possible to pass this phase with weak testing. If you are
-                        struggling to earn credit for code that you believe is correct, you should write more
-                        than the required tests
-                    </li>
-                </ul>
+                The <code>Agent</code> class given is a minimal example that provides only the additional
+                imports/instance variables/code that you do not already have or are required to write. We recommend that
+                you copy and paste these sections into your existing file.
             </li>
             <li>
-                Running my tests on your solution
-                <ul>
-                    <li>Once Autolab is happy with your tests, it will run my tests against your code to check
-                        it for correctness. If your testing is thorough, and your code passes your tests, then
-                        you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                        indicator that you should write more tests to help expose your bug.
-                    </li>
-                </ul>
+                The <code>PathTile</code> class given is complete. You can either copy and paste it, or right click and
+                select "save file as", and download it to the correct location. It should be placed in the package
+                <code>app.games.roguelikeobjects</code>.
             </li>
-        </ol>
-        <p>
-            Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab
-            will
-            confirm this with a score of 20 LOs.
-        </p>
-    {% endcall %}
-
-    {% call task_card("Game Features") %}
-        <hr/>
-        <h3>Overview</h3>
-        <hr/>
-
-        <!-- Task Overview Here -->
-
-        <hr/>
-        <h3>Learning Objective</h3>
-        <hr/>
-        <h4>Testing Utility</h4>
-
-        <!-- LO Testing Utility Here -->
-
-        <hr/>
-        <h4>Testing Requirements</h4>
-        <hr/>
-
-        <!-- LO Testing Requirements Here -->
-
-        <br/>
-
-        <hr/>
-        <h4>Programming Requirements</h4>
-        <hr/>
-
-        <!-- LO Programming Requirements Here -->
-
-        <br/>
-
-        <hr/>
-        <h3>Comprehensive Understanding</h3>
-        <hr/>
-        <h4>Programming Requirements</h4>
-        <hr/>
-
-        <br/>
-
-        <hr/>
-        <h3>Autolab Feedback</h3>
-        <hr/>
-
-        <p>
-            Feedback for the Learning Objective component of the Game Features will be given in several phases. If you
-            don't complete a phase, then feedback for the following phase(s) will not be given. You must
-            complete all the following phases to earn the required score of 30 LOs to complete this task. The phases for
-            the Learning Objective are as follows:
-        </p>
-
-        <ol>
-            <li>
-                Testing your testing utility method
-                <ul>
-                    <li>
-                        Your testing utility method will be checked with a variety of test cases to ensure that
-                        it makes all the required checks. This phase will ensure that your utility method is accurate
-                        before you start using it in your tests.
-                    </li>
-                </ul>
-
-            </li>
-            <li>
-                Running your tests on a correct solution
-                <ul>
-                    <li>
-                        Your tests will be run against a solution that is known to be correct. If your tests do
-                        not pass this correct solution, there is an error somewhere in your tests that must be
-                        fixed before you can move on with the assignment. If your tests don't get past this
-                        check, you should re-read this document and make sure you implemented your tests and
-                        code according the specification. You should also make sure that if there are multiple
-                        correct outputs to the input in your tests cases that you accept any of the outputs as
-                        correct.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Checking your tests for feature coverage
-                <ul>
-                    <li>
-                        The next phase is to check if your tests check for a variety of features defined by
-                        different inputs. You should write at least one test case for each feature to pass this
-                        phase.
-                    </li>
-                    <li>
-                        Passing this phase does not necessarily mean that your testing is completely thorough.
-                        Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                        checked and it is sometimes possible to pass this phase with weak testing. If you are
-                        struggling to earn credit for code that you believe is correct, you should write more
-                        than the required tests.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Running my tests on your solution
-                <ul>
-                    <li>
-                        Once Autolab is happy with your tests, it will run my tests against your code to check
-                        it for correctness. If your testing is thorough, and your code passes your tests, then
-                        you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                        indicator that you should write more tests to help expose your bug.
-                    </li>
-                </ul>
-            </li>
-        </ol>
-
-        <p>
-            Once you have successfully passed all four phases, you will have completed the Learning Objective component
-            of the Game Features, and Autolab will confirm this with a score of 30 LOs.
-        </p>
-
-        <p>
-            The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will
-            be run in a single phase for correctness. For each test you successfully pass, you will earn a varying
-            amount of CUs with a total maximum score of 50 CUs. There is no required testing component for the Comprehensive
-            Understanding component; however, you are expected to test your code nonetheless as the Autolab feedback
-            is unlikely to be sufficient for debugging.
-        </p>
-    {% endcall %}
+        </ul>
+    </li>
+</ul>
+<hr />
+<h3>Autolab Feedback</h3>
+<hr />
+<p>
+    The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will be run
+    in a single phase for correctness. For each test you successfully pass, you will earn a varying amount of CUs with a
+    total maximum score of 50 CUs.
+</p>
+<p>
+    There is no required testing component for the Comprehensive Understanding; however, you are expected to test your
+    code nonetheless as the Autolab feedback is unlikely to be sufficient for debugging.
+</p>
+{% endcall %}
 {% endblock %}
