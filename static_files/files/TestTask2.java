@@ -234,15 +234,15 @@ public class TestTask2.java {
     @Test
     public void testParseMarioLevel() {
         MarioGame game = new MarioGame();
-        Level level = LevelParser.parseLevel(game, "testing/___mario1.csv");
+        Level level = LevelParser.parseLevel(game, "testing/mario1.csv");
         assertNotNull(level);
         assertTrue(level instanceof MarioLevel);
 
-        level = LevelParser.parseLevel(game, "testing/___mario2.csv");
+        level = LevelParser.parseLevel(game, "testing/mario2.csv");
         assertNotNull(level);
         assertTrue(level instanceof MarioLevel);
 
-        level = LevelParser.parseLevel(game, "testing/___medium.csv");
+        level = LevelParser.parseLevel(game, "testing/medium.csv");
         assertNotNull(level);
         assertTrue(level instanceof TopDownLevel);
     }

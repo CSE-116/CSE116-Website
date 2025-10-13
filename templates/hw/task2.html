@@ -214,6 +214,9 @@
                         list ["cat","dice","lemon","juicebox","elephant","apple"] would return "lemon juicebox", since
                         indices 2 and 3 are equally close to the midpoint of the list.
                     </li>
+                    <li>
+                        If the list is empty, this method should return the empty <code>String</code>.
+                    </li>
                 </ul>
             </li>
             <li>
@@ -238,6 +241,24 @@
 
 <br />
 <hr />
+<h3>Testing Utility</h3>
+<hr />
+
+<p>
+    Create a class in the <code>tests</code> package named <code>TestUtils</code>. In this class, create a
+    <em><strong>static</strong></em> method named <code>compareListsOfStrings</code> that takes in two
+    <code>LinkedListNode</code>s of <code>String</code>s and returns void. This method should contain JUnit asserts to
+    verify that the two linked lists are of the same length and contain all the same <code>String</code>s. If either the
+    length or content of the lists are not the same, this method should fail a JUnit assert.
+</p>
+<p>
+    Note that this method is not a test, and thus should not have the <code>@Test</code> annotation. Rather, this is a
+    static method intended to be used in your testing. You are encouraged to use this method to simplify your test
+    cases.
+</p>
+
+<br />
+<hr />
 <h3>Testing Requirements</h3>
 <hr />
 
@@ -259,6 +280,10 @@
                 for you to use them. You can uncomment multiple lines by selecting the lines and pressing ctrl+/
                 (command+/ on mac). You are encouraged to use these tests to help you write the methods they are
                 testing.
+            </li>
+            <li>
+                These methods call the testing utility to verify correctness. The testing utility must at least exist in
+                order for these tests to compile, and must be correct in order for the tests to be useful.
             </li>
         </ul>
     </li>
@@ -382,6 +407,12 @@
     accessed at this link: <a href="/static_files/files/TestTask2.java">TestTask2.java</a>. You can open this link in a
     new tab to copy and paste the content into your project, or right click and select "save link as", then download the
     file to the correct location within the project.
+</p>
+<p>
+    One of the tests relies on testing files, which should all be placed in the directory "data/levels/testing". They
+    are: <a href="/static_files/files/mario1.csv">mario1.csv</a>, <a
+        href="/static_files/files/mario2.csv">mario2.csv</a>, and <a
+        href="/static_files/files/medium.csv">medium.csv</a>
 </p>
 
 <br />
@@ -690,7 +721,7 @@
     linked lists
     are of the same length and contain all the same levels. Two levels can be considered the same if they have the same
     name. Recall that you can access the name of a <code>Level</code> object by calling the <code>getName</code> method
-    on it. If either the length or content or the lists are not the same, this method should fail a JUnit assert.
+    on it. If either the length or content of the lists are not the same, this method should fail a JUnit assert.
 </p>
 <p>
     Note that this method is not a test, and thus should not have the <code>@Test</code> annotation. Rather, this is a

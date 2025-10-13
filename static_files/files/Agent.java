@@ -19,7 +19,7 @@ public abstract class Agent extends DynamicGameObject {
             level.getStaticObjects().removeAll(tiles);
             tiles.clear();
             LinkedListNode<Vector2D> copy = this.path;
-            for (double i = 0; copy != null; copy = copy.getNext(), i++) {
+            for (; copy != null; copy = copy.getNext()) {
                 PathTile tile = new PathTile(copy.getValue().getX(), copy.getValue().getY());
                 level.getStaticObjects().add(tile);
                 tiles.add(tile);
