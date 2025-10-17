@@ -27,7 +27,7 @@
 
         <p>
             Problem Set GitHub Repository link:
-            <a>TBD</a>
+            <a href="https://github.com/CSE-116/ProblemSet-3">https://github.com/CSE-116/ProblemSet-3</a>
         </p>
 
         <ol>
@@ -40,19 +40,108 @@
         </ol>
         <p>
             Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
-            problem
-            and tests.
+            problem and tests.
         </p>
         <p>
             To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
-            problem
-            set, and submit it to Autolab.
+            problem set, and submit it to Autolab.
         </p>
+
+        <hr/>
+        <h3>Specification</h3>
+        <hr/>
+
+        <p>
+            For this problem set, you will write the follow 3 static methods that all related to Trees (The Game
+            Features will include Polymorphism). The signatures for these methods exist in the handout repo and the
+            methods are all stubbed out.
+        </p>
+
+        <ul>
+            <li>
+                In <code>problem.ProblemSet3</code> complete the <code>maxBST</code> method that takes a BST of Integers
+                as
+                a parameter and returns an int. This method returns the maximum value of the BST according to its
+                comparator.
+                <ul>
+                    <li>
+                        Note that this method does not necessarily return the largest value in the tree since maximum is
+                        defined by the BST's Comparator. Maximum in this context can be thought of as the value that
+                        would come last in fully sorted using this Comparator
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+
+        <ul>
+            <li>
+                In <code>problem.ProblemSet3</code> complete the <code>maxBinaryTree</code> method that takes a Binary
+                Tree Node of Integers and an Integer Comparator as
+                parameters and returns an int. This method returns the maximum value of the Binary Tree, defined by the
+                parameter node as the root of the tree, according to the provided comparator.
+                <ul>
+                    <li>
+                        This method is similar to <code>maxBST</code>, except the tree no longer has the structure of a
+                        BST. You should use the compartor to perform any comparisons that are needed to find the maximum
+                        value according to that comparator
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+
+        <ul>
+            <li>
+                In <code>problem.ProblemSet3</code> complete the <code>isBST</code> method that takes a Binary
+                Tree Node of Integers and an Integer Comparator as
+                parameters and returns a boolean. This method returns true if the Binary Tree, defined by the
+                parameter node as the root of the tree, is a valid BST according to the provided comparator.
+                <ul>
+                    <li>
+                        You may assume that no values are repeated in the tree. Therefor, you can address ties in
+                        value any way you'd like the result will be the same.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
 
         <hr/>
         <h3>Testing Requirements</h3>
         <hr/>
-        <!-- PS Testing Requirements Here -->
+
+        <p>
+            Write JUnit tests for the following methods from the specification in the <code>tests.TestProblemSet3</code>
+            class. These tests should be annotated with <code>@Test</code>.
+        </p>
+        <ul>
+            <li>
+                <code>maxBST</code>
+                <ul>
+                    <li>
+                        Write tests for the <code>maxBST</code> method. Test that the proper value is returned in a
+                        variety of cases
+                    </li>
+                    <li>
+                        When testing this method, you will need to create BST objects. You can use any/all of the
+                        provided Integer Comparators to create these BSTs
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>maxBinaryTree</code> and <code>isBST</code>
+                <ul>
+                    <li>
+                        Test for these methods are provided for you. You do not need to write any additional tests for
+                        these methods
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
 
         <br/>
@@ -61,7 +150,10 @@
         <h3>Programming Requirements</h3>
         <hr/>
 
-        <!-- PS Programming Requirements Here -->
+        <p>
+            Implement the methods from the specification. You may wish to complete the Testing Requirements before you
+            begin implementation, and it's suggested that you run these tests as you implement the methods.
+        </p>
 
         <br/>
 
@@ -235,7 +327,8 @@
         <p>
             The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will
             be run in a single phase for correctness. For each test you successfully pass, you will earn a varying
-            amount of CUs with a total maximum score of 50 CUs. There is no required testing component for the Comprehensive
+            amount of CUs with a total maximum score of 50 CUs. There is no required testing component for the
+            Comprehensive
             Understanding component; however, you are expected to test your code nonetheless as the Autolab feedback
             is unlikely to be sufficient for debugging.
         </p>
