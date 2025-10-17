@@ -29,7 +29,7 @@ import app.games.mario.QuestionBlock;
 import app.games.topdownobjects.Demon;
 import app.games.topdownobjects.TopDownLevel;
 
-public class TestTask2.java {
+public class TestTask2 {
 
     public static final double EPSILON = 1e-5;
 

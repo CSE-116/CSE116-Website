@@ -85,7 +85,7 @@
     always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
 </p>
 <p>
-    For this Problem Set, you will implement the following functionality. Note that all of the methods are
+    For this Problem Set, you will implement the following functionality. Note that all of the methods are public and
     <em><strong>non-static</strong></em>.
 </p>
 <ul>
@@ -247,7 +247,7 @@
 <p>
     Create a class in the <code>tests</code> package named <code>TestUtils</code>. In this class, create a
     <em><strong>static</strong></em> method named <code>compareListsOfStrings</code> that takes in two
-    <code>LinkedListNode</code>s of <code>String</code>s and returns void. This method should contain JUnit asserts to
+    <code>LinkedListNode</code>s of <code>String</code>s and returns <code>void</code>. This method should contain JUnit asserts to
     verify that the two linked lists are of the same length and contain all the same <code>String</code>s. If either the
     length or content of the lists are not the same, this method should fail a JUnit assert.
 </p>
@@ -487,7 +487,9 @@
                         <code>this.loadLevel</code> on the next level in the list.
                     </li>
                     <li>
-                        You should use the <code>getCurrentLevel</code> method to access the current level.
+                        You should use the <code>getCurrentLevel</code> method to access the current level. If the
+                        current level is not in the level list, including when the list is empty, this method should
+                        not do anything.
                     </li>
                     <li>
                         You should use the <code>getName</code> method on each level object to determine if it is the
@@ -597,7 +599,7 @@
                     <li>
                         This method should apply gravity to the passed in object, according to the change in time passed
                         in. You should add the change in velocity from gravity to the <code>DynamicGameObject</code>'s
-                        y-velocity (note that change in velocity is equal to acceleration from gravity times the
+                        y-velocity (note that change in velocity is equal to [acceleration from] gravity times the
                         change in time) (note also that the positive y direction is down).
                     </li>
                     <li>
@@ -760,6 +762,10 @@
                     <li>
                         Verify that this method changes the current level of the game. Recall that you can use the
                         <code>getCurrentLevel</code> method to access the current level of the game.
+                    </li>
+                    <li>
+                        Before calling <code>advanceLevel</code>, you should call <code>loadLevel</code> on the game
+                        to make sure there is a level loaded.
                     </li>
                     <li>
                         Verify that this method does not modify the entire list of levels, ie. the list returned by the
