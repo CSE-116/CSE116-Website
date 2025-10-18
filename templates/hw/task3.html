@@ -52,22 +52,24 @@
         <hr/>
 
         <p>
-            For this problem set, you will write the follow 3 static methods that all related to Trees (The Game
-            Features will include Polymorphism). The signatures for these methods exist in the handout repo and the
+            For this problem set, you will write the follow 3 static methods that are all related to binary trees (the
+            Game Features will include Polymorphism). The signatures for these methods exist in the handout repo and the
             methods are all stubbed out.
         </p>
 
         <ul>
             <li>
-                In <code>problem.ProblemSet3</code> complete the <code>maxBST</code> method that takes a BST of Integers
-                as
-                a parameter and returns an int. This method returns the maximum value of the BST according to its
-                comparator.
+                In the <code>problem.ProblemSet3</code> class, complete the <code>maxBST</code> method, which takes a
+                <code>BST</code> of <code>Integer</code>s as a parameter and returns an <code>int</code>. This method
+                returns the maximum value of the BST according to its <code>Comparator</code>.
                 <ul>
                     <li>
                         Note that this method does not necessarily return the largest value in the tree since maximum is
-                        defined by the BST's Comparator. Maximum in this context can be thought of as the value that
-                        would come last in fully sorted using this Comparator
+                        defined by the BST's <code>Comparator</code>. Maximum in this context can be thought of as the
+                        value that would come last if the values were fully sorted using this <code>Comparator</code>.
+                    </li>
+                    <li>
+                        If the <code>BST</code> is empty (ie. the root is null) this method should return 0.
                     </li>
                 </ul>
             </li>
@@ -77,15 +79,19 @@
 
         <ul>
             <li>
-                In <code>problem.ProblemSet3</code> complete the <code>maxBinaryTree</code> method that takes a Binary
-                Tree Node of Integers and an Integer Comparator as
-                parameters and returns an int. This method returns the maximum value of the Binary Tree, defined by the
-                parameter node as the root of the tree, according to the provided comparator.
+                In the <code>problem.ProblemSet3</code> class, complete the <code>maxBinaryTree</code> method, which
+                takes a <code>BinaryTreeNode</code> of <code>Integer</code>s and an <code>Integer</code>
+                <code>Comparator</code> as parameters and returns an <code>int</code>. This method returns the maximum
+                value of the binary tree, defined by the parameter node as the root of the tree, according to the
+                provided comparator.
                 <ul>
                     <li>
                         This method is similar to <code>maxBST</code>, except the tree no longer has the structure of a
                         BST. You should use the compartor to perform any comparisons that are needed to find the maximum
-                        value according to that comparator
+                        value according to that comparator.
+                    </li>
+                    <li>
+                        If the binary tree is empty (ie. the root is null) this method should return 0.
                     </li>
                 </ul>
             </li>
@@ -95,14 +101,18 @@
 
         <ul>
             <li>
-                In <code>problem.ProblemSet3</code> complete the <code>isBST</code> method that takes a Binary
-                Tree Node of Integers and an Integer Comparator as
-                parameters and returns a boolean. This method returns true if the Binary Tree, defined by the
-                parameter node as the root of the tree, is a valid BST according to the provided comparator.
+                In the <code>problem.ProblemSet3</code> class, complete the <code>isBST</code> method that takes a
+                <code>BinaryTreeNode</code> of <code>Integer</code>s and an <code>Integer</code> <code>Comparator</code>
+                as parameters and returns a <code>boolean</code>. This method returns true if the binary tree, defined
+                by the parameter node as the root of the tree, is a valid BST according to the provided comparator, and
+                false otherwise.
                 <ul>
                     <li>
-                        You may assume that no values are repeated in the tree. Therefor, you can address ties in
-                        value any way you'd like the result will be the same.
+                        You may assume that no values are repeated in the tree. Therefore, you can address ties in
+                        value any way you'd like, and the result will be the same.
+                    </li>
+                    <li>
+                        An empty tree is considered a valid BST.
                     </li>
                 </ul>
             </li>
@@ -124,11 +134,11 @@
                 <ul>
                     <li>
                         Write tests for the <code>maxBST</code> method. Test that the proper value is returned in a
-                        variety of cases
+                        variety of cases.
                     </li>
                     <li>
                         When testing this method, you will need to create BST objects. You can use any/all of the
-                        provided Integer Comparators to create these BSTs
+                        provided <code>Integer</code> <code>Comparators</code> to create these BSTs.
                     </li>
                 </ul>
             </li>
