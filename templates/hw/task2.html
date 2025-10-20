@@ -247,7 +247,8 @@
 <p>
     Create a class in the <code>tests</code> package named <code>TestUtils</code>. In this class, create a
     <em><strong>static</strong></em> method named <code>compareListsOfStrings</code> that takes in two
-    <code>LinkedListNode</code>s of <code>String</code>s and returns <code>void</code>. This method should contain JUnit asserts to
+    <code>LinkedListNode</code>s of <code>String</code>s and returns <code>void</code>. This method should contain JUnit
+    asserts to
     verify that the two linked lists are of the same length and contain all the same <code>String</code>s. If either the
     length or content of the lists are not the same, this method should fail a JUnit assert.
 </p>
@@ -739,6 +740,12 @@
 <p>
     Write JUnit tests for the following methods from the specification in the <code>TestTask2</code> class. These tests
     should be annotated with <code>@Test</code>:
+</p>
+<p>
+    Many of these methods require you to make <code>Level</code> objects to test. However, the <code>Level</code> class
+    is abstract, so you cannot directly instantiate <code>Level</code>s. You should instead create
+    <code>TopDownLevel</code>s. You will still be able to pass these objects in to methods which take a
+    <code>Level</code> as an argument due to polymorphism, which will be taught in greater detail later.
 </p>
 <ul>
     <li>
