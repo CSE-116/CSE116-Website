@@ -268,52 +268,46 @@
     after completing this Learning Objective, navigate to the class <code>app.Configuration</code> and change the
     <code>GAME</code> constant to <code>"pacman"</code>.
 </p>
+<p>
+    It may look like there are a lot of classes to create and a lot of code to write for this task, but don't let this
+    intimiate you. While that is true, most of the individual pieces are not overly complex, and have a lot of
+    similarity between them. The amount of unique code you must write, and problems you must solve, is roughly in line
+    with earlier tasks.
+</p>
 <p class="notice-me">
-    You will need to use various utility methods found in the <code>app.gameengine.utils.PacmanUtils</code> class.
-    However, one of these methods is missing from the handout. You can find it <a
+    You will need to use various utility methods found in the <code>app.gameengine.utils.PacmanUtils</code> class for
+    this task. However, one of these methods is missing from the handout. You can find it <a
         href="/static_files/files/task3/PacmanUtils.java">here</a>, and should copy that method into your own class.
 </p>
 <p>For this Learning Objective portion, you will be writing code in the following classes which already exist:</p>
 <ul>
-    <li>
-        <code>Agent</code>, located in the <code>app.gameengine.model.gameobjects</code> package.
-    </li>
-    <li>
-        <code>Ghost</code>, located in the <code>app.games.pacman</code> package.
-    </li>
-    <li>
-        <code>Collectible</code>, located in the <code>app.gameengine.model.gameobjects</code> package.
-    </li>
+    <li><code>Agent</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
+    <li><code>Ghost</code>, located in the <code>app.games.pacman</code> package.</li>
+    <li><code>Collectible</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
     <li>
         <code>MagicPickup</code>, <code>AxePickup</code>, and <code>PotionPickup</code>, located in the
         <code>app.games.commonobjects</code> package.
     </li>
-    <li>
-        <code>Player</code>, located in the <code>app.gameengine.model.gameobjects</code> package.
-    </li>
-    <li>
-        <code>TestUtils</code>, located in the <code>app.tests</code> package.
-    </li>
+    <li><code>Player</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
 </ul>
 <p>
     You should create the <code>TestTask3</code> class in your <code>app.tests</code> package. We have provided some
-    tests for the ...
-    <!-- TODO -->
-</p>
-<p>You will also have to create many additional classes, which will be specified in the following instructions.</p>
-<!-- <p>
-    You should create the <code>TestTask2</code> class in your <code>app.tests</code> package. We have provided some
-    tests for the <code>PhysicsEngineWithGravity</code> and <code>LevelParser</code> classes for you, which can be
-    accessed at this link: <a href="/static_files/files/TestTask2.java">TestTask2.java</a>. You can open this link in a
-    new tab to copy and paste the content into your project, or right click and select "save link as", then download the
-    file to the correct location within the project.
+    tests for the various <code>Decision</code> and <code>Collectible</code> subclasses, as well as the
+    <code>LevelParser</code> updates. They can be accessed at this link: <a
+        href="/static_files/files/task3/TestTask3.java">TestTask3.java</a>. You can open this link in a new tab to copy
+    and paste the content into your project, or right click and select "save link as", then download the file to the
+    correct location within the project.
 </p>
 <p>
-    One of the tests relies on testing files, which should all be placed in the directory "data/levels/testing". They
-    are: <a href="/static_files/files/mario1.csv">mario1.csv</a>, <a
-        href="/static_files/files/mario2.csv">mario2.csv</a>, and <a
-        href="/static_files/files/medium.csv">medium.csv</a>
-</p> -->
+    These tests are not overly thorough, but should validate some of the basic behavior of the features that they test,
+    and let you know if you are on the right track.
+</p>
+<p>You will also have to create many additional classes, which will be specified in the following instructions.</p>
+<p class="notice-me">
+    Many of the features of this task, primarily dealing with the player's inventory and collectibles, heavily rely on
+    each other, so one feature being implemented incorrectly may cause tests for other features to fail. Feedback in
+    Autolab will usually note when this applies, but keep this in mind when looking over your feedback.
+</p>
 
 <br />
 <hr />
@@ -344,7 +338,7 @@
         depending on the state of the game at any given time.
     </p>
     <p>
-        We will be using a decision tree to determine behavior, which will be represented as a binary tree of
+        You will be using a decision tree to determine behavior, which will be represented as a binary tree of
         <code>Decision</code> objects. These decisions will determine either which action to take, depending on the game
         state, or perform an action, like movement.
     </p>
@@ -374,14 +368,14 @@
                 <ul>
                     <li>
                         As this method is abstract, it has no implementation. In child classes, this method will use
-                        various states of the game or level to determine which action to take.
+                        various states of the game, level, or agent to determine which action to take.
                     </li>
                 </ul>
             </li>
             <li>
-                Create an <em><strong>abstract</strong></em> method named <code>doAction</code> which returns void and
-                takes in a <code>double</code> and a <code>Level</code>, representing the time since the last call and
-                the current level, respectively.
+                Create an <em><strong>abstract</strong></em> method named <code>doAction</code> which returns
+                <code>void</code> and takes in a <code>double</code> and a <code>Level</code>, representing the time
+                since the last call and the current level, respectively.
                 <ul>
                     <li>
                         As this method is abstract, it has no implementation. In child classes, this method will take
@@ -438,7 +432,7 @@
                 </ul>
             </li>
             <li>
-                Create a second, overloaded <code>traverse</code> method that returns void and takes a
+                Create a second, overloaded <code>traverse</code> method that returns <code>void</code> and takes a
                 <code>double</code> and a <code>Level</code>, which represent the amount of time passed since the last
                 update and the current level, respectively.
                 <ul>
@@ -461,11 +455,16 @@
 
 <ul>
     <p>
-        Now we will create subclasses of the <code>Decision</code> class which implement behavior for the ghosts in
+        Now you will create subclasses of the <code>Decision</code> class which implement behavior for the ghosts in
         Pacman. You should look at the <code>app.gameengine.utils.PacmanUtils</code> class, as you will need to use
         these methods within your <code>Decision</code> subclasses. You do not need to understand all of this code, and
         the specific methods to use will be mentioned each time. If you did not already, download the missing method
         <code>canAct</code> from <a href="/static_files/files/task3/PacmanUtils.java">here</a> and add it to this class.
+    </p>
+    <p>
+        Though you do not need to understand the implementation of these methods, you should understand what they do.
+        They each include a Javadoc comment that explains the purpose of the method, the parameters, and the return
+        value. In IntelliJ, you can hover over the name of a method to read the Javadocs.
     </p>
     <p>
         All of these classes will exist in the <code>app.gameengine.model.ai.pacman</code> package, which you should
@@ -475,7 +474,7 @@
         Remember that the <code>Decision</code> class has two main functionalities, the <code>decide</code> and
         <code>doAction</code> methods. For some subclasses, only one of these will be implemented, and such classes will
         only make sense in certain parts of the tree. For example, a subclass which stubs out the <code>decide</code>
-        method and truly implements the <code>doAction</code> method would only make sense as a leaf node.
+        method and actually implements the <code>doAction</code> method would only make sense as a leaf node.
     </p>
     <p>
         Other decisions and actions are so closely related that it makes sense to include them within the same class.
@@ -485,7 +484,8 @@
     <li>
         <code>IsActive</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
         <code>IsActive</code> which extends <code>Decision</code>. This class will represent a decision on whether a
-        ghost is in an active state, such as chasing the player or retreating to one corner of the level.
+        ghost is in an active state, which is either chasing the player or retreating to one corner of the level
+        (scattering).
         <ul>
             <li>
                 Create a constructor which takes in a <code>Ghost</code> and a <code>String</code>, which are passed to
@@ -519,20 +519,19 @@
         <ul>
             <li>
                 Create a constructor which takes in a <code>Ghost</code> and a <code>String</code>, which are passed to
-                the super constructor as the <code>Agent</code> and name. This is possible due to polymorphism, since
-                <code>Ghost</code> is a subclass of <code>Agent</code>. You should also store the ghost as an instance
+                the super constructor as the <code>Agent</code> and name. You should also store the ghost as an instance
                 variable.
             </li>
             <li>
                 Override the <code>decide</code> method to always return <code>false</code>.
             </li>
             <li>
-                Override the <code>doAction</code> method. If the magnitude of the ghost's velocity is greater than 0,
-                this method should do nothing. Otherwise, you should negate both the x and y components of the ghost's
+                Override the <code>doAction</code> method to do the following: If the magnitude of the ghost's velocity
+                is greater than 0, this method should do nothing. Otherwise, you should negate both the x and y
+                components of the ghost's
                 orientation. Afterwards, you should call the <code>followPath</code> method on the <code>Ghost</code>
                 object, passing in the <code>double</code> from the parameter.
                 <ul>
-                    Notes:
                     <li>
                         You can calculate the magnitude of a vector as the square root of the sum of the squares of the
                         x and y components. It is equivalent to the euclidean distance between the vector and (0, 0).
@@ -554,7 +553,576 @@
             </li>
         </ul>
     </li>
-    TODO: uhhh the rest here
+    <li>
+        <code>Chase</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
+        <code>Chase</code> which extends <code>Decision</code>. This class will represent both a decision of whether a
+        ghost is actively chasing the player, as well as the action of chasing.
+        <ul>
+            <li>
+                Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
+                <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
+                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost, which will be used by several of the utility methods provided. The initial value
+                of this vector should be null.
+            </li>
+            <li>
+                Override the <code>decide</code> method to return whether the ghost is in the chasing state.
+                <ul>
+                    <li>
+                        You can call the <code>getState</code> method on a <code>Ghost</code> to access its state. This
+                        method returns a <code>String</code> representing which of several states the ghost is in.
+                    </li>
+                    <li>
+                        If the state is exactly <code>"Chase"</code>, then the ghost is chasing the player, and this
+                        method should return <code>true</code>.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Override the <code>doAction</code> method. This method should use the methods in the
+                <code>PacmanUtils</code> class to do the following sequence of actions. Only take these actions if the
+                <code>PacmanUtils.canAct</code> method returns <code>true</code>, passing in the <code>Ghost</code> and
+                <code>Vector2D</code> instance variables and the <code>double</code> parameter.
+                <ol>
+                    <li>
+                        Find the tile that the ghost is targeting by calling the <code>PacmanUtils.getChaseTarget</code>
+                        method. Note that you must pass in a <code>PacmanLevel</code>, so you cannot use the
+                        <code>Level</code> parameter. Instead you should call <code>getCurrentLevel</code> on the
+                        <code>PacmanGame</code> instance variable.
+                    </li>
+                    <li>
+                        Get the valid directions of movement for the ghost by calling the
+                        <code>PacmanUtils.getValidDirs</code> method, again with the game's current level and the ghost.
+                    </li>
+                    <li>
+                        Find the actual direction of movement by calling the <code>PacmanUtils.getBestDirection</code>
+                        method, passing in the valid directions, the location of the ghost, and the target
+                        <code>Vector2D</code>.
+                    </li>
+                    <li>
+                        The <code>Vector2D</code> returned by <code>getBestDirection</code> may be null. If so, skip
+                        this step. If it is not null, set the orientation of the ghost to the x and y components of that
+                        <code>Vector2D</code>. Again, you should use the <code>setOrientation</code> method to do so.
+                    </li>
+                    <li>
+                        Set your <code>Vector2D</code> instance variable equal to the rounded value of the ghost's
+                        location. You may call <code>Math.round</code> on the individual components, or use the
+                        <code>Vector2D.round</code> method.
+                    </li>
+                </ol>
+                Finally, call the <code>followPath</code> method on the ghost object, passing in the <code>double</code>
+                parameter. You should do this even if the <code>canAct</code> method returns <code>false</code>.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>Scatter</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
+        <code>Scatter</code> which extends <code>Decision</code>. This class will represent the action of scattering,
+        which is when the ghosts retreat to the corners of the level to give the player some breathing room.
+        <ul>
+            <li>
+                Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
+                <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
+                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost, which will be used by several of the utility methods provided. The initial value
+                of this vector should be null.
+            </li>
+            <li>
+                Override the <code>decide</code> method to always return <code>false</code>.
+            </li>
+            <li>
+                Override the <code>doAction</code> method. The behavior of this method should be identical to that of
+                the <code>Chase</code> class, except using the <code>PacmanUtils.getScatterTarget</code> method instead
+                of the <code>PacmanUtils.getChaseTarget</code> method.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>Dead</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
+        <code>Dead</code> which extends <code>Decision</code>. This class will represent the decision of whether a ghost
+        has been eaten and should return to the spawn area, as well as the action of returning home.
+        <ul>
+            <li>
+                Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
+                <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
+                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost, which will be used by several of the utility methods provided. The initial value
+                of this vector should be null.
+            </li>
+            <li>
+                Override the <code>decide</code> method to return whether the ghost is in the dead state.
+                <ul>
+                    <li>
+                        You can call the <code>getState</code> method on a <code>Ghost</code> to access its state. This
+                        method returns a <code>String</code> representing which of several states the ghost is in.
+                    </li>
+                    <li>
+                        If the state is exactly <code>"Dead"</code>, then the ghost is dead, and this method should
+                        return <code>true</code>.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Override the <code>doAction</code> method. The behavior of this method should be identical to that of
+                the <code>Chase</code> class, except using the <code>PacmanUtils.getHomeTarget</code> method instead
+                of the <code>PacmanUtils.getChaseTarget</code> method. Note that this method only takes one argument,
+                and does not need the ghost itself to be passed in.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>Flee</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
+        <code>Flee</code> which extends <code>Decision</code>. This class will represent the decision of whether a ghost
+        has is fleeing from the player, which happens when a power pellet has been eaten, as well as the action of
+        running from the player, which involves moving in a random direction at each intersection.
+        <ul>
+            <li>
+                Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
+                <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
+                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost, which will be used by several of the utility methods provided. The initial value
+                of this vector should be null.
+            </li>
+            <li>
+                Override the <code>decide</code> method to return whether the ghost is in the frightened state.
+                <ul>
+                    <li>
+                        You can call the <code>getState</code> method on a <code>Ghost</code> to access its state. This
+                        method returns a <code>String</code> representing which of several states the ghost is in.
+                    </li>
+                    <li>
+                        If the state is exactly <code>"Frightened"</code>, then the ghost is fleeing, and this method
+                        should return <code>true</code>.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Override the <code>doAction</code> method. The behavior of this method is similar to but not exactly
+                the same as that of the <code>Chase</code> class. Take the following actions if the
+                <code>PacmanUtils.canAct</code> method returns <code>true</code>, passing in the <code>Ghost</code> and
+                <code>Vector2D</code> instance variables and the <code>double</code> parameter.
+                <ol>
+                    <li>
+                        Get the valid directions of movement for the ghost by calling the
+                        <code>PacmanUtils.getValidDirs</code> method, again with the game's current level and the ghost.
+                    </li>
+                    <li>
+                        Find the actual direction of movement by calling the <code>PacmanUtils.getRandomDirection</code>
+                        method, passing in the valid directions.
+                    </li>
+                    <li>
+                        The <code>Vector2D</code> returned by <code>getBestDirection</code> may be null. If so, skip
+                        this step. If it is not null, set the orientation of the ghost to the x and y components of that
+                        <code>Vector2D</code>. Again, you should use the <code>setOrientation</code> method to do so.
+                    </li>
+                    <li>
+                        Set your <code>Vector2D</code> instance variable equal to the rounded value of the ghost's
+                        location. You may call <code>Math.round</code> on the individual components, or use the
+                        <code>Vector2D.round</code> method.
+                    </li>
+                </ol>
+                Finally, call the <code>followPath</code> method on the ghost object, passing in the <code>double</code>
+                parameter. You should do this even if the <code>canAct</code> method returns <code>false</code>.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<br />
+
+<ul>
+    Now that you have created the decision tree and the many decisions it will use, you can implement it into Pacman.
+    There are a couple of classes you need to modify and add to in order to achieve this.
+    <li>
+        <code>Agent</code>: Navigate the to <code>app.gameengine.model.gameobjects.Agent</code> class. Each
+        <code>Agent</code> will possess a <code>DecisionTree</code> to determine and follow their behavior.
+        <ul>
+            <li>
+                Create an instance variable of type <code>DecisionTree</code> within this class. It will initially be
+                null.
+            </li>
+            <li>
+                Create a getter and setter for this <code>DecisionTree</code>, named <code>getDecisionTree</code> and
+                <code>setDecisionTree</code> respectively.
+            </li>
+            <li>
+                Override the <code>update</code> method from the super class, which takes a <code>double</code> and a
+                <code>Level</code> as parameters and returns <code>void</code>.
+                <ul>
+                    <li>
+                        This method should first call the super update method, passing in the parameters as arguments.
+                    </li>
+                    <li>
+                        If the <code>DecisionTree</code> instance variable is not <code>null</code>, call traverse on
+                        it. You should call the version of the method which does <em>not</em> take in a
+                        <code>BinaryTreeNode</code>. If the <code>DecisionTree</code> is null, you do not need to do
+                        anything.
+                    </li>
+                    <li>
+                        If you added the code from the Task 2 CU for showing <code>Agent</code> paths, you may keep that
+                        here. You can place it before or after the new code.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>Ghost</code>: Navigate to the <code>app.games.pacman.Ghost</code> class. You will modify the constructor
+        to give ghosts a decision tree matching classic pacman behavior. You can add this anywhere in the constructor.
+        <ul>
+            <li>
+                Recall that <code>Ghost</code> extends <code>Enemy</code>, which extends <code>Agent</code>, so
+                <code>Ghost</code> has access to all of the methods in the <code>Agent</code> class.
+            </li>
+            <li>
+                The structure of this decision tree is as follows. The root is an <code>IsActive</code> node.
+                <ul>
+                    <li>
+                        If the ghost is active (to the right), there is a <code>Chase</code> node, acting as a decision;
+                        if the ghost is in the chase state (to the right), there is another <code>Chase</code> node,
+                        this time acting as an action; if the ghost is not in the chase state (to the left), there is a
+                        <code>Scatter</code> node.
+                    </li>
+                    <li>
+                        If the ghost is not active (to the left), there is a <code>Dead</code> node, acting as a
+                        decision; if the ghost is dead, there is another <code>Dead</code> node, this time acting as an
+                        action; if the ghost is not dead, there is a <code>Flee</code> node, acting as a decision; from
+                        here, if the ghost is fleeing, there is another <code>Flee</code> node, this time acting as an
+                        action; if the ghost is not fleeing, there is an <code>Idle</code> node.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Refer to this image for a visual of the correct <code>DecisionTree</code> structure: <br />
+                <img src="/static_files/images/task3/decisionTree.png" , class="img-fluid" ,
+                    alt="visual depiction of the pacman ghost decision tree" width="600" />
+            </li>
+        </ul>
+    </li>
+    <br />
+    You should now be able to play pacman and see the ghosts react dynamically to your actions. Every so often, on a
+    timer, all of the ghosts will retreat (scatter) to the corners. If you eat a power pellet (the big ones), they will
+    turn blue and start moving randomly. If you eat them they will return home, respawn, and begin chasing you again.
+    <br />
+    You may notice ghosts occasionally getting stuck on level geometry when moving around corners. That is an
+    unfortunate amount of jankiness within the game engine at the moment, and does not signify any issues with your
+    implementation.
+</ul>
+
+<br />
+
+<ul>
+    The last features you will add for the Learning Objective are for an inventory system for the player. This is not
+    used in Pacman, so you should test this feature within the sample game. To play the sample game navigate to the
+    class <code>app.Configuration</code> and change the <code>GAME</code> constant to <code>"sample game"</code>.
+    <br />
+    Some of the methods in the <code>Player</code> class that are referenced here do not exist yet. You may want to
+    implement those methods first, or along with these classes and methods.
+    <li>
+        <code>Collectible</code>: Navigate to the <code>app.gameengine.model.gameobjects.Collectible</code> class, which
+        is an abstract class representing an object that can be picked up and used by the player. Currently this class
+        contains very little, but you will add extra functionality by adding methods and extending this class.
+        <ul>
+            <li>
+                The constructor takes four parameters, two of which are passed to the super constructor. Store the
+                remaining parameters in instance variables.
+            </li>
+            <li>
+                Create a method named <code>getItemID</code> (note the capital "ID"), which is a getter for the itemID
+                instance variable. It should take no parameters and return a <code>String</code>.
+            </li>
+            <li>
+                Create an <em><strong>abstract</strong></em> method named <code>use</code>, which takes a
+                <code>Level</code> as a parameter and returns <code>void</code>. This represents what occurs when the
+                <code>Collectible</code> is used in game by the player.
+            </li>
+            <li>
+                Override the <code>collideWithDynamicObject</code> method, which takes one
+                <code>DynamicGameObject</code> parameter and returns <code>void</code>. If the dynamic object is the
+                player, add this object to the player's inventory, and destroy this object.
+                <ul>
+                    <li>
+                        Remember that you can tell if any kind of <code>GameObject</code> is a <code>Player</code>
+                        object by calling the <code>isPlayer</code> method on it.
+                    </li>
+                    <li>
+                        You should add the object to the player's inventory with the <code>addInventoryItem</code>
+                        method. This method likely does not exist yet. Read ahead to see the specification for that
+                        method.
+                    </li>
+                    <li>
+                        Since this method exists in the <code>Player</code> class instead of the
+                        <code>DynamicGameObject</code> class, you cannot call it on the parameter. Instead, call
+                        <code>getPlayer</code> on the game that you stored as an instance variable.
+                    </li>
+                    <li>
+                        You should destroy the object by calling the <code>destroy</code> method on it. This will remove
+                        it from the level, so that it is not rendered on the screen anymore and will not continue
+                        colliding with the player.
+                    </li>
+                    <li>If the object is not the player, this method should do nothing.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>AxePickup</code>: navigate to the <code>app.games.commonobjects.AxePickup</code> class, which is a pickup
+        that should allow the player to throw axe projectiles at enemies. Notice that this class extends
+        <code>Collectible</code>, and that the name passed to the super constructor is "Axe". Add the following
+        functionality.
+        <ul>
+            <li>
+                Create an instance variable of type <code>Timer</code>. Use the <code>app.gameengine.utils.Timer</code>
+                class, not one of the built-in Java timers. In the constructor, assign this instance variable to a new
+                <code>Timer</code> with a cooldown of 0.25.
+                <ul>
+                    <li>
+                        The <code>Timer</code> class allows objects to limit how frequently they can use used. In this
+                        case, you will use the timer to limit how frequently axes can be thrown. You should look through
+                        the methods in this class, but do not need to fully understand them.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Create a getter for the <code>Timer</code> instance variable called <code>getTimer</code>, which takes
+                no parameters and returns a <code>Timer</code>.
+            </li>
+            <li>
+                Override and implement the <code>use</code> method from the <code>Collectible</code> class. If the
+                cooldown period on the timer is up, this method should make the player fire an axe projectile.
+                <ul>
+                    <li>
+                        To check if the timer cooldown has expired, use the <code>Timer.check</code> method on your
+                        instance variable.
+                    </li>
+                    <li>
+                        To fire a projectile, use the <code>Level</code> parameter and call <code>getPlayer</code> to
+                        get the <code>Player</code> object. On this <code>Player</code>, call
+                        <code>fireProjectile</code>, which takes three arguments. The first argument is the projectile
+                        to fire, which should be a new <code>PlayerAxeProjectile</code> object. The location of this
+                        projectile does not matter, as it will be set within the <code>fireProjectile</code> method. The
+                        second argument is the speed the projectile will be fired at, which should be set to exactly
+                        <code>5</code>. The third argument should be the <code>Level</code> parameter.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Override the <code>update</code> method, which has parameters of type <code>double</code> and
+                <code>Level</code>, representing the time since the last update and the current level, respectively, and
+                returns <code>void</code>.
+                <ul>
+                    <li>
+                        Call the super update method, passing the parameters as arguments.
+                    </li>
+                    <li>
+                        Call <code>Timer.advance</code> on the <code>Timer</code> instance variable, passing in the
+                        <code>double</code> parameter <code>dt</code>. This will ensure that the cooldown actually
+                        decreases and the pickup can be used.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>MagicPickup</code>: Navigate to the <code>app.games.commonobjects.MagicPickup</code> class, which is a
+        pickup that should allow the player to fire magic projectiles at enemies. Notice that this class extends
+        <code>Collectible</code>, and that the name passed to the super constructor is "Magic". You should create the
+        same instance variables and methods as in the <code>AxePickup</code> class. The only difference should be that
+        in the <code>use</code> method, when calling <code>fireProjectile</code>, you should pass in a
+        <code>MagicProjectile</code> object, and a speed of <code>10</code>.
+    </li>
+    <li>
+        <code>PotionPickup</code>: Navigate to the <code>app.games.commonobjects.PotionPickup</code> class, which is a
+        pickup that should allow the player to regain some health when used. Notice that this class extends
+        <code>Collectible</code>, and that the name passed to the super constructor is "Health Potion". Add the
+        following functionality.
+        <ul>
+            <li>
+                Create an instance variable of type <code>int</code>, and in the constructor, assign this instance
+                variable to the constructor parameter "heal". This is the amount that the potion will heal the player
+                by.
+            </li>
+            <li>
+                Create a getter for for this instance variable called <code>getHealAmount</code>, which takes no
+                parameters and returns an <code>int</code>.
+            </li>
+            <li>
+                Override and implement the <code>use</code> method from the <code>Collectible</code> class. Increase the
+                health of the player by the heal instance variable, and remove the potion from the player's inventory.
+                <ul>
+                    <li>
+                        To get the player, you can call the <code>getPlayer</code> method on the <code>Level</code>
+                        parameter.
+                    </li>
+                    <li>
+                        To access and modify the health of the player, you can use the <code>getHealth</code> and
+                        <code>setHealth</code> methods respectively.
+                    </li>
+                    <li>
+                        To remove the item from the player's inventory, you should call the
+                        <code>removeActiveItem</code> method. This method likely does not exist yet. Read ahead to see
+                        the specification for that method.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                You do not need to override the update method, as this class does not possess a timer to increment.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<br />
+
+<ul>
+    Now you will add methods for using and manipulating the player's inventory. In the
+    <code>app.gameengine.model.gameobjects</code> package, make the following additions to the
+    <code>Player</code> class to implement a functioning inventory system. Some of these methods will already exist, and
+    you should just modify them. Others you will have to create.
+    <li>
+        <code>addInventoryItem</code>: Create a method named <code>addInventoryItem</code> that takes in a
+        <code>Collectible</code> and returns <code>void</code>. This method should add the object from the parameter to
+        the <code>Player</code>'s inventory.
+        <ul>
+            <li>
+                Adding an item should never change the currently active item, except for when you pick up your first
+                item
+            </li>
+            <li>
+                This new object will be considered the "last" item in the list.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>removeActiveItem</code>: Add a method named <code>removeActiveItem</code> which takes no parameters and
+        returns <code>void</code>. This method should remove whatever the currently active item is from the
+        <code>Player</code>'s inventory.
+        <ul>
+            <li>
+                Once the currently active item is removed, the currently active item should become whatever was next in
+                the inventory. For example, if you collected an Axe, then Magic, then a Health Potion, the currently
+                active item would be the Axe. If this method is called, the remaining items are the Magic and the Health
+                Potion, and the active item would be the Magic.
+            </li>
+            <li>
+                If the item removed is the last item in the inventory (ie. the one most recently added), the active item
+                would become the first item in the inventory (ie. the one least recently added). Be sure to account for
+                this looping behavior in your code.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>getActiveItem</code>: Add a method named <code>getActiveItem</code> that takes no parameters and returns a
+        <code>Collectible</code>. This method should return whichever <code>Collectible</code> in the inventory is
+        active.
+        <ul>
+            <li>If the inventory is empty, this method should return null.</li>
+            <li>
+                If an item is collected and the inventory was previously empty, that item should be the active item.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>getActiveItemID</code>: Add a method called <code>getActiveItemID</code> (note the capital "ID") that
+        takes in no parameters and returns a <code>String</code>.
+        <ul>
+            <li>
+                This method should return the ID of the active <code>Collectible</code> from the inventory, by calling
+                the <code>Collectible.getItemID</code> method on it.
+            </li>
+            <li>
+                If the inventory is empty, this method should return the exact <code>String</code> "No item equipped".
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>cycleInventory</code>: Add a method called <code>cycleInventory</code> that takes no parameters and
+        returns <code>void</code>. This method will cycle through the inventory, changing the item currently marked as
+        active.
+        <ul>
+            <li>
+                This should be done in the order the objects are collected. For example, if a player collected an Axe,
+                then Magic, then a Potion, the first call to cycleInventory will change the active item from the Axe
+                to Magic. The second call to cycleInventory will change the active item from Magic to the Potion.
+            </li>
+            <li>
+                Once cycleInventory is called while the most recently collected item is active, the active item should
+                be set back to the front of the inventory, to the least recently collected item. Thus in our previous
+                example, the third call to cycleInventory will change the active item from the Potion to the Axe.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>clearInventory</code>: Add a method called <code>clearInventory</code> that takes no parameters and
+        returns <code>void</code>. This method will reset the inventory to its initial state, which should be empty.
+    </li>
+    <li>
+        <code>update</code>: The update method already exists in this class. Add code which iterates over every item in
+        the inventory and calls the <code>update</code> method on it, passing in both parameters.
+        <ul>
+            <li>
+                The order in which these objects are updated does not matter, as long as each object is updated once.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Note that since these methods are the only way the inventory can be accessed and none of them rely on a
+        specific data structure, however you choose to represent the inventory internally does not matter so long as
+        your implementation follows the expected behavior. The only requirements are that you are able to keep track of
+        every item that is added and the object that is currently active.
+    </li>
+    <li>
+        The inventory should initially be empty.
+    </li>
+    <li>
+        You can cycle your character's inventory in-game with the tab key. Pressing the space bar will call the
+        <code>Level.actionButtonPressed</code> method, which will call the <code>getActiveItem</code> method, and will
+        call <code>use</code> on the returned object. This means that whichever object is currently active will be used,
+        allowing you to fire projectiles or use potions.
+    </li>
+</ul>
+
+<br />
+
+<ul>
+    The final features you will add are modifications to the <code>LevelParser</code> class so that the kinds of
+    collectibles can be parsed. The sample game already contains an <code>AxePickup</code> and a
+    <code>MagicPickup</code>
+    in a couple of the levels. If you want to use the <code>PotionPickup</code> in game, you can add it to one of the
+    levels. An example of this would be adding this line to one of the level csv files:
+    "StaticGameObject,PotionPickup,13,13,50".
+    <li>
+        <code>readStaticObject</code>: Modify this method so that it can recognize and return the following objects.
+        <ul>
+            <li>
+                Add a case for <code>AxePickup</code> objects. If the string being checked is "AxePickup", a new
+                <code>AxePickup</code> object should be returned. The <code>AxePickup</code> constructor
+                takes two <code>double</code>s and a <code>Game</code>. The <code>double</code>s should be the variables
+                <code>x</code> and <code>y</code>, and the <code>Game</code> should be the parameter <code>game</code>,
+                all of which already exist in this method.
+            </li>
+            <li>
+                Add a case for <code>MagicPickup</code> objects. If the string being checked is "MagicPickup", a new
+                <code>MagicPickup</code> object should be returned. The <code>MagicPickup</code> constructor
+                takes two <code>double</code>s and a <code>Game</code>. The <code>double</code>s should be the variables
+                <code>x</code> and <code>y</code>, and the <code>Game</code> should be the parameter <code>game</code>,
+                all of which already exist in this method.
+            </li>
+            <li>
+                Add a case for <code>PotionPickup</code> objects. If the string being checked is "PotionPickup", a new
+                <code>PotionPickup</code> object should be returned. The <code>PotionPickup</code> constructor
+                takes two <code>double</code>s, an <code>int</code>, and a <code>Game</code>. The <code>double</code>s
+                should be the variables <code>x</code> and <code>y</code>, and the <code>Game</code> should be the
+                parameter <code>game</code>, all of which already exist in this method. The <code>int</code> should be
+                the amount to heal, which is the fifth value in the line. Refer to the example above, where the amount
+                to heal would be 50.
+            </li>
+        </ul>
+    </li>
 </ul>
 
 <br />
@@ -562,103 +1130,92 @@
 <h3>Testing Utility</h3>
 <hr />
 
-<!-- <p>
-    In the <code>app.tests.TestUtils</code> class, create a <em><strong>static</strong></em> method named
-    <code>compareListsOfLevels</code> that takes in (references to) two <code>LinkedListNode</code>s of
-    <code>Level</code>s and returns <code>void</code>. This method should contain JUnit asserts to verify that the two
-    linked lists
-    are of the same length and contain all the same levels. Two levels can be considered the same if they have the same
-    name. Recall that you can access the name of a <code>Level</code> object by calling the <code>getName</code> method
-    on it. If either the length or content of the lists are not the same, this method should fail a JUnit assert.
-</p> -->
 <p>
-    Note that this method is not a test, and thus should not have the <code>@Test</code> annotation. Rather, this is a
-    static method intended to be used in your testing. You are encouraged to use this method to simplify your test
-    cases.
+    In the <code>app.tests</code> package, create a class called <code>TestDecision</code>, which extends the
+    <code>Decision</code> class. This class will be used to help you test by simplifying the behavior of the
+    <code>decide</code> and <code>doAction</code> methods. Specifically, we want the behavior of these methods to not
+    depend on the actual state of the game, so that you can test the <code>DecisionTree</code> methods without setting
+    complex properties of the game, player, and ghosts.
 </p>
+<p>
+    The constuctor should take an <code>Agent</code>, a <code>String</code>, and a <code>boolean</code>. The first two
+    parameters can be passed to the super constuctor, and the last should be stored as an instance variable. This
+    boolean will be the value returned by <code>decide</code>, so it will decide which direction the traversal
+    progresses.
+</p>
+<p>
+    You should create another <code>boolean</code> instance variable representing whether the <code>TestDecision</code>
+    has been used. It should initially be false.
+</p>
+<p>
+    Create a method called <code>isUsed</code>, which takes no parameters and returns a boolean. It should return the
+    instance variable described above.
+</p>
+<p>Override the <code>decide</code> method to return the instance variable for the traversal direction.</p>
+<p>Override the <code>doAction</code> method to set the instance variable for whether it has been used to true.</p>
 
 <br />
 <hr />
 <h3>Testing Requirements</h3>
 <hr />
 
-<!-- <p>
-    Write JUnit tests for the following methods from the specification in the <code>TestTask2</code> class. These tests
-    should be annotated with <code>@Test</code>:
-</p>
 <p>
-    Many of these methods require you to make <code>Level</code> objects to test. However, the <code>Level</code> class
-    is abstract, so you cannot directly instantiate <code>Level</code>s. You should instead create
-    <code>TopDownLevel</code>s. You will still be able to pass these objects in to methods which take a
-    <code>Level</code> as an argument due to polymorphism, which will be taught in greater detail later.
+    Write JUnit tests for the following methods from the specification in the <code>TestTask3</code> class. These tests
+    should be annotated with <code>@Test</code>.
 </p>
 <ul>
     <li>
-        <code>LinearGame</code>
+        <code>DecisionTree</code>:
         <ul>
-            <li>To test these methods, you will have to create a LinearGame object in order to call the methods</li>
             <li>
-                <code>addLevel</code>
-                <ul>
-                    <li>
-                        Verify that adding new levels to the game adds them to the end of the list of levels.
-                    </li>
-                    <li>
-                        You should use the testing utility to help you verify this.
-                    </li>
-                </ul>
+                To test these methods, you will have to create <code>Decision</code> objects to populate the
+                <code>DecisionTree</code>. You are highly encouraged to use your <code>TestDecision</code> class.
             </li>
             <li>
-                <code>advanceLevel</code>
-                <ul>
-                    <li>
-                        Verify that this method changes the current level of the game. Recall that you can use the
-                        <code>getCurrentLevel</code> method to access the current level of the game.
-                    </li>
-                    <li>
-                        Before calling <code>advanceLevel</code>, you should call <code>loadLevel</code> on the game
-                        to make sure there is a level loaded.
-                    </li>
-                    <li>
-                        Verify that this method does not modify the entire list of levels, ie. the list returned by the
-                        <code>getLevelList</code> method.
-                    </li>
-                </ul>
+                You must test BOTH of the <code>traverse</code> methods in this class.
             </li>
             <li>
-                <code>removeLevelByName</code>
-                <ul>
-                    <li>
-                        Verify that this method removes the level with the given name from the game's list of levels.
-                    </li>
-                    <li>
-                        Verify that this method does not remove multiple levels that share the same name.
-                    </li>
-                </ul>
+                Test that the overload which takes a <code>BinaryTreeNode</code> returns the proper
+                <code>Decision</code>, or null, with a variety of trees.
+            </li>
+            <li>
+                Test that the other method calls <code>doAction</code> on the correct <code>Decision</code> node, and
+                only on that node.
             </li>
         </ul>
     </li>
     <li>
-        <code>PhysicsEngineWithGravity</code>
+        <code>Player</code>:
         <ul>
             <li>
-                You DO NOT need to test the methods within this class, including <code>getGravity</code>,
-                <code>setGravity</code>, and <code>updateObject</code>. Tests are provided for you as described in the
-                Overview section above, which you may use to help you write the methods themselves.
+                <code>addInventoryItem</code> and <code>cycleInventory</code>:
+                <ul>
+                    <li>
+                        Write tests to ensure that adding items to the inventory has the proper behavior when cycling
+                        through the inventory, i.e. calling <code>cycleInventory</code> will go through every added
+                        <code>Collectible</code> and wrap around to the beginning.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>removeActiveItem</code>:
+                <ul>
+                    <li>
+                        Write tests to ensure that calling <code>removeActiveItem</code> properly removes the active
+                        item from the inventory and sets the new active item.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                When testing these methods, you only need to check that the item IDs match the expected.
             </li>
         </ul>
     </li>
     <li>
-        <code>LevelParser</code>
-        <ul>
-            <li>
-                You DO NOT need to test the methods within this class, including <code>readDynamicObject</code>,
-                <code>readStaticObject</code>, and <code>parseLevel</code>. Tests are provided for you as described in
-                the Overview section above, which you may use to help you write the methods themselves.
-            </li>
-        </ul>
+        You DO NOT need to write tests for any of the remaining classes or methods. Tests have been provided for some of
+        these as described in the overview section above.
     </li>
-</ul> -->
+</ul>
 
 <br />
 <hr />
@@ -743,229 +1300,183 @@
 <h3>Overview</h3>
 <hr />
 
-<!-- <p>
-    For the Comprehensive Understanding portion of this task, you will be implementing functionality in the
-    <code>Agent</code> class (from the <code>app.gameengine.model.gameobjects</code> package) and the
-    <code>PathfindingUtils</code> class (that you should create in the <code>app.gameengine.utils</code> package) such
-    that enemies have somewhat functional pathfinding. This will be most obvious in the Sample Game, which you can
-    access by changing the <code>GAME</code> constant in <code>app.Configuration</code> to
-    <code>"Sample Game"</code>.
+<p>
+    For the Comprehensive Understanding portion of this task, you will implement functionality in the
+    <code>app.gameengine.statistics.Scoreboard</code> class, and several classes that you will create in the
+    <code>app.gameengine.model.datastructures</code> package, in order to create a functional scoreboard for several of
+    the games. At the moment, the only games with scoreboards are Minesweeper and Pacman. Each of these games adds a
+    score to the scoreboard whenever you win a game.
 </p>
 <p>
-    Each of the methods you implement will have an associated CU count that you will earn upon passing our tests for
-    that method. Partially implemented methods may result in some partial credit being earned, depending on the method.
-</p> -->
+    Each of the classes and methods you implement will have an associated CU count that you will earn upon passing our
+    tests for that method. Partially implemented methods may result in some partial credit being earned, depending on
+    the method.
+</p>
 <hr />
 <h3>Programming Requirements</h3>
 <hr />
-<!-- <ul>
+<ul>
     <li>
-        <code>findPath</code> (30 CUs)
+        Comparators (5 CUs each, 15 total)
         <ul>
             <li>
-                Create a class in the <code>app.gameengine.utils</code> package named <code>PathfindingUtils</code>. In
-                this class, implement the following <em><strong>static</strong></em> method:
+                For these classes and methods, you will need to use the <code>app.gameengine.statistics.GameState</code>
+                class. It is a small, simple class, so you should look at and understand this class.
             </li>
             <li>
-                In the <code>PathfindingUtils</code> class, write a <strong>static</strong> method named
-                <code>findPath</code> that takes in two Vector2D objects as parameters and returns a
-                <code>LinkedListNode</code> of <code>Vector2D</code>s.
-            </li>
-            <li>
-                This method should return a shortest valid path that travels from the <strong>tile containing</strong>
-                the first <code>Vector2D</code> object to the <strong>tile containing</strong> the second
-                <code>Vector2D</code> object.
+                Navigate to the <code>app.gameengine.model.datastructures.Comparator</code> class. Currently, this is a
+                concrete class with a stubbed out method called <code>compare</code>. Modify this class such that it is
+                an interface instead of a class, and make this method abstract. Do not modify the rest of the method
+                signature. This is not worth any CUs on its own, but is required for the rest of the comparator classes.
                 <ul>
                     <li>
-                        To compute the tile containing a vector, you can take the floor of each coordinate in
-                        the vector. Recall that locations for rectangles are the location of their upper-left
-                        corner.
-                    </li>
-                    <li>The vector (3.9, 4.6) is contained on the tile at location (3.0, 4.0)</li>
-                    <li>
-                        The input <code>Vector2D</code>s themselves should not be modified. You should instead
-                        create copies of them to modify. There are several ways to do this, such as: create a
-                        new <code>Vector2D</code> using the constructor, with the desired x and y components;
-                        use the <code>Vector2D.copy</code> method, and modify the returned vector; use the
-                        <em>static</em> <code>Vector2D.floor</code> method, which returns a new vector with
-                        floored components.
+                        This will result in a compilation error in the <code>Scoreboard</code> class, which tries to
+                        instantiate a <code>Comparator</code>. You can fix this by changing this to be any of the
+                        classes which implement the <code>Comparator</code> below, or by removing this constructor
+                        entirely. If you remove the constructor, you should call the other constructor from within the
+                        <code>Game</code> class when creating the scoreboard instance variable. Any of these solutions
+                        are fine, and we won't test this constructor, or the default comparator.
                     </li>
                 </ul>
             </li>
             <li>
-                A path is valid if each <code>Vector2D</code> object after the head of the list is one tile above,
-                below, to the left, or to the right of the previous one AND if each Vector2D object in the list is
-                aligned to a tile (i.e. no decimals). Considered the following paths attempting to travel from eg. (3.9,
-                4.6) to (5.2, 5.999)
+                <code>LevelNameComparator</code>: In the <code>app.gameengine.model.datastructures</code> package,
+                create a class named <code>LevelNameComparator</code>. This should implement the
+                <code>Comparator&lt;GameStat&gt;</code>.
                 <ul>
-                    <li>[(3.0, 4.0), (3.0, 5.0), (4.0, 5.0), (5.0, 5.0)] is valid.</li>
                     <li>
-                        [(3.0, 4.0), (3.0, 5.0), (5.0, 5.0)] is not valid as the third Vector2D is two tiles right of
-                        the second.
+                        Override the <code>compare</code> method to compare two <code>GameStat</code> objects based on
+                        their entry names. If the first name is lexicographically less than the second, this method
+                        should return <code>true</code>, and it should return <code>false</code> in all other cases.
                     </li>
                     <li>
-                        [(3.0, 4.0), (4.0, 5.0), (5.0, 5.0)] is not valid as the second Vector2D is diagonal to the
-                        first one.
+                        You may find the <code>String.compareTo</code> method useful for performing this comparison.
                     </li>
                     <li>
-                        [(3.9, 4.6), (3.1, 5.9), (4.6, 5.5), (5.2, 5.999)] is not valid as it is not aligned to a tile.
+                        If the two names are equivalent, this method should return <code>false</code>, since a
+                        <code>String</code> cannot be lexicographically less than itself.
                     </li>
                 </ul>
             </li>
             <li>
-                You may find it helpful to review the overview of the coordinate system in the task 1 handout.
+                <code>PlaytimeComparator</code>: In the <code>app.gameengine.model.datastructures</code> package, create
+                a class named <code>PlaytimeComparator</code>. This should implement the
+                <code>Comparator&lt;GameStat&gt;</code>.
+                <ul>
+                    <li>
+
+                        Override the <code>compare</code> method to compare two <code>GameStat</code> objects based on
+                        their playtimes. If the first playtime is less than the second, this method should return
+                        <code>true</code>, and it should return <code>false</code> in all other cases.
+                    </li>
+                    <li>This method should break ties by returning <code>false</code>.</li>
+                </ul>
             </li>
             <li>
-                Note that there are many correct solutions for this method since there are multiple valid paths that all
-                of minimal length (unless the start and end share a coordinate). For example, traveling from (0, 0) to
-                (1, 1) both [(0.0, 0.0), (0.0, 1.0), (1.0, 1.0)] and [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0)] are correct
-                solutions. Any valid path will be accepted by our test cases.
+                <code>ScoreComparator</code>: In the <code>app.gameengine.model.datastructures</code> package, create a
+                class named <code>ScoreComparator</code>. This should implement the
+                <code>Comparator&lt;GameStat&gt;</code>.
+                <ul>
+                    <li>
+                        Override the <code>compare</code> method to compare two <code>GameStat</code> objects based on
+                        their scores. If the first score is greater than the second, this method should return
+                        <code>true</code>, and it should return <code>false</code> in all other cases.
+                    </li>
+                    <li>This method should break ties by returning <code>false</code>.</li>
+                </ul>
             </li>
         </ul>
     </li>
 </ul>
 <ul>
     <li>
-        <code>followPath</code> (20 CUs)
+        Scoreboard basics (5 CUs)
         <ul>
             <li>
-                In the <code>Agent</code> class, there exists a method named <code>followPath</code> that takes a
-                <code>double</code> and returns <code>void</code>. The input double represents the change in time since
-                the last
-                time this method was called. Complete this method so that the agent along its path if it has one.
+                Navigate to the <code>app.gameengine.statistics.Scoreboard</code> class. Modify the constructor which
+                takes two parameters so that the <code>Comparator</code> is stored as an instance variable.
             </li>
             <li>
-                This class already contains an instance variable representing this object's path, called
-                <code>path</code>, as well as a getter and setter for that instance variable, named <code>getPath</code>
-                and <code>setPath</code> respectively. You will need to use these to complete this method.
+                Create getters and setters for this comparator instance variable, named <code>getComparator</code> and
+                <code>setComparator</code> respectively.
             </li>
             <li>
-                In each update call, only one of these three things can happen. If one of these conditions is met, in
-                this order, it should be done, and then nothing else should be done.
-                <ol>
+                Create an instance variable that is a <code>BinaryTreeNode</code> of <code>GameStat</code>s. This will
+                act as a BST to store and sort the scores in a game according to the comparator.
+            </li>
+            <li>
+                Create getters and setters for this instance variable named <code>getScoreTree</code> and
+                <code>setScoreTree</code>, respectively.
+            </li>
+            <li>
+                Complete the existing <code>addScore</code> method to add the input <code>GameStat</code> to the correct
+                location in the tree, according to the comparator.
+                <ul>
                     <li>
-                        <b>Idle</b>: If the <code>Agent</code>'s path instance variable is <code>null</code>, their
-                        velocity in the x and y directions should be set to 0, and nothing else should be done.
+                        Although the comparator could potentially change during the game, invalidating the sorting of
+                        your tree, your code does not need to handle this case. You can assume that the
+                        <code>setComparator</code> method will only ever be called before any scores are added.
                     </li>
-                    <li>
-                        <b>Advance to the next node in the path</b>: If the <code>Agent</code> is directly on the tile
-                        at the path's head, the <code>Agent</code>'s position is manually set to the location of that
-                        tile. The head of the list is then removed from the list so the agent will travel to the next
-                        node the next time this method is called.
-                        <ul>
-                            <li>
-                                An enemy is considered to be "directly on" a tile if its distance from the tile is less
-                                than its movement speed times the change in time since the last update. The movement
-                                speed can be accessed by calling <code>this.getMovementSpeed</code>, or with the
-                                <code>movementSpeed</code> instance variable, both of which already exist in this class.
-                                The change in time is the parameter <code>dt</code>.
-                            </li>
-                            <li>
-                                Use Euclidean distance for this calculation, which is calculated as the square root of
-                                the sum of the squares of differences in each dimension. It is calculated as
-                                <code>√((x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup> + (y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup>)</code>.
-                                You may use the <code>Vector2D.euclideanDistance</code> method, which calculates this
-                                for you.
-                            </li>
-                            <li>
-                                You must also set the agent's velocity in the x and y directions to 0.
-                            </li>
-                            <li>
-                                These steps are necessary to prevent enemies from getting caught at the edges of
-                                hitboxes.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <b>Travel along the path</b>: If neither of the 2 previous conditions apply, the
-                        <code>Agent</code>'s velocity should be set to move towards the tile at the head of the
-                        <code>Agent</code>'s path.
-                        <ul>
-                            <li>
-                                The <code>Agent</code>'s velocity must have a magnitude (speed) equal to its movement
-                                speed. The movement speed can be accessed by calling <code>this.getMovementSpeed</code>,
-                                or with the <code>movementSpeed</code> instance variable, both of which already exist in
-                                this class.
-                            </li>
-                            <li>
-                                The <code>Agent</code>'s orientation should be set in the same direction as its
-                                velocity, but always with a magnitude of 1.0.
-                            </li>
-                            <li>
-                                Since the <code>Agent</code> can only move in four directions, only one component (x or
-                                y) of a moving <code>Agent</code>'s velocity or orientation will be non-zero at any
-                                point. This means there are only 4 possible values for the <code>Agent</code>'s
-                                orientation, (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0), or (0.0, -1.0). Velocity is much the
-                                same, except that the magnitude will depend on the movement speed.
-                            </li>
-                            <li>
-                                For example, if an <code>Agent</code> is located at (2.5, 2), has a movement speed of 4,
-                                and its path is [(3, 2), (4, 2), (4, 3)], it must first target the point (3, 2). To
-                                reach that point, it must travel in the positive x direction, so its velocity would be
-                                set to (4, 0), and its orientation would be set to (1, 0).
-                            </li>
-                        </ul>
-                    </li>
-                </ol>
+                </ul>
             </li>
         </ul>
     </li>
 </ul>
 <ul>
     <li>
-        These two methods comprise the Comprehensive Understanding portion of this assignment. However, you will not yet
-        be able to see these changes in-game. This is intentional, as the next two tasks add a modular behavior system
-        that can make use of this pathfinding. However, if you want to see this behavior in game early, you can do the
-        following:
-        <ol>
-            <li>
-                Write a method in the <code>Agent</code> class named <code>update</code>, which takes a
-                <code>double</code> and a <code>Level</code> object as parameters, and returns void. These paremeters
-                represent the change in time since the last update call, and the current level. This will override a
-                method from the parent class.
-            </li>
-            <li>
-                In the <code>Agent.update</code> method, call <code>super.update</code>, passing in both parameters.
-            </li>
-            <li>
-                In the <code>Agent.update</code> method, check if the path instance variable is <code>null</code>. If
-                so, call the <code>findPath</code> method, where the start is the location of the <code>Agent</code>,
-                and the end is the location of the <code>Player</code> (obtained with
-                <code>level.getPlayer().getLocation()</code>), and call <code>setPath</code> with the returned path.
-            </li>
-            <li>
-                In the <code>Agent.update</code> method, if the path is not <code>null</code>, call the
-                <code>followPath</code> method, passing in <code>dt</code> as the change in time.
-            </li>
-            <li>
-                When completing Task 3, you will have to modify the <code>Agent.update</code> method in a different way.
-                Those changes should replace these ones.
-            </li>
-        </ol>
-    </li>
-    <li>
-        We also provide another way to visualize the paths in-game, so that you can see whether your pathfinding is
-        working. If you download/copy these files correctly, enemies with paths will display them in the game-world.
-        You may find it useful to do this now, even if you have not completed the CU, as it will be helpful for Task 4
-        as well.
+        Scoreboard <code>loadStats</code> method (5 CUs)
         <ul>
             <li>
-                The code can be accessed at these links: <a href="/static_files/files/Agent.java">Agent.java</a> and
-                <a href="/static_files/files/PathTile.java">PathTile.java</a>.
+                Complete the existing <code>loadStats</code> method to load the existing stats from previous games. This
+                will ensure that high scores carry carry over when the game is closed and restarted. Note that this
+                method requires a functioning implementation of the <code>addScore</code> method.
             </li>
             <li>
-                The <code>Agent</code> class given is a minimal example that provides only the additional
-                imports/instance variables/code that you do not already have or are required to write. We recommend that
-                you copy and paste these sections into your existing file.
+                The existing <code>statsPath</code> instance variable will be the location of the csv file which stores
+                the stats. Each csv file will have one score per line, as "entryName,playTime,score". You should read
+                each line in this file, parse it to create a <code>GameStat</code> object corresponding to that line,
+                and add it to the tree using the <code>addScore</code> method.
             </li>
             <li>
-                The <code>PathTile</code> class given is complete. You can either copy and paste it, or right click and
-                select "save file as", and download it to the correct location. It should be placed in the package
-                <code>app.games.roguelikeobjects</code>.
+                This process must only occur once for a given scoreboard. If this method is called more than once, every
+                following call should do nothing.
             </li>
         </ul>
     </li>
-</ul> -->
+</ul>
+<ul>
+    <li>
+        Scoreboard <code>getScoreList</code> methods (25 CUs)
+        <ul>
+            <li>
+                Complete the existing <code>getScoreList</code> method to return a <code>LinkedListNode</code> that is
+                the head of a sorted list containing every element in the tree, according to the comparator.
+            </li>
+            <li>
+                If the tree is null, meaning that no scores have been added, this method should return null.
+            </li>
+        </ul>
+    </li>
+</ul>
+<ul>
+    <li>
+        Now, when you complete a game of Minesweeper or Pacman, you should see an entry added to the scoreboard, which
+        is accessible from the pause menu, reached by pressing the escape key. The easiest way to test this is by
+        playing Minesweeper, and pressing escape before selecting a difficulty. This will default to the trivial
+        difficulty, which only has 3 mines and should be quite easy (as long as you understand the rules of
+        Minesweeper).
+    </li>
+    <li>
+        If you wish to add a scoreboard to other games, like snake, you can do so, but this is optional. There are a few
+        adjustments you need to make in order for this to work. First, in the <code>SnakeGame</code> constructor, you
+        should set the comparator to the desired metric. You must then choose a place to add a score to the scoreboard.
+        It would likely make the most sense to add this in both the <code>advanceLevel</code> and
+        <code>resetCurrentLevel</code> methods, so that both winning and losing the game save the score. In either case,
+        you can use the <code>getScoreboard</code> method to get the scoreboard, and then add a new
+        <code>GameStat</code> entry. You can use the <code>getScore</code> and <code>getPlaytime</code> methods of the
+        <code>Level</code> class to create the <code>GameState</code>.
+    </li>
+</ul>
 <hr />
 <h3>Autolab Feedback</h3>
 <hr />
