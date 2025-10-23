@@ -289,6 +289,7 @@
         <code>app.games.commonobjects</code> package.
     </li>
     <li><code>Player</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
+    <li><code>LevelParser</code>, located in the <code>app.gameengine</code> package.</li>
 </ul>
 <p>
     You should create the <code>TestTask3</code> class in your <code>app.tests</code> package. We have provided some
@@ -1091,10 +1092,12 @@
 <ul>
     The final features you will add are modifications to the <code>LevelParser</code> class so that the kinds of
     collectibles can be parsed. The sample game already contains an <code>AxePickup</code> and a
-    <code>MagicPickup</code>
-    in a couple of the levels. If you want to use the <code>PotionPickup</code> in game, you can add it to one of the
-    levels. An example of this would be adding this line to one of the level csv files:
+    <code>MagicPickup</code> in a couple of the levels. If you want to use the <code>PotionPickup</code> in game, you
+    can add it to one of the levels. An example of this would be adding this line to one of the level csv files:
     "StaticGameObject,PotionPickup,13,13,50".
+    <br />
+    You can also create levels with the <a href="https://jbcarras.github.io/">level editor</a> which contain these
+    objects.
     <li>
         <code>readStaticObject</code>: Modify this method so that it can recognize and return the following objects.
         <ul>
