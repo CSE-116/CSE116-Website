@@ -1078,12 +1078,29 @@
     <li>
         The inventory should initially be empty.
     </li>
+</ul>
+<ul>
+    You also need to implement the ability to use objects, which will occur in the <code>app.gameengine.Level</code>
+    class.
     <li>
-        You can cycle your character's inventory in-game with the tab key. Pressing the space bar will call the
-        <code>Level.actionButtonPressed</code> method, which will call the <code>getActiveItem</code> method, and will
-        call <code>use</code> on the returned object. This means that whichever object is currently active will be used,
-        allowing you to fire projectiles or use potions.
+        <code>actionButtonPressed</code>: In the <code>Level</code> class, implement the
+        <code>actionButtonPressed</code> method. The signature for this method already exists, you should simply add
+        functionality to it.
+        <ul>
+            <li>
+                This method should call the <code>getActiveItem</code> method on the level's player to access the
+                currently equipped <code>Collectible</code>. If there is an item equipped (ie. it is not null), this
+                method should call the <code>use</code> method on that item, passing in <code>this</code> as the
+                argument.
+            </li>
+            <li>
+                You can access the <code>Player</code> for a level by calling the <code>getPlayer</code> method.
+            </li>
+        </ul>
     </li>
+    You can cycle your character's inventory in-game with the tab key. Pressing the space bar will call the
+    <code>Level.actionButtonPressed</code> method, allowing you to use the active item to fire projectiles or use
+    potions.
 </ul>
 
 <br />
