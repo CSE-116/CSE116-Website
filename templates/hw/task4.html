@@ -27,32 +27,145 @@
 
         <p>
             Problem Set GitHub Repository link:
-            <a>TBD</a>
+            <a href="https://github.com/CSE-116/ProblemSet-4">https://github.com/CSE-116/ProblemSet-4</a>
         </p>
 
         <ol>
             <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
-            <li>
-                Make sure the src folder is marked as the source root (Right-click the src folder, choose “mark
-                directory as”
-                and choose sources root)
-            </li>
         </ol>
         <p>
             Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
-            problem
-            and tests.
+            problem and tests.
         </p>
         <p>
             To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
-            problem
-            set, and submit it to Autolab.
+            problem set, and submit it to Autolab.
         </p>
+
+        <hr/>
+        <h3>Specification</h3>
+        <hr/>
+
+        <p>
+            For this problem set, you will write the following 3 static methods that are all related to graphs. The
+            signatures for these methods exist in the handout repo.
+        </p>
+
+        <ul>
+            <li>
+                In the <code>problem.ProblemSet4</code> class, complete the <code>countEdges</code> method which takes
+                a <code>Graph</code> as a parameter and returns an <code>int</code>. This method returns
+                number of edges in the graph. The graph, and all graphs for this task, is assumed to have only
+                bidirectional edges so the count should be the number of bidirectional edges in the graph.
+                <ul>
+                    <li>
+                        Note that this method takes a type parameter along with a graph matching the type parameter.
+                        This method will work regardless of the type of the values stored in the graph. This will be
+                        true for all 3 methods in this problem set
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+
+        <ul>
+            <li>
+                In the <code>problem.ProblemSet4</code> class, complete the <code>isConnected</code> method which takes
+                a <code>Graph</code> as a parameter and returns a <code>boolean</code>. This method returns
+                true if the input graph is connected, and false otherwise
+                <ul>
+                    <li>
+                        A graph is connected if there exists a path connecting every pair of nodes in the graph. In
+                        other words, if you start at any node you can travel to all other nodes in the graph by
+                        following edges
+                    </li>
+                    <li>
+                        A graph with no nodes is connected
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+
+        <ul>
+            <li>
+                In the <code>problem.ProblemSet4</code> class, complete the <code>detectCycle</code> method which takes
+                a <code>Graph</code> as a parameter and returns a <code>boolean</code>. This method returns
+                true if the graph contains a cycle, and false otherwise
+                <ul>
+                    <li>
+                        Hint: You can build a BFS tree by running BFS on a graph and creating a new graph that contains
+                        only the edges that were used to discover new nodes. If the input was already a tree (no
+                        cycles), then the input graph and the BST tree will have all the same edges
+                    </li>
+                    <li>
+                        Caution: The input graph does not have to be connected
+                    </li>
+                    <li>
+                        A graph with no nodes has no cycles
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
 
         <hr/>
         <h3>Testing Requirements</h3>
         <hr/>
-        <!-- PS Testing Requirements Here -->
+
+        <p>
+            Write JUnit tests for all 3 methods from the specification in the <code>tests.TestProblemSet4</code>
+            class. These tests should be annotated with <code>@Test</code>.
+        </p>
+        <ul>
+            <li>
+                <code>countEdges</code>
+                <ul>
+                    <li>
+                        Write tests for the <code>countEdges</code> method. Test that the proper value is returned in a
+                        variety of cases
+                    </li>
+                    <li>
+                        Use the provided <code>Graph</code> class to construct a graph. The number of times you call
+                        <code>addBidirectionalEdge</code> should be the expected number of edges
+                    </li>
+                    <li>
+                        For all 3 methods, you are testing methods that take a <code>Graph</code> that takes a type
+                        parameter. You may choose any type when you create your graphs (eg. Using whatever is simplest,
+                        like Integer, is fine). Since store nodes as keys in a <code>HashMap</code>, your
+                        <code>Graph</code> cannot contain duplicate nodes
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>isConnected</code>
+                <ul>
+                    <li>
+                        Write tests for the <code>isConnected</code> method. Test that the proper value is returned in a
+                        variety of cases
+                    </li>
+                    <li>
+                        The <code>addNode</code> method in the <code>Graph</code> class is public in this version of the
+                        code in case you want to add nodes with no edges while creating disconnected graphs
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>detectCycle</code>
+                <ul>
+                    <li>
+                        Write tests for the <code>detectCycle</code> method. Test that the proper value is returned in a
+                        variety of cases
+                    </li>
+                    <li>
+                        Be sure to include test cases where the input graph is not connected
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
 
         <br/>
@@ -61,7 +174,10 @@
         <h3>Programming Requirements</h3>
         <hr/>
 
-        <!-- PS Programming Requirements Here -->
+        <p>
+            Implement the methods from the specification. You may wish to complete the Testing Requirements before you
+            begin implementation, and it's suggested that you run these tests as you implement the methods.
+        </p>
 
         <br/>
 
@@ -117,8 +233,7 @@
         </ol>
         <p>
             Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab
-            will
-            confirm this with a score of 20 LOs.
+            will confirm this with a score of 20 LOs.
         </p>
     {% endcall %}
 
@@ -235,7 +350,8 @@
         <p>
             The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will
             be run in a single phase for correctness. For each test you successfully pass, you will earn a varying
-            amount of CUs with a total maximum score of 50 CUs. There is no required testing component for the Comprehensive
+            amount of CUs with a total maximum score of 50 CUs. There is no required testing component for the
+            Comprehensive
             Understanding component; however, you are expected to test your code nonetheless as the Autolab feedback
             is unlikely to be sufficient for debugging.
         </p>
