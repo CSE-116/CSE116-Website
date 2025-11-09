@@ -600,8 +600,8 @@
     </li>
     <li>
         Now you will use these decisions to give various <code>Agent</code>s different behaviors. The
-        <code>Agent</code>s you must modify are <code>Demon</code>, <code>Minotaur</code>, <code>Archer</code>, and
-        <code>Sorcerer</code>, all in the <code>app.games.topdownobjects</code> package.
+        <code>Agent</code>s you must modify are <code>Demon</code>, <code>Minotaur</code>, <code>Archer</code>,
+        <code>Sorcerer</code>, and <code>Tower</code>, all in the <code>app.games.topdownobjects</code> package.
         <ul>
             <li>
                 The decision tree for each of these types of agents must be set. The specific contents are up to you, as
@@ -615,6 +615,13 @@
                     <li><code>Minotaur</code>: A single <code>MoveTowardPlayerAvoidWalls</code> decision.</li>
                     <li><code>Archer</code>: A single <code>ShootPlayer</code> decision.</li>
                     <li><code>Sorcerer</code>: A single <code>ShootHomingProjectile</code> decision.</li>
+                    <li>
+                        <code>Tower</code>: A single <code>ShootPlayer</code> decision. Note that decisions that cause
+                        the tower to move will do nothing. It is also recommended to override the <code>isSolid</code>
+                        method to always return <code>true</code>, to test that solid <code>DynamicGameObject</code>s
+                        are handled properly. We will not test for this, though. 
+                    </li>
+                </ul>
             </li>
         </ul>
     </li>
