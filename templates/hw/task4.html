@@ -901,14 +901,175 @@
 <h3>Overview</h3>
 <hr />
 
+<p>
+    For the Comprehensive Understanding portion of this task, you will implement functionality in the
+    <code>app.games.roguelikeobjects.RoguelikeGame</code> class to add procedurally generated levels to the roguelike.
+    If you haven't already, you should change the <code>GAME</code> constant in <code>app.Configuration</code> to
+    <code>"roguelike"</code> to be able to view and test the generation.
+</p>
+<p>
+    Since there is only one method you need to implement for this task, all 50 CU points will be earned upon passing
+    our tests for that method.
+</p>
 
-
-<br />
+<br/>
 <hr />
+<h3>Procedural Generation</h3>
+<hr />
+
+<p>
+    <b>Procedural Generation</b> in game development refers to the creation of levels, maps, or any content that is done
+    through algorithms instead of manually. In this task, you will modify RoguelikeGame's <code>generateMap</code>
+    method to accomplish this using DFS.
+</p>
+
+<p>
+    The gif below shows an example of how it should work when it is finished.
+</p>
+
+<p>
+    <img src="/static_files/images/task4/generateMapExample.gif" , class="img-fluid" ,
+         alt="visual depiction of how generating a map loops" width="360"/>
+</p>
+
+<p>
+    As shown in the gif, <code>generateMap</code> works in such a way where it first generates the level and
+    <i>then</i> connects a door to the level that discovered it.
+</p>
+
+<p>
+    There are some important parameters here that vastly change how the generated map looks. These can be modified in
+    <code>RoguelikeGame</code> for testing purposes, or for fun!
+</p>
+<ul>
+    <li>
+        <b>Map Size</b> - <code>this.mapSize</code> in RoguelikeGame, a <code>Vector2D</code> representing the size of the
+        map grid.
+    </li>
+    <li>
+        <b>Max Rooms</b> - <code>this.maxRooms</code> in RoguelikeGame, an <code>int</code> that changes the maximum
+        amount of rooms that can be generated.
+        <ul>
+            <li>
+                The first room will always be the starting room, and the last room will always be the boss room.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+Note: If you are having trouble understanding why the boss room gets connected to the second room instead of the ninth
+room, research DFS.
+</p>
+
+<br/>
+<hr/>
 <h3>Programming Requirements</h3>
-<hr />
+<hr/>
 
+<p>
+    <i>Note: Before deleting the given code, you might want to look at it for examples on the listed
+        specifications.</i>
+</p>
 
+<ul>
+    <li>
+        <code>generateMap</code> (50 CUs)
+        <ul>
+            <li>
+                In the <code>RoguelikeGame</code> class, delete the given functionality of <code>generateMap</code> and
+                overwrite it with a version that procedurally generates levels using DFS.
+
+                <ul>
+                    <li>
+                        All generated maps must start with a random <code>Vector2D</code> starting position. To create
+                        this position, call <code>getRandomStartingPosition</code>, a method in RoguelikeGame.
+                    </li>
+                    <li>
+                        You are tasked with generating more <code>Vector2D</code> positions and a corresponding level
+                        for each. These positions should be picked out from the starting position in random directions.
+                        To get these random directions, you <b>must</b> call the given
+                        <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> method exactly as shown.
+                        <ul>
+                            <li>
+                                The generated positions must be valid. A valid position is one that has not already been
+                                explored and is within the bounds of <code>this.mapSize</code>.
+                            </li>
+                            <li>
+                                Remember, you can see if a <code>Vector2D</code> is in bounds of another
+                                <code>Vector2D</code> by calling <code>GameUtils.isInBounds</code>.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Luckily, you don't need to choose the random levels. Once you have a new position and
+                        are ready to generate the next level, call <code>getNextLevelToGenerate</code>. This will
+                        return you a <code>RoguelikeLevel</code> object, which should be initialized with the new
+                        position by calling the <code>initialize</code> method on the returned level and passing in
+                        the generated position. This level also <b>must</b>
+                        be added to <code>this.levelMap</code>, which maps levels by their name. (Which you can get
+                        by calling the <code>getName</code> method on a level).
+                    </li>
+                    <li>
+                        After a level is generated and initialized, it's door must be opened to the level that
+                        "discovered" it. You can open a door of a level by calling the <code>openDoor</code> method
+                        on a <code>RoguelikeLevel</code> object that takes an adjacent <code>RoguelikeLevel</code>.
+                        <ul>
+                            <li>
+                                For example, if I am a newly generated level at (1,0), I would look up which level
+                                discovered me, lets say (0,0), and open my door to that
+                                level. I would then also go to the level at (0,0) and open its door to me, (1,0),
+                                since it should have an open door to me as well.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        You should <b>only</b> generate <code>this.maxRooms</code> amount of levels. Keep this in mind
+                        during your implementation.
+                    </li>
+
+                    <li>
+                        Lastly, once the map is completely generated, you should call <code>this.loadLevel</code> on
+                        the first level you created, the starting level.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                You should be generating a level <b>before</b> exploring for new level positions.
+                <ul>
+                    <li>
+                        Example: The next level position is (1,0). This level should be generated and initialized
+                        <i>before</i> exploring new random level positions from (1,0).
+                    </li>
+                </ul>
+            </li>
+            <li>
+                It is <b>extremely</b> important that you call these randomization methods in the order listed below. If
+                you deviate from this order, you will likely fail in Autolab.
+                <ol>
+                    <li>
+                        <code>getRandomStartingPosition</code> - only called once.
+                    </li>
+                    <li>
+                        <code>getNextLevelToGenerate</code>
+                    </li>
+                    <li>
+                        <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> - this should <i>always</i> be called
+                        <i>after</i> getNextLevelToGenerate.
+                    </li>
+                </ol>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+    Now, when you play the Roguelike, you should get a different map every time you play, with a guaranteed boss room
+    found somewhere throughout it. Testing this method largely involves playing the game and ensuring the correct
+    amount of rooms were generated, with a boss room somewhere in the map. Sometimes, using a set seed for your
+    randomization could also help with the testing process, but is optional. To do this, call
+    <code>Randomizer.setSeed</code> with any number of your choosing before doing anything that involves randomization.
+</p>
 
 <hr />
 <h3>Autolab Feedback</h3>
