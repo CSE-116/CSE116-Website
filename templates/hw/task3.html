@@ -265,7 +265,9 @@
 <p>
     The content of the Learning Objective is primarily used in the Game Engine by Pacman. To play Pacman, during and
     after completing this Learning Objective, navigate to the class <code>app.Configuration</code> and change the
-    <code>GAME</code> constant to <code>"pacman"</code>.
+    <code>GAME</code> constant to <code>"pacman"</code>. As the size of the Pacman level is quite large, you should also
+    set the value of <code>ZOOM</code> to <code>2.0</code> or <code>1.0</code> (it can technically be non-whole, but not
+    without serious graphical bugs).
 </p>
 <p>
     It may look like there are a lot of classes to create and a lot of code to write for this task, but don't let this
@@ -562,10 +564,13 @@
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to return whether the ghost is in the chasing state.
@@ -604,7 +609,7 @@
                     <li>
                         The <code>Vector2D</code> returned by <code>getBestDirection</code> may be null. If so, skip
                         this step. If it is not null, set the orientation of the ghost to the x and y components of that
-                        <code>Vector2D</code>. Again, you should use the <code>setOrientation</code> method to do so.
+                        best direction. Again, you should use the <code>setOrientation</code> method to do so.
                     </li>
                     <li>
                         Set your <code>Vector2D</code> instance variable equal to the rounded value of the ghost's
@@ -625,10 +630,13 @@
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to always return <code>false</code>.
@@ -648,10 +656,13 @@
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to return whether the ghost is in the dead state.
@@ -677,16 +688,19 @@
     <li>
         <code>Flee</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
         <code>Flee</code> which extends <code>Decision</code>. This class will represent the decision of whether a ghost
-        has is fleeing from the player, which happens when a power pellet has been eaten, as well as the action of
-        running from the player, which involves moving in a random direction at each intersection.
+        is fleeing from the player, which happens when a power pellet has been eaten, as well as the action of running
+        from the player, which involves moving in a random direction at each intersection.
         <ul>
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to return whether the ghost is in the frightened state.
@@ -718,7 +732,7 @@
                     <li>
                         The <code>Vector2D</code> returned by <code>getRandomDirection</code> may be null. If so, skip
                         this step. If it is not null, set the orientation of the ghost to the x and y components of that
-                        <code>Vector2D</code>. Again, you should use the <code>setOrientation</code> method to do so.
+                        random direction. Again, you should use the <code>setOrientation</code> method to do so.
                     </li>
                     <li>
                         Set your <code>Vector2D</code> instance variable equal to the rounded value of the ghost's
