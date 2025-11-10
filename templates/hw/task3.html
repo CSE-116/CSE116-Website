@@ -1460,9 +1460,10 @@
             </li>
             <li>
                 The existing <code>statsPath</code> instance variable will be the location of the csv file which stores
-                the stats. Each csv file will have one score per line, as "entryName,playTime,score". You should read
-                each line in this file, parse it to create a <code>GameStat</code> object corresponding to that line,
-                and add it to the tree using the <code>addScore</code> method.
+                the stats. Each csv file will have one score per line, as "entryName,playTime,score", which are a
+                <code>String</code> and two <code>doubles</code>, respectively. You should read each line in this file,
+                parse it to create a <code>GameStat</code> object corresponding to that line, and add it to the tree
+                using the <code>addScore</code> method.
             </li>
             <li>
                 This process must only occur once for a given scoreboard. If this method is called more than once, every
