@@ -74,7 +74,7 @@
 <hr />
 
 <p>
-    For this problem set, you will write the follow 3 static methods that are all related to binary trees (the
+    For this problem set, you will write the following 3 static methods that are all related to binary trees (the
     Game Features will include Polymorphism). The signatures for these methods exist in the handout repo and the
     methods are all stubbed out.
 </p>
@@ -125,9 +125,9 @@
     <li>
         In the <code>problem.ProblemSet3</code> class, complete the <code>isBST</code> method that takes a
         <code>BinaryTreeNode</code> of <code>Integer</code>s and an <code>Integer</code> <code>Comparator</code>
-        as parameters and returns a <code>boolean</code>. This method returns true if the binary tree, defined
-        by the parameter node as the root of the tree, is a valid BST according to the provided comparator, and
-        false otherwise.
+        as parameters and returns a <code>boolean</code>. This method returns <code>true</code> if the binary tree,
+        defined by the parameter node as the root of the tree, is a valid BST according to the provided comparator, and
+        <code>false</code> otherwise.
         <ul>
             <li>
                 You may assume that no values are repeated in the tree. Therefore, you can address ties in
@@ -265,7 +265,9 @@
 <p>
     The content of the Learning Objective is primarily used in the Game Engine by Pacman. To play Pacman, during and
     after completing this Learning Objective, navigate to the class <code>app.Configuration</code> and change the
-    <code>GAME</code> constant to <code>"pacman"</code>.
+    <code>GAME</code> constant to <code>"pacman"</code>. As the size of the Pacman level is quite large, you should also
+    set the value of <code>ZOOM</code> to <code>2.0</code> or <code>1.0</code> (it can technically be non-whole, but not
+    without serious graphical bugs).
 </p>
 <p>
     It may look like there are a lot of classes to create and a lot of code to write for this task, but don't let this
@@ -409,8 +411,9 @@
                     <li>
                         This method will traverse through the tree <strong>in the parameter</strong> (not the tree in
                         your instance variable), making decisions to go left or right by calling <code>decide</code> on
-                        the <code>Decision</code> stored in each tree node. A value of true indicates that you should
-                        "travel" to the right child node, and a value of false means travel to the left child node.
+                        the <code>Decision</code> stored in each tree node. A value of <code>true</code> indicates that
+                        you should "travel" to the right child node, and a value of <code>false</code> means travel to
+                        the left child node.
                     </li>
                     <li> When a leaf node is reached (a node where both left and right children are null), the
                         <code>Decision</code> value at that node should be returned. Keep in mind that the node in the
@@ -425,9 +428,9 @@
                         empty, or if the tree has a node with only one child. In the case of a node with only one child,
                         the method should return null if that node's decision tells it to traverse in the opposite
                         direction of that child. For example, if a tree has only a left node, it is not a leaf, but if
-                        the <code>decide</code> method returns true, you cannot traverse to the right, and should return
-                        null. This is useful for handling poor tree structures, or having a state that performs no
-                        action.
+                        the <code>decide</code> method returns <code>true</code>, you cannot traverse to the right, and
+                        should return null. This is useful for handling poor tree structures, or having a state that
+                        performs no action.
                     </li>
                 </ul>
             </li>
@@ -561,10 +564,13 @@
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to return whether the ghost is in the chasing state.
@@ -603,7 +609,7 @@
                     <li>
                         The <code>Vector2D</code> returned by <code>getBestDirection</code> may be null. If so, skip
                         this step. If it is not null, set the orientation of the ghost to the x and y components of that
-                        <code>Vector2D</code>. Again, you should use the <code>setOrientation</code> method to do so.
+                        best direction. Again, you should use the <code>setOrientation</code> method to do so.
                     </li>
                     <li>
                         Set your <code>Vector2D</code> instance variable equal to the rounded value of the ghost's
@@ -624,10 +630,13 @@
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to always return <code>false</code>.
@@ -647,10 +656,13 @@
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to return whether the ghost is in the dead state.
@@ -676,16 +688,19 @@
     <li>
         <code>Flee</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
         <code>Flee</code> which extends <code>Decision</code>. This class will represent the decision of whether a ghost
-        has is fleeing from the player, which happens when a power pellet has been eaten, as well as the action of
-        running from the player, which involves moving in a random direction at each intersection.
+        is fleeing from the player, which happens when a power pellet has been eaten, as well as the action of running
+        from the player, which involves moving in a random direction at each intersection.
         <ul>
             <li>
                 Create a constructor which takes in a <code>Ghost</code>, a <code>PacmanGame</code>, and a
                 <code>String</code>. You should pass the <code>Ghost</code> and <code>String</code> to the super
-                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables. You
-                should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
-                location of the ghost, which will be used by several of the utility methods provided. The initial value
-                of this vector should be null.
+                constructor, and store the <code>Ghost</code> and <code>PacmanGame</code> as instance variables.
+            </li>
+            <li>
+                You should create an additional <code>Vector2D</code> instance variable to store the last whole-numbered
+                location of the ghost. The initial value of this vector should be null. This will be used by several of
+                the utilities provided, namely to ensure that the ghost does turn 180 degrees, and only changes
+                directions when fully aligned to a tile.
             </li>
             <li>
                 Override the <code>decide</code> method to return whether the ghost is in the frightened state.
@@ -717,7 +732,7 @@
                     <li>
                         The <code>Vector2D</code> returned by <code>getRandomDirection</code> may be null. If so, skip
                         this step. If it is not null, set the orientation of the ghost to the x and y components of that
-                        <code>Vector2D</code>. Again, you should use the <code>setOrientation</code> method to do so.
+                        random direction. Again, you should use the <code>setOrientation</code> method to do so.
                     </li>
                     <li>
                         Set your <code>Vector2D</code> instance variable equal to the rounded value of the ghost's
@@ -793,6 +808,9 @@
                         action; if the ghost is not dead, there is a <code>Flee</code> node, acting as a decision; from
                         here, if the ghost is fleeing, there is another <code>Flee</code> node, this time acting as an
                         action; if the ghost is not fleeing, there is an <code>Idle</code> node.
+                    </li>
+                    <li>
+                        The names of these decisions do not matter.
                     </li>
                 </ul>
             </li>
@@ -959,8 +977,8 @@
                         parameter.
                     </li>
                     <li>
-                        To access and modify the health of the player, you can use the <code>getHealth</code> and
-                        <code>setHealth</code> methods respectively.
+                        To access and modify the health of the player, you can use the <code>getHP</code> and
+                        <code>setHP</code> methods respectively.
                     </li>
                     <li>
                         To remove the item from the player's inventory, you should call the
@@ -1164,15 +1182,17 @@
 </p>
 <p>
     You should create another <code>boolean</code> instance variable representing whether the <code>TestDecision</code>
-    has been used. It should initially be false.
+    has been used. It should initially be <code>false</code>.
 </p>
 <p>
     Create a method called <code>isUsed</code>, which takes no parameters and returns a boolean. It should return the
     instance variable described above.
 </p>
 <p>Override the <code>decide</code> method to return the instance variable for the traversal direction.</p>
-<p>Override the <code>doAction</code> method to set the instance variable for whether it has been used to true.</p>
-
+<p>
+    Override the <code>doAction</code> method to set the instance variable for whether it has been used to
+    <code>true</code>.
+</p>
 <br />
 <hr />
 <h3>Testing Requirements</h3>
@@ -1331,6 +1351,8 @@
     tests for that method. Partially implemented methods may result in some partial credit being earned, depending on
     the method.
 </p>
+
+<br />
 <hr />
 <h3>Programming Requirements</h3>
 <hr />
@@ -1452,9 +1474,10 @@
             </li>
             <li>
                 The existing <code>statsPath</code> instance variable will be the location of the csv file which stores
-                the stats. Each csv file will have one score per line, as "entryName,playTime,score". You should read
-                each line in this file, parse it to create a <code>GameStat</code> object corresponding to that line,
-                and add it to the tree using the <code>addScore</code> method.
+                the stats. Each csv file will have one score per line, as "entryName,playTime,score", which are a
+                <code>String</code> and two <code>doubles</code>, respectively. You should read each line in this file,
+                parse it to create a <code>GameStat</code> object corresponding to that line, and add it to the tree
+                using the <code>addScore</code> method.
             </li>
             <li>
                 This process must only occur once for a given scoreboard. If this method is called more than once, every
