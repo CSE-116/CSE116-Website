@@ -920,7 +920,7 @@
 <p>
     <strong>Procedural Generation</strong> in game development refers to the creation of levels, maps, or any content
     that is done through algorithms instead of manually. In this task, you will modify RoguelikeGame's
-    <code>generateMap</code> method to accomplish this using DFS.
+    <code>generateMap</code> method to accomplish this using a version of DFS.
 </p>
 
 <p>
@@ -981,7 +981,7 @@
         <ul>
             <li>
                 In the <code>RoguelikeGame</code> class, delete the given functionality of <code>generateMap</code> and
-                overwrite it with a version that procedurally generates levels using DFS.
+                overwrite it with a version that procedurally generates levels using a version of DFS.
 
                 <ul>
                     <li>
@@ -1047,6 +1047,12 @@
                         <em>before</em> exploring new random level positions from (1,0).
                     </li>
                 </ul>
+            </li>
+            <li>
+                When exploring for new positions, your current position should mark all of its neighbors as explored,
+                which effectively blocks those positions and reserves them as connected to the level that discovered
+                them. In this way, you can use the BFS algorithm explained in lecture and swap the queue for a stack to
+                get the correct order of visiting positions.
             </li>
             <li>
                 It is <strong>extremely</strong> important that you call these randomization methods in the order listed
