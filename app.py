@@ -1,7 +1,8 @@
 import json
+import os
 from datetime import datetime
 
-from flask import Flask, send_from_directory, render_template, make_response
+from flask import Flask, send_from_directory, render_template, make_response, abort
 
 app = Flask(__name__)
 content_directory = "content/"
@@ -54,6 +55,9 @@ def cse116():
 
 @app.get('/hw/<hw_url>')
 def hw(hw_url):
+    list_of_hws = os.listdir('templates/hw')
+    if hw_url not in list_of_hws:
+        abort(404)
     resp = make_response(render_template('hw/' + str(hw_url)))
     resp.headers["X-Content-Type-Options"] = "nosniff"
     return resp
