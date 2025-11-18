@@ -454,9 +454,8 @@
                 Override the <code>doAction</code> method. If the <code>Agent</code>'s path is null, use the
                 <code>Pathfinding.findPath</code> method to assign it a path. The starting location should be that
                 <code>Agent</code>'s location, and the ending location should be the location of the <code>Player</code>
-                within the level. Afterwards, you should call the <code>followPath</code> method on the
-                <code>Agent</code>, passing in the <code>double</code> parameter. You should do this no matter if the
-                path is null or not.
+                within the level. If the <code>Agent</code>'s path is not null, call the <code>followPath</code> method
+                on it, passing in the <code>double</code> parameter.
             </li>
         </ul>
     </li>
