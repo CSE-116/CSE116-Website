@@ -452,7 +452,7 @@
             </li>
             <li>
                 Override the <code>doAction</code> method. If the <code>Agent</code>'s path is null, use the
-                <code>Pathfinding.findPath</code> method to assign it a path. The starting location should be that
+                <code>PathfindingUtils.findPath</code> method to assign it a path. The starting location should be that
                 <code>Agent</code>'s location, and the ending location should be the location of the <code>Player</code>
                 within the level. If the <code>Agent</code>'s path is not null, call the <code>followPath</code> method
                 on it, passing in the <code>double</code> parameter.
@@ -462,7 +462,7 @@
     <li>
         <code>MoveTowardPlayerAvoidWalls</code>: Create a class named <code>MoveTowardPlayerAvoidWalls</code> which
         extends <code>Decision</code>. This class's constructor and other methods should be the same as in
-        <code>MoveTowardPlayer</code>, except using <code>Pathfinding.findPathAvoidWalls</code> instead of
+        <code>MoveTowardPlayer</code>, except using <code>PathfindingUtils.findPathAvoidWalls</code> instead of
         <code>findPath</code>.
     </li>
     <li>
