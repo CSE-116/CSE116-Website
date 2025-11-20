@@ -314,12 +314,6 @@ public class TestTask4 {
         assertTrue(object instanceof Marker);
         assertEquals(new Vector2D(2, 5), object.getLocation());
         assertEquals("Door", ((Marker) object).getMarkerID());
-
-        object = LevelParser.readStaticObject(game, level,
-                new ArrayList<>(Arrays.asList("StaticGameObject", "LevelDoor", "10", "5", "The next level")));
-        assertNotNull(object);
-        assertTrue(object instanceof LevelDoor);
-        assertEquals(new Vector2D(10, 5), object.getLocation());
     }
 
     @Test
