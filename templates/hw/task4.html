@@ -995,6 +995,13 @@
                         <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> method exactly as shown.
                         <ul>
                             <li>
+                                Calling <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> returns to you a new
+                                shuffled ArrayList of <code>Vector2D</code> directions. You should use this method
+                                every time you are exploring for new positions from your current position.
+                                (This means that the directions should be randomized <em>every time</em> you are
+                                exploring for new positions, not once per map generation.)
+                            </li>
+                            <li>
                                 The generated positions must be valid. A valid position is one that has not already been
                                 explored and is within the bounds of <code>this.mapSize</code>.
                             </li>
