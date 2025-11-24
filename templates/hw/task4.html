@@ -297,6 +297,12 @@
     "save link as", then download the file to the correct location within the project.
 </p>
 <p>
+    One of the tests relies on testing files, which should all be placed in the directory "data/levels/testing". They
+    are: <a href="/static_files/files/mario1.csv">mario1.csv</a>, <a
+        href="/static_files/files/roguelike.csv">roguelike.csv</a>, and <a
+        href="/static_files/files/medium.csv">medium.csv</a>
+</p>
+<p>
     These tests are not overly thorough, but should validate some of the basic behavior of the features that they test,
     and let you know if you are on the right track.
 </p>
@@ -452,7 +458,7 @@
             </li>
             <li>
                 Override the <code>doAction</code> method. If the <code>Agent</code>'s path is null, use the
-                <code>Pathfinding.findPath</code> method to assign it a path. The starting location should be that
+                <code>PathfindingUtils.findPath</code> method to assign it a path. The starting location should be that
                 <code>Agent</code>'s location, and the ending location should be the location of the <code>Player</code>
                 within the level. If the <code>Agent</code>'s path is not null, call the <code>followPath</code> method
                 on it, passing in the <code>double</code> parameter.
@@ -462,7 +468,7 @@
     <li>
         <code>MoveTowardPlayerAvoidWalls</code>: Create a class named <code>MoveTowardPlayerAvoidWalls</code> which
         extends <code>Decision</code>. This class's constructor and other methods should be the same as in
-        <code>MoveTowardPlayer</code>, except using <code>Pathfinding.findPathAvoidWalls</code> instead of
+        <code>MoveTowardPlayer</code>, except using <code>PathfindingUtils.findPathAvoidWalls</code> instead of
         <code>findPath</code>.
     </li>
     <li>
@@ -994,6 +1000,13 @@
                         To get these random directions, you <strong>must</strong> call the given
                         <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> method exactly as shown.
                         <ul>
+                            <li>
+                                Calling <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> returns to you a new
+                                shuffled ArrayList of <code>Vector2D</code> directions. You should use this method
+                                every time you are exploring for new positions from your current position.
+                                (This means that the directions should be randomized <em>every time</em> you are
+                                exploring for new positions, not once per map generation.)
+                            </li>
                             <li>
                                 The generated positions must be valid. A valid position is one that has not already been
                                 explored and is within the bounds of <code>this.mapSize</code>.

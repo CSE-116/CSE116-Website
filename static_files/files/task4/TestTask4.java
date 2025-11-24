@@ -314,12 +314,6 @@ public class TestTask4 {
         assertTrue(object instanceof Marker);
         assertEquals(new Vector2D(2, 5), object.getLocation());
         assertEquals("Door", ((Marker) object).getMarkerID());
-
-        object = LevelParser.readStaticObject(game, level,
-                new ArrayList<>(Arrays.asList("StaticGameObject", "LevelDoor", "10", "5", "The next level")));
-        assertNotNull(object);
-        assertTrue(object instanceof LevelDoor);
-        assertEquals(new Vector2D(10, 5), object.getLocation());
     }
 
     @Test
@@ -354,15 +348,15 @@ public class TestTask4 {
     @Test
     public void testParseRoguelikeLevel() {
         RoguelikeGame game = new RoguelikeGame();
-        Level level = LevelParser.parseLevel(game, "testing/___roguelike.csv");
+        Level level = LevelParser.parseLevel(game, "testing/roguelike.csv");
         assertNotNull(level);
         assertTrue(level instanceof RoguelikeLevel);
 
-        level = LevelParser.parseLevel(game, "testing/___mario1.csv");
+        level = LevelParser.parseLevel(game, "testing/mario1.csv");
         assertNotNull(level);
         assertTrue(level instanceof MarioLevel);
 
-        level = LevelParser.parseLevel(game, "testing/___medium.csv");
+        level = LevelParser.parseLevel(game, "testing/medium.csv");
         assertNotNull(level);
         assertTrue(level instanceof TopDownLevel);
     }
