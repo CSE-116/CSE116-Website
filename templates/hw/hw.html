@@ -3,10 +3,10 @@
 {% macro task_card(title) %}
     <div>
         {% set card_id = title.lower().replace(" ", "-") %}
-        <a data-toggle="collapse" data-target="#{{ card_id }}">
+        <a class="collapse-header" data-bs-toggle="collapse" data-bs-target="#{{ card_id }}">
             <div class="card-header text-white section-header">
                 <div>
-                    {{ title }} <span class="float-right"><i class="far fa-caret-square-down"></i></span>
+                    {{ title }} <span class="float-end"><i class="far fa-caret-square-down"></i></span>
                 </div>
             </div>
         </a>
