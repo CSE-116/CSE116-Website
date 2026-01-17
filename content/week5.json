@@ -1,29 +1,32 @@
 {
-  "title": "Week 5: Classes - Testing and Tips",
+  "title": "Week 5: Memory, Linked Lists",
   "theme": "oop",
+  "lab": "Logic Gates Activity (Hardware)",
   "homework": [
-    {
-      "title": "Coding Task 1: Unit Testing + Classes",
-      "url": "task1.html",
-      "released": true
-    }
   ],
-  "lab": "Activity 1 + Coding Quiz 1",
   "content": [
     {
-      "lecture": "11-test-classes.json",
+      "lecture": "11-ll.json",
       "day": "Monday",
-      "date": "September 22"
+      "date": "February 16"
     },
     {
-      "lecture": "12-test-classes.json",
+      "lecture": "12-ll.json",
       "day": "Wednesday",
-      "date": "September 24"
+      "date": "February 18"
     },
     {
-      "lecture": "13-test-classes.json",
+      "lecture": "13-ll.json",
       "day": "Friday",
-      "date": "September 26"
+      "date": "February 20"
+    },
+    {
+      "type": "deadline",
+      "day": "Friday",
+      "date": "February 20",
+      "time": "11:59pm",
+      "assignment": "Problem Set 1",
+      "deadline_type": "ps"
     }
   ]
 }

@@ -1,37 +1,34 @@
 {
   "title": "Week 10: Trees",
-  "theme": "ds",
+  "theme": "oop",
+  "lab": "Tracing Quiz 2 + Coding Quiz 2",
   "homework": [
     {
-      "title": "Coding Task 3: Polymorphism + Trees",
-      "url": "task3.html",
-      "released": true
+      "title": "Problem Set 3: Polymorphism + Trees + Testing",
+      "url": "ps3.html",
+      "released": false
+    },
+    {
+      "title": "Game Features 3: Polymorphism + Trees + Testing",
+      "url": "gf3.html",
+      "released": false
     }
   ],
-  "lab": "Tracing Quiz 2",
   "content": [
     {
       "lecture": "23-trees.json",
       "day": "Monday",
-      "date": "October 27"
+      "date": "March 23"
     },
     {
       "lecture": "24-trees.json",
       "day": "Wednesday",
-      "date": "October 29"
+      "date": "March 25"
     },
     {
       "lecture": "25-trees.json",
       "day": "Friday",
-      "date": "October 31"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "October 31",
-      "time": "11:59pm",
-      "assignment": "Task 2",
-      "deadline_type": "game"
+      "date": "March 27"
     }
   ]
 }

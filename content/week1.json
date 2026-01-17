@@ -1,5 +1,5 @@
 {
-  "title": "Week 1: Introduction to Java",
+  "title": "Week 1: Course Introduction",
   "theme": "intro",
   "homework": [
   ],
@@ -7,18 +7,13 @@
   "content": [
     {
       "lecture": "0-intro.json",
-      "day": "Monday",
-      "date": "August 25"
-    },
-    {
-      "lecture": "1-java.json",
       "day": "Wednesday",
-      "date": "August 27"
+      "date": "January 21"
     },
     {
-      "lecture": "2-java.json",
+      "lecture": "0_2-115-exam.json",
       "day": "Friday",
-      "date": "August 29"
+      "date": "January 23"
     }
   ]
 }

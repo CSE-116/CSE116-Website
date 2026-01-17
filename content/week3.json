@@ -1,30 +1,30 @@
 {
-  "title": "Week 3: Unit Testing",
+  "title": "Week 3: Classes",
   "theme": "testing",
+  "lab": "Tracing Quiz 0 + Coding Quiz 0",
   "homework": [],
-  "lab": "Activity 0 + Coding Quiz 0",
   "content": [
     {
-      "lecture": "5-testing.json",
+      "lecture": "5-classes.json",
       "day": "Monday",
-      "date": "September 8"
+      "date": "February 2"
     },
     {
-      "lecture": "6-testing.json",
+      "lecture": "6-classes.json",
       "day": "Wednesday",
-      "date": "September 10"
+      "date": "February 4"
     },
     {
-      "lecture": "7-testing.json",
+      "lecture": "7-classes.json",
       "day": "Friday",
-      "date": "September 12"
+      "date": "February 6"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "September 12",
+      "date": "February 6",
       "time": "11:59pm",
-      "assignment": "Task 0",
+      "assignment": "Problem Set 0",
       "deadline_type": "ps"
     }
   ]

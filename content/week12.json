@@ -1,36 +1,41 @@
 {
   "title": "Week 12: Graphs",
-  "theme": "ds",
+  "theme": "oop",
+  "lab": "Makeup 2 - Tracing Quiz 2, Coding Quiz 2, Interview 2",
   "homework": [
     {
-      "title": "Coding Task 4: Graphs",
-      "url": "task4.html",
-      "released": true
+      "title": "Problem Set 4: Graphs + Testing",
+      "url": "ps4.html",
+      "released": false
+    },
+    {
+      "title": "Game Features 4: Graphs + Testing",
+      "url": "gf4.html",
+      "released": false
     }
   ],
-  "lab": "Tracing Quiz 3",
   "content": [
     {
       "lecture": "29-graphs.json",
       "day": "Monday",
-      "date": "November 10"
+      "date": "April 6"
     },
     {
       "lecture": "30-graphs.json",
       "day": "Wednesday",
-      "date": "November 12"
+      "date": "April 8"
     },
     {
       "lecture": "31-graphs.json",
       "day": "Friday",
-      "date": "November 14"
+      "date": "April 10"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "November 14",
+      "date": "April 10",
       "time": "11:59pm",
-      "assignment": "Task 3",
+      "assignment": "Game Features 3",
       "deadline_type": "game"
     }
   ]

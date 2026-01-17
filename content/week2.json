@@ -1,28 +1,34 @@
 {
   "title": "Week 2: Introduction to Java",
   "theme": "intro",
+  "lab": "Basics Circuits Activity (Hardware)",
   "homework": [
     {
-      "title": "Coding Task 0: Java Basics",
-      "url": "task0.html",
-      "released": true
-    }],
-  "lab": "No Lab",
+      "title": "Problem Set 0: Java Basics",
+      "url": "ps0.html",
+      "released": false
+    },
+    {
+      "title": "Game Features 0: Java Basics",
+      "url": "gf0.html",
+      "released": false
+    }
+  ],
   "content": [
     {
-      "lecture": "break.json",
+      "lecture": "1-java.json",
       "day": "Monday",
-      "date": "September 1"
+      "date": "January 26"
+    },
+    {
+      "lecture": "2-java.json",
+      "day": "Wednesday",
+      "date": "January 28"
     },
     {
       "lecture": "3-java.json",
-      "day": "Wednesday",
-      "date": "September 3"
-    },
-    {
-      "lecture": "4-java.json",
       "day": "Friday",
-      "date": "September 5"
+      "date": "January 30"
     }
   ]
 }

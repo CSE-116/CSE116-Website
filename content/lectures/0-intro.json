@@ -2,8 +2,12 @@
   "title": "Course Introduction",
   "reading_list": [
     {
+      "url": "https://www.w3schools.com/java/default.asp",
+      "text": "Java Tutorial (W3 Schools) - Beginner Friendly"
+    },
+    {
       "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/module-summary.html",
-      "text": "Java Official Documentation"
+      "text": "Java Official Documentation - Very Technical"
     }
   ]
 }

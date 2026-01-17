@@ -1,30 +1,30 @@
 {
   "title": "Week 13: The State Pattern",
-  "theme": "oop",
+  "theme": "testing",
+  "lab": "Tracing Quiz 3 + Coding Quiz 3",
   "homework": [],
-  "lab": "\uD83C\uDF7E <a href=\"https://legacy.piazza.com/class/meahudzh24h333/post/334\">Interview Week</a> \uD83C\uDF89",
   "content": [
     {
       "lecture": "32-state.json",
       "day": "Monday",
-      "date": "November 17"
+      "date": "April 13"
     },
     {
       "lecture": "33-state.json",
       "day": "Wednesday",
-      "date": "November 19"
+      "date": "April 15"
     },
     {
       "lecture": "34-state.json",
       "day": "Friday",
-      "date": "November 21"
+      "date": "April 17"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "November 21",
+      "date": "April 17",
       "time": "11:59pm",
-      "assignment": "Task 4",
+      "assignment": "Problem Set 4",
       "deadline_type": "ps"
     }
   ]

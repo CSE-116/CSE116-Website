@@ -1,31 +1,42 @@
 {
-  "title": "Week 6: Linked List",
-  "theme": "ds",
-  "homework": [],
-  "lab": "Tracing Quiz 1",
+  "title": "Week 6: Inheritance",
+  "theme": "testing",
+  "lab": "Tracing Quiz 1 + Coding Quiz 1",
+  "homework": [
+    {
+      "title": "Problem Set 2: Linked Lists + Inheritance",
+      "url": "ps2.html",
+      "released": false
+    },
+    {
+      "title": "Game Features 2: Linked Lists + Inheritance",
+      "url": "gf2.html",
+      "released": false
+    }
+  ],
   "content": [
     {
-      "lecture": "14-ll.json",
+      "lecture": "14-inheritance.json",
       "day": "Monday",
-      "date": "September 29"
+      "date": "February 23"
     },
     {
-      "lecture": "15-ll.json",
+      "lecture": "15-inheritance.json",
       "day": "Wednesday",
-      "date": "October 1"
+      "date": "February 25"
     },
     {
-      "lecture": "16-ll.json",
+      "lecture": "16-inheritance.json",
       "day": "Friday",
-      "date": "October 3"
+      "date": "February 27"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "October 3",
+      "date": "February 27",
       "time": "11:59pm",
-      "assignment": "Task 1",
-      "deadline_type": "ps"
+      "assignment": "Game Features 1",
+      "deadline_type": "game"
     }
   ]
 }

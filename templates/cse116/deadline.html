@@ -2,9 +2,11 @@
 
 {% macro deadline(content) -%}
     {% if content.deadline_type == "ps" %}
-        <tr class="table-warning">
-    {% elif content.deadline_type == "game" %}
         <tr class="table-info">
+    {% elif content.deadline_type == "game" %}
+        <tr class="table-warning">
+    {% elif content.deadline_type == "ao" %}
+        <tr class="table-warning">
     {% elif content.deadline_type == "expected" %}
         <tr class="table-info">
     {% elif content.deadline_type == "late" %}
@@ -15,11 +17,13 @@
         <tr class="table-default">
     {% endif %}
         <td colspan="3">{{ content.day }}, {{ content.date }} @ {{ content.time }}<br/>
-        {{ content.assignment }}:
+        {{ content.assignment }}
     {% if content.deadline_type == "ps" %}
-        Problem Set Deadline
+        Deadline
     {% elif content.deadline_type == "game" %}
-        Game Features Deadline
+        Deadline
+    {% elif content.deadline_type == "ao" %}
+        Deadline
     {% elif content.deadline_type == "expected" %}
         Expected Deadline
     {% elif content.deadline_type == "late" %}

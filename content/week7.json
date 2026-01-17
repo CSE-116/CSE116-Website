@@ -1,37 +1,32 @@
 {
-  "title": "Week 7: Inheritance",
-  "theme": "oop",
+  "title": "Week 7: Polymorphism",
+  "theme": "testing",
+  "lab": "Interview 1 + Memory Cell Activity (Hardware)",
   "homework": [
-    {
-      "title": "Coding Task 2: Linked Lists + Inheritance",
-      "url": "task2.html",
-      "released": true
-    }
   ],
-  "lab": "2nd Chance - Coding Quiz 1 + Tracing Quiz 1",
   "content": [
     {
-      "lecture": "17-inheritance.json",
+      "lecture": "17-poly.json",
       "day": "Monday",
-      "date": "October 6"
+      "date": "March 2"
     },
     {
-      "lecture": "18-inheritance.json",
+      "lecture": "18-poly.json",
       "day": "Wednesday",
-      "date": "October 8"
+      "date": "March 4"
     },
     {
-      "lecture": "19-inheritance.json",
+      "lecture": "19-poly.json",
       "day": "Friday",
-      "date": "October 10"
+      "date": "March 6"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "October 10",
+      "date": "March 6",
       "time": "11:59pm",
-      "assignment": "Task 1",
-      "deadline_type": "game"
+      "assignment": "Problem Set 2",
+      "deadline_type": "ps"
     }
   ]
 }

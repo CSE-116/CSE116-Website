@@ -1,0 +1,18 @@
+{
+  "title": "Unit Testing",
+  "slides": "week2_1_Unit_Testing.pdf",
+  "reading_list": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Unit_testing",
+      "text": "Wikipedia: Unit Testing"
+    },
+    {
+      "url": "https://www.jetbrains.com/help/idea/debugging-your-first-java-application.html",
+      "text": "Debugging in IntelliJ"
+    },
+    {
+      "url": "https://smartpuffin.com/unit-tests-tutorial/",
+      "text": "Unit Testing Tips"
+    }
+  ]
+}

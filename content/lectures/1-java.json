@@ -3,8 +3,12 @@
   "slides": "week1_1_Java.pdf",
   "reading_list": [
     {
-      "url": "https://www.jetbrains.com/idea/download#community-edition",
-      "text": "IntelliJ - Community Edition"
+      "url": "https://www.jetbrains.com/idea/download/",
+      "text": "Download IntelliJ - Java IDE"
+    },
+    {
+      "url": "https://vscodium.com/",
+      "text": "or Download VSCodium for a lightweight option"
     },
     {
       "url": "https://www.w3schools.com/java/java_methods.asp",
@@ -15,7 +19,7 @@
       "text": "Java Primitive Types"
     },
     {
-      "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html",
+      "url": "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html",
       "text": "Java Strings"
     }
   ]

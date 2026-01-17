@@ -177,6 +177,16 @@ td.date {
     cursor: pointer;
 }
 
+.card-new-test {
+    border-color: #83108f;
+}
+
+.section-new-test {
+    background-color: #83108f;
+    color: #ffffff;
+    cursor: pointer;
+}
+
 .section-events {
     background-color: #bd181f;
     color: #ffffff;

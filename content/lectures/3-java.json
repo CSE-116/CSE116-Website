@@ -7,7 +7,7 @@
       "text": "Java ArrayList"
     },
     {
-      "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html",
+      "url": "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html",
       "text": "JavaDocs ArrayList"
     },
     {
@@ -15,7 +15,7 @@
       "text": "Java HashMap"
     },
     {
-      "url": "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashMap.html",
+      "url": "https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/HashMap.html",
       "text": "JavaDocs HashMap"
     }
   ]

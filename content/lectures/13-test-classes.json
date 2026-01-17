@@ -1,9 +1,0 @@
-{
-  "title": "The Debugger",
-  "reading_list": [
-    {
-      "url": "https://www.jetbrains.com/help/idea/debugging-your-first-java-application.html#stopping-debugger",
-      "text": "Debugging in IntelliJ"
-    }
-  ]
-}

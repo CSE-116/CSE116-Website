@@ -1,31 +1,31 @@
 {
-  "title": "Week 15: Review",
-  "theme": "intro",
+  "title": "Week 15: Hardware",
+  "theme": "ds",
+  "lab": "Makeup 2 - Tracing Quiz 2, Coding Quiz 2, Interview 2",
   "homework": [],
-  "lab": "2nd Chance - Coding Quiz 2 + Tracing Quiz 2 + Coding Quiz 3 + Tracing Quiz 3",
   "content": [
     {
-      "lecture": "35-.json",
+      "lecture": "38-hardware.json",
       "day": "Monday",
-      "date": "December 1"
+      "date": "April 27"
     },
     {
-      "lecture": "36-.json",
+      "lecture": "39-hardware.json",
       "day": "Wednesday",
-      "date": "December 3"
+      "date": "April 29"
     },
     {
-      "lecture": "37-.json",
+      "lecture": "40-hardware.json",
       "day": "Friday",
-      "date": "December 5"
+      "date": "May 1"
     },
     {
       "type": "deadline",
       "day": "Friday",
-      "date": "December 5",
+      "date": "May 1",
       "time": "11:59pm",
-      "assignment": "Task 4",
-      "deadline_type": "game"
+      "assignment": "Calculator",
+      "deadline_type": "ao"
     }
   ]
 }
