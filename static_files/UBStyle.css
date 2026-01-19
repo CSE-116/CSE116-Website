@@ -223,3 +223,13 @@ div.header {
 body.outer {
     background-color: #ffffff;
 }
+
+.lo-checklist {
+    list-style-type: "□  ";
+}
+
+.lo-checklist li {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+}
