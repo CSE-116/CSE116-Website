@@ -15,6 +15,14 @@
       "date": "February 4"
     },
     {
+      "type": "deadline",
+      "day": "Wednesday",
+      "date": "February 4",
+      "time": "11:59pm",
+      "assignment": "Syllabus Quiz",
+      "deadline_type": "ps"
+    },
+    {
       "lecture": "7-classes.json",
       "day": "Friday",
       "date": "February 6"
