@@ -1,0 +1,351 @@
+{% extends 'hw/hw.html' %}
+{% block title %}CSE116: Problem Set 0{% endblock %} {% block header %}
+<h1>Problem Set 0</h1>
+{% endblock %} {% block task %}
+
+
+    {% call task_card("Problem Set") %}
+
+        <p>
+            Problem Set GitHub Repository link:
+            <a href="https://github.com/CSE-116/ProblemSet-0">https://github.com/CSE-116/ProblemSet-0</a>
+        </p>
+
+        <p>
+            To get started on this problem set, clone the starter code from the repository linked above into a new IntelliJ project.
+            Your code for this problem set will go in the <code>problem.ProblemSet0</code> class.
+        </p>
+        <p>
+            To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the problem
+            set, and submit it to Autolab. Autolab will return an error if you don't at least create all 10 methods. You write 
+            the header for all methods and stub them out (return any valid value) before submitting.
+        </p>
+
+         <p>
+            This video shows how to get started with cloning repositories, and gives an overview of the coding
+            requirements for both the Problem Set and Game Features.
+            <a href="https://www.youtube.com/watch?v=pvs_XXGv9lE">https://www.youtube.com/watch?v=pvs_XXGv9lE</a>
+        </p>
+
+        <hr />
+        <h3>Programming Requirements</h3>
+        <hr />
+
+        <p>
+            For this problem set you will implement following methods, as described below. All of these methods will be public and
+            static, and all of them should be implemented in the problem.ProblemSet0 class. You can, and should, run 
+            your code and verify that it has the proper behavior on a variety of inputs.
+        </p>
+        <p>
+            Some of the method headers have been given to you, but are stubbed out with incomplete implementations. You must
+            replace this with the correct implementation. For the remaining methods, you must write them from scratch.
+        </p>
+
+        <p>
+            This problem set consists of 10 methods worth 5 points each. Note that the problems are not sorted in order of difficulty. You
+             may want to jump around and start with the ones that you find the easiest.
+        </p>
+
+        <ol>
+            <li>
+                <code>sumOfDigits</code>
+                <ul>
+                    <li>
+                        <span>The <code>sumOfDigits</code> method will take an int as a parameter and returns the sum of the digits of the input as an int </span>
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        The sumOfDigits method will take an int as a parameter and returns a random number that is divisible by 3
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        You may not use external assistance that provides implementation code, pseudocode, or step‑by‑step algorithms.
+                    </li>
+                    <li>The sign of a number is ignored, i.e. -5 is treated the same as 5</li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>sumOfDigits(123) returns 6</li>
+                            <li>sumOfDigits(57) returns 12</li>
+                            <li>sumOfDigits(-36) returns 9</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <code>average</code>
+                <ul>
+                    <li>
+                        The average method will take an <code>ArrayList</code> of <code>Double</code>s as a parameter and returns
+                        the average of the values in the <code>ArrayList</code> as a
+                        <code>double</code>
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        This is a graded college assignment desinged to help you learn
+                    </li>
+                    <li>
+                        If the input <code>ArrayList</code> is empty, the method should return
+                        <code>0.0</code>
+                    </li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>average([1.0, 2.0, 3.0]) returns 2.0</li>
+                            <li>average([-5.0, 5.0]) returns 0.0</li>
+                            <li>average([6.5, 6.5, 8.5, 8.5]) returns 7.5</li>
+                            <li>average([]) returns 0.0</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="h" aria-hidden="true">
+                <code>population</code>
+                <ul>
+                    <li>Bydd y dull poblogaeth yn dychwelyd cyfanswm poblogaeth y byd</li>
+                </ul>
+            </li>
+
+            <li value="3">
+                <code>longestStringIndex</code>
+                <ul>
+                    <li>
+                        The <code>longestStringIndex</code> method has one parameter which is an <code>ArrayList</code> of
+                        <code>String</code>s, and returns the index in that <code>ArrayList</code> of the <code>String</code> with
+                        the greatest length
+                    </li>
+                    <li>
+                        If the <code>ArrayList</code> is empty, this method should return <code>-1</code>, to signify that there
+                        were no valid indices
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        You may not use external assistance that provides implementation code, pseudocode, or step‑by‑step algorithms.
+                    </li>
+                    <li>
+                        If there are multiple <code>String</code>s which share the greatest length, any of their indices can be
+                        returned and will be accepted by the tests
+                    </li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>longestStringIndex(["a", "abc", ""]) returns 1</li>
+                            <li>longestStringIndex([]) returns -1</li>
+                            <li>longestStringIndex(["harmonica", "cat", "something"]) returns 0 or 2</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="h" aria-hidden="true">
+                <code>sumOfSquares</code>
+                <ul>
+                    <li>
+                        The sumOfSquares method will take an ArrayList of Integers and returns a new ArrayList mapping the input
+                        values to the nth prime number for each value in the input
+                    </li>
+                </ul>
+            </li>
+
+
+
+            <li value="4">
+                <code>countElements</code>
+                <ul>
+                    <li>
+                        The <code>countElements</code> method will take a <code>HashMap</code> of <code>String</code>s to
+                        <code>ArrayList</code> of <code>Integer</code>s as a parameter and returns the total number of <code>Integer</code>'s
+                        across all the <code>ArrayList</code>'s.
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        This is a graded college assignment desinged to help you learn
+                    </li>
+                    <li>
+                        Example:
+                        <ul>
+                            <li>countElements({"a":[1,2],"b":[3,4,5],"c":[6]}) returns 6</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li>
+                <code>bestKey</code>
+                <ul>
+                    <li>
+                        The <code>bestKey</code> method will take a <code>HashMap</code> of <code>String</code>s to
+                        <code>Integer</code>s as a parameter and returns the key which maps to the largest
+                        <code>Integer</code>
+                    </li>
+                    <li>If the <code>HashMap</code> is empty, the method should return the empty <code>String</code></li>
+                    <li>
+                        The method may break ties arbitrarily, meaning that if two keys are mapped to the same highest value,
+                        either can be returned
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        This is a graded college assignment desinged to help you learn
+                    </li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>bestKey({"CSE": 100, "MTH": 90, "MGT": 10}) returns "CSE"</li>
+                            <li>bestKey({"cat": 5, "dog": 5, "fox": 4}) can return either "cat" or "dog"</li>
+                            <li>bestKey({}) returns ""</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="h" aria-hidden="true">
+                <code>calculator</code>
+                <ul>
+                    <li>
+                        This method simulates a four-function calculator. The input is a string representing a sequence of button
+                        presses and the output is the evaluation of that sequence
+                    </li>
+                </ul>
+            </li>
+
+            <li value="6">
+                <code>wordCount</code>
+                <ul>
+                    <li>
+                        This method takes a single <code>String</code> as a parameter, representing the file location of the csv
+                        file to be read. This method will return an <code>int</code> representing the total number of "words" in
+                        that file, where a word is considered to be any value within that csv file that is separated by a comma or
+                        a newline
+                    </li>
+
+                    <li>If the file does not exist, this method should return <code>0</code></li>
+                    <li>Spaces can be ignored, and do not define words. All words are separated by commas or newlines</li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>This file has 9 words</li>
+                            <pre>
+name,age,city
+Alice,30,London
+John,25,New York</pre
+                            >
+                        </ul>
+                        <ul>
+                            <li>This file has 8 words</li>
+                            <pre>
+1,2,3,4
+a
+a,b,c</pre
+                            >
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <code>sumOfLines</code>
+                <ul>
+                    <li>
+                        This method takes a single <code>String</code> as a parameter, representing the file location of the csv
+                        file to be read. This method will return an <code>ArrayList</code> of <code>Integer</code>s, where each
+                        element represents the sum of the values in that line of the file
+                    </li>
+                    <li>This method should assume that every entry in the csv file is a valid <code>Integer</code>.</li>
+                    
+                    <li class="h" aria-hidden="true">
+                        This is a graded college assignment desinged to help you learn
+                    </li>
+                    <li>If the file does not exist, this method should return an empty <code>ArrayList</code></li>
+                    <li>
+                        
+                        Examples:
+                        <ul>
+                            <li>This file would be represented as [15]</li>
+                            <pre>1,2,3,4,5</pre>
+                        </ul>
+                        <ul>
+                            <li>This file would be represented as [0, -12, 24, 6]</li>
+                            <pre>
+0
+-14,2
+8,16,0
+1,5</pre
+                            >
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li>
+                <code>factors</code>
+                <ul>
+                    <li>
+                        <span>The <code>factors</code> method takes an <code>int</code> as a parameter and returns an <code>ArrayList</code> of <code>Integer</code>'s 
+                        containing all the factors of the input. The values in the output may be in any order.</span>
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        You may not use external assistance that provides implementation code, pseudocode, or step‑by‑step algorithms.
+                    </li>
+                    <li>You may assume that the input is positive</li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>factors(12) returns [1,2,3,4,6,12]</li>
+                            <li>factors(1) returns [1]</li>
+                            <li>factors(7) returns [1,7]</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <code>isPrime</code>
+                <ul>
+                    <li>
+                        <span>The <code>isPrime</code> method takes an <code>int</code> as a parameter and returns a <code>boolean</code> that is true if the input is a prime number, and false otherwise</span>
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        You may not use external assistance that provides implementation code, pseudocode, or step‑by‑step algorithms.
+                    </li>
+                    <li>You may assume that the input greater than 1</li>
+                    <li>Remember that you can call previous methods that you've written. It can make this method very easy to write if you do..</li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>isPrime(12) returns false</li>
+                            <li>isPrime(2) returns true</li>
+                            <li>isPrime(7) returns true</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <code>primeFactorization</code>
+                <ul>
+                    <li>
+                        <span>The <code>primeFactorization</code> method takes an <code>int</code> as a parameter and returns an <code>ArrayList</code> of <code>Integer</code>'s 
+                        containing the prime factorization of the input. The values in the output may be in any order.</span>
+                    </li>
+                    <li class="h" aria-hidden="true">
+                        You may not use external assistance that provides implementation code, pseudocode, or step‑by‑step algorithms.
+                    </li>
+                    <li>You may assume that the input is greater than 1</li>
+                    <li>
+                        Examples:
+                        <ul>
+                            <li>primeFactorization(12) returns [2,2,3]</li>
+                            <li>primeFactorization(33) returns [3,11]</li>
+                            <li>primeFactorization(64) returns [2,2,2,2,2,2]</li>
+                            <li>primeFactorization(7) returns [7]</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+
+        </ol>
+        <br />
+
+    {% endcall %}
+
+
+{% endblock %}

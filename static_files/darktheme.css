@@ -99,3 +99,7 @@ hr {
 .table-warning, .table-danger, .table-success, .table-info{
     color: black;
 }
+
+.warning-text {
+    color: #E05555;
+}

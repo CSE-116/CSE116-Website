@@ -1,0 +1,285 @@
+{% extends 'hw/hw.html' %}
+{% block title %}CSE116: Game Features 0{% endblock %} {% block header %}
+<h1>Game Features 0</h1>
+{% endblock %} {% block task %}
+
+    {% call task_card("Overview") %}
+
+        <p>
+            Each game engine assignment will require you to integrate what you've learned within a larger 
+            codebase.
+        </p>
+        <p>
+            This video shows how to get started with cloning the task repositories, and gives an overview of the coding
+            requirements for both the Problem Set and Game Features.
+            <a href="https://www.youtube.com/watch?v=pvs_XXGv9lE">https://www.youtube.com/watch?v=pvs_XXGv9lE</a>. The 
+            was made for last semester os the explanation of grading and names of assignments may be different. The 
+            concepts are the same.
+        </p>
+        <p>
+            At the end of this task, your game engine will be capable of reading formatted csv files that describe levels
+            which can be played within specific games. To that end, we have created a level editor that can be used to
+            create your own levels, either for testing or just for fun. It can be found here:
+            <a href="https://jbcarras.github.io/">https://jbcarras.github.io/</a>
+        </p>
+    {% endcall %}
+
+
+    {% call task_card("Game Features") %}
+
+        <p>
+            Game Engine GitHub Repository link:
+            <a href="https://github.com/CSE-116/CSE116-GameEngine">https://github.com/CSE-116/CSE116-GameEngine</a>
+        </p>
+
+        <p>To get started with the game engine task:</p>
+
+        <ol>
+            <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
+            <li>
+                Note that this is not the same as the Problem Set starter code. However, this is the only time you'll have to
+                clone a repository for the game engine, as the same project will be used and built upon for each Game Features assignment
+            </li>
+            <li>
+                Navigate to the file src/main/java/app/StartGame.java and run it. This is how you will run every game this
+                semester. Initilally, it will be somewhat underwhelming, but after this task (and especially Task 1) the game
+                will be more playable
+            </li>
+        </ol>
+
+        <p>
+            The game engine repository contains a file named README.md at the root of the project. IntelliJ will likely
+            automatically open this file when you first clone the project. It will also be displayed on the github repo,
+            below the list of files and directories. We strongly advise you to read it, as it provides an overview of the
+            game engine and the project as a whole.
+        </p>
+        <p>
+            Once you have the project opened in IntelliJ, you'll see a src folder which contains another folder called main,
+            which contains another folder called java. Inside this folder is the Java package app which contains all the
+            code for the project. The starter code contains many Java classes needed for the engine to run.
+        </p>
+        <p>
+            <span class="warning-text">Don't Panic about the number of files.</span> For now, you can safely ignore most of them, and
+            many of them you will never need to modify. If you ever have trouble finding a specific
+            file, you can press shift twice to open a convenient search window that'll direct you to the desired class. The
+            readme and video also provide information about the structure of the project, which can help understand some of
+            the files.
+        </p>
+        <p>For this task, you will be writing code in the following classes:</p>
+        <ul>
+            <li><code>LevelParser</code>, located in the package <code>app.gameengine</code></li>
+            <li><code>MinesweeperLevel</code>, located in the package <code>app.games.minesweeper</code></li>
+        </ul>
+        <p>
+            You will also want to make use of <code>TestTask0</code>, located in the directory <code>src/test/java/tests</code>, though
+            you do not need to edit it.
+        </p>
+        <p>
+            To submit your project, run <code>app.Zipper</code>, which will create a zip file containing the project, and
+            submit it to Autolab. Note that while you are allowed to compress the project to a zip file in other ways, they
+            will likely be rejected by autolab for being too large. Zipper compresses only the files necessary for grading,
+            and should be the preferred way to submit the project.
+        </p>
+
+        <hr />
+        <h3>Testing</h3>
+        <hr />
+
+        <p>
+            This problem set does not require you to write any tests. tests.TestTask0 contains tests that you can use to
+            verify the correctness of your code. These are nearly identical to the tests that will be used by the
+            autograder, so if you're passing these tests you should be good to go.
+        </p>
+        <p>
+            You can run these tests just like a Java file with a main method (Right-click the file and choose run) and you
+            will see feedback about which test cases you've passed/failed. Once you pass all test cases, you're ready to
+            submit to Autolab.
+        </p>
+        <p>
+            Some of these tests may have been commented out so that the project will compile. You can uncomment the tests as
+            you get to these methods. You can highlight multiple lines and press control+/ (command+/ on mac) to quickly
+            comment multiple lines in/out
+        </p>
+        <br />
+
+        <hr />
+        <h3>Programming Requirements</h3>
+        <hr />
+
+        <br>
+        <h4>parseLevel - 60 points</h4>
+        
+        <p>
+            Navigate to the <code>LevelParser</code> class, in the <code>app.gameengine</code> package and 
+            complete the method <code>parseLevel</code>, which is currently stubbed out and always returns the same, empty
+            level.
+        </p>
+        <p>
+            This method is intended to read csv files, to create levels programatically. These csv files will be in the
+            format created by the level editor provided, so that levels can easily be created, modified, and played within
+            the game engine. The sample game makes use of the LevelParser, as will some later games.
+        </p>
+        <p>
+            This method takes two parameters, a <code>Game</code> and a <code>String</code>. The <code>Game</code> is the
+            game that the created <code>Level</code> will be a part of. The input <code>String</code> is the path to the csv
+            file that should be read, within the levels directory. The levels directory is "data/levels". This means that if
+            the input path is "sample/sample1.csv", the actual file you should read is "data/levels/sample/sample1.csv".
+        </p>
+        <p>If this file does not exist, or if it is empty, you should return <code>null</code>.</p>
+        <p>
+            These level files have a strict format. The first three lines always include the same information, in the same
+            order, which is as follows:
+        </p>
+        <ol>
+            <li>
+                <p><code>LevelType,LevelName,Width,Height</code></p>
+                <p>
+                    The level type is the kind of level you are creating. For this task, the LevelType will always be
+                    TopDownLevel, but it may be different in later tasks. The LevelName is the name of the level, as a
+                    <code>String</code>, which will be passed to the <code>Level</code> constructor. Width and Height are both
+                    <code>int</code>s that describe the size of the <code>Level</code>, and will also be passed into the
+                    constructor.
+                </p>
+                <p>
+                    You should use this information to create the <code>Level</code> object itself. All further lines of the
+                    file will just modify this level.
+                </p>
+            </li>
+            <li>
+                <p><code>PlayerStartLocation,XLocation,YLocation</code></p>
+                <p>
+                    This line will always start with the text PlayerStartLocation, which just helps identify the line. XLocation
+                    and YLocation are <code>double</code>s which represent the starting location of the player within the level.
+                </p>
+                <p>
+                    You should use the <code>Level.setPlayerStartLocation(double, double)</code> method to set the player start
+                    to (XLocation, YLocation).
+                </p>
+            </li>
+            <li>
+                <p><code>BackgroundType,FileLocation,...</code></p>
+                <p>
+                    It is not really necessary to understand what this line does, as we have provided you with a helper method
+                    called <code>readBackground</code> which takes an <code>ArrayList</code> of <code>String</code>s, and will
+                    return a <code>Background object</code>. You can then use the <code>Level.setBackground</code> method to set
+                    the background of that level.
+                </p>
+                <p>
+                    Although it's not necessary for the tasks, you may be interested in creating your own custom levels, or just
+                    want to know what exactly is going on. This BackgroundType can be either <i>BackgroundTile</i> or
+                    <i>BackgroundImage</i>. If it is a <i>BackgroundTile</i>, the following entries in the line are a
+                    FileLocation, which is a <code>String</code>, and represents the location of the spritesheet that contains
+                    the desired background tile, and a column and row which are <code>int</code>s representing the location of
+                    the specific tile within that sprite sheet.
+                </p>
+                <p>
+                    If it is a <i>BackgroundImage</i>, the following entries in the line are a list of <code>String</code>s
+                    specifying the file locations of the desired images within the backgrounds directory. If there are more than
+                    one image paths, they will be drawn back to front, with evenly spaced parallax values from 0.0 to 1.0.
+                </p>
+            </li>
+        </ol>
+        <p>
+            All following lines within the csv file will describe either a <code>StaticGameObject</code> or a
+            <code>DynamicGameObject</code>. Both kinds of objects have the same format:
+        </p>
+        <ul>
+            <li>
+                <code>GameObjectType,SubType,XLocation,YLocation,...</code>
+            </li>
+            <li>For example, a valid line could be: <code>StaticGameObject,Wall,1.0,3.0</code></li>
+            <li>Another example: <code>DynamicGameObject,Demon,1,3,100,30</code></li>
+        </ul>
+        <p>
+            For now, you do not need to worry about the precise formatting of these lines. All you need to know is whether
+            it is a <code>StaticGameObject</code> or a <code>DynamicGameObject</code>, which can be known by the first
+            string in the line. Two utility methods within the <code>LevelParser</code> class have been provided,
+            <code>readDynamicObject</code> and <code>readStaticObject</code>. After you have split the line on commas and
+            determined whether it is static or dynamic, you should call the appropriate method to actually parse the line
+            and get the desired object.
+        </p>
+        <p>
+            Note that these methods take three parameters, a <code>Game</code>, a <code>Level</code>, and an
+            <code>ArrayList</code> of <code>String</code>s. The <code>Game</code> is the same game passed in to the
+            <code>parseLevel</code> method. The <code>Level</code> is the level you are creating. The
+            <code>ArrayList</code> is the split line currently being parsed.
+        </p>
+        <p>
+            Once you have used these methods to get the static/dynamic object, you must add it to the level. These objects
+            are stored in two different <code>ArrayList</code>s within the level, which can be accessed with the methods
+            <code>getStaticObjects</code> and <code>getDynamicObjects</code>, which, of course, contain static and dynamic
+            objects respectively. Simply add the object to that <code>ArrayList</code> to add it to the level.
+        </p>
+        <p>
+            Note that if <code>readDynamicObject</code> or <code>readStaticObject</code> cannot parse the line correctly,
+            they will return <code>null</code>. In this case, you should <b>not</b> add it to the level.
+        </p>
+        <p>Finally, return the level you have created.</p>
+        <br />
+
+        
+        <br>
+        <h4>getAdjacentVectors - 40 points</h4>
+
+        <p>
+            In this portion of the assignment, you will implement functionality that will make the game Minesweeper playable
+            within the game engine. To play minesweeper, navigate to <code>app.Configuration</code>, and change the variable
+            <b>GAME</b> from "Sample Game" to "Minesweeper". Now, when you run <code>app.StartGame</code>, it will launch
+            Minesweeper instead of the sample game. Remember this process; it is how you will switch between games for each
+            task.
+        </p>
+        <p>
+            If you know anything about minesweeper, you will likely notice that the game is currently non-functional, and is
+            almost impossible to win. This task, if successfully completed, will resolve those issues and allow the game to
+            be played.
+        </p>
+        <p>
+            Navigate to <code>app.games.minesweeper.MinesweeperLevel</code>. You are required to complete the method
+            <code>getAdjacentVectors</code>, which is currently stubbed out and always returns an empty
+            <code>ArrayList</code>.
+        </p>
+        <p>
+            Note that the input to this method is a <code>Vector2D</code> object. You will see these many times over the
+            course of the project, and should become familiar with them. For now, all you need to know is that they are
+            quantities with an x and y component, like a 2-dimensional point. You can access these properties with the
+            <code>getX</code> and <code>getY</code> methods. They can be created by calling the constructor with the desired
+            x and y components, as <code>double</code>s.
+        </p>
+        <p>
+            This method should return a list of the vectors surrounding the input vector. This includes vectors that are
+            immediately adjacent (horizontally or vertically), or diagonal. The images below show two different cases, where
+            the red tile is the input vector, and the blue tiles are what should be returned. The input tile itself should
+            not be included in the returned vectors, giving the list a maximum size of 8.
+        </p>
+        <img
+                src="/static_files/images/minesweeper_click_center.png"
+                class="img-fluid"
+                alt="Tiles surrounding click location"
+        />
+        <img
+                src="/static_files/images/minesweeper_click_edge.png"
+                class="img-fluid"
+                alt="Tiles surrounding click location on the edge of a level"
+        />
+        <p>
+            Note that in the second case, where the click was on the edge of the level, the returned list must only contain
+            5 vectors, instead of the full 8. You can only include vectors that are within the bounds of the level, which in
+            this example is 5x5. Levels start at 0, so valid indices for this level would be 0-4 for both width and height.
+            Since you are within the <code>Level</code> class, you can access the width and height with
+            <code>this.getWidth()</code> and <code>this.getHeight()</code>, respectively. Alternatively, you can use the
+            method <code>GameUtils.isInBounds</code> to determine if it is a valid tile.
+        </p>
+        <p>
+            If the input vector is not within the bounds of the level, you should return an empty <code>ArrayList</code>.
+        </p>
+        <p>The order of the returned vectors is not important, and tests will accept any order.</p>
+        <p>
+            The <code>Vector2D</code> class contains many static methods that may be helpful to you in this task and others.
+            In particular, note the <code>Vector2D.add</code> method, which takes two <code>Vector2D</code>s and returns the
+            element-by-element sum of those vectors, which may be useful for completing this method.
+        </p>
+        <br />
+
+    {% endcall %}
+
+{% endblock %}
