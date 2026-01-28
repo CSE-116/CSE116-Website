@@ -29,6 +29,11 @@
       "lecture": "3-java.json",
       "day": "Friday",
       "date": "January 30"
+    },
+    {
+      "lecture": "4-java.json",
+      "day": "Friday - async",
+      "date": "January 30"
     }
   ]
 }
