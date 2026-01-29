@@ -1,10 +1,14 @@
 {
-  "title": "Java: Reading Files + CSV Parsing [async lecture]",
-  "slides": "Week8_Reading_Files.pdf",
+  "title": "Java: Memory + Reading Files + CSV Parsing [async lecture]",
+  "slides": "Week2_Reading_Files.pdf",
   "reading_list": [
     {
       "url": "https://ub.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=0f89240c-ebb0-46d9-9dac-b3d70163adb9",
       "text": "Memory Diagram Lectures"
+    },
+    {
+      "url": "https://ub.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=797cb2ac-7097-455c-9ad9-b3e1010514cb",
+      "text": "Reading Files + CSV Parsing Lecture"
     }
   ]
 }
