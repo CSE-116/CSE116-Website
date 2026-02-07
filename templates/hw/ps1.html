@@ -1,76 +1,43 @@
 {% extends 'hw/hw.html' %}
-
 {% block title %}CSE116: Problem Set 1{% endblock %}
-
 {% block header %}
-<h1>Problem Set 1</h1>
-<h5>Unit Testing and Classes</h5>
-<hr />
+<h1>Problem Set 1: Classes</h1>
 {% endblock %}
+
 
 {% block task %}
 
-{% call task_card("Overview") %}
-<hr />
-<h3>Coding Task 1 Overview</h3>
-<hr />
-
-{% set g_lo = "#game-features---learning-objective" %} {% set g_ao = "#game-features---comprehensive-understanding" %}
-
-<p>As with the previous and future tasks, there are two components to this task.</p>
-<p>
-    To reiterate, both the <a target="_self" href="#problem-set">Problem Set</a> and
-    <a target="_self" href="{{ g_lo }}">Game Features - Learning Objective</a> portions of this document
-    <em><b>MUST</b></em> be completed to achieve the Learning Objective points and pass the course. The
-    <a target="_self" href="{{ g_ao }}">Game Features - Comprehensive Understanding</a> is not needed for the Learning
-    Objective requirement, but completing/not completing it will directly impact your grade through CU points. Each
-    Problem Set will carry 20 LO points, while each Game Engine Task will carry 30 LO points and 50 CU points.
-</p>
-<p>
-    You should complete the components below in the order they are listed; you will not be able to earn credit for the
-    following component(s) until you complete the previous ones with all available points.
-</p>
-<p>
-    Coding Task 1 assesses Unit Testing and Classes. Both the Problem Set and Game Engine Task will focus on these
-    topics.
-</p>
-<p>
-    The content of the Learning Objective is primarily used in the Game Engine by the sample game. To play the sample
-    game, during and after completing this Learning Objective, navigate to the class <code>app.Configuration</code> and
-    change <strong>GAME</strong> to "sample game".
-</p>
-<p>
-    As with the previous task, one of our TAs has prepared a video which covers the requirements for this task. Again,
-    this content is optional, but we strongly recommend watching the video to get started, especially if you're
-    struggling with the game features. The video can be found at
-    <a href="https://www.youtube.com/watch?v=XVykxZlLLHM">https://www.youtube.com/watch?v=XVykxZlLLHM</a>.
-</p>
-{% endcall %}
-
 {% call task_card("Problem Set") %}
-
-<hr />
-<h3>Overview</h3>
-<hr />
 
 <p>
     Problem Set GitHub Repository link:
     <a href="https://github.com/CSE-116/ProblemSet-1">https://github.com/CSE-116/ProblemSet-1</a>
 </p>
-<ol>
-    <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
-    <li>
-        Make sure the src folder is marked as the source root (Right-click the src folder, choose “mark directory as”
-        and choose sources root)
-    </li>
-</ol>
-<p>
-    Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named problem and
-    tests.
-</p>
+
 <p>
     To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the problem set,
-    and submit it to Autolab.
+    and submit it to Autolab. Be sure every class and method exists before submitting to avoid Autolab errors, even if you 
+    did not complete all the methods yet.
+</p>
+
+<hr />
+<h3>Testing</h3>
+<hr />
+
+<p>
+    This problem set does not require you to write any tests. tests.TestProblemSet1 contains tests for some of the methods that you can use to
+    verify the correctness of your code. Note that not all methods have tests written for them. You are encouraged to follow the structure of these tests 
+    to write your own tests for the remaining methods. This is not required, but might save you time since you wouldn't have to submit to Atuolab to see if 
+    your code is correct.
+</p>
+<p>
+    You can run these tests just like a Java file with a main method (Right-click the file and choose run) and you
+    will see feedback about which test cases you've passed/failed.
+</p>
+<p>
+    Some of these tests may have been commented out so that the problem set will compile. You can uncomment the tests as
+    you get to these methods. You can highlight multiple lines and press control+/ (command+/ on mac) to quickly
+    comment multiple lines in/out
 </p>
 
 <br />
@@ -79,20 +46,18 @@
 <hr />
 
 <p>
-    You should read through all the following sections before you begin to implement the methods from the specification.
-    Note that you will not receive feedback on the correctness of these methods until you've completed the testing
-    component of this task (see the "Autolab Feedback" section for more details). However, you must at least create
+    Note that you must at least create
     every class/method from this specification to receive feedback. You can "stub out" these methods by having them
     always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
 </p>
 <p>
     For this Problem Set, you will implement the following functionality. Note that all of the methods are
-    <em><strong>non-static</strong></em>.
+    <strong>public</strong> and <em><strong>non-static</strong></em>.
 </p>
 <ul>
     <li>
-        <code>Location</code>: Create a class in the <code>problem</code> package named <code>Location</code>. This
-        class will represent a 2-dimensional point representing the location of a shape. This class should implement the
+        <code>Location</code> (5 points): Create a class in the <code>problem</code> package named <code>Location</code>. This
+        class will represent a 2-dimensional point that will be used as the location of a shape. This class should implement the
         following methods:
         <ul>
             <li>
@@ -101,34 +66,34 @@
             </li>
             <li>
                 <code>getX</code>: create a method named <code>getX</code> which takes no arguments and returns a
-                <code>double</code>. This method should return the x location.
+                <code>double</code>. This method should return the x component of the location.
             </li>
             <li>
                 <code>getY</code>: create a method named <code>getY</code> which takes no arguments and returns a
-                <code>double</code>. This method should return the y location.
+                <code>double</code>. This method should return the y component of the location.
             </li>
             <li>
                 <code>setX</code>: create a method named <code>setX</code> which takes a single <code>double</code> and
-                returns <code>void</code>. This method should set the x component of the location to the input amount.
+                returns <code>void</code>. This method should set the x component of the location to the input value.
             </li>
             <li>
                 <code>setY</code>: create a method named <code>setY</code> which takes a single <code>double</code> and
-                returns <code>void</code>. This method should set the y component of the location to the input amount.
+                returns <code>void</code>. This method should set the y component of the location to the input value.
             </li>
         </ul>
     </li>
     <li>
-        <code>Circle</code>: Create a class in the <code>problem</code> package named <code>Circle</code>. This class
+        <code>Circle</code> (5 points): Create a class in the <code>problem</code> package named <code>Circle</code>. This class
         will represent a circle based on a 2-dimensional location and a radius. This class should implement the
         following methods:
         <ul>
             <li>
-                Constructor: create a constructor which takes a (reference to a) <code>Location</code> object and a
-                <code>double</code>, in that order. These represent the location of the circle and its radius.
+                Constructor: create a constructor which takes a [reference to a] <code>Location</code> object and a
+                <code>double</code>, in that order. These represent the location of the center of the circle and its radius.
             </li>
             <li>
                 <code>getRadius</code>: create a method named <code>getRadius</code> which takes no arguments and
-                returns a <code>double</code>. This method should return the radius of the circle.
+                returns a <code>double</code>. This method should return the radius of this circle.
             </li>
             <li>
                 <code>setRadius</code>: create a method named <code>setRadius</code> which takes a single
@@ -137,13 +102,12 @@
             </li>
             <li>
                 <code>getLocation</code>: create a method named <code>getLocation</code> which takes no arguments and
-                returns a (reference to a) <code>Location</code> object. This method should return the location of the
-                circle.
+                returns a [reference to a] <code>Location</code> object containing the location of the circle.
             </li>
             <li>
-                <code>setLocation</code>: create a method named <code>setLocation</code> which takes a single (reference
-                to a) <code>Location</code> object and returns <code>void</code>. This method should set the location of
-                the circle to the input value.
+                <code>setLocation</code>: create a method named <code>setLocation</code> which takes a single [reference
+                to a] <code>Location</code> object and returns <code>void</code>. This method should set the location of
+                the circle to the input location.
             </li>
             <li>
                 <code>getArea</code>: create a method named <code>getArea</code> which takes no arguments and returns a
@@ -155,850 +119,106 @@
                     <code>r</code> is the radius of the circle.
                 </li>
                 <li>
-                    You can use <code>Math.PI</code> as the value of π. Nothing needs to be imported to do so.
+                    You can/should use <code>Math.PI</code> as the value of π instead of hard-coding your own estimate of π. Nothing 
+                    needs to be imported to do so since <code>Math</code> is auto-imported.
                 </li>
             </ul>
         </ul>
     </li>
+
     <li>
-        <code>CircleEngine</code>: Create a class in the <code>problem</code> package named <code>CircleEngine</code>.
-        This class will contain methods for using and manipulating <code>Circle</code>s. This class should implement the
-        following methods:
+        <code>Circle.move</code> (5 points): Add a method to the <code>Circle</code> class named <code>move</code> that takes 
+        2 doubles and returns void. The inputs are the amount to move the circle in the x direction and y direction respectively (dx and dy). 
+        The method should move the circle by these amounts.
+    </li>
+    <li>
+        <code>Circle.detectCollision</code> (5 points): Add a method to the <code>Circle</code> class named <code>detectCollision</code> 
+        that takes a [reference to a] <code>Circle</code> and returns a <code>boolean</code>. This method returns true if this circle 
+        overlaps at all with the circle from the parameter, false otherwise.
         <ul>
             <li>
-                <code>detectCollision</code>: create a method named <code>detectCollision</code> which takes two
-                (references to) <code>Circle</code> objects and returns a boolean. It will return true if the circles
-                are overlapping and false otherwise.
-                <ul>
-                    <li>
-                        If two circles are exactly sharing an edge (or point) but not overlapping, this should
-                        <b>not</b> be
-                        considered a collision.
-                    </li>
-                    <li>
-                        The distance between two arbitrary points can be calculated as
-                        <code>√((x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup> + (y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup>)</code>.
-                    </li>
-                </ul>
+                If two circles are exactly sharing a point, but are not overlapping, this should
+                <b>not</b> be considered a collision.
             </li>
             <li>
-                <code>doubleRadius</code>: create a method named <code>doubleRadius</code> which takes an
-                <code>ArrayList</code> of <code>Circle</code>s and returns <code>void</code>. This method should iterate
-                over the input list and double the radius of each circle, using the appropriate setter.
+                The distance between two arbitrary points can be calculated as
+                <code>√((x<sub>1</sub>-x<sub>2</sub>)<sup>2</sup> + (y<sub>1</sub>-y<sub>2</sub>)<sup>2</sup>)</code>.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>CircleWorld</code> (5 points): Create a class in the <code>problem</code> package named <code>CircleWorld</code>
+        and implement the following methods in this class:
+        <ul>
+            <li>
+                Constructor: You do not need to create a constructor for this class. If you choose to create one, it must not 
+                take any parameters (Autolab will create <code>CircleWorld</code> objects without providing arguments).
+            </li>
+            <li>
+                <code>addCircle</code>: create a method named <code>addCircle</code> which takes a [reference to a] <code>Circle</code>
+                and returns <code>void</code>. This method should add this circle to the world. It is up to you how to handle this as long
+                as the next method functions properly.
+            </li>
+            <li>
+                <code>getCircles</code>: create a method named <code>getCircles</code> which takes no parameters and returns 
+                an <code>ArrayList</code> of <code>Circle</code>s. The returned <code>ArrayList</code> must contain every circle 
+                that was added to the world using the <code>addCircle</code> method.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>CircleWorld.closestCircle</code> (5 points): Add a method to the <code>CircleWorld</code> class named <code>closestCircle</code>
+        that takes a <code>Location</code> as a parameter and returns a <code>Circle</code>. This method will return the closest circle to 
+        the given location.
+        <ul>
+            <li>
+                Remember to take the radius into consideration. You are not returning the circle with a center closest to the point.
+            </li>
+            <li>
+                If the point is inside a circle, that's the closest circle
+            </li>
+            <li>
+                If any number of circles are tied in terms of closest distance, you may return any of those circles.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>CircleWorld.collidingCircles</code> (5 points): Add a method to the <code>CircleWorld</code> class named <code>collidingCircles</code>
+        that takes no parameters and returns an <code>ArrayList</code> of <code>Circle</code>s. This method will return an <code>ArrayList</code>
+        containing every circle in the world that is colliding with another circle.
+        <ul>
+            <li>
+                If a circle is colliding with multiple other circles, be sure to only add it the output once.
+            </li>
+            <li>
+                Take advantage of the <code>detectCollision</code> method you've written to make this method easier to write.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>CircleWorld.resolveAllCollisions</code> (15 points): Add a method to the <code>CircleWorld</code> class named <code>resolveAllCollisions</code>
+        that takes a no parameters and returns <code>void</code>. This method will move, using the <code>move</code> method, the circles in the world such that no circle is colliding with any 
+        other circle.
+        <ul>
+            <li>
+                This method is open-ended and you are encouraged to get creative with your solution. As long as no circles are colliding after this method 
+                is called, and all circles are still in the world and their radii have not been changed, the grader will give you credit.
+            </li>
+            <li>
+                It can help to call the <code>collidingCircles</code> method to help you write this method. If <code>collidingCircles</code> returns an 
+                empty <code>ArrayList</code>, you've resolved all collisions.
+            </li>
+            <li>
+                This method is graded in 3 phases, each worth 5 points. The phases have progressively more difficult test cases. To complete the last 
+                phase, you will have to handle a multitude of edge cases and unique positions of the circles.
             </li>
         </ul>
     </li>
 </ul>
 
-<br />
-<hr />
-<h3>Testing Requirements</h3>
-<hr />
 
-<p>
-    Write JUnit tests for the following methods from the specification in the <code>tests.TestProblemSet1</code> class.
-    These tests should be annotated with <code>@Test</code>.
-</p>
-<ul>
-    <li>
-        <code>Location</code>
-        <ul>
-            <li>
-                Write tests for the constructor, getters, and setters. These tests should ensure that you can properly
-                access and modify the x and y location of a <code>Location</code> object.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>Circle</code>
-        <ul>
-            <li>
-                Write tests for the constructor, getters, and setters. These tests should ensure that you can properly
-                access and modify the location and radius of a <code>Circle</code> object.
-            </li>
-            <li>
-                Write tests for the <code>getArea</code> method, asserting that the calculating is correcly performed on
-                circles of varying radii.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>CircleEngine</code>
-        <ul>
-            <li>
-                You DO NOT need to test the methods in this class. Tests for these methods are provided for you in the
-                <code>TestProblemSet1</code> class. They are likely commented out, and must be uncommented for you to
-                use
-                them. You can uncomment multiple lines by selecting the lines and pressing ctrl+/ (command+/ on mac).
-                You
-                are encouraged to use these tests to help you write the methods they are testing.
-            </li>
-        </ul>
-    </li>
-</ul>
 
-<br />
-<hr />
-<h3>Programming Requirements</h3>
-<hr />
-
-<p>
-    Implement the methods from the specification. You may wish to complete the Testing Requirements before you begin
-    implementation, and it's suggested that you run these tests as you implement the methods.
-</p>
-
-<br />
-<hr />
-<h3>Autolab Feedback</h3>
-<hr />
-
-<p>
-    Feedback from Autolab will be given in several phases. If you don't complete a phase, then feedback for the
-    following phase(s) will not be given. You must complete all phases to earn the required score of 20 LOs. For the
-    problem set, the phases will be as follows:
-</p>
-<ol>
-    <li>
-        Running your tests on a correct solution
-        <ul>
-            <li>
-                Your tests will be run against a solution that is known to be correct. If your tests do not pass this
-                correct solution, there is an error somewhere in your tests that must be fixed before you can move on
-                with the assignment. If your tests don't get past this check, you should re-read this document and make
-                sure you implemented your tests and code according the specification. You should also make sure that if
-                there are multiple correct outputs to the input in your tests cases that you accept any of the outputs
-                as correct.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Checking your tests for feature coverage
-        <ul>
-            <li>
-                The next phase is to check if your tests check for a variety of features defined by different inputs.
-                You should write at least one test case for each feature to pass this phase.
-            </li>
-            <li>
-                Passing this phase does not necessarily mean that your testing is completely thorough. Satisfying
-                Autolab is the bare minimum testing requirement. Not all possible inputs are checked and it is sometimes
-                possible to pass this phase with weak testing. If you are struggling to earn credit for code that you
-                believe is correct, you should write more than the required tests
-            </li>
-        </ul>
-    </li>
-    <li>
-        Running my tests on your solution
-        <ul>
-            <li>
-                Once Autolab is happy with your tests, it will run my tests against your code to check it for
-                correctness. If your testing is thorough, and your code passes your tests, then you should pass this
-                phase. If you pass your tests, but fail one of mine, it is an indicator that you should write more tests
-                to help expose your bug.
-            </li>
-        </ul>
-    </li>
-</ol>
-<p>
-    Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab will
-    confirm this with a score of 20 LOs.
-</p>
 {% endcall %}
 
-{% call task_card("Game Features - Learning Objective") %}
-<hr />
-<h3>Overview</h3>
-<hr />
 
-<p>
-    You will continue to build functionality for the Game Engine in this component of the task. This will be done on top
-    of the code written for the previous task; you should not reclone or remove said code for this task or any future
-    Game Features components.
-</p>
-<p>
-    As with the previous task, there are two parts to the Game Features component: the Learning Objective and
-    Comprehensive Understanding. The Learning Objective portion must be completed with a score of 30 LOs before the
-    Comprehensive Understanding unlocks. Both portions of the Game Features will be submitted to the same assignment on
-    Autolab.
-</p>
-<p>For this Learning Objective portion, you will be writing code in the following classes which already exist:</p>
-<ul>
-    <li>
-        <code>PhysicsEngine</code>, located in the <code>app.gameengine.model.physics</code> package.
-    </li>
-    <li>
-        <code>Wall</code>, located in the <code>app.games.commonobjects</code> package.
-    </li>
-    <li>
-        <code>TestTask1</code>, located in the <code>app.tests</code> package.
-    </li>
-</ul>
-<p>
-    If you do not have the <code>TestTask1</code> class in your <code>app.tests</code> package, you should create it. We
-    have provided some tests for the <code>Wall</code> class for you, which can be accessed at this link:
-    <a
-        href="https://github.com/CSE-116/CSE116-GameEngine/blob/main/src/main/java/app/tests/TestTask1.java">TestTask1.java</a>.
-    If you already have the <code>TestTask1</code> class, you already have these tests and do not need to add them to
-    the file.
-</p>
-<p>
-    Additionally, in the <code>app.tests</code> package, create a new class called <code>TestUtils</code>.
-</p>
-
-<br />
-<hr />
-<h3>The Game Engine</h3>
-<hr />
-
-    <p>
-    In this task, you will continue to add feature to the game engine project that you started in the previous task.
-    </p>
-
-{#<p>All of the information in this section, and more, is available in the README.md file in the project repo.</p>#}
-{#<p>#}
-{#    Throughout this semester, you will be building a game engine along with a game that will utilize this engine. All#}
-{#    tasks will build on this project and add more features to the engine and game. After cloning the#}
-{#    repo, you should run "StartGame". When you do, a new window should open showing a 2d pixel-art top-down view game.#}
-{#</p>#}
-{#<img src="/static_files/images/task1/game1.png" class="img-fluid" alt="Game image from starter code">#}
-{#<p>#}
-{#    As you can see, it's basically a marvel of modern graphics. You probably thought this was photograph of cosplayers#}
-{#    at a medieval festival, but it's actually in game graphics from this project.#}
-{#</p>#}
-{#<p>#}
-{#    When you run the game, you'll notice that you can't actually do anything. That's because major components of the#}
-{#    game engine are missing. Your job is to complete it. In this task, you will add player movement, collision#}
-{#    detection, and collision resolution to the game.#}
-{#</p>#}
-
-<br />
-<hr />
-<h3>The Coordinate System</h3>
-<hr />
-
-<p>
-    The coordinate system use for computer graphics might be different than you're used to. We'll use the standard
-    coordinate system that is typically used in video games (and anything involving rendering to a screen).
-</p>
-<p>
-    The origin of the system is at the top-left of the screen/window/level with positive x going right and
-    positive y going down. This image shows the same information as the one above, but with the coordinate
-    system labeling all the tiles in the game. You can see that "G" (The goal) is at location (6, 2).
-</p>
-<img src="/static_files/images/task1/game1-2.png" class="img-fluid" alt="Coordinate system image from level 0">
-    <br><br>
-<p>
-    Each object within the game has several important properties to consider, namely a location and a hitbox, which has
-    its own location and dimensions. These quantities are each represented as 2-dimensional vectors (x, y). All objects
-    and hitboxes are rectangles, and their location is the location of their upper left corner. Their dimensions are the
-    width and height of the rectangle. For example, the goal (G on the grid above) has a location of (6, 2), since
-    that's the location of its upper-left corner, and it has dimensions (1, 1) since it's exactly 1 tile in size.
-    Locations and dimensions do not have to be whole numbers.
-</p>
-    <img src="/static_files/images/task1/axeman.png" class="img-fluid" alt="Hitboxes vs sprite">
-<br><br>
-<p>
-    Object locations and dimensions also do not necessarily have to be aligned with the visuals of that object. In the
-    image above, the green dot represents the location of that object, the blue outline represents the size of the
-    sprite image that is being rendered for that object, and the red outline represents the size of its hitbox. Having a
-    hitbox smaller than the graphical sprite allows for more precise physics and collision, but means that extra care
-    has to be taken when dealing with those properties. Pressing F4 in game shows overlays of each object's hitbox,
-    which can be helpful for debugging.
-</p>
-<img src="/static_files/images/task1/game1-3.png" class="img-fluid" alt="Floating point location">
-
-<br />
-<hr />
-<h3>Specification</h3>
-<hr />
-
-<p>
-    You should read through all the following sections before you begin to implement the methods from the specification.
-    Note that you will not receive feedback on the correctness of these methods until you've completed the testing
-    component of this task (see the "Autolab Feedback" section for more details). However, you must at least create
-    every class/method from this specification to receive feedback. You can "stub out" these methods by having them
-    always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
-</p>
-<p>
-    For the Learning Objective portion of the Game Features component for this task, you will implement the following
-    functionality:
-</p>
-<p>
-    <em>Note: It is suggested that you follow this specification in order for your implementation. However, you may
-        find it easier to complete the <code>detectCollision</code> method before the <code>getOverlap</code>
-        method.
-    </em>
-</p>
-<ul>
-    <li>
-        Implement the following methods in the <code>PhysicsEngine</code> class:
-        <ul>
-            <li>
-                <code>updateObject</code>
-                <ul>
-                    <li>
-                        Complete the given <code>updateObject</code> method. This method should update the location of
-                        the <code>DynamicGameObject</code> based on the velocity and amount of elapsed time.
-                    </li>
-                    <li>
-                        You should use the respective getters and setters in the <code>DynamicGameObject</code> class to
-                        achieve this functionality, namely <code>getVelocity</code>, <code>getLocation</code>, and
-                        <code>setLocation</code>. These methods are already provided for you.
-                    </li>
-                    <li>
-                        Note that change in position for each direction can be calculated as the product of that
-                        direction's velocity and the change in time. You can access the X and Y components of the
-                        velocity (and any other vector) using the <code>getX</code> and <code>getY</code> methods on the
-                        <code>Vector2D</code> object returned by <code>getVelocity</code>.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>getOverlap</code>
-                <ul>
-                    <li>
-                        Complete the given <code>getOverlap</code> method. This method should return a
-                        <code>double</code> representing the minimum overlapping distance of the two
-                        <code>Hitbox</code> objects from the parameters.
-                    </li>
-                    <li>
-                        To be precise, consider that one hitbox must be moved in one of the four cardinal directions
-                        (up, down, left, or right) such that the two hitboxes are no longer overlapping. The distance
-                        returned by this method should be the smallest of those four distances. This is very similar to
-                        the logic for the <code>Wall.collideWithDynamicObject</code> method, so referring to those
-                        descriptions and images may be helpful.
-                    </li>
-                    <li>
-                        While you do not need to fully understand the exact implementation of the
-                        <code>Hitbox</code>, note the following:
-                        <ul>
-                            <li>
-                                You can access the coordinates of the top-left location of the
-                                <code>Hitbox</code> using the <code>getLocation</code> method, which returns a
-                                <code>Vector2D</code>
-                                containing the x and y coordinate of said location.
-                            </li>
-                            <li>
-                                You can access the size of the <code>Hitbox</code> using the
-                                <code>getDimensions</code> method, which returns a <code>Vector2D</code> containing the
-                                width (in the x-component) and height (in the y-component) of the Hitbox.
-                            </li>
-                            <li>
-                                With this information, you are able to calculate the location of all four corners of the
-                                Hitbox.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        The double that you return should be the minimum overlapping distance of the two
-                        <code>Hitbox</code>
-                        objects. This means you must calculate the amount the two hitboxes are overlapping in both the x
-                        and y direction, then return the smaller of the two.
-                    </li>
-                    <li>
-                        <img src="/static_files/images/task1/overlapping_walls.png" class="img-fluid"
-                            alt="Two Walls overlapping by 1/8 of a tile squared: 1/4 of a tile in the x-direction and 1/2 in the y-direction"
-                            width="300" />
-                        <br />
-                        In this example, the Walls are overlapping by 0.25 in the x-direction and 0.5 in the
-                        y-direction. Calling <code>getOverlap</code>
-                        on these Walls' hitboxes would return 0.25.
-                    </li>
-                    <li>
-                        You are provided tests for this method, and it is suggested you run them as you complete your
-                        implementation. It is also suggested that you sketch out the logic for this method before you
-                        start writing code.
-                    </li>
-                    <li>
-                        If the two hitboxes are not overlapping at all, this method must return a number less than or
-                        equal to 0. The specific number is not important, as the value is only significant if the
-                        hitboxes are overlapping.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>detectCollision</code>
-                <ul>
-                    <li>
-                        Complete the given <code>detectCollision</code> method. This method should return a
-                        <code>boolean</code>
-                        that is true if the two Hitboxes are colliding and false otherwise.
-                    </li>
-                    <li>
-                        Two hitboxes are considered colliding if they are overlapping by some amount strictly greater
-                        than 0. That is, if they just share an edge, that is not considered a collision.
-                    </li>
-                    <li>
-                        All the Hitbox information from <code>getOverlap</code> applies here as well. In the same
-                        example, calling <code>detectCollision</code> on those two Walls would return true, as they are
-                        colliding by 0.25 which is greater than 0.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        Implement the following method in the <code>Wall</code> class:
-        <ul>
-            <li>
-                <code>collideWithDynamicObject</code>
-                <ul>
-                    <li>
-                        Complete the given <code>collideWithDynamicObject</code> method. This method should adjust the
-                        location of the <code>DynamicGameObject</code> passed in the parameter to ensure that they are
-                        no longer overlapping, and zero the velocity in that direction.
-                    </li>
-                    <li>This adjustment should be made based on whichever direction has the least amount of overlap.
-                    </li>
-                    <li>
-                        <img src="/static_files/images/task1/overlapping_enemy.png" class="img-fluid"
-                            alt="A Wall and Demon overlapping by 1/8 of a tile squared: 1/4 of a tile in the x-direction and 1/2 in the y-direction"
-                            width="300" />
-                        <br />
-                        In this example, the Demon's position would be incremented by 0.25 in the x-direction and the y
-                        position would stay the same. This would place the Demon directly next to the Wall's right side.
-                        It's velocity in the x-direction would be set to 0, and it's velocity in the y-direction would
-                        be unchanged.
-                    </li>
-                    <li>
-                        This method should only modify the location and velocity of the
-                        <code>DynamicGameObject</code>. All state in the <code>Wall</code> should stay the same.
-                    </li>
-                    <li>
-                        Determining the overlap for this method is done in the same fashion as the
-                        <code>PhysicsEngine.getOverlap</code> method. Thus, you should calculate the overlap based on
-                        the <code>Wall</code>'s and <code>DynamicGameObject</code>'s hitboxes, which can be obtained
-                        with the <code>getHitbox</code> method. You should be able to reuse much of the same logic for
-                        this method.
-                    </li>
-                    <li>
-                        When you update the object's position, you should do so based on the object's actual location
-                        rather than its hitbox's location (e.g. if you need to move the object 0.5 to the left, you
-                        would call <code>setLocation</code> with
-                        <code>otherObject.getLocation().getX() - 0.5</code> rather than
-                        <code>otherObject.getHitbox().getLocation().getX() - 0.5</code>. Note that this is only for the
-                        position update, and you should still use the hitbox's position to calculate the amount to
-                        move).
-                    </li>
-                    <li>
-                        You are provided tests for this method that you should run throughout your implementation. Refer
-                        to the "Overview" section in the "Game Features - Learning Objective" card if you are missing
-                        these tests.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<br />
-<hr />
-<h3>Testing Utility</h3>
-<hr />
-
-<p>
-    When working with more complex structures such as classes and data structures, it can be tedious to constantly
-    compare two such instances as is often necessary in testing. Thus, the Learning Objective component will typically
-    begin with writing a Testing Utility method relevant to the task. Writing this method is required to pass the
-    Learning Objective, and it is strongly encouraged that you use this method in your testing.
-</p>
-<p>
-    In the <code>app.tests.TestUtils</code> class, create a <em>static</em> method named
-    <code>comparePlayers</code>
-    that takes in (references to) two <code>Player</code>s and returns void. This method should contain JUnit asserts
-    that verify the two <code>Player</code>s passed in have identical state, failing if they do not.
-</p>
-<p>
-    Specifically, you must assert that the location and velocity vectors of both objects are equal. You should use the
-    respective getters to access these instance variables. However, you will not find these getters in the
-    <code>Player</code> class, rather they will be contained in the
-    <code>DynamicGameObject</code>
-    class in the <code>app.gameengine.model.gameobjects</code> package. This is because <code>Player</code>
-    <em>extends</em> <code>DynamicGameObject</code> and thus has access to all of these methods. This is called
-    <em>inheritance</em>, and more details on inheritance will come later in this course.
-</p>
-<p>
-    Note that this method is not a test, and thus should not have the <code>@Test</code> annotation. Rather, this is a
-    static method intended to be used in your testing.
-</p>
-
-<br />
-<hr />
-<h3>Testing Requirements</h3>
-<hr />
-
-<p>
-    Write JUnit tests for the following methods from the specification in the <code>TestTask1</code> class. These tests
-    should be annotated with <code>@Test</code>:
-</p>
-<ul>
-    <li>
-        <code>PhysicsEngine</code>
-        <ul>
-            <li>To test these methods, you will have to create a PhysicsEngine object in order to call the methods</li>
-            <li>
-                <code>updateObject</code>
-                <ul>
-                    <li>
-                        To test this method: create a Player object, set the x, y of its location and velocity to known
-                        values, call updateObject with the player and a dt of your choice, do the math to compute the
-                        expected x and y for the player location after the update and assert that the actual x and y
-                        match this expectation.
-                    </li>
-                    <li>
-                        You can pass in Player objects into this method even though it takes in DynamicGameObjects. You
-                        will have to do this as you cannot directly instantiate a DynamicGameObject as it is an abstract
-                        class. More on this topic will be discussed in the future.
-                    </li>
-                    <li>
-                        You may find it easier to create two <code>Player</code> objects, one whose location and
-                        velocity you manually update, and one that is updated by the <code>updateObject</code> method.
-                        This way, you can make use of the <code>comparePlayers</code> method.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>detectCollision</code>
-                <ul>
-                    <li>
-                        To test this method, you can create multiple hitbox objects with different locations and
-                        dimensions. You should manually calculate if these two hitboxes are overlapping and assert that
-                        the method returns true or false as appropriate.
-                    </li>
-                    <li>
-                        Note that Hitbox has two constructors. It is sufficient to test this method only using Hitboxes
-                        that use the constructor with two parameters: location and dimension. The other constructor
-                        takes in a third parameter for offset which you do not need to use.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>getOverlap</code>
-                <ul>
-                    <li>
-                        You DO NOT need to test the <code>getOverlap</code> method. Tests are provided for you in the
-                        <code>TestTask1</code> class, which you may use to help you write the method itself.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>Wall</code>
-        <ul>
-            <li>
-                You DO NOT need to test the <code>collideWithDynamicObject</code> method. Tests are provided for you in
-                the <code>TestTask1</code> class, which you may use to help you write the method itself.
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<br />
-<hr />
-<h3>Programming Requirements</h3>
-<hr />
-
-<p>
-    Implement the methods from the specification. You may wish to complete the Testing Requirements before you begin
-    implementation, and it's suggested that you run these tests as you implement the methods.
-</p>
-
-<br />
-<hr />
-<h3>Autolab Feedback</h3>
-<hr />
-
-<p>
-    Feedback for the Learning Objective component of the Game Features will be given in several phases. If you don't
-    complete a phase, then feedback for the following phase(s) will not be given. You must complete all the following
-    phases to earn the required score of 30 LOs to complete this task. The phases for the Learning Objective are as
-    follows:
-</p>
-<ol>
-    <li>
-        Testing your testing utility method
-        <ul>
-            <li>
-                Your testing utility method will be checked with a variety of test cases to ensure that it makes all the
-                required checks. This phase will ensure that your utility method is accurate before you start using it
-                in your tests.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Running your tests on a correct solution
-        <ul>
-            <li>
-                Your tests will be run against a solution that is known to be correct. If your tests do not pass this
-                correct solution, there is an error somewhere in your tests that must be fixed before you can move on
-                with the assignment. If your tests don't get past this check, you should re-read this document and make
-                sure you implemented your tests and code according the specification. You should also make sure that if
-                there are multiple correct outputs to the input in your tests cases that you accept any of the outputs
-                as correct.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Checking your tests for feature coverage
-        <ul>
-            <li>
-                The next phase is to check if your tests check for a variety of features defined by different inputs.
-                You should write at least one test case for each feature to pass this phase.
-            </li>
-            <li>
-                Passing this phase does not necessarily mean that your testing is completely thorough. Satisfying
-                Autolab is the bare minimum testing requirement. Not all possible inputs are checked and it is sometimes
-                possible to pass this phase with weak testing. If you are struggling to earn credit for code that you
-                believe is correct, you should write more than the required tests.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Running my tests on your solution
-        <ul>
-            <li>
-                Once Autolab is happy with your tests, it will run my tests against your code to check it for
-                correctness. If your testing is thorough, and your code passes your tests, then you should pass this
-                phase. If you pass your tests, but fail one of mine, it is an indicator that you should write more tests
-                to help expose your bug.
-            </li>
-        </ul>
-    </li>
-</ol>
-<p>
-    Once you have successfully passed all four phases, you will have completed the Learning Objective component of the
-    Game Features, and Autolab will confirm this with a score of 30 LOs.
-</p>
-{% endcall %}
-
-{% call task_card("Game Features - Comprehensive Understanding") %}
-<br />
-<hr />
-<h3>Overview</h3>
-<hr />
-
-<p>
-    For the Comprehensive Understanding portion of this task, you will be implementing functionality in the
-    <code>SnakeLevel</code> class (from the <code>app.games.snake</code> package) such that the Snake game is fully
-    functional. You can access the Snake game by changing the <code>GAME</code> constant in
-    <code>app.Configuration</code> to <code>"Snake"</code>.
-</p>
-<p>
-    Each of the methods you implement will have an associated CU count that you will earn upon passing our tests for
-    that method. Partially implemented methods may result in some partial credit being earned, depending on the method.
-</p>
-<p>
-    You don't need to understand all of the internal Snake code; however, you should expect to read and understand some
-    of the internal Javadoc comments while completing this task. Not all background information will be provided in this
-    document.
-</p>
-
-<br />
-<hr />
-<h3>Programming Requirements</h3>
-<hr />
-
-In the <code>SnakeLevel</code> class, implement the following methods:
-<ul>
-    <li>
-        <code>wallOffBoundary</code> (10 CUs)
-        <ul>
-            <li>
-                When this method is called, it will surround the level with <code>SnakeWall</code> objects.
-            </li>
-            <li>These walls should each be aligned to a single, whole-numbered tile.</li>
-            <li>
-                These walls should <em>surround</em> the level. The level consists of the space between (inclusive) [0,
-                width-1] in the x-direction, [0, height-1] in the y-direction.
-                <ul>
-                    <li>For example, a 2x2 level's top wall will span from (-1, -1) to (2, -1)</li>
-                </ul>
-            </li>
-            <li>
-                All four sides of the level should be surrounded by <code>SnakeWall</code>s. Adding a
-                <code>SnakeWall</code>
-                to the level can be done by accessing and modifying the ArrayList containing the level's
-                <code>StaticGameObjects</code>, just as it is done in the <code>LevelParser</code> class.
-            </li>
-            <li>You may find it helpful to draw out examples to determine where these walls should lie.</li>
-        </ul>
-    </li>
-    <li>
-        <code>spawnFood</code> (10 CUs)
-        <ul>
-            <li>
-                When this method is called, one <code>SnakeFood</code> should be added to the level's
-                <code>StaticGameObjects</code> ArrayList, as well as the ArrayList named <code>food</code> in the
-                <code>SnakeLevel</code> class.
-            </li>
-            <li>
-                The location of this <code>SnakeFood</code> should be at a random tile-aligned coordinate, with the
-                following restrictions:
-                <ul>
-                    <li>
-                        It cannot be spawned anywhere a <code>SnakeBody</code> object from the <code>tail</code>
-                        ArrayList is currently occupying.
-                    </li>
-                    <li>It cannot be spawned at the player's location.</li>
-                    <li>
-                        It cannot be spawned anywhere a <code>SnakeFood</code> object from the <code>food</code>
-                        ArrayList is currently occupying.
-                    </li>
-                    <li>It must be spawned within the confines of the level.</li>
-                </ul>
-            </li>
-            <li>
-                Any random number generation used for this method must utilize the methods in the
-                <code>Randomizer</code> class from the <code>app.gameengine.utils</code> package.
-                <ul>
-                    <li>
-                        These methods are extensively documented. You should use the <code>randomIntVector2D</code>
-                        method that takes in two parameters.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                If the head and tail occupy every tile of the level, this method should call the
-                <code>advanceLevel</code> method on the <code>Game</code> object stored internally in this class (this
-                object can be accessed with <code>this.game</code>) and return immediately, doing nothing else.
-            </li>
-            <li>
-                If there is no room to spawn food (i.e. the entire level is taken up by the head, tails, and other
-                food), the method should return immediately and do nothing else.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>lengthenSnake</code> (10 CUs)
-        <ul>
-            <li>
-                When this method is called, new <code>SnakeBody</code> objects will be added to the <code>tail</code>
-                ArrayList, as well as the level's <code>StaticGameObject</code> ArrayList. The number of
-                <code>SnakeBody</code>s to be added to the list will be dependent on the value of the
-                <code>lengthIncrease</code> instance variable.
-            </li>
-            <li>
-                For each new <code>SnakeBody</code> object, the location of this object should be decided as follows:
-                <ul>
-                    <li>
-                        If the <code>tail</code> ArrayList is empty, the new <code>SnakeBody</code> object should be
-                        positioned such that it is directly behind the head (which is returned by
-                        <code>this.getPlayer()</code>). This can be determined by looking at the head's location and
-                        orientation vectors.
-                    </li>
-                    <ul>
-                        <li>The orientation vector will always be one of {(1, 0), (0, 1), (-1, 0), (0, -1)}.</li>
-                    </ul>
-                    <li>
-                        If the <code>tail</code> ArrayList is not empty, the new <code>SnakeBody</code> object should be
-                        positioned such that it shares the location with the first <code>SnakeBody</code> object in the
-                        <code>tail</code> <code>ArrayList</code> (the object at index 0).
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Whenever a new <code>SnakeBody</code> is added to the <code>tail</code> <code>ArrayList</code> in this
-                method, it should be added to the front of the ArrayList (prepended) rather than the end. Recall that
-                calling <code>add()</code> with only one parameter defaults to adding to the end of the list
-                (appending).
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>spawnSnake</code> (10 CUs)
-        <ul>
-            <li>
-                This method will add new <code>SnakeBody</code> objects to the level in the same manner as
-                <code>lengthenSnake</code>, but the number to be added should be based off of the value of the
-                <code>startingLength</code> instance variable instead. Note that you should add new
-                <code>SnakeBody</code> objects to both the <code>tail</code> ArrayList and to the level's list of
-                <code>StaticGameObject</code>s.
-            </li>
-            <li>
-                Note that the <code>startingLength</code> is based off of the total length of the snake including the
-                head, rather than just the length of the tail. Adding <code>startingLength</code> new
-                <code>SnakeBody</code> elements will result in an incorrect length.
-            </li>
-            <li>
-                You can assume the <code>tail</code> <code>ArrayList</code> is empty initially when this method is
-                called.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>update</code> (10 CUs)
-        <ul>
-            <li>Part of this method is provided for you, and everything you will write will be within the if statement.
-            </li>
-            <li>
-                You should first call <code>processInput</code> with a dt of 0 on the <code>keyboardControls</code>
-                instance variable, to trigger any keyboard inputs since the last update.
-            </li>
-            <li>
-                The main purpose of this method is to actually move the head and tail of the snake forward, and there
-                are a few ways in which this can be accomplished. First, you can move every element in the tail forward
-                by one, such that the <code>SnakeBody</code> object at index 0 is now at the location that the
-                <code>SnakeBody</code> object at index 1 previously occupied and so on. The <code>SnakeBody</code> at
-                the last index of the <code>tail</code> ArrayList should have what was previously the location of the
-                Player.
-            </li>
-            <ul>
-                <li>
-                    This process involves calling <code>setLocation</code> on <code>SnakeBody</code> objects. However,
-                    this will currently not have any effect. In order for it to take effect, you must remove a method
-                    from the <code>StaticGameObject</code> class. This method is unnecessary, and its inclusion or
-                    deletion should not affect any of your other coding tasks.
-                </li>
-                <li>
-                    Navigate to the <code>app.gameengine.model.gameobjects.StaticGameObject</code> class, and delete or
-                    comment out the <code>setLocation</code> method within that class. This will allow you to freely
-                    change the location of <code>SnakeBody</code> objects.
-                </li>
-                <li>If you do not wish to do this, you should use the next approach instead.</li>
-            </ul>
-            <li>
-                Alternatively, you may notice that every <code>SnakeBody</code> object stays in place except for the
-                last. If you choose, you can only modify the location of that final segment to the proper place directly
-                behind the player.
-            </li>
-            <li>Your code must handle the case where the tail is empty, and there is nothing to be moved.</li>
-            <li>
-                Regardless of the size of the <code>tail</code> ArrayList, the Player's location should then be
-                incremented by the Player's orientation. Remember that the Player can be accessed with
-                <code>this.getPlayer()</code>.
-            </li>
-            <li>
-                Example: If the Player's location is (4, 0), orientation is (0, 1), and <code>tail</code> contains
-                <code>SnakeBody</code>s with locations [(0,0), (1, 0), (2, 0), (3, 0)], the Player's location would be
-                set to (4, 1) and <code>tail</code> will contain <code>SnakeBody</code>s with locations [(1, 0), (2, 0),
-                (3, 0), (4, 0)]. Repeating this (assuming orientation is unchanged) would result in the Player's
-                location being set to (4, 2) and
-                <code>tail</code>
-                containing <code>SnakeBody</code>s with locations [(2, 0), (3, 0), (4, 0), (4, 1)].
-            </li>
-            <li>
-                If you wish to accomplish this by adding or removing new instances of <code>SnakeBody</code>, ensure
-                that added objects are added to the level's <code>StaticGameObjects</code> ArrayList as well as the
-                <code>tail</code> ArrayList. Removed objects must be removed from the <code>tail</code> ArrayList and
-                have the <code>destroy()</code> method called on them. This method can (and probably should) be
-                implemented without adding or removing <code>SnakeBody</code> objects.
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<br />
-<hr />
-<h3>Autolab Feedback</h3>
-<hr />
-<p>
-    The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will be run
-    in a single phase for correctness. For each feature you successfully pass, you will earn a varying amount of CUs with a
-    total maximum score of 50 CUs.
-</p>
-<p>
-    There is no required testing component for the Comprehensive Understanding; however, you are expected to test your
-    code nonetheless as the Autolab feedback is unlikely to be sufficient for debugging.
-</p>
-{% endcall %}
 {% endblock %}
