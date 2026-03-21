@@ -4,7 +4,7 @@
 
 {% block header %}
 <h1>Game Features 3</h1>
-<h5>Polymorphism and Trees</h5>
+<h5>Polymorphism, Trees, and Testing</h5>
 <hr />
 {% endblock %}
 
@@ -12,255 +12,537 @@
 
 {% call task_card("Overview") %}
 <hr />
-<h3>Coding Task 3 Overview</h3>
+<h3>Game Features 3 Overview</h3>
 <hr />
 
-{% set g_lo = "#game-features---learning-objective" %} {% set g_ao = "#game-features---comprehensive-understanding" %}
-
 <p>
-    As usual, there are two components to this task. Both the <a target="_self" href="#problem-set">Problem Set</a> and
-    <a target="_self" href="{{ g_lo }}">Game Features - Learning Objective</a> portions of this document
-    <em><b>MUST</b></em> be completed to achieve the Learning Objective points and pass the course. The
-    <a target="_self" href="{{ g_ao }}">Game Features - Comprehensive Understanding</a> is not needed for the Learning
-    Objective requirement, but completing/not completing it will directly impact your grade through CU points. The
-    Problem Set is worth 20 LO points, while the Game Engine Task is worth 30 LO points and 50 CU points.
+    Game Features 3 assesses Polymorphism, Trees, and Testing. You will continue to build functionality for the Game Engine.
+    This will be done on top of the code written for the previous tasks; you should not reclone or remove said code for this task or any future
+    Game Features tasks.
 </p>
 <p>
-    You should complete the components below in the order they are listed; you will not be able to earn credit for the
-    following component(s) until you complete the previous ones with all available points.
+    This document is split into three sections for convenience. The first two of these sections will have a graded testing component.
+    It is highly suggested you complete this testing component first to guide your implementation. You should not expect much, if any
+    partial credit for buggy implementations. The third section does not explicitly require testing. You are nonetheless expected
+    to thoroughly test it.
 </p>
 <p>
-    Coding Task 3 assesses Polymorphism and Binary Trees. Both the Problem Set and Game Engine Task will focus on these
-    topics.
+    You'll need to create a class named <code>TestTask3</code> in your <code>tests</code> package for this assignment. We have
+    provided some tests for the various <code>Decision</code> and <code>Collectible</code> subclasses, as well as the
+    <code>LevelParser</code> updates. They can be accessed at this link: <a
+        href="/static_files/files/task3/TestTask3.java">TestTask3.java</a>. You can open this link in a new tab to copy
+    and paste the content into your project, or right click and select "save link as", then download the file to the
+    correct location within the project.
 </p>
-<p>
-    The video for this task can be found at
-    <a href="https://www.youtube.com/watch?v=l3NGl37kjY4">https://www.youtube.com/watch?v=l3NGl37kjY4</a>.
-    This video gives an overview of the requirements for this task, namely the Game Features Learning Objective. As
-    always, watching it is optional, but you will find it very useful.
-</p>
-
 
 {% endcall %}
 
-{% call task_card("Problem Set") %}
-<hr />
+
+
+{% call task_card("Inventory") %}
+
+<hr/>
 <h3>Overview</h3>
-<hr />
+<hr/>
 
 <p>
-    Problem Set GitHub Repository link:
-    <a href="https://github.com/CSE-116/ProblemSet-3">https://github.com/CSE-116/ProblemSet-3</a>
+    In this section, you'll be testing and implementing an inventory system and collectible items via polymorphism.
+    You will be given a specification for this inventory system that precisely defines the behavior of it, which
+    should guide your development of tests.
 </p>
 
-<ol>
-    <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
-</ol>
-<p>
-    Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
-    problem and tests.
-</p>
-<p>
-    To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
-    problem set, and submit it to Autolab.
-</p>
+<p>For this portion, you will be writing code in the following classes which already exist:</p>
+<ul>
+    <li><code>Collectible</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
+    <li>
+        <code>MagicPickup</code>, <code>AxePickup</code>, and <code>PotionPickup</code>, located in the
+        <code>app.games.commonobjects</code> package.
+    </li>
+    <li><code>Player</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
+    <li><code>LevelParser</code>, located in the <code>app.gameengine</code> package.</li>
+</ul>
+<p>You will also be writing code in the <code>TestTask3</code> class as described in the "Game Features 3 Overview"</p>
 
-<hr />
+<br/>
+
+<hr/>
 <h3>Specification</h3>
-<hr />
+<hr/>
+
+<p class="notice-me">
+    Read through this entire specification before you begin your implementation. You should set up
+    the <code>Collectible</code> class first by stubbing out (i.e. creating methods that
+    don't yet function) the specified methods in the <code>Player</code> class (some of them do not exist yet), write tests
+    for said methods in the <code>Player</code> class, then finally implement them.
+</p>
 
 <p>
-    For this problem set, you will write the following 3 static methods that are all related to binary trees (the
-    Game Features will include Polymorphism). The signatures for these methods exist in the handout repo and the
-    methods are all stubbed out.
+    Alongside your unit tests, you can test the functionality of your implementation in the sample game.
 </p>
 
 <ul>
     <li>
-        In the <code>problem.ProblemSet3</code> class, complete the <code>maxBST</code> method, which takes a
-        <code>BST</code> of <code>Integer</code>s as a parameter and returns an <code>int</code>. This method
-        returns the maximum value of the BST according to its <code>Comparator</code>.
+        <code>Collectible</code>: Navigate to the <code>app.gameengine.model.gameobjects.Collectible</code> class, which
+        is an abstract class representing an object that can be picked up and used by the player. Currently this class
+        contains very little, but you will add extra functionality by adding methods and extending this class.
         <ul>
             <li>
-                Note that this method does not necessarily return the largest value in the tree since maximum is
-                defined by the BST's <code>Comparator</code>. Maximum in this context can be thought of as the
-                value that would come last if the values were fully sorted using this <code>Comparator</code>.
+                The constructor takes four parameters, two of which are passed to the super constructor. Store the
+                remaining parameters in instance variables.
             </li>
             <li>
-                If the <code>BST</code> is empty (ie. the root is null) this method should return 0.
+                Create a method named <code>getItemID</code> (note the capital "ID"), which is a getter for the itemID
+                instance variable. It should take no parameters and return a <code>String</code>.
+            </li>
+            <li>
+                Create an <em><strong>abstract</strong></em> method named <code>use</code>, which takes a
+                <code>Level</code> as a parameter and returns <code>void</code>. This represents what occurs when the
+                <code>Collectible</code> is used in game by the player.
+            </li>
+            <li>
+                Override the <code>collideWithDynamicObject</code> method, which takes one
+                <code>DynamicGameObject</code> parameter and returns <code>void</code>. If the dynamic object is the
+                player, add this object to the player's inventory, and destroy this object.
+                <ul>
+                    <li>
+                        Remember that you can tell if any kind of <code>GameObject</code> is a <code>Player</code>
+                        object by calling the <code>isPlayer</code> method on it.
+                    </li>
+                    <li>
+                        You should add the object to the player's inventory with the <code>addInventoryItem</code>
+                        method. This method likely does not exist yet. Read ahead to see the specification for that
+                        method.
+                    </li>
+                    <li>
+                        Since this method exists in the <code>Player</code> class instead of the
+                        <code>DynamicGameObject</code> class, you cannot call it on the parameter. Instead, call
+                        <code>getPlayer</code> on the game that you stored as an instance variable.
+                    </li>
+                    <li>
+                        You should destroy the object by calling the <code>destroy</code> method on it. This will remove
+                        it from the level, so that it is not rendered on the screen anymore and will not continue
+                        colliding with the player.
+                    </li>
+                    <li>If the object is not the player, this method should do nothing.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>AxePickup</code>: navigate to the <code>app.games.commonobjects.AxePickup</code> class, which is a pickup
+        that should allow the player to throw axe projectiles at enemies. Notice that this class extends
+        <code>Collectible</code>, and that the name passed to the super constructor is "Axe". Add the following
+        functionality.
+        <ul>
+            <li>
+                Create an instance variable of type <code>Timer</code>. Use the <code>app.gameengine.utils.Timer</code>
+                class, not one of the built-in Java timers. In the constructor, assign this instance variable to a new
+                <code>Timer</code> with a cooldown of 0.25.
+                <ul>
+                    <li>
+                        The <code>Timer</code> class allows objects to limit how frequently they can use used. In this
+                        case, you will use the timer to limit how frequently axes can be thrown. You should look through
+                        the methods in this class, but do not need to fully understand them.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Create a getter for the <code>Timer</code> instance variable called <code>getTimer</code>, which takes
+                no parameters and returns a <code>Timer</code>.
+            </li>
+            <li>
+                Override and implement the <code>use</code> method from the <code>Collectible</code> class. If the
+                cooldown period on the timer is up, this method should make the player fire an axe projectile.
+                <ul>
+                    <li>
+                        To check if the timer cooldown has expired, use the <code>Timer.check</code> method on your
+                        instance variable. You should read the Javadoc comment to understand how to use this method.
+                        Note that you do not care how many times the timer has overflown, just that it has.
+                    </li>
+                    <li>
+                        To fire a projectile, use the <code>Level</code> parameter and call <code>getPlayer</code> to
+                        get the <code>Player</code> object. On this <code>Player</code>, call
+                        <code>fireProjectile</code>, which takes three arguments. The first argument is the projectile
+                        to fire, which should be a new <code>PlayerAxeProjectile</code> object. The location of this
+                        projectile does not matter, as it will be set within the <code>fireProjectile</code> method. The
+                        second argument is the speed the projectile will be fired at, which should be set to exactly
+                        <code>5</code>. The third argument should be the <code>Level</code> parameter.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Override the <code>update</code> method, which has parameters of type <code>double</code> and
+                <code>Level</code>, representing the time since the last update and the current level, respectively, and
+                returns <code>void</code>.
+                <ul>
+                    <li>
+                        Call the super update method, passing the parameters as arguments.
+                    </li>
+                    <li>
+                        Call <code>Timer.advance</code> on the <code>Timer</code> instance variable, passing in the
+                        <code>double</code> parameter <code>dt</code>. This will ensure that the cooldown actually
+                        decreases and the pickup can be used.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>MagicPickup</code>: Navigate to the <code>app.games.commonobjects.MagicPickup</code> class, which is a
+        pickup that should allow the player to fire magic projectiles at enemies. Notice that this class extends
+        <code>Collectible</code>, and that the name passed to the super constructor is "Magic". You should create the
+        same instance variables and methods as in the <code>AxePickup</code> class. The only difference should be that
+        in the <code>use</code> method, when calling <code>fireProjectile</code>, you should pass in a
+        <code>PlayerMagicProjectile</code> object, and a speed of <code>10</code>.
+    </li>
+    <li>
+        <code>PotionPickup</code>: Navigate to the <code>app.games.commonobjects.PotionPickup</code> class, which is a
+        pickup that should allow the player to regain some health when used. Notice that this class extends
+        <code>Collectible</code>, and that the name passed to the super constructor is "Health Potion". Add the
+        following functionality.
+        <ul>
+            <li>
+                Create an instance variable of type <code>int</code>, and in the constructor, assign this instance
+                variable to the constructor parameter "heal". This is the amount that the potion will heal the player
+                by.
+            </li>
+            <li>
+                Create a getter for for this instance variable called <code>getHealAmount</code>, which takes no
+                parameters and returns an <code>int</code>.
+            </li>
+            <li>
+                Override and implement the <code>use</code> method from the <code>Collectible</code> class. Increase the
+                health of the player by the heal instance variable, and remove the potion from the player's inventory.
+                <ul>
+                    <li>
+                        To get the player, you can call the <code>getPlayer</code> method on the <code>Level</code>
+                        parameter.
+                    </li>
+                    <li>
+                        To access and modify the health of the player, you can use the <code>getHP</code> and
+                        <code>setHP</code> methods respectively.
+                    </li>
+                    <li>
+                        To remove the item from the player's inventory, you should call the
+                        <code>removeActiveItem</code> method. This method likely does not exist yet. Read ahead to see
+                        the specification for that method.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                You do not need to override the update method, as this class does not possess a timer to increment.
             </li>
         </ul>
     </li>
 </ul>
 
-<br>
+<br />
+
+<p>
+    Now you will add methods for using and manipulating the player's inventory. In the
+    <code>app.gameengine.model.gameobjects</code> package, make the following additions to the
+    <code>Player</code> class to implement a functioning inventory system. Some of these methods will already exist, and
+    you should just modify them. Others you will have to create.
+</p>
+
+
+
+<p class="notice-me">
+    Note that the specification will not include specific implementation details for the following methods. For instance, it does not state an
+    underlying data structure to use. You'll need to determine these details on your own. Any solution that satisfies
+    the required functionality of the inventory is acceptable.
+</p>
 
 <ul>
     <li>
-        In the <code>problem.ProblemSet3</code> class, complete the <code>maxBinaryTree</code> method, which
-        takes a <code>BinaryTreeNode</code> of <code>Integer</code>s and an <code>Integer</code>
-        <code>Comparator</code> as parameters and returns an <code>int</code>. This method returns the maximum
-        value of the binary tree, defined by the parameter node as the root of the tree, according to the
-        provided comparator.
+        <code>addInventoryItem</code>: Create a method named <code>addInventoryItem</code> that takes in a
+        <code>Collectible</code> and returns <code>void</code>. This method should add the object from the parameter to
+        the <code>Player</code>'s inventory.
         <ul>
             <li>
-                This method is similar to <code>maxBST</code>, except the tree no longer has the structure of a
-                BST. You should use the compartor to perform any comparisons that are needed to find the maximum
-                value according to that comparator.
+                Adding an item should never change the currently active item, except for when you pick up your first
+                item
             </li>
             <li>
-                If the binary tree is empty (ie. the root is null) this method should return 0.
+                This new object will be considered the "last" item in the list.
             </li>
         </ul>
     </li>
+    <li>
+        <code>removeActiveItem</code>: Add a method named <code>removeActiveItem</code> which takes no parameters and
+        returns <code>void</code>. This method should remove whatever the currently active item is from the
+        <code>Player</code>'s inventory.
+        <ul>
+            <li>
+                Once the currently active item is removed, the currently active item should become whatever was next in
+                the inventory. For example, if you collected an Axe, then Magic, then a Health Potion, the currently
+                active item would be the Axe. If this method is called, the remaining items are the Magic and the Health
+                Potion, and the active item would be the Magic.
+            </li>
+            <li>
+                If the item removed is the last item in the inventory (ie. the one most recently added), the active item
+                would become the first item in the inventory (ie. the one least recently added). Be sure to account for
+                this looping behavior in your code.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>getActiveItem</code>: Add a method named <code>getActiveItem</code> that takes no parameters and returns a
+        <code>Collectible</code>. This method should return whichever <code>Collectible</code> in the inventory is
+        active.
+        <ul>
+            <li>If the inventory is empty, this method should return null.</li>
+            <li>
+                If an item is collected and the inventory was previously empty, that item should be the active item.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>getActiveItemID</code>: Add a method called <code>getActiveItemID</code> (note the capital "ID") that
+        takes in no parameters and returns a <code>String</code>.
+        <ul>
+            <li>
+                This method should return the ID of the active <code>Collectible</code> from the inventory, by calling
+                the <code>Collectible.getItemID</code> method on it.
+            </li>
+            <li>
+                If the inventory is empty, this method should return the exact <code>String</code> "No item equipped".
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>cycleInventory</code>: Add a method called <code>cycleInventory</code> that takes no parameters and
+        returns <code>void</code>. This method will cycle through the inventory, changing the item currently marked as
+        active.
+        <ul>
+            <li>
+                This should be done in the order the objects are collected. For example, if a player collected an Axe,
+                then Magic, then a Potion, the first call to cycleInventory will change the active item from the Axe
+                to Magic. The second call to cycleInventory will change the active item from Magic to the Potion.
+            </li>
+            <li>
+                Once cycleInventory is called while the most recently collected item is active, the active item should
+                be set back to the front of the inventory, to the least recently collected item. Thus in our previous
+                example, the third call to cycleInventory will change the active item from the Potion to the Axe.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>clearInventory</code>: Add a method called <code>clearInventory</code> that takes no parameters and
+        returns <code>void</code>. This method will reset the inventory to its initial state, which should be empty.
+    </li>
+    <li>
+        <code>update</code>: The update method already exists in this class. Add code which iterates over every item in
+        the inventory and calls the <code>update</code> method on it, passing in both parameters.
+        <ul>
+            <li>
+                The order in which these objects are updated does not matter, as long as each object is updated once.
+            </li>
+        </ul>
+    </li>
+    <li>
+        The inventory should initially be empty.
+    </li>
+</ul>
+<p>
+    You also need to implement the ability to use objects, which will occur in the <code>app.gameengine.Level</code>
+    class.
+</p>
+<ul>
+    <li>
+        <code>actionButtonPressed</code>: In the <code>Level</code> class, implement the
+        <code>actionButtonPressed</code> method. The signature for this method already exists, you should simply add
+        functionality to it.
+        <ul>
+            <li>
+                This method should call the <code>getActiveItem</code> method on the level's player to access the
+                currently equipped <code>Collectible</code>. If there is an item equipped (ie. it is not null), this
+                method should call the <code>use</code> method on that item, passing in <code>this</code> as the
+                argument.
+            </li>
+            <li>
+                You can access the <code>Player</code> for a level by calling the <code>getPlayer</code> method.
+            </li>
+        </ul>
+    </li>
+    You can cycle your character's inventory in-game with the tab key. Pressing the space bar will call the
+    <code>Level.actionButtonPressed</code> method, allowing you to use the active item to fire projectiles or use
+    potions.
 </ul>
 
-<br>
+<br />
+
+<p>
+    The final features you will add are modifications to the <code>LevelParser</code> class so that the kinds of
+    collectibles can be parsed. The sample game already contains an <code>AxePickup</code> and a
+    <code>MagicPickup</code> in a couple of the levels. If you want to use the <code>PotionPickup</code> in game, you
+    can add it to one of the levels. An example of this would be adding this line to one of the level csv files:
+    "StaticGameObject,PotionPickup,13,13,50".
+</p>
+<p>
+    You can also create levels with the <a href="https://jbcarras.github.io/">level editor</a> which contain these
+    objects.
+</p>
 
 <ul>
     <li>
-        In the <code>problem.ProblemSet3</code> class, complete the <code>isBST</code> method that takes a
-        <code>BinaryTreeNode</code> of <code>Integer</code>s and an <code>Integer</code> <code>Comparator</code>
-        as parameters and returns a <code>boolean</code>. This method returns <code>true</code> if the binary tree,
-        defined by the parameter node as the root of the tree, is a valid BST according to the provided comparator, and
-        <code>false</code> otherwise.
+        <code>readStaticObject</code>: Modify this method so that it can recognize and return the following objects.
         <ul>
             <li>
-                You may assume that no values are repeated in the tree. Therefore, you can address ties in
-                value any way you'd like, and the result will be the same.
+                Add a case for <code>AxePickup</code> objects. If the string being checked is "AxePickup", a new
+                <code>AxePickup</code> object should be returned. The <code>AxePickup</code> constructor
+                takes two <code>double</code>s and a <code>Game</code>. The <code>double</code>s should be the variables
+                <code>x</code> and <code>y</code>, and the <code>Game</code> should be the parameter <code>game</code>,
+                all of which already exist in this method.
             </li>
             <li>
-                An empty tree is considered a valid BST.
+                Add a case for <code>MagicPickup</code> objects. If the string being checked is "MagicPickup", a new
+                <code>MagicPickup</code> object should be returned. The <code>MagicPickup</code> constructor
+                takes two <code>double</code>s and a <code>Game</code>. The <code>double</code>s should be the variables
+                <code>x</code> and <code>y</code>, and the <code>Game</code> should be the parameter <code>game</code>,
+                all of which already exist in this method.
+            </li>
+            <li>
+                Add a case for <code>PotionPickup</code> objects. If the string being checked is "PotionPickup", a new
+                <code>PotionPickup</code> object should be returned. The <code>PotionPickup</code> constructor
+                takes two <code>double</code>s, an <code>int</code>, and a <code>Game</code>. The <code>double</code>s
+                should be the variables <code>x</code> and <code>y</code>, and the <code>Game</code> should be the
+                parameter <code>game</code>, all of which already exist in this method. The <code>int</code> should be
+                the amount to heal, which is the fifth value in the line. Refer to the example above, where the amount
+                to heal would be 50.
             </li>
         </ul>
     </li>
 </ul>
 
-<br>
-
-<hr />
+<br/>
+<hr/>
 <h3>Testing Requirements</h3>
-<hr />
+<hr/>
 
 <p>
-    Write JUnit tests for the following methods from the specification in the <code>tests.TestProblemSet3</code>
-    class. These tests should be annotated with <code>@Test</code>.
+    As previously stated, you are given some tests for the <code>Collectible</code>
+    subclasses and <code>LevelParser</code> updates. You are NOT given tests for the
+    <code>Player</code> methods from the specification. For this portion of the task,
+    you will be writing tests for these methods.
 </p>
+
+<p>
+    Autolab will run your code against "incorrect solutions" to determine if you wrote
+    tests for a given feature. If your tests can catch all the bugs the "incorrect solutions"
+    contain for this feature, you'll earn points for successfully testing this feature. In
+    total there will be 20 points available for testing. Since these tests are not being ran
+    on your own solution, you can (and are encouraged to!) submit to Autolab before you complete
+    your implementation to check your tests and earn points for feature coverage.
+</p>
+
+<p>
+    Note that to earn any points for testing, all of your tests must work on a correct solution.
+    That is, your tests must be testing the behavior correctly and follow the specification. Additionally,
+    while you can make whatever helper methods you want in your code to aid your implementation, the
+    tests can only contain methods that were given to you in the handout code or methods that were defined
+    in a handout and completed as part of a task. If you include something you shouldn't, you won't be
+    able to earn any points for testing as the grader won't be able to run the tests.
+</p>
+
+<p>
+    With that in mind, your objective is to write JUnit tests for the following methods from
+    the specification. These tests should go in the <code>TestTask3</code> class and should be annotated
+    with <code>@Test</code>.
+</p>
+
+<p><em>Note that these are NOT static methods. The class name is included for identification.</em></p>
+
 <ul>
-    <li>
-        <code>maxBST</code>
+    <li><code>Player.addInventoryItem</code> and <code>Player.cycleInventory</code>
         <ul>
             <li>
-                Write tests for the <code>maxBST</code> method. Test that the proper value is returned in a
-                variety of cases.
+                Write tests to verify the behavior of these two methods, i.e. that
+                repeatedly calling <code>cycleInventory</code> will go through every
+                added <code>Collectible</code> and warp around to the beginning.
             </li>
+        </ul>
+    </li>
+    <li><code>Player.removeActiveItem</code>
+        <ul>
             <li>
-                When testing this method, you will need to create BST objects. You can use any/all of the
-                provided <code>Integer</code> <code>Comparators</code> to create these BSTs.
+                Write tests to ensure that calling <code>removeActiveItem</code>
+                properly removes the active item from the inventory and sets the new
+                active item.
             </li>
         </ul>
     </li>
     <li>
-        <code>maxBinaryTree</code> and <code>isBST</code>
-        <ul>
-            <li>
-                Tests for these methods are provided for you. You do not need to write any additional tests for
-                these methods.
-            </li>
-        </ul>
+        Since there's no specified method to access the entire inventory, you
+        should verify that the inventory is being affected as expected by verifying
+        the active item is changing as expected per these methods' specifications.
+        You only need to check that the active item's ID matches
+        the expected ID.
     </li>
 </ul>
 
-
-<br />
-
-<hr />
+<br/>
+<hr/>
 <h3>Programming Requirements</h3>
-<hr />
+<hr/>
 
 <p>
-    Implement the methods from the specification. You may wish to complete the Testing Requirements before you
-    begin implementation, and it's suggested that you run these tests as you implement the methods.
+    Implement the methods from the specification. You should complete the
+    Testing Requirements before or during your implementation to aid you.
+</p>
+<p>
+    In total, your implementation will be worth 20 points. You may need to have several
+    components of the specification fully functional before you earn any points for a given
+    feature.
 </p>
 
-<br />
-
-<hr />
+<br/>
+<hr/>
 <h3>Autolab Feedback</h3>
-<hr />
+<hr/>
 
 <p>
-    Feedback from Autolab will be given in several phases. If you
-    don't complete a phase, then feedback for the following phase(s) will not be given. You must complete all
-    phases to earn the required
-    score of 20 LOs. For the problem set, the phases will be as follows:
+    Autolab feedback will be given in several phases. These phases dictate the order
+    you are expected to complete this assignment. Although you can still earn points
+    from completing these phases out of order, you are nonetheless expected to have
+    the previous phases completed before trying to fix a later one.
 </p>
+
 <ol>
     <li>
-        Running your tests on a correct solution
-        <ul>
-            <li>Your tests will be run against a solution that is known to be correct. If your tests do
-                not pass this correct solution, there is an error somewhere in your tests that must be
-                fixed before you can move on with the assignment. If your tests don't get past this
-                check, you should re-read this document and make sure you implemented your tests and
-                code according the specification. You should also make sure that if there are multiple
-                correct outputs to the input in your tests cases that you accept any of the outputs as
-                correct.
-            </li>
-        </ul>
+        <strong>Running your tests on a correct solution: </strong>
+        Your tests will be run on a correct solution to this assignment. If any
+        of your tests crash or fail, you will earn 0 points for testing. If a test
+        fails here but passes your implementation locally, it's likely you have a bug
+        both in your code and in your test.
     </li>
     <li>
-        Checking your tests for feature coverage
-        <ul>
-            <li>The next phase is to check if your tests check for a variety of features defined by
-                different inputs. You should write at least one test case for each feature to pass this
-                phase.
-            </li>
-            <li>Passing this phase does not necessarily mean that your testing is completely thorough.
-                Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
-                checked and it is sometimes possible to pass this phase with weak testing. If you are
-                struggling to earn credit for code that you believe is correct, you should write more
-                than the required tests
-            </li>
-        </ul>
+        <strong>Checking your tests for feature coverage: </strong>
+        Your tests will be checked for feature coverage by determining if it can successfully
+        catch bugs associated with incorrect solutions. For each feature your tests covered, you
+        will earn some amount of points. Passing this phase doesn't mean your testing is fully
+        comprehensive, but can be considered the minimum for effective testing. If you failed the
+        previous phase, this phase will not run and you won't get any points for testing.
     </li>
     <li>
-        Running my tests on your solution
-        <ul>
-            <li>Once Autolab is happy with your tests, it will run my tests against your code to check
-                it for correctness. If your testing is thorough, and your code passes your tests, then
-                you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                indicator that you should write more tests to help expose your bug.
-            </li>
-        </ul>
+        <strong>Running my tests on your solution: </strong>
+        Your code will be run against our tests. Once you've passed all the tests associated
+        with some part of the specification, you'll earn some points for a correct implementation. If
+        any feature for that part fails our tests, you won't earn any points for this part. If that happens,
+        you should write more tests to catch that bug and fix it in your implementation.
     </li>
 </ol>
-<p>
-    Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab
-    will
-    confirm this with a score of 20 LOs.
-</p>
+
 {% endcall %}
 
-{% call task_card("Game Features - Learning Objective") %}
+{% call task_card("Decision Trees") %}
 <hr />
 <h3>Overview</h3>
 <hr />
 
 <p>
-    You will continue to build functionality for the Game Engine in this component of the task. This will be done on top
-    of the code written for the previous tasks; you should not reclone or remove said code for this task or any future
-    Game Features components.
-</p>
-<p>
-    As with the previous tasks, there are two parts to the Game Features component: the Learning Objective and
-    Comprehensive Understanding. The Learning Objective portion must be completed with a score of 30 LOs before the
-    Comprehensive Understanding unlocks. Both portions of the Game Features will be submitted to the same assignment on
-    Autolab.
-</p>
-<p>
-    The content of the Learning Objective is primarily used in the Game Engine by Pacman. To play Pacman, during and
-    after completing this Learning Objective, navigate to the class <code>app.Configuration</code> and change the
+    The content of this portion is primarily used in the Game Engine by Pacman. To play Pacman, during and
+    after completing this portion, navigate to the class <code>app.Configuration</code> and change the
     <code>GAME</code> constant to <code>"pacman"</code>. As the size of the Pacman level is quite large, you should also
     set the value of <code>ZOOM</code> to <code>2.0</code> or <code>1.0</code> (it can technically be non-whole, but not
     without serious graphical bugs).
@@ -271,41 +553,19 @@
     similarity between them. The amount of unique code you must write, and problems you must solve, is roughly in line
     with earlier tasks.
 </p>
-<p class="notice-me">
-    You will need to use various utility methods found in the <code>app.gameengine.utils.PacmanUtils</code> class for
-    this task. However, one of these methods is missing from the handout. You can find it <a
-        href="/static_files/files/task3/PacmanUtils.java">here</a>, and should copy that method into your own class.
-</p>
-<p>For this Learning Objective portion, you will be writing code in the following classes which already exist:</p>
+<p>For this portion, you will be writing code in the following classes which already exist:</p>
 <ul>
     <li><code>Agent</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
     <li><code>Ghost</code>, located in the <code>app.games.pacman</code> package.</li>
-    <li><code>Collectible</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
-    <li>
-        <code>MagicPickup</code>, <code>AxePickup</code>, and <code>PotionPickup</code>, located in the
-        <code>app.games.commonobjects</code> package.
-    </li>
-    <li><code>Player</code>, located in the <code>app.gameengine.model.gameobjects</code> package.</li>
-    <li><code>LevelParser</code>, located in the <code>app.gameengine</code> package.</li>
 </ul>
 <p>
-    You should create the <code>TestTask3</code> class in your <code>app.tests</code> package. We have provided some
-    tests for the various <code>Decision</code> and <code>Collectible</code> subclasses, as well as the
-    <code>LevelParser</code> updates. They can be accessed at this link: <a
-        href="/static_files/files/task3/TestTask3.java">TestTask3.java</a>. You can open this link in a new tab to copy
-    and paste the content into your project, or right click and select "save link as", then download the file to the
-    correct location within the project.
-</p>
-<p>
-    These tests are not overly thorough, but should validate some of the basic behavior of the features that they test,
+    Your tests for this portion should also go in <code>TestTask3</code>. As stated before, you
+    are given some tests for the <code>Decision</code> subclasses. These tests are not overly thorough, but should validate some of the basic behavior of the features that they test,
     and let you know if you are on the right track.
 </p>
+
 <p>You will also have to create many additional classes, which will be specified in the following instructions.</p>
-<p class="notice-me">
-    Many of the features of this task, primarily dealing with the player's inventory and collectibles, heavily rely on
-    each other, so one feature being implemented incorrectly may cause tests for other features to fail. Feedback in
-    Autolab will usually note when this applies, but keep this in mind when looking over your feedback.
-</p>
+
 
 <br />
 <hr />
@@ -313,20 +573,21 @@
 <hr />
 
 <p>
-    You should read through all the following sections before you begin to implement the methods from the specification.
-    Note that you will not receive feedback on the correctness of these methods until you've completed the testing
-    component of this task (see the "Autolab Feedback" section for more details). However, you must at least create
+    As with the previous part,
+
+
+    you should read through all the following sections before you begin to implement the methods from the specification.
+    Note that you can receive feedback for your tests before your implementation is complete, however, you must at least create
     every class/method from this specification to receive feedback. You can "stub out" these methods by having them
     always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
 </p>
 <p>
     Some of the methods in this task will make use of the <code>BinaryTreeNode</code> class, found in the
     <code>app.gameengine.model.datastructures</code> package. You are required to use this class. It is identical to the
-    <code>BinaryTreeNode</code> class used in the Problem Set. Note that this is <em>not</em> the <code>BST</code> class
-    from the Problem Set.
+    <code>BinaryTreeNode</code> class used in the Problem Set. Note that this is <em>not</em> a <code>BST</code>.
 </p>
 <p>
-    For the Learning Objective portion of the Game Features component for this task, you will implement the following
+    For this part, you will implement the following
     functionality:
 </p>
 <ul>
@@ -452,13 +713,12 @@
 
 <br />
 
-<ul>
+
     <p>
         Now you will create subclasses of the <code>Decision</code> class which implement behavior for the ghosts in
         Pacman. You should look at the <code>app.gameengine.utils.PacmanUtils</code> class, as you will need to use
         these methods within your <code>Decision</code> subclasses. You do not need to understand all of this code, and
-        the specific methods to use will be mentioned each time. If you did not already, download the missing method
-        <code>canAct</code> from <a href="/static_files/files/task3/PacmanUtils.java">here</a> and add it to this class.
+        the specific methods to use will be mentioned each time.
     </p>
     <p>
         Though you do not need to understand the implementation of these methods, you should understand what they do.
@@ -480,6 +740,7 @@
         These classes could be placed anywhere within the tree, and in fact there will likely be duplicates, where one
         is used as the decision, and the other is used as the action.
     </p>
+<ul>
     <li>
         <code>IsActive</code>: In the <code>app.gameengine.model.ai.pacman</code> package, create a class named
         <code>IsActive</code> which extends <code>Decision</code>. This class will represent a decision on whether a
@@ -544,9 +805,9 @@
                         needed to update the sprite of the ghost.
                     </li>
                     <li>
-                        This <code>followPath</code> method is the same as the one from the Task 2 CU, but is
-                        implemented differently within the <code>Ghost</code> class. So, even if you did not complete
-                        that CU, this will still function as intended.
+                        This <code>followPath</code> method is the same as the one from Game Features 2, but is
+                        overridden by the <code>Ghost</code> class. So, even if you did not complete
+                        that method, this will still function as intended.
                     </li>
                 </ul>
             </li>
@@ -761,21 +1022,16 @@
                 <code>setDecisionTree</code> respectively.
             </li>
             <li>
-                Override the <code>update</code> method from the super class, which takes a <code>double</code> and a
-                <code>Level</code> as parameters and returns <code>void</code>.
+                Update the <code>update</code> method.
                 <ul>
                     <li>
-                        This method should first call the super update method, passing in the parameters as arguments.
-                    </li>
-                    <li>
-                        If the <code>DecisionTree</code> instance variable is not <code>null</code>, call traverse on
-                        it. You should call the version of the method which does <em>not</em> take in a
+                        After this method calls the super update method, check if the <code>DecisionTree</code>
+                        instance variable is not null. If it isn't null, call traverse on it. You should call the version of the method which does <em>not</em> take in a
                         <code>BinaryTreeNode</code>. If the <code>DecisionTree</code> is null, you do not need to do
                         anything.
                     </li>
                     <li>
-                        If you added the code from the Task 2 CU for showing <code>Agent</code> paths, you may keep that
-                        here. You can place it before or after the new code.
+                        This code can go before or after the code that handles showing paths and animations.
                     </li>
                 </ul>
             </li>
@@ -817,346 +1073,18 @@
             </li>
         </ul>
     </li>
+</ul>
     <br />
-    You should now be able to play pacman and see the ghosts react dynamically to your actions. Every so often, on a
+<p>
+    You should now be able to play Pac-Man and see the ghosts react dynamically to your actions. Every so often, on a
     timer, all of the ghosts will retreat (scatter) to the corners. If you eat a power pellet (the big ones), they will
     turn blue and start moving randomly. If you eat them they will return home, respawn, and begin chasing you again.
-    <br />
+</p>
+<p>
     You may notice ghosts occasionally getting stuck on level geometry when moving around corners. That is an
     unfortunate amount of jankiness within the game engine at the moment, and does not signify any issues with your
     implementation.
-</ul>
-
-<br />
-
-<ul>
-    The last features you will add for the Learning Objective are for an inventory system for the player. This is not
-    used in Pacman, so you should test this feature within the sample game. To play the sample game navigate to the
-    class <code>app.Configuration</code> and change the <code>GAME</code> constant to <code>"sample game"</code>.
-    <br />
-    Some of the methods in the <code>Player</code> class that are referenced here do not exist yet. You may want to
-    implement those methods first, or along with these classes and methods.
-    <li>
-        <code>Collectible</code>: Navigate to the <code>app.gameengine.model.gameobjects.Collectible</code> class, which
-        is an abstract class representing an object that can be picked up and used by the player. Currently this class
-        contains very little, but you will add extra functionality by adding methods and extending this class.
-        <ul>
-            <li>
-                The constructor takes four parameters, two of which are passed to the super constructor. Store the
-                remaining parameters in instance variables.
-            </li>
-            <li>
-                Create a method named <code>getItemID</code> (note the capital "ID"), which is a getter for the itemID
-                instance variable. It should take no parameters and return a <code>String</code>.
-            </li>
-            <li>
-                Create an <em><strong>abstract</strong></em> method named <code>use</code>, which takes a
-                <code>Level</code> as a parameter and returns <code>void</code>. This represents what occurs when the
-                <code>Collectible</code> is used in game by the player.
-            </li>
-            <li>
-                Override the <code>collideWithDynamicObject</code> method, which takes one
-                <code>DynamicGameObject</code> parameter and returns <code>void</code>. If the dynamic object is the
-                player, add this object to the player's inventory, and destroy this object.
-                <ul>
-                    <li>
-                        Remember that you can tell if any kind of <code>GameObject</code> is a <code>Player</code>
-                        object by calling the <code>isPlayer</code> method on it.
-                    </li>
-                    <li>
-                        You should add the object to the player's inventory with the <code>addInventoryItem</code>
-                        method. This method likely does not exist yet. Read ahead to see the specification for that
-                        method.
-                    </li>
-                    <li>
-                        Since this method exists in the <code>Player</code> class instead of the
-                        <code>DynamicGameObject</code> class, you cannot call it on the parameter. Instead, call
-                        <code>getPlayer</code> on the game that you stored as an instance variable.
-                    </li>
-                    <li>
-                        You should destroy the object by calling the <code>destroy</code> method on it. This will remove
-                        it from the level, so that it is not rendered on the screen anymore and will not continue
-                        colliding with the player.
-                    </li>
-                    <li>If the object is not the player, this method should do nothing.</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>AxePickup</code>: navigate to the <code>app.games.commonobjects.AxePickup</code> class, which is a pickup
-        that should allow the player to throw axe projectiles at enemies. Notice that this class extends
-        <code>Collectible</code>, and that the name passed to the super constructor is "Axe". Add the following
-        functionality.
-        <ul>
-            <li>
-                Create an instance variable of type <code>Timer</code>. Use the <code>app.gameengine.utils.Timer</code>
-                class, not one of the built-in Java timers. In the constructor, assign this instance variable to a new
-                <code>Timer</code> with a cooldown of 0.25.
-                <ul>
-                    <li>
-                        The <code>Timer</code> class allows objects to limit how frequently they can use used. In this
-                        case, you will use the timer to limit how frequently axes can be thrown. You should look through
-                        the methods in this class, but do not need to fully understand them.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Create a getter for the <code>Timer</code> instance variable called <code>getTimer</code>, which takes
-                no parameters and returns a <code>Timer</code>.
-            </li>
-            <li>
-                Override and implement the <code>use</code> method from the <code>Collectible</code> class. If the
-                cooldown period on the timer is up, this method should make the player fire an axe projectile.
-                <ul>
-                    <li>
-                        To check if the timer cooldown has expired, use the <code>Timer.check</code> method on your
-                        instance variable.
-                    </li>
-                    <li>
-                        To fire a projectile, use the <code>Level</code> parameter and call <code>getPlayer</code> to
-                        get the <code>Player</code> object. On this <code>Player</code>, call
-                        <code>fireProjectile</code>, which takes three arguments. The first argument is the projectile
-                        to fire, which should be a new <code>PlayerAxeProjectile</code> object. The location of this
-                        projectile does not matter, as it will be set within the <code>fireProjectile</code> method. The
-                        second argument is the speed the projectile will be fired at, which should be set to exactly
-                        <code>5</code>. The third argument should be the <code>Level</code> parameter.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Override the <code>update</code> method, which has parameters of type <code>double</code> and
-                <code>Level</code>, representing the time since the last update and the current level, respectively, and
-                returns <code>void</code>.
-                <ul>
-                    <li>
-                        Call the super update method, passing the parameters as arguments.
-                    </li>
-                    <li>
-                        Call <code>Timer.advance</code> on the <code>Timer</code> instance variable, passing in the
-                        <code>double</code> parameter <code>dt</code>. This will ensure that the cooldown actually
-                        decreases and the pickup can be used.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>MagicPickup</code>: Navigate to the <code>app.games.commonobjects.MagicPickup</code> class, which is a
-        pickup that should allow the player to fire magic projectiles at enemies. Notice that this class extends
-        <code>Collectible</code>, and that the name passed to the super constructor is "Magic". You should create the
-        same instance variables and methods as in the <code>AxePickup</code> class. The only difference should be that
-        in the <code>use</code> method, when calling <code>fireProjectile</code>, you should pass in a
-        <code>PlayerMagicProjectile</code> object, and a speed of <code>10</code>.
-    </li>
-    <li>
-        <code>PotionPickup</code>: Navigate to the <code>app.games.commonobjects.PotionPickup</code> class, which is a
-        pickup that should allow the player to regain some health when used. Notice that this class extends
-        <code>Collectible</code>, and that the name passed to the super constructor is "Health Potion". Add the
-        following functionality.
-        <ul>
-            <li>
-                Create an instance variable of type <code>int</code>, and in the constructor, assign this instance
-                variable to the constructor parameter "heal". This is the amount that the potion will heal the player
-                by.
-            </li>
-            <li>
-                Create a getter for for this instance variable called <code>getHealAmount</code>, which takes no
-                parameters and returns an <code>int</code>.
-            </li>
-            <li>
-                Override and implement the <code>use</code> method from the <code>Collectible</code> class. Increase the
-                health of the player by the heal instance variable, and remove the potion from the player's inventory.
-                <ul>
-                    <li>
-                        To get the player, you can call the <code>getPlayer</code> method on the <code>Level</code>
-                        parameter.
-                    </li>
-                    <li>
-                        To access and modify the health of the player, you can use the <code>getHP</code> and
-                        <code>setHP</code> methods respectively.
-                    </li>
-                    <li>
-                        To remove the item from the player's inventory, you should call the
-                        <code>removeActiveItem</code> method. This method likely does not exist yet. Read ahead to see
-                        the specification for that method.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                You do not need to override the update method, as this class does not possess a timer to increment.
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<br />
-
-<ul>
-    Now you will add methods for using and manipulating the player's inventory. In the
-    <code>app.gameengine.model.gameobjects</code> package, make the following additions to the
-    <code>Player</code> class to implement a functioning inventory system. Some of these methods will already exist, and
-    you should just modify them. Others you will have to create.
-    <li>
-        <code>addInventoryItem</code>: Create a method named <code>addInventoryItem</code> that takes in a
-        <code>Collectible</code> and returns <code>void</code>. This method should add the object from the parameter to
-        the <code>Player</code>'s inventory.
-        <ul>
-            <li>
-                Adding an item should never change the currently active item, except for when you pick up your first
-                item
-            </li>
-            <li>
-                This new object will be considered the "last" item in the list.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>removeActiveItem</code>: Add a method named <code>removeActiveItem</code> which takes no parameters and
-        returns <code>void</code>. This method should remove whatever the currently active item is from the
-        <code>Player</code>'s inventory.
-        <ul>
-            <li>
-                Once the currently active item is removed, the currently active item should become whatever was next in
-                the inventory. For example, if you collected an Axe, then Magic, then a Health Potion, the currently
-                active item would be the Axe. If this method is called, the remaining items are the Magic and the Health
-                Potion, and the active item would be the Magic.
-            </li>
-            <li>
-                If the item removed is the last item in the inventory (ie. the one most recently added), the active item
-                would become the first item in the inventory (ie. the one least recently added). Be sure to account for
-                this looping behavior in your code.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>getActiveItem</code>: Add a method named <code>getActiveItem</code> that takes no parameters and returns a
-        <code>Collectible</code>. This method should return whichever <code>Collectible</code> in the inventory is
-        active.
-        <ul>
-            <li>If the inventory is empty, this method should return null.</li>
-            <li>
-                If an item is collected and the inventory was previously empty, that item should be the active item.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>getActiveItemID</code>: Add a method called <code>getActiveItemID</code> (note the capital "ID") that
-        takes in no parameters and returns a <code>String</code>.
-        <ul>
-            <li>
-                This method should return the ID of the active <code>Collectible</code> from the inventory, by calling
-                the <code>Collectible.getItemID</code> method on it.
-            </li>
-            <li>
-                If the inventory is empty, this method should return the exact <code>String</code> "No item equipped".
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>cycleInventory</code>: Add a method called <code>cycleInventory</code> that takes no parameters and
-        returns <code>void</code>. This method will cycle through the inventory, changing the item currently marked as
-        active.
-        <ul>
-            <li>
-                This should be done in the order the objects are collected. For example, if a player collected an Axe,
-                then Magic, then a Potion, the first call to cycleInventory will change the active item from the Axe
-                to Magic. The second call to cycleInventory will change the active item from Magic to the Potion.
-            </li>
-            <li>
-                Once cycleInventory is called while the most recently collected item is active, the active item should
-                be set back to the front of the inventory, to the least recently collected item. Thus in our previous
-                example, the third call to cycleInventory will change the active item from the Potion to the Axe.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>clearInventory</code>: Add a method called <code>clearInventory</code> that takes no parameters and
-        returns <code>void</code>. This method will reset the inventory to its initial state, which should be empty.
-    </li>
-    <li>
-        <code>update</code>: The update method already exists in this class. Add code which iterates over every item in
-        the inventory and calls the <code>update</code> method on it, passing in both parameters.
-        <ul>
-            <li>
-                The order in which these objects are updated does not matter, as long as each object is updated once.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Note that since these methods are the only way the inventory can be accessed and none of them rely on a
-        specific data structure, however you choose to represent the inventory internally does not matter so long as
-        your implementation follows the expected behavior. The only requirements are that you are able to keep track of
-        every item that is added and the object that is currently active.
-    </li>
-    <li>
-        The inventory should initially be empty.
-    </li>
-</ul>
-<ul>
-    You also need to implement the ability to use objects, which will occur in the <code>app.gameengine.Level</code>
-    class.
-    <li>
-        <code>actionButtonPressed</code>: In the <code>Level</code> class, implement the
-        <code>actionButtonPressed</code> method. The signature for this method already exists, you should simply add
-        functionality to it.
-        <ul>
-            <li>
-                This method should call the <code>getActiveItem</code> method on the level's player to access the
-                currently equipped <code>Collectible</code>. If there is an item equipped (ie. it is not null), this
-                method should call the <code>use</code> method on that item, passing in <code>this</code> as the
-                argument.
-            </li>
-            <li>
-                You can access the <code>Player</code> for a level by calling the <code>getPlayer</code> method.
-            </li>
-        </ul>
-    </li>
-    You can cycle your character's inventory in-game with the tab key. Pressing the space bar will call the
-    <code>Level.actionButtonPressed</code> method, allowing you to use the active item to fire projectiles or use
-    potions.
-</ul>
-
-<br />
-
-<ul>
-    The final features you will add are modifications to the <code>LevelParser</code> class so that the kinds of
-    collectibles can be parsed. The sample game already contains an <code>AxePickup</code> and a
-    <code>MagicPickup</code> in a couple of the levels. If you want to use the <code>PotionPickup</code> in game, you
-    can add it to one of the levels. An example of this would be adding this line to one of the level csv files:
-    "StaticGameObject,PotionPickup,13,13,50".
-    <br />
-    You can also create levels with the <a href="https://jbcarras.github.io/">level editor</a> which contain these
-    objects.
-    <li>
-        <code>readStaticObject</code>: Modify this method so that it can recognize and return the following objects.
-        <ul>
-            <li>
-                Add a case for <code>AxePickup</code> objects. If the string being checked is "AxePickup", a new
-                <code>AxePickup</code> object should be returned. The <code>AxePickup</code> constructor
-                takes two <code>double</code>s and a <code>Game</code>. The <code>double</code>s should be the variables
-                <code>x</code> and <code>y</code>, and the <code>Game</code> should be the parameter <code>game</code>,
-                all of which already exist in this method.
-            </li>
-            <li>
-                Add a case for <code>MagicPickup</code> objects. If the string being checked is "MagicPickup", a new
-                <code>MagicPickup</code> object should be returned. The <code>MagicPickup</code> constructor
-                takes two <code>double</code>s and a <code>Game</code>. The <code>double</code>s should be the variables
-                <code>x</code> and <code>y</code>, and the <code>Game</code> should be the parameter <code>game</code>,
-                all of which already exist in this method.
-            </li>
-            <li>
-                Add a case for <code>PotionPickup</code> objects. If the string being checked is "PotionPickup", a new
-                <code>PotionPickup</code> object should be returned. The <code>PotionPickup</code> constructor
-                takes two <code>double</code>s, an <code>int</code>, and a <code>Game</code>. The <code>double</code>s
-                should be the variables <code>x</code> and <code>y</code>, and the <code>Game</code> should be the
-                parameter <code>game</code>, all of which already exist in this method. The <code>int</code> should be
-                the amount to heal, which is the fifth value in the line. Refer to the example above, where the amount
-                to heal would be 50.
-            </li>
-        </ul>
-    </li>
-</ul>
+</p>
 
 <br />
 <hr />
@@ -1164,14 +1092,14 @@
 <hr />
 
 <p>
-    In the <code>app.tests</code> package, create a class called <code>TestDecision</code>, which extends the
+    In the <code>tests</code> package, create a class called <code>TestDecision</code>, which extends the
     <code>Decision</code> class. This class will be used to help you test by simplifying the behavior of the
     <code>decide</code> and <code>doAction</code> methods. Specifically, we want the behavior of these methods to not
     depend on the actual state of the game, so that you can test the <code>DecisionTree</code> methods without setting
     complex properties of the game, player, and ghosts.
 </p>
 <p>
-    The constuctor should take an <code>Agent</code>, a <code>String</code>, and a <code>boolean</code>. The first two
+    The constructor should take an <code>Agent</code>, a <code>String</code>, and a <code>boolean</code>. The first two
     parameters can be passed to the super constuctor, and the last should be stored as an instance variable. This
     boolean will be the value returned by <code>decide</code>, so it will decide which direction the traversal
     progresses.
@@ -1189,10 +1117,18 @@
     Override the <code>doAction</code> method to set the instance variable for whether it has been used to
     <code>true</code>.
 </p>
+<p>
+    If your testing utility is correct, you will earn 5 points.
+</p>
 <br />
 <hr />
 <h3>Testing Requirements</h3>
 <hr />
+
+<p>
+    The testing requirement is done in a similar matter to the "Inventory" part of the assignment.
+    It will be worth 15 points, with points earned for each feature successfully tested.
+</p>
 
 <p>
     Write JUnit tests for the following methods from the specification in the <code>TestTask3</code> class. These tests
@@ -1215,40 +1151,10 @@
             </li>
             <li>
                 Test that the other method calls <code>doAction</code> on the correct <code>Decision</code> node, and
-                only on that node.
+                only on that node. Using your <code>TestDecision</code> class will greatly simplify
+                this check.
             </li>
         </ul>
-    </li>
-    <li>
-        <code>Player</code>:
-        <ul>
-            <li>
-                <code>addInventoryItem</code> and <code>cycleInventory</code>:
-                <ul>
-                    <li>
-                        Write tests to ensure that adding items to the inventory has the proper behavior when cycling
-                        through the inventory, i.e. calling <code>cycleInventory</code> will go through every added
-                        <code>Collectible</code> and wrap around to the beginning.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>removeActiveItem</code>:
-                <ul>
-                    <li>
-                        Write tests to ensure that calling <code>removeActiveItem</code> properly removes the active
-                        item from the inventory and sets the new active item.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                When testing these methods, you only need to check that the item IDs match the expected.
-            </li>
-        </ul>
-    </li>
-    <li>
-        You DO NOT need to write tests for any of the remaining classes or methods. Tests have been provided for some of
-        these as described in the overview section above.
     </li>
 </ul>
 
@@ -1262,91 +1168,78 @@
     implementation, and it's suggested that you run these tests as you implement the methods.
 </p>
 
+<p>
+    Your implementation of this specification is worth 20 points.
+</p>
+
 <br />
 <hr />
 <h3>Autolab Feedback</h3>
 <hr />
 
 <p>
-    Feedback for the Learning Objective component of the Game Features will be given in several phases. If you don't
-    complete a phase, then feedback for the following phase(s) will not be given. You must complete all the following
-    phases to earn the required score of 30 LOs to complete this task. The phases for the Learning Objective are as
-    follows:
+    Autolab feedback will be given in several phases. These phases dictate the order
+    you are expected to complete this assignment. Although you can still earn points
+    from completing these phases out of order, you are nonetheless expected to have
+    the previous phases completed before trying to fix a later one.
 </p>
+
 <ol>
     <li>
-        Testing your testing utility method
-        <ul>
-            <li>
-                Your testing utility method will be checked with a variety of test cases to ensure that it makes all the
-                required checks. This phase will ensure that your utility method is accurate before you start using it
-                in your tests.
-            </li>
-        </ul>
+        <strong>Testing your testing utility: </strong>
+        Your testing utility will be checked for correctness. Passing this phase will earn you
+        the points associated with the utility. If you do not pass this phase, you should correct
+        your testing utility so it can be used in the testing component.
     </li>
     <li>
-        Running your tests on a correct solution
-        <ul>
-            <li>
-                Your tests will be run against a solution that is known to be correct. If your tests do not pass this
-                correct solution, there is an error somewhere in your tests that must be fixed before you can move on
-                with the assignment. If your tests don't get past this check, you should re-read this document and make
-                sure you implemented your tests and code according the specification. You should also make sure that if
-                there are multiple correct outputs to the input in your tests cases that you accept any of the outputs
-                as correct.
-            </li>
-        </ul>
+        <strong>Running your tests on a correct solution: </strong>
+        Your tests will be run on a correct solution to this assignment. If any
+        of your tests crash or fail, you will earn 0 points for testing. If a test
+        fails here but passes your implementation locally, it's likely you have a bug
+        both in your code and in your test.
     </li>
     <li>
-        Checking your tests for feature coverage
-        <ul>
-            <li>
-                The next phase is to check if your tests check for a variety of features defined by different inputs.
-                You should write at least one test case for each feature to pass this phase.
-            </li>
-            <li>
-                Passing this phase does not necessarily mean that your testing is completely thorough. Satisfying
-                Autolab is the bare minimum testing requirement. Not all possible inputs are checked and it is sometimes
-                possible to pass this phase with weak testing. If you are struggling to earn credit for code that you
-                believe is correct, you should write more than the required tests.
-            </li>
-        </ul>
+        <strong>Checking your tests for feature coverage: </strong>
+        Your tests will be checked for feature coverage by determining if it can successfully
+        catch bugs associated with incorrect solutions. For each feature your tests covered, you
+        will earn some amount of points. Passing this phase doesn't mean your testing is fully
+        comprehensive, but can be considered the minimum for effective testing. If you failed the
+        previous phase, this phase will not run and you won't get any points for testing.
     </li>
     <li>
-        Running my tests on your solution
-        <ul>
-            <li>
-                Once Autolab is happy with your tests, it will run my tests against your code to check it for
-                correctness. If your testing is thorough, and your code passes your tests, then you should pass this
-                phase. If you pass your tests, but fail one of mine, it is an indicator that you should write more tests
-                to help expose your bug.
-            </li>
-        </ul>
+        <strong>Running my tests on your solution: </strong>
+        Your code will be run against our tests. Once you've passed all the tests associated
+        with some part of the specification, you'll earn some points for a correct implementation. If
+        any feature for that part fails our tests, you won't earn any points for this part. If that happens,
+        you should write more tests to catch that bug and fix it in your implementation.
     </li>
 </ol>
-<p>
-    Once you have successfully passed all four phases, you will have completed the Learning Objective component of the
-    Game Features, and Autolab will confirm this with a score of 30 LOs.
-</p>
+
 {% endcall %}
 
-{% call task_card("Game Features - Comprehensive Understanding") %}
+{% call task_card("Scoreboard") %}
 <hr />
 <h3>Overview</h3>
 <hr />
 
 <p>
-    For the Comprehensive Understanding portion of this task, you will implement functionality in the
+    For this portion of this task, you will implement functionality in the
     <code>app.gameengine.statistics.Scoreboard</code> class, and several classes that you will create in the
     <code>app.gameengine.model.datastructures</code> package, in order to create a functional scoreboard for several of
-    the games. At the moment, the only games with scoreboards are Minesweeper and Pacman. Each of these games adds a
+    the games. At the moment, the only games with scoreboards are Minesweeper, Pacman, and Snake. Each of these games adds a
     score to the scoreboard whenever you win a game.
 </p>
+
+<br/>
+<hr/>
+<h3>Testing</h3>
+<hr/>
+
 <p>
-    Each of the classes and methods you implement will have an associated CU count that you will earn upon passing our
-    tests for that method. Partially implemented methods may result in some partial credit being earned, depending on
-    the method.
+    There is no graded testing for this part. You are expected to write tests on your own
+    to verify your functionality.
 </p>
+
 
 <br />
 <hr />
@@ -1354,7 +1247,7 @@
 <hr />
 <ul>
     <li>
-        Comparators (5 CUs each, 15 total)
+        Comparators
         <ul>
             <li>
                 For these classes and methods, you will need to use the <code>app.gameengine.statistics.GameState</code>
@@ -1427,7 +1320,7 @@
 </ul>
 <ul>
     <li>
-        Scoreboard basics (5 CUs)
+        Scoreboard basics
         <ul>
             <li>
                 Navigate to the <code>app.gameengine.statistics.Scoreboard</code> class. Modify the constructor which
@@ -1461,7 +1354,7 @@
 </ul>
 <ul>
     <li>
-        Scoreboard <code>loadStats</code> method (5 CUs)
+        Scoreboard <code>loadStats</code> method
         <ul>
             <li>
                 Complete the existing <code>loadStats</code> method to load the existing stats from previous games. This
@@ -1484,7 +1377,7 @@
 </ul>
 <ul>
     <li>
-        Scoreboard <code>getScoreList</code> methods (25 CUs)
+        Scoreboard <code>getScoreList</code> methods
         <ul>
             <li>
                 Complete the existing <code>getScoreList</code> method to return a <code>LinkedListNode</code> that is
@@ -1507,36 +1400,40 @@
         </ul>
     </li>
 </ul>
-<ul>
-    <li>
-        Now, when you complete a game of Minesweeper or Pacman, you should see an entry added to the scoreboard, which
-        is accessible from the pause menu, reached by pressing the escape key. The easiest way to test this is by
-        playing Minesweeper, and pressing escape before selecting a difficulty. This will default to the trivial
-        difficulty, which only has 3 mines and should be quite easy (as long as you understand the rules of
-        Minesweeper).
-    </li>
-    <li>
-        If you wish to add a scoreboard to other games, like snake, you can do so, but this is optional. There are a few
-        adjustments you need to make in order for this to work. First, in the <code>SnakeGame</code> constructor, you
-        should set the comparator to the desired metric. You must then choose a place to add a score to the scoreboard.
-        It would likely make the most sense to add this in both the <code>advanceLevel</code> and
-        <code>resetCurrentLevel</code> methods, so that both winning and losing the game save the score. In either case,
-        you can use the <code>getScoreboard</code> method to get the scoreboard, and then add a new
-        <code>GameStat</code> entry. You can use the <code>getScore</code> and <code>getPlaytime</code> methods of the
-        <code>Level</code> class to create the <code>GameState</code>.
-    </li>
-</ul>
+
+<p>
+    If you wish to see the Scoreboard in game, you should go to the respective Game subclass for the
+    game you wish to enable it for (e.g. <code>MinesweeperGame</code>) and uncomment the line
+    from the constructor that instantiates the scoreboard. Now, when you complete a game of Minesweeper or Pacman,
+    you should see an entry added to the scoreboard, which is accessible from the pause menu, reached by pressing
+    the escape key. The easiest way to test this is by
+    playing Minesweeper, and pressing escape before selecting a difficulty. This will default to the trivial
+    difficulty, which only has 3 mines and should be quite easy (as long as you understand the rules of
+    Minesweeper).
+</p>
+
+<p>
+    If you wish to add a scoreboard to other games, like snake, you can do so, but this is optional. There are a few
+    adjustments you need to make in order for this to work. First, in the <code>SnakeGame</code> constructor, you
+    should set the comparator to the desired metric. You must then choose a place to add a score to the scoreboard.
+    It would likely make the most sense to add this in both the <code>advanceLevel</code> and
+    <code>resetCurrentLevel</code> methods, so that both winning and losing the game save the score. In either case,
+    you can use the <code>getScoreboard</code> method to get the scoreboard, and then add a new
+    <code>GameStat</code> entry. You can use the <code>getScore</code> and <code>getPlaytime</code> methods of the
+    <code>Level</code> class to create the <code>GameState</code>.
+</p>
+
+<br/>
+
 <hr />
 <h3>Autolab Feedback</h3>
 <hr />
+
 <p>
-    The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will be run
-    in a single phase for correctness. For each feature you successfully pass, you will earn a varying amount of CUs with a
-    total maximum score of 50 CUs.
+    Since there is no testing requirement for this part, Autolab feedback will only come in one phase
+    for correctness. For each feature you pass, you will earn some amount of points. If you pass
+    all of the features associated with this part, you will earn 20 points.
 </p>
-<p>
-    There is no required testing component for the Comprehensive Understanding; however, you are expected to test your
-    code nonetheless as the Autolab feedback is unlikely to be sufficient for debugging.
-</p>
+
 {% endcall %}
 {% endblock %}
