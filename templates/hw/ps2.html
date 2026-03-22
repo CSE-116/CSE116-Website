@@ -107,7 +107,7 @@
                         <code>Monster</code> with a health of 8 was passed in, its health would be decreased to 3.
                     </li>
                     <li>
-                        The health of the passed in object is allowed to become negative. For example, if a
+                        The health of the passed-in object is allowed to become negative. For example, if a
                         <code>Skeleton</code> was created with a damage of 5, and a <code>Monster</code> with a health
                         of 1 was passed in, its health would be decreased to -4.
                     </li>
@@ -121,13 +121,13 @@
         methods:
         <ul>
             <li>
-                Constructor: create a constructor which takes no parameters. The name should always be "creeper" and the max hp 
+                Constructor: create a constructor which takes no parameters. The name should always be "creeper" and the max HP
                 should always be 100.
             </li>
             <li>
                 <code>attack</code>: override the abstract method of the same name from the <code>Monster</code> class.
                 It should take a reference to a <code>Monster</code> object and return <code>void</code>. This method
-                should set the hp of the monster and the creeper to 0.
+                should set the HP of the monster and the creeper to 0.
             </li>
         </ul>
     </li>
@@ -162,12 +162,12 @@
         <ul>
             <li>
                 If the list has an odd number of elements, it should return the middle element. For example,
-                calling getMidpoint with the list ["cat","dice","lemon","juicebox","elephant"] would return
+                calling <code>getMidpoint</code> with the list ["cat","dice","lemon","juicebox","elephant"] would return
                 "lemon", since it is at the middle index.
             </li>
             <li>
                 If the list has an even number of elements, it should return the two middle elements
-                concatentated together, <em>separated by a space</em>. For example, calling getMidpoint with the
+                concatenated together, <em>separated by a space</em>. For example, calling <code>getMidpoint</code> with the
                 list ["cat","dice","lemon","juicebox","elephant","apple"] would return "lemon juicebox", since
                 indices 2 and 3 are equally close to the midpoint of the list.
             </li>
@@ -187,7 +187,7 @@
             </li>
             <li>
                 If the list contains multiple of the value being deleted, this method should only remove the
-                first. For example, calling delete("dice") on the list ["dice","cat","dice"] would result in the
+                first. For example, calling <code>deleteElement("dice")</code> on the list ["dice","cat","dice"] would result in the
                 list ["cat", "dice"].
             </li>
             <li>
@@ -197,26 +197,26 @@
     </li>
     <li>
         <code>zipperMerge</code> (10 points): create a method in the <code>StringList</code> class named <code>zipperMerge</code> which takes a
-        <code>StringList</code> as a parameter and returns <code>void</code>. This method should zipper merge the parameter list 
-        with this list. The zipper should start with this list and merge the two lists by alternating values from the lists. The list from the parameter should remain unchanged.
+        <code>StringList</code> as a parameter and returns <code>void</code>. This method should zipper-merge the parameter list
+        with this list. The zipper should start with this list and alternate values from the two lists. The parameter list should remain unchanged.
         <ul>
             <li>
                 If the end of one list is reached before the zipper ends, the rest of that list must be added to the end of the list.
             </li>
             <li>
-                Either list might be empty when this method is called. Be sure to handle these cases
+                Either list might be empty when this method is called. Be sure to handle these cases.
             </li>
             <li>
-                Example: If the list that called the method is ("a", "b", "c", "d") and the method is called with a parameter of ("e", "f", "g", "h"), 
-                the calling objects list should be ("a", "e", "b", "f", "c", "g", "d", "h").  
+                Example: If the list that called the method is ("a", "b", "c", "d") and the method is called with a parameter of ("e", "f", "g", "h"),
+                the calling object's list should be ("a", "e", "b", "f", "c", "g", "d", "h").
             </li>
             <li>
-                Example: If the list that called the method is ("a", "b") and the method is called with a parameter of ("e", "f", "g", "h"), 
-                the calling objects list should be ("a", "e", "b", "f", "g", "h").
+                Example: If the list that called the method is ("a", "b") and the method is called with a parameter of ("e", "f", "g", "h"),
+                the calling object's list should be ("a", "e", "b", "f", "g", "h").
             </li>
             <li>
-                Example: If the list that called the method is ("a", "b", "c", "d") and the method is called with a parameter of ("e", "f"), 
-                the calling objects list should be ("a", "e", "b", "f", "c", "d") 
+                Example: If the list that called the method is ("a", "b", "c", "d") and the method is called with a parameter of ("e", "f"),
+                the calling object's list should be ("a", "e", "b", "f", "c", "d").
             </li>
         </ul>
     </li>
