@@ -36,24 +36,24 @@
 <ul>
     <li>
         <code>Song</code> (5 points): The <code>problem.Song</code> class is provided in the starter code. It extends
-        <code>Media</code> and includes a constructor, <code>play</code>, <code>pause</code>, and <code>getPlaybackTime</code>,
-        methods, all of which function properly and do not need to be edited.
+        <code>Media</code> and includes a constructor and the methods <code>play</code>, <code>pause</code>, and
+        <code>getPlaybackTime</code>, all of which function properly and do not need to be edited.
         However, the provided <code>advancePlaybackTime</code> method contains multiple bugs that need to be fixed.
         The expected behavior of <code>advancePlaybackTime</code> is as follows:
         <ul>
             <li>
-                If the song is not playing, the playback time should not change.
+                If the song is not playing, the playback time should not change
             </li>
             <li>
-                If the song is playing, the playback time should increase by the given time (all time units are in seconds).
+                If the song is playing, the playback time should increase by the given time (all time units are in seconds)
             </li>
             <li>
                 If advancing would move past the end of the song, the playback time should stop at the song's
                 duration and the song should be marked as finished by setting the <code>isFinished</code> 
-                instance variable to true.
+                instance variable to true
             </li>
             <li>
-                This method must override <code>advancePlaybackTime</code> from <code>Media</code>.
+                This method must override <code>advancePlaybackTime</code> from <code>Media</code>
             </li>
         </ul>
     </li>
@@ -63,11 +63,11 @@
         following methods:
         <ul>
             <li>
-                Constructor: Create a constructor that that takes the title of the chapter, as a String, and 
-                the duration of the chapter, as a double in this order
+                Constructor: Create a constructor that takes the title of the chapter, as a String, and
+                the duration of the chapter, as a double, in this order
             </li>
             <li>
-                Getters and Setters: Implement getters and setters following the usual structure named 
+                Getters and Setters: Implement getters and setters following the usual structure named
                 <code>getName</code>, <code>setName</code>, <code>getDuration</code>, and <code>setDuration</code>
             </li>
         </ul>
@@ -79,11 +79,11 @@
         <ul>
             <li>
                 Constructor: Create a constructor that takes a title (String) and the chapters for this
-                 audiobook (Array of Chapters), in this order. Note that this constructor takes a plain 
-                 Array using the [] syntax, not an ArrayList
+                audiobook (array of Chapters), in this order. Note that this constructor takes a plain
+                array using the [] syntax, not an ArrayList
             </li>
             <li>
-                Abstract methods: Implement the inherited abstract methods <code>play</code>, 
+                Abstract methods: Implement the inherited abstract methods <code>play</code>,
                 <code>pause</code>, and <code>getPlaybackTime</code> with the same functionality as
                 the <code>Song</code> class
             </li>
@@ -91,7 +91,7 @@
                 <code>setPlaybackSpeed</code>: Set the playback speed of the audiobook. Playback speed should 
                 initially be 1.0. The playback speed cannot be set to a value less than 0.5 or greater than 4.0. 
                 If the playback speed is set to a value less than 0.5 or greater than 4.0, it should be set to the 
-                nearest valid value (0.5 or 4.0).
+                nearest valid value (0.5 or 4.0)
             </li>
             <li>
                 <code>advancePlaybackTime</code>: When playing, advance playback according to the audiobook's
@@ -104,13 +104,13 @@
             </li>
             <li>
                 <code>getCurrentChapterName</code>: Return the name of the chapter currently being played, based on
-                playback position and chapter lengths. If the book is finished, return the name of the last chapter. 
-                You may assume the book has at least 1 chapter (In your tests, always give your test books at least 1 chapter)
+                playback position and chapter lengths. If the book is finished, return the name of the last chapter.
+                You may assume the book has at least 1 chapter (in your tests, always give your test books at least 1 chapter)
             </li>
             <li>
-                <code>getTitle</code>: return a title that reflects both the current chapter and the book title. The format should 
-                be <code>currentChapterName - bookTitle</code>. That's a space, dash, then another space " - " between 
-                the chapter name and book title. This method must override the <code>getTitle</code> method inherited 
+                <code>getTitle</code>: Return a title that reflects both the current chapter and the book title. The format should
+                be <code>currentChapterName - bookTitle</code>. That is a space, a dash, then another space (<code> - </code>) between
+                the chapter name and book title. This method must override the <code>getTitle</code> method inherited
                 from the <code>Media</code> class
             </li>
         </ul>
@@ -120,22 +120,21 @@
         <code>Playlist</code>. This class should implement the following methods:
         <ul>
             <li>
-                Constructor: There is no required constructor for this class. If you write a constructor, it should be public 
+                Constructor: There is no required constructor for this class. If you write a constructor, it should be public
                 and take no parameters
             </li>
             <li>
-                <code>populatePlaylist</code>: This method takes an ArrayList of Songs and an ArrayList of Audiobooks and 
+                <code>populatePlaylist</code>: This method takes an ArrayList of Songs and an ArrayList of Audiobooks and
                 should add all songs and audiobooks to the playlist
-
             </li>
             <li>
-                <code>getMediaSortedByTitle</code>: Return a new <code>ArrayList</code> of <code>Media</code> containing 
+                <code>getMediaSortedByTitle</code>: Return a new <code>ArrayList</code> of <code>Media</code> containing
                 every item in this
-                playlist, sorted by each item's <code>getTitle()</code> value. Comparasions should be case-insensitive 
-                (Sort alphabetically ignoring capitalization).
+                playlist, sorted by each item's <code>getTitle()</code> value. Comparisons should be case-insensitive
+                (sort alphabetically ignoring capitalization)
             </li>
             <li>
-                You have seen several examples of sorting in lecture. You must use one of these approaches to sort the values of 
+                You have seen several examples of sorting in lecture. You must use one of these approaches to sort the values of
                 the playlist
             </li>
         </ul>
@@ -145,7 +144,7 @@
 <br>
 <p>
     The last part of this problem set is to complete <em>static</em> methods in the <code>problem.ProblemSet3</code> 
-    class, all of which are related to Binary Trees.
+    class, all of which are related to binary trees.
 </p>
 
 <ul>
@@ -153,7 +152,7 @@
         <code>maxBST</code> (5 points): In the <code>problem.ProblemSet3</code> class, complete the
         <code>maxBST</code> method, which takes a <code>BST</code> of <code>Integer</code>s and returns an
         <code>int</code>. This method returns the maximum value in the BST according to that BST's
-        <code>Comparator</code>.
+        <code>Comparator</code>
         <ul>
             <li>
                 "Maximum", in this context, means the value that would appear last if all values were sorted using that
@@ -168,7 +167,7 @@
         <code>maxBinaryTree</code> (10 points): In the <code>problem.ProblemSet3</code> class, complete the
         <code>maxBinaryTree</code> method, which takes a <code>BinaryTreeNode</code> of <code>Integer</code>s and an
         <code>Integer</code> <code>Comparator</code>, and returns an <code>int</code>. This method returns the
-        maximum value in the binary tree rooted at the given node, according to the comparator.
+        maximum value in the binary tree rooted at the given node, according to the comparator
         <ul>
             <li>
                 Note: The tree is not necessarily a BST
@@ -203,7 +202,7 @@
 <p>
     Write tests for the parts of the specification
     described below in the <code>tests.TestProblemSet3</code> class. You are encouraged to write tests before you implement each
-    part. If a test fails, use the debugger to find and fix your bug. 
+    part. If a test fails, use the debugger to find and fix your bug.
 </p>
 <ul>
     <li>
@@ -251,11 +250,11 @@
         <ul>
             <li>
                 Write tests for the <code>maxBST</code> method. Test that the proper value is returned in a
-                variety of cases.
+                variety of cases
             </li>
             <li>
                 When testing this method, you will need to create BST objects. You can use any/all of the
-                provided <code>Integer</code> <code>Comparator</code>s to create these BSTs.
+                provided <code>Integer</code> <code>Comparator</code>s to create these BSTs
             </li>
         </ul>
     </li>
@@ -264,7 +263,7 @@
         <ul>
             <li>
                 Tests for these methods are provided for you. You do not need to write any additional tests for
-                these methods. You can/should study these tests to help you write your <code>maxBST</code> tests
+                these methods. You can and should study these tests to help you write your <code>maxBST</code> tests
             </li>
         </ul>
     </li>
@@ -303,9 +302,9 @@
                 not pass this correct solution, there is an error somewhere in your tests that must be
                 fixed before you can move on with the assignment. If your tests don't get past this
                 check, you should re-read this document and make sure you implemented your tests and
-                code according the specification. You should also make sure that if there are multiple
-                correct outputs to the input in your tests cases that you accept any of the outputs as
-                correct.
+                code according to the specification. You should also make sure that if there are multiple
+                correct outputs to the input in your test cases that you accept any of the outputs as
+                correct
             </li>
             <li>
                 Note: If you fail this phase, you will not be able to move on to the next phase
