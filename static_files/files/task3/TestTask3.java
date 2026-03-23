@@ -365,6 +365,8 @@ public class TestTask3 {
         MagicPickup magic = new MagicPickup(2.5, 2.8, game);
         assertEquals(0, level.getDynamicObjects().size());
 
+        level.getPlayer().setOrientation(0.0, -1.0);
+
         magic.update(10, level);
         magic.use(level);
         assertEquals(1, level.getDynamicObjects().size());
@@ -392,6 +394,8 @@ public class TestTask3 {
         TopDownLevel level = new TopDownLevel(game, 10, 10, "level");
         AxePickup axe = new AxePickup(2.5, 2.8, game);
         assertEquals(0, level.getDynamicObjects().size());
+
+        level.getPlayer().setOrientation(0.0, -1.0);
 
         axe.update(10, level);
         axe.use(level);
