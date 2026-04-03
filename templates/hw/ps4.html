@@ -1,63 +1,19 @@
 {% extends 'hw/hw.html' %}
-
 {% block title %}CSE116: Problem Set 4{% endblock %}
-
 {% block header %}
-<h1>Problem Set 4</h1>
-<h5>Graphs</h5>
-<hr />
+<h1>Problem Set 4: Graphs and Testing</h1>
 {% endblock %}
+
 
 {% block task %}
 
-{% call task_card("Overview") %}
-<hr />
-<h3>Coding Task 4 Overview</h3>
-<hr />
-
-{% set g_lo = "#game-features---learning-objective" %} {% set g_ao = "#game-features---comprehensive-understanding" %}
-
-<p>
-    As usual, there are two components to this task. Both the <a target="_self" href="#problem-set">Problem Set</a> and
-    <a target="_self" href="{{ g_lo }}">Game Features - Learning Objective</a> portions of this document
-    <em><b>MUST</b></em> be completed to achieve the Learning Objective points and pass the course. The
-    <a target="_self" href="{{ g_ao }}">Game Features - Comprehensive Understanding</a> is not needed for the Learning
-    Objective requirement, but completing/not completing it will directly impact your grade through CU points. The
-    Problem Set is worth 20 LO points, while the Game Engine Task is worth 30 LO points and 50 CU points.
-</p>
-<p>
-    You should complete the components below in the order they are listed; you will not be able to earn credit for the
-    following component(s) until you complete the previous ones with all available points.
-</p>
-<p>
-    Coding Task 4 assesses Graphs. Both the Problem Set and Game Engine Task will focus on this topic.
-</p>
-<p>
-    The video for this task can be found at
-    <a href="https://www.youtube.com/watch?v=ZfBQw4o90cc">https://www.youtube.com/watch?v=ZfBQw4o90cc</a>.
-    This video gives an overview of the requirements for this task, namely the Game Features Learning Objective. As
-    always, watching it is optional, but you will find it very useful.
-</p>
-
-{% endcall %}
-
 {% call task_card("Problem Set") %}
-<hr />
-<h3>Overview</h3>
-<hr />
 
 <p>
-    Problem Set GitHub Repository link:
+    Repository link:
     <a href="https://github.com/CSE-116/ProblemSet-4">https://github.com/CSE-116/ProblemSet-4</a>
 </p>
 
-<ol>
-    <li>Clone the starter code from the repository linked above into a new IntelliJ project</li>
-</ol>
-<p>
-    Once you have the project opened in IntelliJ, you'll see a src folder containing 2 Java packages named
-    problem and tests.
-</p>
 <p>
     To submit your project, run <code>problem.Zipper</code>, which will create a zip file containing the
     problem set, and submit it to Autolab.
@@ -68,33 +24,42 @@
 <hr />
 
 <p>
-    For this problem set, you will write the following 3 static methods that are all related to graphs. The
-    signatures for these methods exist in the handout repo.
+    For this problem set, you will complete public static methods in the <code>problem.ProblemSet4</code> class. Each
+    method takes a <code>Graph&lt;T&gt;</code> and is generic over the node type <code>T</code>. The graph uses
+    only bidirectional edges (see <code>Graph.addBidirectionalEdge</code>). Method signatures appear in the starter
+    code.
 </p>
 
 <ul>
     <li>
-        In the <code>problem.ProblemSet4</code> class, complete the <code>countEdges</code> method which takes
-        a <code>Graph</code> as a parameter and returns an <code>int</code>. This method returns
-        number of edges in the graph. The graph, and all graphs for this task, is assumed to have only
-        bidirectional edges so the count should be the number of bidirectional edges in the graph.
+        <code>countEdges</code> (Testing: 5 points, Implementation: 5 points): In the <code>problem.ProblemSet4</code>
+        class, complete the <code>countEdges</code> method, which takes a <code>Graph</code> as a parameter and
+        returns an <code>int</code>. This method returns the number of edges in the input graph. Each undirected edge
+        between two distinct nodes counts once (the adjacency list stores each edge twice, once per endpoint)
         <ul>
             <li>
                 Note that this method takes a type parameter along with a graph matching the type parameter.
                 This method will work regardless of the type of the values stored in the graph. This will be
-                true for all 3 methods in this problem set
+                true for all methods in this problem set
             </li>
         </ul>
     </li>
-</ul>
-
-<br>
-
-<ul>
     <li>
-        In the <code>problem.ProblemSet4</code> class, complete the <code>isConnected</code> method which takes
-        a <code>Graph</code> as a parameter and returns a <code>boolean</code>. This method returns
-        <code>true</code> if the input graph is connected, and <code>false</code> otherwise
+        <code>maxDegree</code> (Testing: 5 points, Implementation: 5 points): In the <code>problem.ProblemSet4</code>
+        class, complete the <code>maxDegree</code> method, which takes a <code>Graph</code> as a parameter and
+        returns an <code>int</code>. This method returns the maximum degree among all nodes (Degree of a node is the number of 
+        neighbors of that node)
+        <ul>
+            <li>
+                An empty graph has maximum degree of <code>0</code>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>isConnected</code> (Testing: 5 points, Implementation: 5 points): In the <code>problem.ProblemSet4</code>
+        class, complete the <code>isConnected</code> method, which takes a <code>Graph</code> as a parameter and
+        returns a <code>boolean</code>. This method returns <code>true</code> if the input graph is connected, and
+        <code>false</code> otherwise
         <ul>
             <li>
                 A graph is connected if there exists a path connecting every pair of nodes in the graph. In
@@ -104,25 +69,41 @@
             <li>
                 A graph with no nodes is connected
             </li>
+            <li>
+                A graph with only isolated nodes (no edges) is connected if and only if it has at most one node
+            </li>
         </ul>
     </li>
-</ul>
-
-<br>
-
-<ul>
     <li>
-        In the <code>problem.ProblemSet4</code> class, complete the <code>detectCycle</code> method which takes
-        a <code>Graph</code> as a parameter and returns a <code>boolean</code>. This method returns
-        <code>true</code> if the graph contains a cycle, and <code>false</code> otherwise
+        <code>numberOfConnectedComponents</code> (Testing: 5 points, Implementation: 5 points): In the
+        <code>problem.ProblemSet4</code> class, complete the <code>numberOfConnectedComponents</code> method, which
+        takes a <code>Graph</code> as a parameter and returns an <code>int</code>. This method returns the number of
+        connected components in the graph
+        <ul>
+            <li>
+                The empty graph has <code>0</code> components
+            </li>
+            <li>
+                Each isolated node (degree <code>0</code>) is its own component
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>detectCycle</code> (Testing: 5 points, Implementation: 5 points): In the <code>problem.ProblemSet4</code>
+        class, complete the <code>detectCycle</code> method, which takes a <code>Graph</code> as a parameter and
+        returns a <code>boolean</code>. This method returns <code>true</code> if the graph contains at least one
+        cycle, and <code>false</code> otherwise
         <ul>
             <li>
                 Hint: You can build a BFS tree by running BFS on a graph and creating a new graph that contains
                 only the edges that were used to discover new nodes. If the input was already a tree (no
-                cycles), then the input graph and the BST tree will have all the same edges
+                cycles), then the input graph and the BFS tree will have all the same edges
             </li>
             <li>
                 Caution: The input graph does not have to be connected
+            </li>
+            <li>
+                If any connected component contains a cycle, return <code>true</code>
             </li>
             <li>
                 A graph with no nodes has no cycles
@@ -138,8 +119,9 @@
 <hr />
 
 <p>
-    Write JUnit tests for all 3 methods from the specification in the <code>tests.TestProblemSet4</code>
-    class. These tests should be annotated with <code>@Test</code>.
+    Write tests for the methods in the specification
+    in the <code>tests.TestProblemSet4</code> class. You are encouraged to write tests before you implement each
+    method. If a test fails, use the debugger to find and fix your bug.
 </p>
 <ul>
     <li>
@@ -154,10 +136,19 @@
                 <code>addBidirectionalEdge</code> should be the expected number of edges
             </li>
             <li>
-                For all 3 methods, you are testing methods that take a <code>Graph</code> that takes a type
+                For all methods, you are testing methods that take a <code>Graph</code> that takes a type
                 parameter. You may choose any type when you create your graphs (eg. Using whatever is simplest,
-                like Integer, is fine). Since store nodes as keys in a <code>HashMap</code>, your
-                <code>Graph</code> cannot contain duplicate nodes
+                like Integer, is fine). Since nodes are stored as keys in a <code>HashMap</code>, your
+                <code>Graph</code> cannot contain duplicate node values
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>maxDegree</code>
+        <ul>
+            <li>
+                Write tests for the <code>maxDegree</code> method. Test that the proper value is returned in a
+                variety of cases
             </li>
         </ul>
     </li>
@@ -171,6 +162,18 @@
             <li>
                 The <code>addNode</code> method in the <code>Graph</code> class is public in this version of the
                 code in case you want to add nodes with no edges while creating disconnected graphs
+            </li>
+        </ul>
+    </li>
+    <li>
+        <code>numberOfConnectedComponents</code>
+        <ul>
+            <li>
+                Write tests for the <code>numberOfConnectedComponents</code> method. Test that the proper 
+                value is returned in a variety of cases
+            </li>
+            <li>
+                Use <code>addNode</code> when you need isolated nodes
             </li>
         </ul>
     </li>
@@ -196,8 +199,11 @@
 <hr />
 
 <p>
-    Implement the methods from the specification. You may wish to complete the Testing Requirements before you
-    begin implementation, and it's suggested that you run these tests as you implement the methods.
+    Implement the methods from the specification.
+</p>
+<p>
+    You are encouraged to complete the Testing Requirements before you begin implementation so
+    you can run your tests as you implement each part.
 </p>
 
 <br />
@@ -207,22 +213,23 @@
 <hr />
 
 <p>
-    Feedback from Autolab will be given in several phases. If you
-    don't complete a phase, then feedback for the following phase(s) will not be given. You must complete all
-    phases to earn the required
-    score of 20 LOs. For the problem set, the phases will be as follows:
+    With testing now being required, feedback from Autolab will be given in several phases.
 </p>
 <ol>
     <li>
         Running your tests on a correct solution
         <ul>
-            <li>Your tests will be run against a solution that is known to be correct. If your tests do
+            <li>
+                Your tests will be run against a solution that is known to be correct. If your tests do
                 not pass this correct solution, there is an error somewhere in your tests that must be
                 fixed before you can move on with the assignment. If your tests don't get past this
                 check, you should re-read this document and make sure you implemented your tests and
-                code according the specification. You should also make sure that if there are multiple
-                correct outputs to the input in your tests cases that you accept any of the outputs as
-                correct.
+                code according to the specification. You should also make sure that if there are multiple
+                correct outputs to the input in your test cases that you accept any of the outputs as
+                correct
+            </li>
+            <li>
+                Note: If you fail this phase, you will not be able to move on to the next phase
             </li>
         </ul>
     </li>
@@ -231,7 +238,7 @@
         <ul>
             <li>The next phase is to check if your tests check for a variety of features defined by
                 different inputs. You should write at least one test case for each feature to pass this
-                phase.
+                phase
             </li>
             <li>Passing this phase does not necessarily mean that your testing is completely thorough.
                 Satisfying Autolab is the bare minimum testing requirement. Not all possible inputs are
@@ -242,871 +249,17 @@
         </ul>
     </li>
     <li>
-        Running my tests on your solution
+        Running Autolab's tests on your submission
         <ul>
-            <li>Once Autolab is happy with your tests, it will run my tests against your code to check
-                it for correctness. If your testing is thorough, and your code passes your tests, then
-                you should pass this phase. If you pass your tests, but fail one of mine, it is an
-                indicator that you should write more tests to help expose your bug.
+            <li>
+                If your testing is thorough, and your code passes your tests, then
+                you should pass this phase. If you pass your tests, but fail one of Autolab's tests, it is an
+                indicator that you should write more tests to help expose your bug
             </li>
         </ul>
     </li>
 </ol>
-<p>
-    Once you have successfully completed all three phases, you will have completed this Problem Set and Autolab
-    will confirm this with a score of 20 LOs.
-</p>
 {% endcall %}
 
-{% call task_card("Game Features - Learning Objective") %}
-<hr />
-<h3>Overview</h3>
-<hr />
 
-<p>
-    You will continue to build functionality for the Game Engine in this component of the task. This will be done on top
-    of the code written for the previous tasks; you should not reclone or remove said code for this task.
-</p>
-<p>
-    As with the previous tasks, there are two parts to the Game Features component: the Learning Objective and
-    Comprehensive Understanding. The Learning Objective portion must be completed with a score of 30 LOs before the
-    Comprehensive Understanding unlocks. Both portions of the Game Features will be submitted to the same assignment on
-    Autolab.
-</p>
-<p>
-    The content of the Learning Objective is primarily used in the Game Engine by the Roguelike. To play this game
-    navigate to the class <code>app.Configuration</code> and change the <code>GAME</code> constant to
-    <code>"roguelike"</code>. Most of this content will also be testable within the sample game, accessible by changing
-    the <code>GAME</code> constant to <code>"sample game"</code>.
-</p>
-<p>For this Learning Objective portion, you will be writing code in the following classes which already exist:</p>
-<ul>
-    <li><code>PathfindingUtils</code>, located in the <code>app.gameengine.utils</code> package.</li>
-    <li>
-        <code>Minotaur</code>, <code>Demon</code>, <code>Archer</code>, and <code>Sorcerer</code>, located in the
-        <code>app.games.topdownobjects</code> package.
-    </li>
-    <li><code>Spike</code> and <code>Potion</code>, located in the <code>app.games.commonobjects</code> package.</li>
-    <li><code>LevelParser</code>, located in the <code>app.gameengine</code> package.</li>
-</ul>
-<p>
-    You should create the <code>TestTask4</code> class in your <code>app.tests</code> package. We have provided tests
-    for some of the <code>Decision</code> subclasses, the <code>LevelParser</code> updates, and a few miscellaneous
-    classes. They can be accessed at this link: <a href="/static_files/files/task4/TestTask4.java">TestTask4.java</a>.
-    You can open this link in a new tab to copy and paste the content into your project, or right click and select
-    "save link as", then download the file to the correct location within the project.
-</p>
-<p>
-    One of the tests relies on testing files, which should all be placed in the directory "data/levels/testing". They
-    are: <a href="/static_files/files/mario1.csv">mario1.csv</a>, <a
-        href="/static_files/files/roguelike.csv">roguelike.csv</a>, and <a
-        href="/static_files/files/medium.csv">medium.csv</a>
-</p>
-<p>
-    These tests are not overly thorough, but should validate some of the basic behavior of the features that they test,
-    and let you know if you are on the right track.
-</p>
-<p>You will also have to create several additional classes, which will be specified in the following instructions.</p>
-<p class="notice-me">
-    The largest part of this task deals with pathfinding with a BFS. If you previously completed the CU component of
-    Task 2, enemies will be able to follow these paths around walls to navigate to the player. If you did not complete
-    it, you can still earn full points, but your enemies will not actually move at all.
-</p>
-<ul>
-    As such, we provide another way to visualize the paths in-game, so that you can see whether your pathfinding is
-    working. If you download/copy these files correctly, enemies with paths will display them in the game-world. These
-    are the same files listed in the Task 2 CU, so if you have already copied them, you do not need to now.
-    <li>
-        The code can be accessed at these links: <a href="/static_files/files/Agent.java">Agent.java</a> and
-        <a href="/static_files/files/PathTile.java">PathTile.java</a>.
-    </li>
-    <li>
-        The <code>Agent</code> class given is a minimal example that provides only the additional
-        imports/instance variables/code that you do not already have or are required to write. We recommend that
-        you copy and paste these sections into your existing file.
-    </li>
-    <li>
-        The <code>PathTile</code> class given is complete. You can either copy and paste it, or right click and
-        select "save file as", and download it to the correct location. It should be placed in the package
-        <code>app.games.roguelikeobjects</code>.
-    </li>
-</ul>
-
-<br />
-<hr />
-<h3>Specification</h3>
-<hr />
-
-<!-- Things:
- - make decisions
- - give guys behavior
- - spike and potion
- - LevelParser
- - FindPathAvoidWalls
--->
-
-<p>
-    You should read through all the following sections before you begin to implement the methods from the specification.
-    Note that you will not receive feedback on the correctness of these methods until you've completed the testing
-    component of this task (see the "Autolab Feedback" section for more details). However, you must at least create
-    every class/method from this specification to receive feedback. You can "stub out" these methods by having them
-    always return a fixed value, but they must exist so the grading code, and your tests, can compile and run.
-</p>
-<p>
-    For the Learning Objective portion of the Game Features component for this task, you will implement the following
-    functionality:
-</p>
-<ul>
-    Navigate to the <code>app.gameengine.utils.PathfindingUtils</code> class. If it does not already exist, create this
-    class.
-    <li>
-        <code>findPath</code>: Create a <strong><em>static</em></strong> method named <code>findPath</code> which takes
-        two <code>Vector2D</code>s as parameters and returns a <code>LinkedListNode</code> of <code>Vector2D</code>s. If
-        you completed this method as part of the Task 2 CU, you should leave it as is. Otherwise, this method should
-        return <code>null</code>.
-    </li>
-    <li>
-        <code>findPathAvoidWalls</code>: Create a <strong><em>static</em></strong> method named
-        <code>findPathAvoidWalls</code> which takes a <code>Level</code> and two <code>Vector2D</code>s as parameters,
-        and returns a <code>LinkedListNode</code> of <code>Vector2D</code>s. The <code>Vector2D</code>s are the starting
-        and ending points of the path, respectively, and the <code>Level</code> is the level being navigated.
-        <ul>
-            <li>
-                This method should return a shortest valid path between the tile containing the starting location and
-                the tile containing the ending location such that no point in the returned path shares a location with
-                any solid object contained in the level.
-            </li>
-            <li>
-                Any <code>GameObject</code> (dynamic or static) can be solid or non-solid. This can be determined by the
-                <code>GameObject.isSolid</code> method. You can access the lists of static and dynamic objects of a
-                level with the <code>getStaticObjects</code> and <code>getDynamicObjects</code> methods respectively.
-            </li>
-            <li>
-                Any <code>GameObject</code> that is solid should be avoided. Specifically, the <em>tile containing</em>
-                that object should be avoided. So, if there is a <code>Wall</code> at (1.5, 2.8), the location (1, 2)
-                should be avoided. You can use the <code>Math.floor</code> or <code>Vector2D.floor</code> methods to
-                account for this.
-                <ul>
-                    <li>
-                        Be sure not to modify the locations of the objects themselves.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                This method has the same criteria for a valid path as the <code>findPath</code> method: all locations in
-                the path must be aligned to a tile (i.e. whole numbers only) and all tiles must be one tile
-                above, below, to the left, or to the right from the tile preceding and succeeding it.
-                <ul>
-                    <li>
-                        Recall that this still applies to the starting and ending nodes in the path. The first
-                        and last nodes should be the tiles containing the starting and ending location rather than
-                        the starting and ending locations themselves.
-                    </li>
-                    <li>
-                        Again, you can use <code>Math.floor</code> or <code>Vector2D.floor</code> for finding the tile
-                        that contains a given vector. Be sure not to modify the input vectors directly, though.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                If the start/end location is either not within the <code>Level</code>'s boundary or is inside a solid
-                object, this
-                method should return null.
-                <ul>
-                    <li>
-                        You can use the <code>GameUtils.isInBounds</code> method to determine if a vector is within the
-                        bounds of a level.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Similarly, a path should never go outside the bounds of a level. That is, the path that you return
-                should only contain <code>Vector2D</code>s that are within the bounds. Levels are <strong>not</strong>
-                guaranteed to be surrounded by solid objects.
-            </li>
-            <li>
-                If there does not exist a valid path between the start and end locations, this method should return
-                null.
-            </li>
-            <li>
-                The image below shows an example of a valid path from (1, 1) to (3, 1). The full path is [(1, 1), (1,
-                2), (2, 2), (3, 2), (3, 1)]. <br />
-                <img src="/static_files/images/task4/findPathAvoidWalls.png" , class="img-fluid" ,
-                    alt="visual depiction of an agent's path" width="300" />
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<br />
-
-<ul>
-    Now you will implement several new <code>Decision</code> subclasses that will make use of this pathfinding, along
-    with other behaviors used within the roguelike and sample games. These will all live in the
-    <code>app.gameengine.model.ai.roguelike</code> package, which you should create.
-    <li>
-        <code>MoveTowardPlayer</code>: Create a class named <code>MoveTowardPlayer</code> which extends
-        <code>Decision</code>. This class represents the action of acquiring a path to the player, and moving along that
-        path. Implement the following methods in this class.
-        <ul>
-            <li>
-                Create a constructor that takes an <code>Agent</code> and a <code>String</code>, which are passed to the
-                super constructor.
-            </li>
-            <li>
-                Override the <code>decide</code> method to always return <code>false</code>.
-            </li>
-            <li>
-                Override the <code>doAction</code> method. If the <code>Agent</code>'s path is null, use the
-                <code>PathfindingUtils.findPath</code> method to assign it a path. The starting location should be that
-                <code>Agent</code>'s location, and the ending location should be the location of the <code>Player</code>
-                within the level. If the <code>Agent</code>'s path is not null, call the <code>followPath</code> method
-                on it, passing in the <code>double</code> parameter.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>MoveTowardPlayerAvoidWalls</code>: Create a class named <code>MoveTowardPlayerAvoidWalls</code> which
-        extends <code>Decision</code>. This class's constructor and other methods should be the same as in
-        <code>MoveTowardPlayer</code>, except using <code>PathfindingUtils.findPathAvoidWalls</code> instead of
-        <code>findPath</code>.
-    </li>
-    <li>
-        <code>ShootPlayer</code>: Create a class named <code>ShootPlayer</code> which extends <code>Decision</code>.
-        This class represents an action of firing an <code>EnemyArrowProjectile</code> at the player. Implement the
-        following methods in this class.
-        <ul>
-            <li>
-                Create a constructor that takes an <code>Agent</code>, a <code>String</code>, and a <code>double</code>.
-                The first two should be passed to the super constructor, and the third should be used as the cooldown
-                for a timer, which should be stored in an instance variable.
-                <ul>
-                    <li>
-                        Use the <code>app.gameengine.utils.Timer</code> class. This is a utility that allows for keeping
-                        track of time, so that enemies can only shoot on a cooldown.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Override the <code>decide</code> method to always return <code>false</code>.
-            </li>
-            <li>
-                Override the <code>doAction</code> method. This method should always zero the <code>Agent</code>'s
-                velocity. It should then advance the timer by the <code>double</code> parameter, and if the cooldown
-                has elapsed, it should set the orientation of the agent to face the player, and fire a projectile.
-                <ul>
-                    <li>
-                        The <code>Timer.tick</code> method advances the timer, and returns a boolean representing
-                        whether the cooldown has elapsed.
-                    </li>
-                    <li>
-                        The orientation of the <code>Agent</code> must be set in the direction of the player, with a
-                        magnitude of 1. To get a vector pointing from the agent to the player, subtract the agent's
-                        location from the player's location (either manually or with the <code>Vector2D.sub</code>
-                        method). Then, normalize this vector, ie. make it's magnitude 1. You can use the
-                        <code>Vector2D.normalize</code> method for this.
-                        <ul>
-                            <li>
-                                For example, if the agent is located at (0, 0) and the player is at (4, 3), the agent's
-                                orientation should become (0.8, 0.6). Take a moment to understand why.
-                            </li>
-                            <li>
-                                This is done so that when the projectile is fired, it moves in the correct direction.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        To fire a projectile, call <code>fireProjectile</code> on the <code>Agent</code>. The projectile
-                        argument should be a new <code>EnemyArrowProjectile</code>, the <code>double</code> speed should
-                        be <code>10</code>, and the <code>Level</code> should use the parameter.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>ShootHomingProjectile</code>: Create a class named <code>ShootHomingProjectile</code> which extends
-        <code>Decision</code>. This class's constructor and other methods should be the same as in
-        <code>ShootPlayer</code>, except using <code>EnemyHomingProjectile</code>s instead of
-        <code>EnemyArrowProjectile</code>s.
-    </li>
-    <li>
-        <code>Heal</code>: Create a class named <code>Heal</code> which extends <code>Decision</code>. This class
-        represents an action of remaining still to recover HP. Implement the following methods in this class.
-        <ul>
-            <li>
-                Create a constructor that takes an <code>Agent</code>, a <code>String</code>, an <code>int</code>, and a
-                <code>double</code>. The first two should be passed to the super constructor. The third represents the
-                amount that this will heal the agent by each time. The <code>double</code> should be used as the
-                cooldown for a timer, which should be stored in an instance variable.
-                <ul>
-                    <li>
-                        Use the <code>app.gameengine.utils.Timer</code> class. This will be used to ensure that the
-                        agent does not heal too frequently.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Override the <code>decide</code> method to always return <code>false</code>.
-            </li>
-            <li>
-                Override the <code>doAction</code> method. This method should always zero the <code>Agent</code>'s
-                velocity. It should then advance the timer by the <code>double</code> parameter, and if the cooldown
-                has elapsed, it should heal the agent by the set amount.
-                <ul>
-                    <li>
-                        The <code>Timer.tick</code> method advances the timer, and returns a boolean representing
-                        whether the cooldown has elapsed.
-                    </li>
-                    <li>
-                        You can use the <code>getHP</code> and <code>setHP</code> methods to modify the agent's health.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>LowHP</code>: Create a class named <code>LowHP</code> which extends <code>Decision</code>. This class
-        represents a decision of whether the <code>Agent</code>'s health is below a certain threshold. Implement the
-        following methods in this class.
-        <ul>
-            <li>
-                Create a constructor that takes an <code>Agent</code>, a <code>String</code>, and an <code>int</code>.
-                The first two should be passed to the super constructor, and the third represents the health threshold,
-                which should be stored as an instance variable.
-            </li>
-            <li>
-                Override the <code>decide</code> method to return whether the current health of the <code>Agent</code>
-                is less than or equal to the threshold.
-            </li>
-            <li>
-                Override the <code>doAction</code> method to do nothing.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>NearPlayer</code>: Create a class named <code>NearPlayer</code> which extends <code>Decision</code>. This
-        class represents a decision of whether the <code>Agent</code> is closer than a certain distance to the player.
-        Implement the following methods in this class.
-        <ul>
-            <li>
-                Create a constructor that takes an <code>Agent</code>, a <code>String</code>, and a <code>double</code>.
-                The first two should be passed to the super constructor, and the third represents the distance
-                threshold, which should be stored as an instance variable.
-            </li>
-            <li>
-                Override the <code>decide</code> method to return whether the distance between the agent and the player
-                is less than or equal to the threshold. You can use the <code>Vector2D.euclideanDistance</code> method
-                for this check.
-            </li>
-            <li>
-                Override the <code>doAction</code> method to do nothing.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Now you will use these decisions to give various <code>Agent</code>s different behaviors. The
-        <code>Agent</code>s you must modify are <code>Demon</code>, <code>Minotaur</code>, <code>Archer</code>,
-        <code>Sorcerer</code>, and <code>Tower</code>, all in the <code>app.games.topdownobjects</code> package.
-        <ul>
-            <li>
-                The decision tree for each of these types of agents must be set. The specific contents are up to you, as
-                long as each decision tree contains at least one <code>Decision</code>. You are encouraged to play
-                around and design different behaviors.
-            </li>
-            <li>
-                The recommended minimum decision trees are as follows:
-                <ul>
-                    <li><code>Demon</code>: A single <code>MoveTowardPlayer</code> decision.</li>
-                    <li><code>Minotaur</code>: A single <code>MoveTowardPlayerAvoidWalls</code> decision.</li>
-                    <li><code>Archer</code>: A single <code>ShootPlayer</code> decision.</li>
-                    <li><code>Sorcerer</code>: A single <code>ShootHomingProjectile</code> decision.</li>
-                    <li>
-                        <code>Tower</code>: A single <code>ShootPlayer</code> decision. Note that decisions that cause
-                        the tower to move will do nothing. It is also recommended to override the <code>isSolid</code>
-                        method to always return <code>true</code>, to test that solid <code>DynamicGameObject</code>s
-                        are handled properly. We will not test for this, though.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-</li>
-</ul>
-
-<br />
-
-<ul>
-    The last additions are to the <code>Spike</code> and <code>Potion</code> classes in the
-    <code>app.games.commonobjects</code> package, and to the <code>LevelParser</code>.
-    <li>
-        <code>Spike</code>: Most of this class already exists. You must override the
-        <code>collideWithDynamicObject</code> method to kill any player it contacts.
-        <ul>
-            <li>
-                Recall that you can use the <code>isPlayer</code> method to determine if an object is or is not
-                the player.
-            </li>
-            <li>
-                You should use the <code>destroy</code> method to kill the player.
-            </li>
-        </ul>
-    </li>
-    <li>
-        <code>Potion</code>: Most of this class already exists. You must override the
-        <code>collideWithDynamicObject</code> method to heal/harm a player on contact. Also create the
-        <code>getHealAmount</code> method.
-        <ul>
-            <li>
-                Recall that you can use the <code>isPlayer</code> method to determine if an object is or is not
-                the player.
-            </li>
-            <li>
-                A potion can have a positive or negative heal amount. A positive heal amount indicates that it
-                should heal the player, and a negative heal amount should damage the player. You can use the
-                <code>takeDamage</code> method to harm the player, but note that this method does nothing if the
-                argument is negative, so it cannot be used to heal the player. You can use <code>setHP</code>
-                instead.
-            </li>
-            <li>
-                <code>getHealAmount</code> should be a getter for an <code>int</code> instance variable representing the
-                amount to heal. This instance variable should initially be set to the third constructor
-                parameter.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Implement the following updates to the <code>LevelParser</code> class. These changes will allow the game engine
-        to parse levels which contain objects for the roguelike and sample games.
-        <ul>
-            <li>
-                <code>readDynamicObject</code>
-                <ul>
-                    <li>
-                        Add a case for <code>Minotaur</code> objects. If the string being checked is exactly "Minotaur",
-                        a new <code>Minotaur</code> object should be returned. The <code>Minotaur</code> constructor
-                        takes two <code>double</code>s, which should be the variables <code>x</code> and <code>y</code>
-                        which already exist in this method, and two <code>int</code>s, which will be the fifth and sixth
-                        values in the <code>ArrayList</code> for that object. These are the same parameters as the
-                        <code>Demon</code> constructor, which already exists in this method.
-                    </li>
-                    <li>
-                        Add a case for <code>Archer</code> objects. If the string being checked is exactly "Archer", a
-                        new <code>Archer</code> object should be returned. The <code>Archer</code> constructor takes the
-                        same parameters as the <code>Demon</code> and <code>Minotaur</code> constructors.
-                    </li>
-                    <li>
-                        Add a case for <code>Sorcerer</code> objects. If the string being checked is exactly "Sorcerer",
-                        a new <code>Sorcerer</code> object should be returned. The <code>Sorcerer</code> constructor
-                        takes the same parameters as the <code>Demon</code>, <code>Minotaur</code>, and
-                        <code>Archer</code> constructors.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>readStaticObject</code>
-                <ul>
-                    <li>
-                        Add a case for <code>Spike</code> objects. If the string being checked is exactly "Spike", a
-                        new <code>Spike</code> object should be returned. The <code>Spike</code> constructor
-                        takes only two <code>double</code>s, which should be the variables <code>x</code> and
-                        <code>y</code> which already exist in this method.
-                    </li>
-                    <li>
-                        Add a case for <code>Potion</code> objects. If the string being checked is exactly "Potion", a
-                        new <code>Potion</code> object should be returned. The <code>Potion</code> constructor
-                        takes two <code>double</code>s and an <code>int</code>. The <code>double</code>s should be the
-                        variables <code>x</code> and <code>y</code> which already exist in this method. The
-                        <code>int</code> should be the fifth value in the <code>ArrayList</code> for that object.
-                    </li>
-                    <li>
-                        Add a case for <code>Marker</code> objects. If the string being checked is exactly "Marker", a
-                        new <code>Marker</code> object should be returned. The <code>Marker</code> constructor
-                        takes two <code>double</code>s and a <code>String</code>. The <code>double</code>s should be the
-                        variables <code>x</code> and <code>y</code> which already exist in this method. The
-                        <code>String</code> should be the fifth value in the <code>ArrayList</code> for that object.
-                    </li>
-                    <li>
-                        Add a case for <code>DirectionalWall</code> objects. If the string being checked is exactly
-                        "DirectionalWall", a new <code>DirectionalWall</code> object should be returned. The
-                        <code>DirectionalWall</code> constructor takes two <code>double</code>s and a
-                        <code>Level</code>. The <code>double</code>s should be the variables <code>x</code> and
-                        <code>y</code> which already exist in this method, and the <code>Level</code> should be the
-                        method parameter.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <code>parseLevel</code>
-                <ul>
-                    <li>
-                        Modify this method to return either a <code>TopDownLevel</code>, <code>MarioLevel</code>, or
-                        <code>RoguelikeLevel</code> depending on the content of the csv file being read.
-                    </li>
-                    <li>
-                        Just like in Task 2, the level type can be determined from the first field in the first line of
-                        the level file. If that field is exactly "RoguelikeLevel", then the level you create, modify,
-                        and return should be a <code>RoguelikeLevel</code> object. This method should still work for
-                        both <code>TopDownLevel</code>s and <code>MarioLevel</code>s.
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<br />
-<hr />
-<h3>Testing Utility</h3>
-<hr />
-
-<p>
-    In the <code>app.tests.TestUtils</code> class, create a <em><strong>static</strong></em> method named
-    <code>validatePath</code> that takes in a <code>LinkedListNode</code> of <code>Vector2D</code>s and returns
-    <code>void</code>. This method should contain JUnit asserts to verify that the linked list is a valid path, and
-    should fail a JUnit assert if the path is invalid.
-</p>
-<p>
-    This uses the same criteria as the <code>findPath</code> method to determine validity of a path. This means that
-    every pair of vectors in the path must be horizontally or vertically adjacent (no diagonals), a distance of 1 tile
-    apart, and each vector must have x and y components that are whole numbers.
-</p>
-<p>
-    Consider an input path of null to be valid.
-</p>
-<p>
-    Note that this method does not assert every property necessary. Namely, it does nothing to guaranteed that the path
-    avoids solid objects.
-</p>
-<p>
-    Note that this method is not a test, and thus should not have the <code>@Test</code> annotation. Rather, this is a
-    static method intended to be used in your testing. You are encouraged to use this method to simplify your test
-    cases.
-</p>
-
-<br />
-<hr />
-<h3>Testing Requirements</h3>
-<hr />
-
-<p>
-    Write JUnit tests for the following method from the specification in the <code>TestTask4</code> class. These tests
-    should be annotated with <code>@Test</code>.
-</p>
-<p>
-    You may find it useful to create level csv files and read them with the LevelParser in your tests. You can create
-    levels with the <a href="https://jbcarras.github.io/">level editor</a>, which should contain all of the objects and
-    level types you may want to use.
-</p>
-<ul>
-    <li>
-        <code>findPathAvoidWalls</code>:
-        <ul>
-            <li>
-                Your tests should verify that the path returned by calling this method is valid and of the shortest
-                possible length that avoids solid objects.
-            </li>
-            <li>
-                You will need to create levels with obstacles for your tests (note that the base Level class is
-                abstract). You can use the <code>TopDownLevel</code> or <code>RoguelikeLevel</code> classes, and can use
-                <code>Wall</code> objects as obstacles.
-            </li>
-            <li>
-                Since there may be multiple shortest paths that avoid solid objects, you should not test for a specific
-                path to be returned in such cases.
-            </li>
-        </ul>
-    </li>
-    <li>
-        You DO NOT need to write tests for any of the remaining classes or methods. Tests have been provided for some of
-        these as described in the overview section above.
-    </li>
-</ul>
-
-<br />
-<hr />
-<h3>Programming Requirements</h3>
-<hr />
-
-<p>
-    Implement the methods from the specification. You may wish to complete the Testing Requirements before you begin
-    implementation, and it's suggested that you run these tests as you implement the methods.
-</p>
-
-<br />
-<hr />
-<h3>Autolab Feedback</h3>
-<hr />
-
-<p>
-    Feedback for the Learning Objective component of the Game Features will be given in several phases. If you don't
-    complete a phase, then feedback for the following phase(s) will not be given. You must complete all the following
-    phases to earn the required score of 30 LOs to complete this task. The phases for the Learning Objective are as
-    follows:
-</p>
-<ol>
-    <li>
-        Testing your testing utility method
-        <ul>
-            <li>
-                Your testing utility method will be checked with a variety of test cases to ensure that it makes all the
-                required checks. This phase will ensure that your utility method is accurate before you start using it
-                in your tests.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Running your tests on a correct solution
-        <ul>
-            <li>
-                Your tests will be run against a solution that is known to be correct. If your tests do not pass this
-                correct solution, there is an error somewhere in your tests that must be fixed before you can move on
-                with the assignment. If your tests don't get past this check, you should re-read this document and make
-                sure you implemented your tests and code according the specification. You should also make sure that if
-                there are multiple correct outputs to the input in your tests cases that you accept any of the outputs
-                as correct.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Checking your tests for feature coverage
-        <ul>
-            <li>
-                The next phase is to check if your tests check for a variety of features defined by different inputs.
-                You should write at least one test case for each feature to pass this phase.
-            </li>
-            <li>
-                Passing this phase does not necessarily mean that your testing is completely thorough. Satisfying
-                Autolab is the bare minimum testing requirement. Not all possible inputs are checked and it is sometimes
-                possible to pass this phase with weak testing. If you are struggling to earn credit for code that you
-                believe is correct, you should write more than the required tests.
-            </li>
-        </ul>
-    </li>
-    <li>
-        Running my tests on your solution
-        <ul>
-            <li>
-                Once Autolab is happy with your tests, it will run my tests against your code to check it for
-                correctness. If your testing is thorough, and your code passes your tests, then you should pass this
-                phase. If you pass your tests, but fail one of mine, it is an indicator that you should write more tests
-                to help expose your bug.
-            </li>
-        </ul>
-    </li>
-</ol>
-<p>
-    Once you have successfully passed all four phases, you will have completed the Learning Objective component of the
-    Game Features, and Autolab will confirm this with a score of 30 LOs.
-</p>
-{% endcall %}
-
-{% call task_card("Game Features - Comprehensive Understanding") %}
-<hr />
-<h3>Overview</h3>
-<hr />
-
-<p>
-    For the Comprehensive Understanding portion of this task, you will implement functionality in the
-    <code>app.games.roguelikeobjects.RoguelikeGame</code> class to add procedurally generated levels to the roguelike.
-    If you haven't already, you should change the <code>GAME</code> constant in <code>app.Configuration</code> to
-    <code>"roguelike"</code> to be able to view and test the generation.
-</p>
-<p>
-    Since there is only one method you need to implement for this task, all 50 CU points will be earned upon passing
-    our tests for that method.
-</p>
-
-<br />
-<hr />
-<h3>Procedural Generation</h3>
-<hr />
-
-<p>
-    <strong>Procedural Generation</strong> in game development refers to the creation of levels, maps, or any content
-    that is done through algorithms instead of manually. In this task, you will modify RoguelikeGame's
-    <code>generateMap</code> method to accomplish this using a version of DFS.
-</p>
-
-<p>
-    The gif below shows an example of how it should work when it is finished.
-</p>
-
-<p>
-    <img src="/static_files/images/task4/generateMapExample.gif" , class="img-fluid" ,
-        alt="visual depiction of how generating a map loops" width="360" />
-</p>
-
-<p>
-    As shown in the gif, <code>generateMap</code> works in such a way where it first generates the level and
-    <em>then</em> connects a door to the level that discovered it.
-</p>
-
-<p>
-    There are some important parameters here that vastly change how the generated map looks. These can be modified in
-    <code>RoguelikeGame</code> for testing purposes, or for fun!
-</p>
-<ul>
-    <li>
-        <strong>Map Size</strong> - <code>this.mapSize</code> in RoguelikeGame, a <code>Vector2D</code> representing the
-        size of the map grid.
-    </li>
-    <li>
-        <strong>Max Rooms</strong> - <code>this.maxRooms</code> in RoguelikeGame, an <code>int</code> that changes the
-        maximum amount of rooms that can be generated.
-        <ul>
-            <li>
-                The first room will always be the starting room, and the last room will always be the boss room.
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<p>
-    Note: The order of level generation may seem unintuitive at first. Think about
-    which room each other room was discovered from, and why this is the case.
-</p>
-
-<br />
-<hr />
-<h3>Programming Requirements</h3>
-<hr />
-
-<p>
-    <em>
-        Note: The existing implementation of this method should be completely replaced. However, before deleting the
-        given code, you might want to look at it for examples on the using some of the helper methods as described
-        below.
-    </em>
-</p>
-
-<ul>
-    <li>
-        <code>generateMap</code> (50 CUs)
-        <ul>
-            <li>
-                In the <code>RoguelikeGame</code> class, delete the given functionality of <code>generateMap</code> and
-                overwrite it with a version that procedurally generates levels using a version of DFS.
-
-                <ul>
-                    <li>
-                        All generated maps must start with a random <code>Vector2D</code> starting position. To create
-                        this position, call <code>getRandomStartingPosition</code>, a method in RoguelikeGame.
-                    </li>
-                    <li>
-                        You are tasked with generating more <code>Vector2D</code> positions and a corresponding level
-                        for each. These positions should be picked out from the starting position in random directions.
-                        To get these random directions, you <strong>must</strong> call the given
-                        <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> method exactly as shown.
-                        <ul>
-                            <li>
-                                Calling <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> returns to you a new
-                                shuffled ArrayList of <code>Vector2D</code> directions. You should use this method
-                                every time you are exploring for new positions from your current position.
-                                (This means that the directions should be randomized <em>every time</em> you are
-                                exploring for new positions, not once per map generation.)
-                            </li>
-                            <li>
-                                The generated positions must be valid. A valid position is one that has not already been
-                                explored and is within the bounds of <code>this.mapSize</code>.
-                            </li>
-                            <li>
-                                Remember, you can see if a <code>Vector2D</code> is in bounds of another
-                                <code>Vector2D</code> by calling <code>GameUtils.isInBounds</code>.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Luckily, you don't need to choose the random levels. Once you have a new position and
-                        are ready to generate the next level, call <code>getNextLevelToGenerate</code>. This will
-                        return you a <code>RoguelikeLevel</code> object, which should be initialized with the new
-                        position by calling the <code>initialize</code> method on the returned level and passing in
-                        the generated position. This level also <strong>must</strong> be added to
-                        <code>this.levelMap</code>, which maps levels by their name. (Which you can get
-                        by calling the <code>getName</code> method on a level). You can also use the
-                        <code>addLevel</code> method to achieve this.
-                    </li>
-                    <li>
-                        After a level is generated and initialized, it's door must be opened to the level that
-                        "discovered" it. You can open a door of a level by calling the <code>openDoor</code> method
-                        on a <code>RoguelikeLevel</code> object that takes an adjacent <code>RoguelikeLevel</code>.
-                        <ul>
-                            <li>
-                                For example, if I am a newly generated level at (1,0), I would look up which level
-                                discovered me, lets say (0,0), and open my door to that
-                                level. I would then also go to the level at (0,0) and open its door to me, (1,0),
-                                since it should have an open door to me as well.
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        Whenever you generate a level, you should also increment <code>this.roomsGenerated</code>.
-                        You should <strong>only</strong> generate <code>this.maxRooms</code> amount of levels.
-                    </li>
-
-                    <li>
-                        Lastly, once the map is completely generated, you should call <code>this.loadLevel</code> on
-                        the first level you created, the starting level.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                You should be generating a level <strong>before</strong> exploring for new level positions.
-                <ul>
-                    <li>
-                        Example: The next level position is (1,0). This level should be generated and initialized
-                        <em>before</em> exploring new random level positions from (1,0).
-                    </li>
-                </ul>
-            </li>
-            <li>
-                When exploring for new positions, your current position should mark all of its neighbors as explored,
-                which effectively blocks those positions and reserves them as connected to the level that discovered
-                them. In this way, you can use the BFS algorithm explained in lecture and swap the queue for a stack to
-                get the correct order of visiting positions.
-            </li>
-            <li>
-                It is <strong>extremely</strong> important that you call these randomization methods in the order listed
-                below. If
-                you deviate from this order, you will likely fail in Autolab.
-                <ol>
-                    <li>
-                        <code>getRandomStartingPosition</code> - only called once.
-                    </li>
-                    <li>
-                        <code>getNextLevelToGenerate</code>
-                    </li>
-                    <li>
-                        <code>Randomizer.shuffleArrayList(DIRECTIONS)</code> - this should <em>always</em> be called
-                        <em>after</em> getNextLevelToGenerate.
-                    </li>
-                </ol>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<p>
-    Now, when you play the Roguelike, you should get a different map every time you play, with a guaranteed boss room
-    found somewhere throughout it. Testing this method largely involves playing the game and ensuring the correct
-    amount of rooms were generated, with a boss room somewhere in the map. Sometimes, using a set seed for your
-    randomization could also help with the testing process, but is optional. To do this, call
-    <code>Randomizer.setSeed</code> with any number of your choosing before doing anything that involves randomization.
-</p>
-
-<hr />
-<h3>Autolab Feedback</h3>
-<hr />
-<p>
-    The Comprehensive Understanding tests will unlock once you have earned 30 LOs on the assignment. These will be run
-    in a single phase for correctness. This task only has one feature, and passing it will earn you the maximum score
-    of 50 CUs.
-</p>
-<p>
-    There is no required testing component for the Comprehensive Understanding; however, you are expected to test your
-    code nonetheless as the Autolab feedback is unlikely to be sufficient for debugging.
-</p>
-
-{% endcall %}
 {% endblock %}
