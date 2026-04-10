@@ -306,9 +306,9 @@
                         projectile.
                         <ul>
                             <li>
-                                The <code>Timer.tick</code> method advances the timer, and returns a boolean
-                                representing
-                                whether the cooldown has elapsed.
+                                The <code>Timer.tick</code> method advances the timer, and returns an int representing
+                                the number of times the timer has overflown. Note that the cooldown has elapsed if the
+                                timer has overflown; it doesn't matter how many times.
                             </li>
                             <li>
                                 The orientation of the <code>Agent</code> must be set in the direction of the player,
@@ -379,9 +379,9 @@
                         has elapsed, it should heal the agent by the set amount.
                         <ul>
                             <li>
-                                The <code>Timer.tick</code> method advances the timer, and returns a boolean
-                                representing
-                                whether the cooldown has elapsed.
+                                The <code>Timer.tick</code> method advances the timer, and returns an int representing
+                                the number of times the timer has overflown. Note that the cooldown has elapsed if the
+                                timer has overflown; it doesn't matter how many times.
                             </li>
                             <li>
                                 You can use the <code>getHP</code> and <code>setHP</code> methods to modify the agent's
