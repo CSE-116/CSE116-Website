@@ -1,32 +1,32 @@
 {
-  "title": "Week 8: Testing",
-  "theme": "new-test",
-  "lab": "Makeup 1 - Tracing Quiz 1, Coding Quiz 1, Interview 1",
+  "title": "Lecture 8: Trees",
+  "theme": "ds",
   "homework": [
+    {
+      "title": "Problem Set 3: Polymorphism + Trees + Testing",
+      "url": "ps3.html",
+      "released": false
+    }
   ],
   "content": [
     {
-      "lecture": "20-testing.json",
-      "day": "Monday",
-      "date": "March 9"
+      "lecture": "23-trees.json",
+      "day": "Thursday",
+      "date": "June 18"
     },
     {
-      "lecture": "21-testing.json",
-      "day": "Wednesday",
-      "date": "March 11"
+      "lecture": "24-trees.json"
     },
     {
-      "lecture": "22-testing.json",
-      "day": "Friday",
-      "date": "March 13"
+      "lecture": "25-trees.json"
     },
     {
       "type": "deadline",
-      "day": "Friday",
-      "date": "March 13",
+      "day": "Thursday",
+      "date": "June 18",
       "time": "11:59pm",
-      "assignment": "Game Features 2",
-      "deadline_type": "game"
+      "assignment": "Problem Set 2",
+      "deadline_type": "ps"
     }
   ]
 }

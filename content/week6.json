@@ -1,42 +1,32 @@
 {
-  "title": "Week 6: Inheritance",
-  "theme": "testing",
-  "lab": "Tracing Quiz 1 + Coding Quiz 1",
+  "title": "Lecture 6: Polymorphism",
+  "theme": "oop",
   "homework": [
     {
       "title": "Problem Set 2: Linked Lists + Inheritance",
       "url": "ps2.html",
-      "released": true
-    },
-    {
-      "title": "Game Features 2: Linked Lists + Inheritance",
-      "url": "gf2.html",
-      "released": true
+      "released": false
     }
   ],
   "content": [
     {
-      "lecture": "14-inheritance.json",
-      "day": "Monday",
-      "date": "February 23"
+      "lecture": "17-poly.json",
+      "day": "Thursday",
+      "date": "June 11"
     },
     {
-      "lecture": "15-inheritance.json",
-      "day": "Wednesday",
-      "date": "February 25"
+      "lecture": "18-poly.json"
     },
     {
-      "lecture": "16-inheritance.json",
-      "day": "Friday",
-      "date": "February 27"
+      "lecture": "19-poly.json"
     },
     {
       "type": "deadline",
-      "day": "Friday",
-      "date": "February 27",
+      "day": "Thursday",
+      "date": "June 11",
       "time": "11:59pm",
-      "assignment": "Game Features 1",
-      "deadline_type": "game"
+      "assignment": "Problem Set 1",
+      "deadline_type": "ps"
     }
   ]
 }

@@ -1,39 +1,19 @@
 {
-  "title": "Week 3: Classes",
-  "theme": "testing",
-  "lab": "Tracing Quiz 0 + Coding Quiz 0",
-  "homework": [],
+  "title": "Lecture 3: Classes",
+  "theme": "oop",
+  "homework": [
+  ],
   "content": [
     {
       "lecture": "5-classes.json",
-      "day": "Monday",
-      "date": "February 2"
+      "day": "Tuesday",
+      "date": "June 2"
     },
     {
-      "lecture": "6-classes.json",
-      "day": "Wednesday",
-      "date": "February 4"
+      "lecture": "6-classes.json"
     },
     {
-      "type": "deadline",
-      "day": "Wednesday",
-      "date": "February 4",
-      "time": "11:59pm",
-      "assignment": "Syllabus Quiz",
-      "deadline_type": "ps"
-    },
-    {
-      "lecture": "7-classes.json",
-      "day": "Friday",
-      "date": "February 6"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "February 6",
-      "time": "11:59pm",
-      "assignment": "Problem Set 0",
-      "deadline_type": "ps"
+      "lecture": "7-classes.json"
     }
   ]
 }

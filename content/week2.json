@@ -1,39 +1,21 @@
 {
-  "title": "Week 2: Introduction to Java",
+  "title": "Lecture 2: Introduction to Java",
   "theme": "intro",
-  "lab": "Basics Circuits Activity (Hardware)",
   "homework": [
     {
       "title": "Problem Set 0: Java Basics",
       "url": "ps0.html",
-      "released": true
-    },
-    {
-      "title": "Game Features 0: Java Basics",
-      "url": "gf0.html",
-      "released": true
+      "released": false
     }
   ],
   "content": [
     {
-      "lecture": "1-java.json",
-      "day": "Monday",
-      "date": "January 26"
-    },
-    {
-      "lecture": "2-java.json",
-      "day": "Wednesday",
-      "date": "January 28"
-    },
-    {
       "lecture": "3-java.json",
-      "day": "Friday",
-      "date": "January 30"
+      "day": "Thursday",
+      "date": "May 28"
     },
     {
-      "lecture": "4-java.json",
-      "day": "Friday - async",
-      "date": "January 30"
+      "lecture": "4-java.json"
     }
   ]
 }

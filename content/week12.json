@@ -1,42 +1,21 @@
 {
-  "title": "Week 12: Graphs",
-  "theme": "oop",
-  "lab": "Makeup 2 - Tracing Quiz 2, Coding Quiz 2, Interview 2",
+  "title": "Lecture 12: Final Exam",
+  "theme": "intro",
   "homework": [
-    {
-      "title": "Problem Set 4: Graphs + Testing",
-      "url": "ps4.html",
-      "released": true
-    },
-    {
-      "title": "Game Features 4: Graphs + Testing",
-      "url": "gf4.html",
-      "released": true
-    }
   ],
   "content": [
     {
-      "lecture": "29-graphs.json",
-      "day": "Monday",
-      "date": "April 6"
-    },
-    {
-      "lecture": "30-graphs.json",
-      "day": "Wednesday",
-      "date": "April 8"
-    },
-    {
-      "lecture": "31-graphs.json",
-      "day": "Friday",
-      "date": "April 10"
+      "lecture": "final.json",
+      "day": "Tuesday",
+      "date": "July 2"
     },
     {
       "type": "deadline",
-      "day": "Friday",
-      "date": "April 10",
+      "day": "Thursday",
+      "date": "July 2",
       "time": "11:59pm",
-      "assignment": "Game Features 3",
-      "deadline_type": "game"
+      "assignment": "Problem Set 4",
+      "deadline_type": "ps"
     }
   ]
 }

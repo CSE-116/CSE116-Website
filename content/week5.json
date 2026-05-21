@@ -1,32 +1,19 @@
 {
-  "title": "Week 5: Memory, Linked Lists",
+  "title": "Lecture 5: Inheritance",
   "theme": "oop",
-  "lab": "Logic Gates Activity (Hardware)",
   "homework": [
   ],
   "content": [
     {
-      "lecture": "11-ll.json",
-      "day": "Monday",
-      "date": "February 16"
+      "lecture": "14-inheritance.json",
+      "day": "Tuesday",
+      "date": "June 9"
     },
     {
-      "lecture": "12-ll.json",
-      "day": "Wednesday",
-      "date": "February 18"
+      "lecture": "15-inheritance.json"
     },
     {
-      "lecture": "13-ll.json",
-      "day": "Friday",
-      "date": "February 20"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "February 20",
-      "time": "11:59pm",
-      "assignment": "Problem Set 1",
-      "deadline_type": "ps"
+      "lecture": "16-inheritance.json"
     }
   ]
 }

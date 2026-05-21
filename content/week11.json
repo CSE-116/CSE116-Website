@@ -1,32 +1,13 @@
 {
-  "title": "Week 11: Memory",
-  "theme": "oop",
-  "lab": "Interview 2 + Documentation Activity (Software)",
+  "title": "Lecture 11: Runtime (Async)",
+  "theme": "ds",
   "homework": [
   ],
   "content": [
     {
-      "lecture": "26-memory.json",
-      "day": "Monday",
-      "date": "March 30"
-    },
-    {
-      "lecture": "27-memory.json",
-      "day": "Wednesday",
-      "date": "April 1"
-    },
-    {
-      "lecture": "28-memory.json",
-      "day": "Friday",
-      "date": "April 3"
-    },
-    {
-      "type": "deadline",
-      "day": "Friday",
-      "date": "April 3",
-      "time": "11:59pm",
-      "assignment": "Problem Set 3",
-      "deadline_type": "ps"
+      "lecture": "async-runtime.json",
+      "day": "Tuesday",
+      "date": "June 30"
     }
   ]
 }

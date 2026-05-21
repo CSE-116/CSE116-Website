@@ -1,42 +1,35 @@
 {
-  "title": "Week 4: Memory, Arrays",
-  "theme": "oop",
-  "lab": "Interview 0 + Debugging Activity (Software)",
+  "title": "Lecture 4: Linked Lists",
+  "theme": "ds",
   "homework": [
     {
       "title": "Problem Set 1: Classes",
       "url": "ps1.html",
-      "released": true
-    },
-    {
-      "title": "Game Features 1: Classes",
-      "url": "gf1.html",
-      "released": true
+      "released": false
     }
   ],
   "content": [
     {
-      "lecture": "8-memory-gates.json",
-      "day": "Monday",
-      "date": "February 9"
+      "type": "lecture",
+      "lecture": "11-ll.json",
+      "day": "Thursday",
+      "date": "June 4"
     },
     {
-      "lecture": "9-memory-arrays.json",
-      "day": "Wednesday",
-      "date": "February 11"
+      "type": "lecture",
+      "lecture": "12-ll.json"
     },
     {
-      "lecture": "10-memory-recursion.json",
-      "day": "Friday",
-      "date": "February 13"
+      "type": "lecture",
+      "lecture": "13-ll.json"
     },
     {
       "type": "deadline",
-      "day": "Friday",
-      "date": "February 13",
+      "day": "Thursday",
+      "date": "June 4",
       "time": "11:59pm",
-      "assignment": "Game Features 0",
-      "deadline_type": "game"
+      "assignment": "Problem Set 0",
+      "deadline_type": "ps"
     }
   ]
 }

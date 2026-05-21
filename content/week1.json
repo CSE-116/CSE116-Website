@@ -1,19 +1,22 @@
 {
-  "title": "Week 1: Course Introduction",
+  "title": "Lecture 1: Introduction to Java",
   "theme": "intro",
   "homework": [
   ],
-  "lab": "No Lab",
   "content": [
     {
+      "type": "lecture",
       "lecture": "0-intro.json",
-      "day": "Wednesday",
-      "date": "January 21"
+      "day": "Tuesday",
+      "date": "May 26"
     },
     {
-      "lecture": "0_2-115-exam.json",
-      "day": "Friday",
-      "date": "January 23"
+      "type": "lecture",
+      "lecture": "1-java.json"
+    },
+    {
+      "type": "lecture",
+      "lecture": "2-java.json"
     }
   ]
 }

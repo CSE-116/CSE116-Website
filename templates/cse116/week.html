@@ -6,9 +6,9 @@
 
 {% macro week(content) -%}
 
-    <tr class="lab">
+    <!-- <tr class="lab">
         <td colspan="3">Lab: {{ content.lab | safe }}</td>
-    </tr>
+    </tr> -->
 
     {% for hw in content.homework %}
         {{ homework_macro.homework(hw) }}
