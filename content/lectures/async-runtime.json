@@ -1,14 +1,13 @@
 {
   "title": "Runtime Examples (Async Lecture. No live stream)",
   "reading_list": [
-  
+  {
+      "url": "https://www.youtube.com/watch?v=qOb1ZyJz6Qk",
+      "text": "Lecture Recording"
+  },
     {
       "url": "https://www.youtube.com/watch?v=kPRA0W1kECg",
       "text": "The Sound of Sorting"
     }
-  ],
-  "move this to content after recording": {
-      "url": "Youtube link",
-      "text": "Lecture Recording"
-  }
+  ]
 }
